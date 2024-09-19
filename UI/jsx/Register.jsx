@@ -11,13 +11,15 @@ const Register = () => {
 
   const [errors, setErrors] = useState({});
 
+  // Handling data changes
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
+// Form Validation
   const validateForm = () => {
     const newErrors = {};
     if (!formData.username) newErrors.username = 'Username is required';
@@ -43,7 +45,7 @@ const Register = () => {
       setErrors(validationErrors);
     }
   };
-
+// Displaying Errors
   return (
     <div className="register-container">
       <div className="register-form">
