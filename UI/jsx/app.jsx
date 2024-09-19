@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './Register.jsx';
 import Products from './Products.jsx'; 
 import Cart from './Cart.jsx';
+import Login from './Login.jsx';
 import ProductDetails from './ProductDetails.jsx';
 import Profile from './Profile.jsx';
 import '../public/styles.css'; 
@@ -18,7 +19,7 @@ const App = () => (
       <NavPage title="Book Store" />
       <main className="flex-grow-1">
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route path="/" element={<Login />} />
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<ProductDetails />} />

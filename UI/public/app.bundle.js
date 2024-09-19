@@ -48,6 +48,108 @@ var Footer = function Footer() {
 
 /***/ }),
 
+/***/ "./jsx/Login.jsx":
+/*!***********************!*\
+  !*** ./jsx/Login.jsx ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var Login = function Login() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      email: '',
+      password: ''
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    formData = _useState2[0],
+    setFormData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState4 = _slicedToArray(_useState3, 2),
+    errors = _useState4[0],
+    setErrors = _useState4[1];
+  var handleChange = function handleChange(e) {
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, e.target.name, e.target.value)));
+  };
+  var validateForm = function validateForm() {
+    var newErrors = {};
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email address is invalid';
+    }
+    if (!formData.password) newErrors.password = 'Password is required';
+    return newErrors;
+  };
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    var validationErrors = validateForm();
+    if (Object.keys(validationErrors).length === 0) {
+      // Handle form submission logic here
+      console.log('Login successful', formData);
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "login-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "login-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "email",
+    name: "email",
+    placeholder: "Email",
+    value: formData.email,
+    onChange: handleChange
+  }), errors.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "error"
+  }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "password",
+    name: "password",
+    placeholder: "Password",
+    value: formData.password,
+    onChange: handleChange
+  }), errors.password && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "error"
+  }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "submit"
+  }, "Login")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "arrange"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "reset-link"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Forgot Password?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/forgot-password"
+  }, " Reset"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "register-link"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/register"
+  }, "Register"))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
+
+/***/ }),
+
 /***/ "./jsx/NavPage.jsx":
 /*!*************************!*\
   !*** ./jsx/NavPage.jsx ***!
@@ -334,17 +436,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _NavPage_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavPage.jsx */ "./jsx/NavPage.jsx");
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Footer.jsx */ "./jsx/Footer.jsx");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var _Register_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Register.jsx */ "./jsx/Register.jsx");
 /* harmony import */ var _Products_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Products.jsx */ "./jsx/Products.jsx");
 /* harmony import */ var _Cart_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Cart.jsx */ "./jsx/Cart.jsx");
-/* harmony import */ var _ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ProductDetails.jsx */ "./jsx/ProductDetails.jsx");
-/* harmony import */ var _Profile_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Profile.jsx */ "./jsx/Profile.jsx");
-/* harmony import */ var _public_styles_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../public/styles.css */ "./public/styles.css");
+/* harmony import */ var _Login_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Login.jsx */ "./jsx/Login.jsx");
+/* harmony import */ var _ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ProductDetails.jsx */ "./jsx/ProductDetails.jsx");
+/* harmony import */ var _Profile_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Profile.jsx */ "./jsx/Profile.jsx");
+/* harmony import */ var _public_styles_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../public/styles.css */ "./public/styles.css");
+
 
 
 
@@ -360,27 +464,27 @@ __webpack_require__.r(__webpack_exports__);
 
 // Main application component
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column min-vh-100"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavPage_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: "Book Store"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "flex-grow-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/products",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Products_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/cart",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cart_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/products/:id",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/profile",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Profile_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Profile_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null)
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
@@ -514,7 +618,101 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
   margin-top: -10px;
   margin-bottom: 10px;
 }
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA;EACE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA;EACE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;EACE,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;EACE,0BAA0B;AAC5B;;AAEA;EACE,kCAAkC;EAClC,kBAAkB;AACpB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,uBAAuB;AACzB;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB","sourcesContent":[".register-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n}\r\n\r\n.register-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n.register-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.register-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n.login-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1rem 2rem;\r\n}\r\n\r\n.custom-navbar .navbar-nav {\r\n  margin-left: 0;\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  margin-left: 0;\r\n  font-size: 32px;\r\n}\r\n\r\n.custom-navbar .navbar-toggler {\r\n  border: none;\r\n}\r\n\r\n.nav-link {\r\n  padding: 0.75rem 1.5rem;\r\n  color: white;\r\n  font-size: 24px;\r\n}\r\n\r\n.nav-link.active {\r\n  font-weight: bold;\r\n  color: rgb(49, 155, 91);\r\n}\r\n\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n.error {\r\n  color: red;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n"],"sourceRoot":""}]);
+
+/*Login*/
+.login-container,
+.forgot-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f0f0f0;
+}
+
+.login-form,
+.forgot-password-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-form h2,
+.forgot-password-form h2 {
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.login-form input,
+.forgot-password-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-form button,
+.forgot-password-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00bfa6;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.login-form button:hover,
+.forgot-password-form button:hover {
+  background-color: #019f87;
+}
+
+.register-link,
+.forgot-password-link {
+  margin-top: 20px;
+}
+
+.register-link a {
+  color: #1463b8;
+  text-decoration: none;
+}
+
+.reset-link a {
+  color: #ff0000;
+  text-decoration: none;
+}
+
+.arrange a:hover,
+.forgot-password-link a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: green;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.arrange {
+  margin-top: 10px;
+  padding: 10px;
+}`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA;EACE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA;EACE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;EACE,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;EACE,0BAA0B;AAC5B;;AAEA;EACE,kCAAkC;EAClC,kBAAkB;AACpB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,uBAAuB;AACzB;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA,QAAQ;AACR;;EAEE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;AAC3B;;AAEA;;EAEE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;;EAEE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA;;EAEE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA;;EAEE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;;EAEE,yBAAyB;AAC3B;;AAEA;;EAEE,gBAAgB;AAClB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;;EAEE,0BAA0B;AAC5B;;AAEA;EACE,UAAU;EACV,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,aAAa;AACf","sourcesContent":[".register-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n}\r\n\r\n.register-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n.register-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.register-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n.login-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1rem 2rem;\r\n}\r\n\r\n.custom-navbar .navbar-nav {\r\n  margin-left: 0;\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  margin-left: 0;\r\n  font-size: 32px;\r\n}\r\n\r\n.custom-navbar .navbar-toggler {\r\n  border: none;\r\n}\r\n\r\n.nav-link {\r\n  padding: 0.75rem 1.5rem;\r\n  color: white;\r\n  font-size: 24px;\r\n}\r\n\r\n.nav-link.active {\r\n  font-weight: bold;\r\n  color: rgb(49, 155, 91);\r\n}\r\n\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n.error {\r\n  color: red;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n/*Login*/\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n.register-link,\r\n.forgot-password-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-link a {\r\n  color: #1463b8;\r\n  text-decoration: none;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0000;\r\n  text-decoration: none;\r\n}\r\n\r\n.arrange a:hover,\r\n.forgot-password-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n.error {\r\n  color: red;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.success {\r\n  color: green;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.arrange {\r\n  margin-top: 10px;\r\n  padding: 10px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
