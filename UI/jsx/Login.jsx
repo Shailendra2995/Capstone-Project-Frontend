@@ -15,7 +15,7 @@ const Login = () => {
       [e.target.name]: e.target.value
     });
   };
-
+// Form Validation
   const validateForm = () => {
     const newErrors = {};
     if (!formData.email) {
@@ -37,7 +37,7 @@ const Login = () => {
       setErrors(validationErrors);
     }
   };
-
+// Displaying Errors
   return (
     <div className="login-container">
       <div className="login-form">
