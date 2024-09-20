@@ -2,13 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const path = require("path");
-const helmet = require("helmet"); // security middleware
 
 const app = express();
 const publicPath = path.resolve(__dirname, '../public');
-
-//  Helmet to enhance your API's security
-app.use(helmet());
 
 app.use(express.static(publicPath));
 
