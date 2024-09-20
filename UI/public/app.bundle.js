@@ -90,6 +90,7 @@ var Login = function Login() {
   var handleChange = function handleChange(e) {
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
+  // Form Validation
   var validateForm = function validateForm() {
     var newErrors = {};
     if (!formData.email) {
@@ -110,6 +111,7 @@ var Login = function Login() {
       setErrors(validationErrors);
     }
   };
+  // Displaying Errors
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "login-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -349,9 +351,13 @@ var Register = function Register() {
     _useState4 = _slicedToArray(_useState3, 2),
     errors = _useState4[0],
     setErrors = _useState4[1];
+
+  // Handling data changes
+
   var handleChange = function handleChange(e) {
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
+  // Form Validation
   var validateForm = function validateForm() {
     var newErrors = {};
     if (!formData.username) newErrors.username = 'Username is required';
@@ -376,6 +382,7 @@ var Register = function Register() {
       setErrors(validationErrors);
     }
   };
+  // Displaying Errors
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "register-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
