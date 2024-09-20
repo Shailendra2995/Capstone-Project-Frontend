@@ -19,7 +19,7 @@ const App = () => (
       <NavPage title="Book Store" />
       <main className="flex-grow-1">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Register />} />
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<ProductDetails />} />

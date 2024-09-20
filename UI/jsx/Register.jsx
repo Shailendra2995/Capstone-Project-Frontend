@@ -10,16 +10,17 @@ const Register = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [postId, setPostId] = useState(null);
 
   // Handling data changes
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-// Form Validation
+
+  // Form Validation
   const validateForm = () => {
     const newErrors = {};
     if (!formData.username) newErrors.username = 'Username is required';
@@ -35,17 +36,36 @@ const Register = () => {
     return newErrors;
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      // Handle form submission logic here
-      console.log('Form submitted successfully', formData);
+      // Proceed with form submission
+      const data = new FormData();
+      data.append("username", formData.username);
+      data.append('email', formData.email);
+      data.append('password', formData.password);
+
+      const requestOptions = {
+        method: 'POST',
+        body: data
+      };
+
+      fetch('http://localhost/Capstone-Project-Backend-main/public/register.php', requestOptions) // Notice the relative path
+        .then(response => response.json())
+        .then(data => {
+          setPostId(data.id);
+          console.log('Registration successful:', data);
+        })
+        .catch(error => {
+          console.error('Error during registration:', error);
+        });
     } else {
       setErrors(validationErrors);
     }
   };
-// Displaying Errors
+
   return (
     <div className="register-container">
       <div className="register-form">
@@ -59,7 +79,7 @@ const Register = () => {
             onChange={handleChange}
           />
           {errors.username && <p className="error">{errors.username}</p>}
-          
+
           <input
             type="email"
             name="email"
@@ -68,7 +88,7 @@ const Register = () => {
             onChange={handleChange}
           />
           {errors.email && <p className="error">{errors.email}</p>}
-          
+
           <input
             type="password"
             name="password"
@@ -77,7 +97,7 @@ const Register = () => {
             onChange={handleChange}
           />
           {errors.password && <p className="error">{errors.password}</p>}
-          
+
           <input
             type="password"
             name="confirmPassword"
@@ -86,7 +106,7 @@ const Register = () => {
             onChange={handleChange}
           />
           {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
-          
+
           <button type="submit">Register</button>
         </form>
         <div className="login-link">

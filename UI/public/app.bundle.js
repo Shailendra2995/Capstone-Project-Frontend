@@ -351,12 +351,16 @@ var Register = function Register() {
     _useState4 = _slicedToArray(_useState3, 2),
     errors = _useState4[0],
     setErrors = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    postId = _useState6[0],
+    setPostId = _useState6[1];
 
   // Handling data changes
-
   var handleChange = function handleChange(e) {
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
+
   // Form Validation
   var validateForm = function validateForm() {
     var newErrors = {};
@@ -372,17 +376,34 @@ var Register = function Register() {
     }
     return newErrors;
   };
+
+  // Handle form submission
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      // Handle form submission logic here
-      console.log('Form submitted successfully', formData);
+      // Proceed with form submission
+      var data = new FormData();
+      data.append("username", formData.username);
+      data.append('email', formData.email);
+      data.append('password', formData.password);
+      var requestOptions = {
+        method: 'POST',
+        body: data
+      };
+      fetch('http://localhost/Capstone-Project-Backend-main/public/register.php', requestOptions) // Notice the relative path
+      .then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        setPostId(data.id);
+        console.log('Registration successful:', data);
+      }).catch(function (error) {
+        console.error('Error during registration:', error);
+      });
     } else {
       setErrors(validationErrors);
     }
   };
-  // Displaying Errors
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "register-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -479,7 +500,7 @@ var App = function App() {
     className: "flex-grow-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     path: "/products",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Products_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null)

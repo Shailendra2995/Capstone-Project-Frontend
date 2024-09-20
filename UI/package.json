@@ -8,6 +8,7 @@
     "start": "nodemon server/main.js",
     "compile": "webpack --mode development",
     "watch": "webpack -w --config webpack.config.js",
+    "proxy": "http://localhost/Capstone-Project-Backend-main/public",
     "lint": "eslint \"UI/jsx/**/*.{js,jsx}\""
   },
   "author": "",
