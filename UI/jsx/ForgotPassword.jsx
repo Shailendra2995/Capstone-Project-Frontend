@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PasswordResetRequest = () => {
@@ -6,27 +7,48 @@ const PasswordResetRequest = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
+  // Handle input change
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost/Capstone-Project-Backend-main/public/reset-password-request.php', {
+    // Simple email validation
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    const data = new FormData();
+    data.append('email', email); 
+    data.append('action','SEND_EMAIL_LINK');
+
+    fetch('http://localhost/Capstone-Project-Backend/public/reset_password.php', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email })
+      body: data, // Set the body to FormData
     })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Bad Request');
+        }
+        return response.json();
+      })
       .then(data => {
-        if (data.success) {
+        if (data.status==0) {
           setMessage('Password reset link has been sent to your email.');
+          setError(''); 
         } else {
           setError(data.message || 'Something went wrong. Please try again.');
+          setMessage(''); 
         }
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch(err => {
+        console.error('Error:', err);
         setError('An error occurred. Please try again.');
+        setMessage(''); 
       });
   };
 
@@ -44,7 +66,7 @@ const PasswordResetRequest = () => {
               className="form-control"
               placeholder="Enter your email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
               required
             />
             {error && <p className="text-danger mt-2">{error}</p>}
@@ -54,7 +76,7 @@ const PasswordResetRequest = () => {
         </form>
         <div className="mt-3 text-center">
           <p>
-            <a href="/login" className="text-decoration-none">Back to Login</a>
+            <Link to="/login" className="text-decoration-none">Back to Login</Link>
           </p>
         </div>
       </div>

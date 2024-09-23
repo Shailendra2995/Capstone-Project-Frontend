@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'universal-cookie';
 
 const PasswordResetForm = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
   const navigate = useNavigate();
-  const { token } = useParams(); // token is passed as URL parameter
+  const [searchParams] = useSearchParams(); // Move this to the top level
+  const sessionId = searchParams.get("PHPSESSID");
+  const  token  = searchParams.get("token");
+  const cookies = new Cookies();
+  cookies.set('PHPSESSID', sessionId, { path: '/' });
 
   const validateForm = () => {
     const newErrors = {};
@@ -19,21 +25,25 @@ const PasswordResetForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const validationErrors = validateForm();
+
     if (Object.keys(validationErrors).length === 0) {
-      fetch(`http://localhost/Capstone-Project-Backend-main/public/reset-password.php?token=${token}`, {
+      const data = new FormData();
+      data.append('email', email);
+      data.append('new_password', password);
+      data.append('token', token);
+      data.append('action','RESET');
+
+      fetch('http://localhost/Capstone-Project-Backend/public/reset_password.php', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ password })
+        body: data,
+        credentials: 'include'
       })
         .then(response => response.json())
         .then(data => {
           if (data.success) {
             setMessage('Password has been successfully reset.');
-            setTimeout(() => navigate('/login'), 3000); // Redirect to login after a delay
+            setTimeout(() => navigate('/login'), 100);
           } else {
             setErrors({ form: data.message || 'Something went wrong. Please try again.' });
           }
@@ -52,6 +62,21 @@ const PasswordResetForm = () => {
       <div className="card shadow-sm p-4" style={{ maxWidth: '400px', width: '100%' }}>
         <h2 className="text-center mb-4">Set a New Password</h2>
         <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="form-control"
+              placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+            />
+            {errors.email && <p className="text-danger mt-2">{errors.email}</p>}
+          </div>
+
           <div className="mb-3">
             <label htmlFor="password" className="form-label">New Password</label>
             <input

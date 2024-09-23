@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavPage from './NavPage.jsx';
 import Footer from './Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Register from './Register.jsx';
 import Products from './Products.jsx';
 import Cart from './Cart.jsx';
@@ -32,7 +33,7 @@ const App = () => (
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/forgotpassword" element={<PasswordResetRequest />} />
-          <Route path="/resetpassword/:token" element={<PasswordResetForm />} />
+          <Route path="/resetpassword" element={<PasswordResetForm />} />
         </Routes>
       </main>
       <Footer />

@@ -43,10 +43,10 @@ const Login = () => {
         body: data
       };
 
-      fetch('http://localhost/Capstone-Project-Backend-main/public/login.php', requestOptions)
+      fetch('http://localhost/Capstone-Project-Backend/public/login.php', requestOptions)
         .then(response => response.json())
         .then(data => {
-          if (data.success) {
+          if (data.status == 0) {
             console.log('Login successful', data);
 
             // Save token or user data to localStorage/sessionStorage
