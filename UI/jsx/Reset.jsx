@@ -41,7 +41,7 @@ const PasswordResetForm = () => {
       })
         .then(response => response.json())
         .then(data => {
-          if (data.success) {
+          if (data.status == 0) {
             setMessage('Password has been successfully reset.');
             setTimeout(() => navigate('/login'), 100);
           } else {
