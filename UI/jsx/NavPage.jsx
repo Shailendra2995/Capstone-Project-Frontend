@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-const NavPage = ({ title }) => {
+
+const NavPage = ({ title, isLoggedIn }) => {
   const location = useLocation();
   
   return (
@@ -36,31 +37,65 @@ const NavPage = ({ title }) => {
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${location.pathname === '/list' ? 'active' : ''}`}
-              to="/list"
-              aria-current={location.pathname === '/list' ? 'page' : undefined}
+              className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`}
+              to="/products"
+              aria-current={location.pathname === '/products' ? 'page' : undefined}
             >
               Products
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${location.pathname === '/create' ? 'active' : ''}`}
-              to="/create"
-              aria-current={location.pathname === '/create' ? 'page' : undefined}
+              className={`nav-link ${location.pathname === '/cart' ? 'active' : ''}`}
+              to="/cart"
+              aria-current={location.pathname === '/cart' ? 'page' : undefined}
             >
               Cart
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${location.pathname === '/report' ? 'active' : ''}`}
-              to="/report"
-              aria-current={location.pathname === '/report' ? 'page' : undefined}
+              className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
+              to="/profile"
+              aria-current={location.pathname === '/profile' ? 'page' : undefined}
             >
               Profile
             </Link>
           </li>
+          
+          {/* Conditional rendering based on login status */}
+          {!isLoggedIn ? (
+            <>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${location.pathname === '/register' ? 'active' : ''}`}
+                  to="/register"
+                  aria-current={location.pathname === '/register' ? 'page' : undefined}
+                >
+                  Register
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}
+                  to="/login"
+                  aria-current={location.pathname === '/login' ? 'page' : undefined}
+                >
+                  Login
+                </Link>
+              </li>
+            </>
+          ) : (
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${location.pathname === '/logout' ? 'active' : ''}`}
+                to="/logout"
+                aria-current={location.pathname === '/logout' ? 'page' : undefined}
+              >
+                Logout
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

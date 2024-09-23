@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,7 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -15,7 +16,8 @@ const Login = () => {
       [e.target.name]: e.target.value
     });
   };
-// Form Validation
+
+  // Form Validation
   const validateForm = () => {
     const newErrors = {};
     if (!formData.email) {
@@ -29,15 +31,42 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      // Handle form submission logic here
-      console.log('Login successful', formData);
+      const data = new FormData();
+      data.append('email', formData.email);
+      data.append('password', formData.password);
+
+      const requestOptions = {
+        method: 'POST',
+        body: data
+      };
+
+      fetch('http://localhost/Capstone-Project-Backend-main/public/login.php', requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            console.log('Login successful', data);
+
+            // Save token or user data to localStorage/sessionStorage
+            localStorage.setItem('token', data.token); //  'data.token' is returned
+
+            navigate('/');
+          } else {
+            setErrors({ login: data.message || 'Login failed' });
+          }
+        })
+        .catch(error => {
+          console.error('Error during login:', error);
+          setErrors({ login: 'An error occurred. Please try again.' });
+        });
     } else {
       setErrors(validationErrors);
     }
   };
-// Displaying Errors
+
+
   return (
     <div className="login-container">
       <div className="login-form">
@@ -61,11 +90,13 @@ const Login = () => {
           />
           {errors.password && <p className="error">{errors.password}</p>}
 
+          {errors.login && <p className="error">{errors.login}</p>}
+
           <button type="submit">Login</button>
         </form>
         <div className='arrange'>
           <div className="reset-link">
-            <p>Forgot Password?<Link to="/forgot-password"> Reset</Link></p>
+            <p>Forgot Password?<Link to="/forgotpassword"> Reset</Link></p>
           </div>
           <div className="register-link">
             <p>Don't have an account? <Link to="/register">Register</Link></p>
