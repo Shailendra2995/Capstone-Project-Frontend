@@ -493,9 +493,210 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 var Profile = function Profile() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Profile"));
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      firstName: "Dianne",
+      lastName: "Russell",
+      email: "dianne.russell@gmail.com",
+      phone: "(603) 555-0123",
+      companyName: "Zakirsoft",
+      streetAddress: "4140 Parl",
+      state: "Washington DC",
+      zipCode: "20033",
+      country: "United States",
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: ""
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    profileData = _useState2[0],
+    setProfileData = _useState2[1];
+  var handleInputChange = function handleInputChange(e) {
+    var _e$target = e.target,
+      name = _e$target.name,
+      value = _e$target.value;
+    setProfileData(_objectSpread(_objectSpread({}, profileData), {}, _defineProperty({}, name, value)));
+  };
+  var handleSaveChanges = function handleSaveChanges() {
+    alert("Changes Saved!");
+  };
+  var handlePasswordChange = function handlePasswordChange() {
+    if (profileData.newPassword !== profileData.confirmPassword) {
+      alert("Passwords do not match!");
+    } else {
+      alert("Password Changed!");
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container mt-5 account-settings"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-center mb-4 profile-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "./img1.jpg",
+    alt: "Profile",
+    className: "rounded-circle profile-img"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-outline-success mt-2"
+  }, "Choose Image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "mb-5 section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "section-title"
+  }, "Account Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "firstName",
+    className: "form-control",
+    value: profileData.firstName,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "lastName",
+    className: "form-control",
+    value: profileData.lastName,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "email",
+    name: "email",
+    className: "form-control",
+    value: profileData.email,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Phone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "tel",
+    name: "phone",
+    className: "form-control",
+    value: profileData.phone,
+    onChange: handleInputChange
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-primary mt-3",
+    onClick: handleSaveChanges
+  }, "Save Changes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "mb-5 section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "section-title"
+  }, "Billing Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "firstName",
+    className: "form-control",
+    value: profileData.firstName,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "lastName",
+    className: "form-control",
+    value: profileData.lastName,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Company Name (Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "companyName",
+    className: "form-control",
+    value: profileData.companyName,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Street Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "streetAddress",
+    className: "form-control",
+    value: profileData.streetAddress,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Country / Region"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "country",
+    className: "form-select",
+    value: profileData.country,
+    onChange: handleInputChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "United States"
+  }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "Canada"
+  }, "Canada"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "UK"
+  }, "UK"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "state",
+    className: "form-control",
+    value: profileData.state,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Zip Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "zipCode",
+    className: "form-control",
+    value: profileData.zipCode,
+    onChange: handleInputChange
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-primary",
+    onClick: handleSaveChanges
+  }, "Save Changes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "section-title"
+  }, "Change Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-4 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Current Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "password",
+    name: "currentPassword",
+    className: "form-control",
+    value: profileData.currentPassword,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-4 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "New Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "password",
+    name: "newPassword",
+    className: "form-control",
+    value: profileData.newPassword,
+    onChange: handleInputChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-4 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Confirm Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "password",
+    name: "confirmPassword",
+    className: "form-control",
+    value: profileData.confirmPassword,
+    onChange: handleInputChange
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn btn-success",
+    onClick: handlePasswordChange
+  }, "Change Password")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Profile);
 
@@ -986,112 +1187,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-}
-
-.register-form {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-}
-
-.register-form h2 {
-  margin-bottom: 20px;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.register-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.register-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #00bfa6;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.register-form button:hover {
-  background-color: #019f87;
-}
-
-.login-link {
-  margin-top: 20px;
-}
-
-.login-link a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
-}
-
-.custom-navbar {
-  background-color: rgb(2, 115, 159);
-  padding: 1rem 2rem;
-}
-
-.custom-navbar .navbar-nav {
-  margin-left: 0;
-}
-
-.custom-navbar .navbar-brand {
-  margin-left: 0;
-  font-size: 32px;
-}
-
-.custom-navbar .navbar-toggler {
-  border: none;
-}
-
-.nav-link {
-  padding: 0.75rem 1.5rem;
-  color: white;
-  font-size: 24px;
-}
-
-.nav-link.active {
-  font-weight: bold;
-  color: rgb(49, 155, 91);
-}
-
-.custom-footer {
-  background-color: rgb(2, 115, 159);
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 18px;
-}
-
-.error {
-  color: red;
-  font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-/*Login*/
+___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
+.register-container,
 .login-container,
 .forgot-password-container {
   display: flex;
@@ -1099,8 +1196,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
   align-items: center;
   min-height: 80vh;
   background-color: #f0f0f0;
+  /* Added background for uniformity */
 }
 
+/* Form Styles */
+.register-form,
 .login-form,
 .forgot-password-form {
   background-color: white;
@@ -1112,6 +1212,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
   text-align: center;
 }
 
+.register-form h2,
 .login-form h2,
 .forgot-password-form h2 {
   margin-bottom: 20px;
@@ -1119,6 +1220,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
   color: #333;
 }
 
+/* Input Fields */
+.register-form input,
 .login-form input,
 .forgot-password-form input {
   width: 100%;
@@ -1129,6 +1232,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
   font-size: 16px;
 }
 
+/* Buttons */
+.register-form button,
 .login-form button,
 .forgot-password-form button {
   width: 100%;
@@ -1142,49 +1247,244 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.register-container {
   margin-top: 20px;
 }
 
+.register-form button:hover,
 .login-form button:hover,
 .forgot-password-form button:hover {
   background-color: #019f87;
 }
 
+/* Links */
+.login-link,
 .register-link,
 .forgot-password-link {
   margin-top: 20px;
 }
 
-.register-link a {
-  color: #1463b8;
-  text-decoration: none;
-}
-
+.login-link a,
+.register-link a,
 .reset-link a {
-  color: #ff0000;
+  color: #007bff;
   text-decoration: none;
 }
 
-.arrange a:hover,
-.forgot-password-link a:hover {
+.login-link a:hover,
+.register-link a:hover,
+.forgot-password-link a:hover,
+.reset-link a:hover {
   text-decoration: underline;
 }
 
+/* Error and Success Messages */
 .error {
-  color: red;
+  color: #ff3333;
+  /* Consolidated error styles */
   font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin: -10px 0 10px;
+  /* Shortened margin definition */
 }
 
 .success {
-  color: green;
+  color: #28a745;
+  /* Consolidated success styles */
   font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin: -10px 0 10px;
+  /* Shortened margin definition */
 }
 
-.arrange {
+/* Navbar Styles */
+.custom-navbar {
+  background-color: rgb(2, 115, 159);
+  padding: 1.5rem;
+  /* Consistent padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .navbar-nav .nav-link:hover,
+.custom-navbar .navbar-nav .nav-link.active {
+  color: #31c27a;
+  font-weight: bold;
+}
+
+/* Footer Styles */
+.custom-footer {
+  background-color: rgb(2, 115, 159);
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 18px;
+}
+
+/* Account Settings Layout */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: center;
+  /* Center children horizontally */
+  text-align: center;
+  /* Center text inside */
+}
+
+.profile-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+/* Button Outline Styles */
+.btn-outline-success {
+  color: #00bfa6;
+  border-color: #00bfa6;
   margin-top: 10px;
-  padding: 10px;
-}`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA;EACE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA;EACE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;EACE,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;EACE,0BAA0B;AAC5B;;AAEA;EACE,kCAAkC;EAClC,kBAAkB;AACpB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,uBAAuB;AACzB;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA,QAAQ;AACR;;EAEE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;AAC3B;;AAEA;;EAEE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;;EAEE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA;;EAEE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA;;EAEE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;;EAEE,yBAAyB;AAC3B;;AAEA;;EAEE,gBAAgB;AAClB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;EACE,cAAc;EACd,qBAAqB;AACvB;;AAEA;;EAEE,0BAA0B;AAC5B;;AAEA;EACE,UAAU;EACV,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,aAAa;AACf","sourcesContent":[".register-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n}\r\n\r\n.register-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n.register-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.register-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n.login-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1rem 2rem;\r\n}\r\n\r\n.custom-navbar .navbar-nav {\r\n  margin-left: 0;\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  margin-left: 0;\r\n  font-size: 32px;\r\n}\r\n\r\n.custom-navbar .navbar-toggler {\r\n  border: none;\r\n}\r\n\r\n.nav-link {\r\n  padding: 0.75rem 1.5rem;\r\n  color: white;\r\n  font-size: 24px;\r\n}\r\n\r\n.nav-link.active {\r\n  font-weight: bold;\r\n  color: rgb(49, 155, 91);\r\n}\r\n\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n.error {\r\n  color: red;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n/*Login*/\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n.register-link,\r\n.forgot-password-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-link a {\r\n  color: #1463b8;\r\n  text-decoration: none;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0000;\r\n  text-decoration: none;\r\n}\r\n\r\n.arrange a:hover,\r\n.forgot-password-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n.error {\r\n  color: red;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.success {\r\n  color: green;\r\n  font-size: 14px;\r\n  margin-top: -10px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.arrange {\r\n  margin-top: 10px;\r\n  padding: 10px;\r\n}"],"sourceRoot":""}]);
+  /* Add some space between the image and the button */
+}
+
+/* Button hover effect */
+.btn-outline-success:hover {
+  background-color: #00bfa6;
+  /* Change background color on hover */
+  color: white;
+  /* Change text color on hover */
+}
+
+
+/* Section Titles */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Label Styles */
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Input and Select Styles */
+input,
+select {
+  height: 45px;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ced4da;
+  padding: 0 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus {
+  border-color: #00bfa6;
+  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);
+}
+
+/* Button General Styles */
+button {
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border-radius: 5px;
+  background-color: #00bfa6;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #019f87;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Styles */
+.section {
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+hr {
+  margin: 50px 0;
+  border: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+  }
+
+  .btn-outline-success,
+  .btn-primary,
+  .btn-success {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .col-md-6,
+  .col-md-4 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  input,
+  select {
+    width: 100%;
+  }
+}
+
+/* Animations for Interactive Feel */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+button:hover,
+.profile-img:hover {
+  animation: pulse 0.6s ease-in-out infinite;
+}`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA,6BAA6B;AAC7B;;;EAGE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;EACzB,oCAAoC;AACtC;;AAEA,gBAAgB;AAChB;;;EAGE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;;;EAGE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA,iBAAiB;AACjB;;;EAGE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA,YAAY;AACZ;;;EAGE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA,UAAU;AACV;;;EAGE,gBAAgB;AAClB;;AAEA;;;EAGE,cAAc;EACd,qBAAqB;AACvB;;AAEA;;;;EAIE,0BAA0B;AAC5B;;AAEA,+BAA+B;AAC/B;EACE,cAAc;EACd,8BAA8B;EAC9B,eAAe;EACf,oBAAoB;EACpB,gCAAgC;AAClC;;AAEA;EACE,cAAc;EACd,gCAAgC;EAChC,eAAe;EACf,oBAAoB;EACpB,gCAAgC;AAClC;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,eAAe;EACf,uBAAuB;EACvB,yCAAyC;AAC3C;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,2BAA2B;AAC7B;;AAEA;;EAEE,cAAc;EACd,iBAAiB;AACnB;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;AACjB;;AAEA,4BAA4B;AAC5B;EACE,iBAAiB;EACjB,cAAc;EACd,aAAa;AACf;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,kBAAkB;EAClB,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,iBAAiB;EACjB,0CAA0C;EAC1C,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA,0BAA0B;AAC1B;EACE,cAAc;EACd,qBAAqB;EACrB,gBAAgB;EAChB,oDAAoD;AACtD;;AAEA,wBAAwB;AACxB;EACE,yBAAyB;EACzB,qCAAqC;EACrC,YAAY;EACZ,+BAA+B;AACjC;;;AAGA,mBAAmB;AACnB;EACE,iBAAiB;EACjB,gBAAgB;EAChB,mBAAmB;EACnB,WAAW;AACb;;AAEA,iBAAiB;AACjB;EACE,gBAAgB;EAChB,eAAe;EACf,WAAW;EACX,kBAAkB;EAClB,cAAc;AAChB;;AAEA,4BAA4B;AAC5B;;EAEE,YAAY;EACZ,eAAe;EACf,uBAAuB;EACvB,yBAAyB;EACzB,eAAe;EACf,gCAAgC;AAClC;;AAEA;;EAEE,qBAAqB;EACrB,4CAA4C;AAC9C;;AAEA,0BAA0B;AAC1B;EACE,iBAAiB;EACjB,kBAAkB;EAClB,kBAAkB;EAClB,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,sCAAsC;EACtC,yCAAyC;AAC3C;;AAEA;EACE,yBAAyB;EACzB,0CAA0C;AAC5C;;AAEA,mBAAmB;AACnB;EACE,aAAa;EACb,iBAAiB;EACjB,mBAAmB;EACnB,0CAA0C;EAC1C,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,sBAAsB;AACxB;;AAEA,sBAAsB;AACtB;EACE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;EACrB;;EAEA;;;IAGE,WAAW;IACX,gBAAgB;EAClB;;EAEA;;IAEE,WAAW;IACX,mBAAmB;EACrB;;EAEA;;IAEE,WAAW;EACb;AACF;;AAEA,oCAAoC;AACpC;EACE;IACE,mBAAmB;EACrB;;EAEA;IACE,sBAAsB;EACxB;;EAEA;IACE,mBAAmB;EACrB;AACF;;AAEA;;EAEE,0CAA0C;AAC5C","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n  /* Added background for uniformity */\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.forgot-password-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a,\r\n.reset-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1.5rem;\r\n  /* Consistent padding */\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  font-weight: 500;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.6s ease-in-out infinite;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

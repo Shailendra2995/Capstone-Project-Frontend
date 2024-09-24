@@ -39,7 +39,7 @@ const  Profile = () => {
       {/* Profile Image (will be displayed at the top in mobile view) */}
       <div className="text-center mb-4 profile-section">
         <img
-          src='./img1.jpg'
+          src='../public/img1.jpg'
           alt="Profile"
           className="rounded-circle profile-img"
         />
