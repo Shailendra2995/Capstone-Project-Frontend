@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -56,6 +56,7 @@ const Register = () => {
         .then(response => response.json())
         .then(data => {
           setPostId(data.id);
+          Navigate('/login');
           console.log('Registration successful:', data);
         })
         .catch(error => {
