@@ -56,8 +56,8 @@ const Register = () => {
         .then(response => response.json())
         .then(data => {
           setPostId(data.id);
-          Navigate('/login');
           console.log('Registration successful:', data);
+          navigate('/login');
         })
         .catch(error => {
           console.error('Error during registration:', error);
