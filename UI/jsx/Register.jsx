@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate imported
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,8 @@ const Register = () => {
 
   const [errors, setErrors] = useState({});
   const [postId, setPostId] = useState(null);
+  const [message, setMessage] = useState(''); // State to hold success/error message
+  const navigate = useNavigate(); // Initializing the navigate function
 
   // Handling data changes
   const handleChange = (e) => {
@@ -56,11 +58,15 @@ const Register = () => {
         .then(response => response.json())
         .then(data => {
           setPostId(data.id);
-          console.log('Registration successful:', data);
-          navigate('/login');
+          if (data.status === 0) {
+            setMessage('Registration successful! Redirecting to login...'); // Display success message
+            setTimeout(() => navigate('/login'), 2000); // Redirect after 2 seconds
+          } else {
+            setMessage(data.message || 'Registration failed. Please try again.'); // Display error message from backend
+          }
         })
         .catch(error => {
-          console.error('Error during registration:', error);
+          setMessage('Error during registration. Please try again later.');
         });
     } else {
       setErrors(validationErrors);
@@ -71,6 +77,7 @@ const Register = () => {
     <div className="register-container">
       <div className="register-form">
         <h2>Register</h2>
+        {message && <p className="message">{message}</p>} {/* Conditionally render message */}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
