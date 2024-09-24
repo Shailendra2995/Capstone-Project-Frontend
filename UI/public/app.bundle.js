@@ -510,15 +510,15 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 var Profile = function Profile() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      firstName: "Dianne",
-      lastName: "Russell",
-      email: "dianne.russell@gmail.com",
-      phone: "(603) 555-0123",
-      companyName: "Zakirsoft",
-      streetAddress: "4140 Parl",
-      state: "Washington DC",
-      zipCode: "20033",
-      country: "United States",
+      firstName: "Shailendra",
+      lastName: "Karki",
+      email: "shailendrakumar.karki@gmail.com",
+      phone: "(548) 577-8045",
+      companyName: "Apple",
+      streetAddress: "360",
+      state: "Ontario",
+      zipCode: "N2M3A5",
+      country: "Canada",
       currentPassword: "",
       newPassword: "",
       confirmPassword: ""
