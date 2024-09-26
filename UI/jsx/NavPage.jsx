@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavPage = ({ title, isLoggedIn }) => {
+const NavPage = ({ title }) => {
   const location = useLocation();
-  
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
       <Link className="navbar-brand" to="/">

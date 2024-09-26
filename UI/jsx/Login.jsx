@@ -50,7 +50,7 @@ const Login = () => {
             console.log('Login successful', data);
 
             // Save token or user data to localStorage/sessionStorage
-            localStorage.setItem('token', data.token); //  'data.token' is returned
+            localStorage.setItem('isLoggedIn', true); //  'data.token' is returned
 
             navigate('/');
           } else {

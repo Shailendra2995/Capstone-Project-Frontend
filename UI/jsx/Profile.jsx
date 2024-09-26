@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const  Profile = () => {
+const Profile = () => {
   const [profileData, setProfileData] = useState({
     firstName: "Shailendra",
     lastName: "Karki",
@@ -48,7 +48,7 @@ const  Profile = () => {
 
       {/* Account Settings Section */}
       <section className="mb-5 section">
-        <h2 className="section-title">Account Settings</h2>
+        <h2 className="section-title">Account</h2>
         <div className="row">
           <div className="col-md-6 mb-3">
             <label>First Name</label>
@@ -101,6 +101,91 @@ const  Profile = () => {
       {/* Billing Address Section */}
       <section className="mb-5 section">
         <h2 className="section-title">Billing Address</h2>
+        <div className="row">
+          <div className="col-md-6 mb-3">
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              className="form-control"
+              value={profileData.firstName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              className="form-control"
+              value={profileData.lastName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Company Name (Optional)</label>
+            <input
+              type="text"
+              name="companyName"
+              className="form-control"
+              value={profileData.companyName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Street Address</label>
+            <input
+              type="text"
+              name="streetAddress"
+              className="form-control"
+              value={profileData.streetAddress}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Country / Region</label>
+            <select
+              name="country"
+              className="form-select"
+              value={profileData.country}
+              onChange={handleInputChange}
+            >
+              <option value="United States">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="UK">UK</option>
+            </select>
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>State</label>
+            <input
+              type="text"
+              name="state"
+              className="form-control"
+              value={profileData.state}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Zip Code</label>
+            <input
+              type="text"
+              name="zipCode"
+              className="form-control"
+              value={profileData.zipCode}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+        <button className="btn btn-primary" onClick={handleSaveChanges}>
+          Save Changes
+        </button>
+      </section>
+
+      <hr />
+
+      {/* Shipping Address Section */}
+      <section className="mb-5 section">
+        <h2 className="section-title">Shipping Address</h2>
         <div className="row">
           <div className="col-md-6 mb-3">
             <label>First Name</label>
