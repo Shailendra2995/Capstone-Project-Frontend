@@ -40,7 +40,8 @@ const Login = () => {
 
       const requestOptions = {
         method: 'POST',
-        body: data
+        body: data,
+        credentials: 'include'
       };
 
       fetch('http://localhost/Capstone-Project-Backend/public/login.php', requestOptions)

@@ -1,34 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
-    username: 'Shailendra',
-    firstName: "Shailendra",
-    lastName: "Karki",
-    email: "shailendrakumar.karki@gmail.com",
-    phone: "(548) 577-8045",
-    streetAddress: "360",
-    state: "Kitchner",
-    zipCode: "N2M3A5",
-    province: "Ontario",
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    streetAddress: "",
+    state: "",
+    zipCode: "",
+    province: "",
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
     shippingAddress: {
-      firstName: "Shailendra",
-      lastName: "Karki",
-      streetAddress: "360",
-      city: "Kitchner",
-      postalcode: "N2M3A5",
-      province: "Ontario"
+      firstName: "",
+      lastName: "",
+      streetAddress: "",
+      city: "",
+      postalcode: "",
+      province: ""
     },
     billingAddress: {
-      firstName: "Shailendra",
-      lastName: "Karki",
-      streetAddress: "360",
-      city: "Kitchner",
-      postalcode: "N2M3A5",
-      province: "Ontario"
+      firstName: "",
+      lastName: "",
+      streetAddress: "",
+      city: "",
+      postalcode: "",
+      province: ""
     },
     profileImage: null
   });
@@ -44,7 +44,7 @@ const Profile = () => {
       ...profileData,
       [addressType]: {
         ...profileData[addressType],
-        [name]: value,
+        [name]: value
       }
     });
   };
@@ -55,20 +55,34 @@ const Profile = () => {
 
   const handleSaveChanges = async () => {
     const formData = new FormData();
+
+    // Append non-nested profile fields
     for (const key in profileData) {
-      if (key !== 'profileImage' && key !== 'shippingAddress' && key !== 'billingAddress') {
+      if (key !== "profileImage" && typeof profileData[key] !== "object") {
         formData.append(key, profileData[key]);
       }
     }
 
+    // Append nested address fields
+    const appendAddressFields = (addressType) => {
+      const address = profileData[addressType];
+      for (const key in address) {
+        formData.append(`${addressType}[${key}]`, address[key]);
+      }
+    };
+
+    appendAddressFields("shippingAddress");
+    appendAddressFields("billingAddress");
+
+    // Append profile image
     if (profileData.profileImage) {
-      formData.append('profileImage', profileData.profileImage);
+      formData.append("profileImage", profileData.profileImage);
     }
 
     try {
-      const response = await fetch('/api/profile/update', {
-        method: 'POST',
-        body: formData,
+      const response = await fetch("/api/profile/update", {
+        method: "POST",
+        body: formData
       });
 
       if (response.ok) {
@@ -91,8 +105,8 @@ const Profile = () => {
 
     try {
       const response = await fetch(`/api/profile/${addressType}-update`, {
-        method: 'POST',
-        body: formData,
+        method: "POST",
+        body: formData
       });
 
       if (response.ok) {
@@ -117,9 +131,9 @@ const Profile = () => {
     formData.append("newPassword", profileData.newPassword);
 
     try {
-      const response = await fetch('/api/profile/change-password', {
-        method: 'POST',
-        body: formData,
+      const response = await fetch("/api/profile/change-password", {
+        method: "POST",
+        body: formData
       });
 
       if (response.ok) {
@@ -133,12 +147,59 @@ const Profile = () => {
     }
   };
 
+  const loadData = async () => {
+    try {
+      const response = await fetch("http://localhost/Capstone-Project-Backend/public/profile.php", {
+        method: "GET",
+        credentials: "include"
+      });
+
+      const data = await response.json();
+
+      if (data.status === 0) {
+        const { username, email, phone, photoUrl, billing_address, shipping_address } = data.data;
+        setProfileData((prevState) => ({
+          ...prevState,
+          username,
+          email,
+          phone,
+          profileImage: photoUrl, // Assuming this is the profile image URL
+          billingAddress: {
+            firstName: billing_address?.firstName || "",
+            lastName: billing_address?.lastName || "",
+            streetAddress: billing_address?.streetAddress || "",
+            city: billing_address?.city || "",
+            postalcode: billing_address?.postalcode || "",
+            province: billing_address?.province || ""
+          },
+          shippingAddress: {
+            firstName: shipping_address?.firstName || "",
+            lastName: shipping_address?.lastName || "",
+            streetAddress: shipping_address?.streetAddress || "",
+            city: shipping_address?.city || "",
+            postalcode: shipping_address?.postalcode || "",
+            province: shipping_address?.province || ""
+          }
+        }));
+      } else {
+        alert("Failed to load data: " + data.msg);
+      }
+    } catch (error) {
+      console.error("Error loading data:", error);
+      alert("Error loading data.");
+    }
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
     <div className="container mt-5 account-settings">
       {/* Profile Image */}
       <div className="text-center mb-4 profile-section">
         <img
-          src='./img1.jpg'
+          src={profileData.profileImage ? URL.createObjectURL(profileData.profileImage) : './img1.jpg'}
           alt="Profile"
           className="rounded-circle profile-img"
         />
@@ -152,7 +213,7 @@ const Profile = () => {
             className="custom-file-input"
             onChange={handleProfileImageChange}
           />
-          {profileData.profileImage && (
+          {profileData.profileImage && profileData.profileImage.name && (
             <span className="file-name">{profileData.profileImage.name}</span>
           )}
         </div>
@@ -191,7 +252,7 @@ const Profile = () => {
               type="tel"
               name="phone"
               className="form-control"
-              value={profileData.phone}
+              value={profileData.phone || ""}
               onChange={handleInputChange}
             />
           </div>
@@ -213,7 +274,7 @@ const Profile = () => {
               type="text"
               name="firstName"
               className="form-control"
-              value={profileData.billingAddress.firstName}
+              value={profileData.billingAddress?.firstName || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -223,7 +284,7 @@ const Profile = () => {
               type="text"
               name="lastName"
               className="form-control"
-              value={profileData.billingAddress.lastName}
+              value={profileData.billingAddress?.lastName || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -233,7 +294,7 @@ const Profile = () => {
               type="text"
               name="streetAddress"
               className="form-control"
-              value={profileData.billingAddress.streetAddress}
+              value={profileData.billingAddress?.streetAddress || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -243,7 +304,7 @@ const Profile = () => {
               type="text"
               name="city"
               className="form-control"
-              value={profileData.billingAddress.state}
+              value={profileData.billingAddress?.city || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -253,7 +314,7 @@ const Profile = () => {
               type="text"
               name="postalcode"
               className="form-control"
-              value={profileData.billingAddress.zipCode}
+              value={profileData.billingAddress?.postalcode || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -263,12 +324,15 @@ const Profile = () => {
               type="text"
               name="province"
               className="form-control"
-              value={profileData.billingAddress.province}
+              value={profileData.billingAddress?.province || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
         </div>
-        <button className="btn btn-primary" onClick={() => handleSaveAddress("billingAddress")}>
+        <button
+          className="btn btn-primary mt-3"
+          onClick={() => handleSaveAddress("billingAddress")}
+        >
           Save Billing Address
         </button>
       </section>
@@ -285,7 +349,7 @@ const Profile = () => {
               type="text"
               name="firstName"
               className="form-control"
-              value={profileData.shippingAddress.firstName}
+              value={profileData.shippingAddress?.firstName || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -295,7 +359,7 @@ const Profile = () => {
               type="text"
               name="lastName"
               className="form-control"
-              value={profileData.shippingAddress.lastName}
+              value={profileData.shippingAddress?.lastName || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -305,7 +369,7 @@ const Profile = () => {
               type="text"
               name="streetAddress"
               className="form-control"
-              value={profileData.shippingAddress.streetAddress}
+              value={profileData.shippingAddress?.streetAddress || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -315,7 +379,7 @@ const Profile = () => {
               type="text"
               name="city"
               className="form-control"
-              value={profileData.shippingAddress.state}
+              value={profileData.shippingAddress?.city || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -325,7 +389,7 @@ const Profile = () => {
               type="text"
               name="postalcode"
               className="form-control"
-              value={profileData.shippingAddress.zipCode}
+              value={profileData.shippingAddress?.postalcode || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -335,19 +399,22 @@ const Profile = () => {
               type="text"
               name="province"
               className="form-control"
-              value={profileData.shippingAddress.province}
+              value={profileData.shippingAddress?.province || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
         </div>
-        <button className="btn btn-primary" onClick={() => handleSaveAddress("shippingAddress")}>
+        <button
+          className="btn btn-primary mt-3"
+          onClick={() => handleSaveAddress("shippingAddress")}
+        >
           Save Shipping Address
         </button>
       </section>
 
       <hr />
 
-      {/* Change Password Section */}
+      {/* Password Section */}
       <section className="mb-5 section">
         <h2 className="section-title">Change Password</h2>
         <div className="row">
@@ -372,7 +439,7 @@ const Profile = () => {
             />
           </div>
           <div className="col-md-6 mb-3">
-            <label>Confirm Password</label>
+            <label>Confirm New Password</label>
             <input
               type="password"
               name="confirmPassword"
@@ -382,7 +449,7 @@ const Profile = () => {
             />
           </div>
         </div>
-        <button className="btn btn-primary" onClick={handlePasswordChange}>
+        <button className="btn btn-primary mt-3" onClick={handlePasswordChange}>
           Change Password
         </button>
       </section>

@@ -255,7 +255,8 @@ var Login = function Login() {
       data.append('password', formData.password);
       var requestOptions = {
         method: 'POST',
-        body: data
+        body: data,
+        credentials: 'include'
       };
       fetch('http://localhost/Capstone-Project-Backend/public/login.php', requestOptions).then(function (response) {
         return response.json();
@@ -493,8 +494,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -510,34 +511,35 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 var Profile = function Profile() {
+  var _profileData$billingA, _profileData$billingA2, _profileData$billingA3, _profileData$billingA4, _profileData$billingA5, _profileData$billingA6, _profileData$shipping, _profileData$shipping2, _profileData$shipping3, _profileData$shipping4, _profileData$shipping5, _profileData$shipping6;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      username: 'Shailendra',
-      firstName: "Shailendra",
-      lastName: "Karki",
-      email: "shailendrakumar.karki@gmail.com",
-      phone: "(548) 577-8045",
-      streetAddress: "360",
-      state: "Kitchner",
-      zipCode: "N2M3A5",
-      province: "Ontario",
+      username: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      streetAddress: "",
+      state: "",
+      zipCode: "",
+      province: "",
       currentPassword: "",
       newPassword: "",
       confirmPassword: "",
       shippingAddress: {
-        firstName: "Shailendra",
-        lastName: "Karki",
-        streetAddress: "360",
-        city: "Kitchner",
-        postalcode: "N2M3A5",
-        province: "Ontario"
+        firstName: "",
+        lastName: "",
+        streetAddress: "",
+        city: "",
+        postalcode: "",
+        province: ""
       },
       billingAddress: {
-        firstName: "Shailendra",
-        lastName: "Karki",
-        streetAddress: "360",
-        city: "Kitchner",
-        postalcode: "N2M3A5",
-        province: "Ontario"
+        firstName: "",
+        lastName: "",
+        streetAddress: "",
+        city: "",
+        postalcode: "",
+        province: ""
       },
       profileImage: null
     }),
@@ -563,44 +565,56 @@ var Profile = function Profile() {
   };
   var handleSaveChanges = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var formData, key, response;
+      var formData, key, appendAddressFields, response;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            formData = new FormData();
+            formData = new FormData(); // Append non-nested profile fields
             for (key in profileData) {
-              if (key !== 'profileImage' && key !== 'shippingAddress' && key !== 'billingAddress') {
+              if (key !== "profileImage" && _typeof(profileData[key]) !== "object") {
                 formData.append(key, profileData[key]);
               }
             }
+
+            // Append nested address fields
+            appendAddressFields = function appendAddressFields(addressType) {
+              var address = profileData[addressType];
+              for (var _key in address) {
+                formData.append("".concat(addressType, "[").concat(_key, "]"), address[_key]);
+              }
+            };
+            appendAddressFields("shippingAddress");
+            appendAddressFields("billingAddress");
+
+            // Append profile image
             if (profileData.profileImage) {
-              formData.append('profileImage', profileData.profileImage);
+              formData.append("profileImage", profileData.profileImage);
             }
-            _context.prev = 3;
-            _context.next = 6;
-            return fetch('/api/profile/update', {
-              method: 'POST',
+            _context.prev = 6;
+            _context.next = 9;
+            return fetch("/api/profile/update", {
+              method: "POST",
               body: formData
             });
-          case 6:
+          case 9:
             response = _context.sent;
             if (response.ok) {
               alert("Profile changes saved!");
             } else {
               alert("Failed to save changes.");
             }
-            _context.next = 14;
+            _context.next = 17;
             break;
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](3);
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](6);
             console.error("Error saving profile:", _context.t0);
             alert("Error saving profile.");
-          case 14:
+          case 17:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[3, 10]]);
+      }, _callee, null, [[6, 13]]);
     }));
     return function handleSaveChanges() {
       return _ref.apply(this, arguments);
@@ -620,7 +634,7 @@ var Profile = function Profile() {
             _context2.prev = 3;
             _context2.next = 6;
             return fetch("/api/profile/".concat(addressType, "-update"), {
-              method: 'POST',
+              method: "POST",
               body: formData
             });
           case 6:
@@ -665,8 +679,8 @@ var Profile = function Profile() {
             formData.append("newPassword", profileData.newPassword);
             _context3.prev = 6;
             _context3.next = 9;
-            return fetch('/api/profile/change-password', {
-              method: 'POST',
+            return fetch("/api/profile/change-password", {
+              method: "POST",
               body: formData
             });
           case 9:
@@ -693,12 +707,80 @@ var Profile = function Profile() {
       return _ref3.apply(this, arguments);
     };
   }();
+  var loadData = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var response, data, _data$data, username, email, phone, photoUrl, billing_address, shipping_address;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.prev = 0;
+            _context4.next = 3;
+            return fetch("http://localhost/Capstone-Project-Backend/public/profile.php", {
+              method: "GET",
+              credentials: "include"
+            });
+          case 3:
+            response = _context4.sent;
+            _context4.next = 6;
+            return response.json();
+          case 6:
+            data = _context4.sent;
+            if (data.status === 0) {
+              _data$data = data.data, username = _data$data.username, email = _data$data.email, phone = _data$data.phone, photoUrl = _data$data.photoUrl, billing_address = _data$data.billing_address, shipping_address = _data$data.shipping_address;
+              setProfileData(function (prevState) {
+                return _objectSpread(_objectSpread({}, prevState), {}, {
+                  username: username,
+                  email: email,
+                  phone: phone,
+                  profileImage: photoUrl,
+                  // Assuming this is the profile image URL
+                  billingAddress: {
+                    firstName: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstName) || "",
+                    lastName: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastName) || "",
+                    streetAddress: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.streetAddress) || "",
+                    city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
+                    postalcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postalcode) || "",
+                    province: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province) || ""
+                  },
+                  shippingAddress: {
+                    firstName: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstName) || "",
+                    lastName: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastName) || "",
+                    streetAddress: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.streetAddress) || "",
+                    city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
+                    postalcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postalcode) || "",
+                    province: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province) || ""
+                  }
+                });
+              });
+            } else {
+              alert("Failed to load data: " + data.msg);
+            }
+            _context4.next = 14;
+            break;
+          case 10:
+            _context4.prev = 10;
+            _context4.t0 = _context4["catch"](0);
+            console.error("Error loading data:", _context4.t0);
+            alert("Error loading data.");
+          case 14:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[0, 10]]);
+    }));
+    return function loadData() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    loadData();
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "container mt-5 account-settings"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "text-center mb-4 profile-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "./img1.jpg",
+    src: profileData.profileImage ? URL.createObjectURL(profileData.profileImage) : './img1.jpg',
     alt: "Profile",
     className: "rounded-circle profile-img"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -711,7 +793,7 @@ var Profile = function Profile() {
     id: "profileImageUpload",
     className: "custom-file-input",
     onChange: handleProfileImageChange
-  }), profileData.profileImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+  }), profileData.profileImage && profileData.profileImage.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "file-name"
   }, profileData.profileImage.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btn btn-primary mt-3",
@@ -744,7 +826,7 @@ var Profile = function Profile() {
     type: "tel",
     name: "phone",
     className: "form-control",
-    value: profileData.phone,
+    value: profileData.phone || "",
     onChange: handleInputChange
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btn btn-primary mt-3",
@@ -761,7 +843,7 @@ var Profile = function Profile() {
     type: "text",
     name: "firstName",
     className: "form-control",
-    value: profileData.billingAddress.firstName,
+    value: ((_profileData$billingA = profileData.billingAddress) === null || _profileData$billingA === void 0 ? void 0 : _profileData$billingA.firstName) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -771,7 +853,7 @@ var Profile = function Profile() {
     type: "text",
     name: "lastName",
     className: "form-control",
-    value: profileData.billingAddress.lastName,
+    value: ((_profileData$billingA2 = profileData.billingAddress) === null || _profileData$billingA2 === void 0 ? void 0 : _profileData$billingA2.lastName) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -781,7 +863,7 @@ var Profile = function Profile() {
     type: "text",
     name: "streetAddress",
     className: "form-control",
-    value: profileData.billingAddress.streetAddress,
+    value: ((_profileData$billingA3 = profileData.billingAddress) === null || _profileData$billingA3 === void 0 ? void 0 : _profileData$billingA3.streetAddress) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -791,7 +873,7 @@ var Profile = function Profile() {
     type: "text",
     name: "city",
     className: "form-control",
-    value: profileData.billingAddress.state,
+    value: ((_profileData$billingA4 = profileData.billingAddress) === null || _profileData$billingA4 === void 0 ? void 0 : _profileData$billingA4.city) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -801,7 +883,7 @@ var Profile = function Profile() {
     type: "text",
     name: "postalcode",
     className: "form-control",
-    value: profileData.billingAddress.zipCode,
+    value: ((_profileData$billingA5 = profileData.billingAddress) === null || _profileData$billingA5 === void 0 ? void 0 : _profileData$billingA5.postalcode) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -811,12 +893,12 @@ var Profile = function Profile() {
     type: "text",
     name: "province",
     className: "form-control",
-    value: profileData.billingAddress.province,
+    value: ((_profileData$billingA6 = profileData.billingAddress) === null || _profileData$billingA6 === void 0 ? void 0 : _profileData$billingA6.province) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "btn btn-primary",
+    className: "btn btn-primary mt-3",
     onClick: function onClick() {
       return handleSaveAddress("billingAddress");
     }
@@ -832,7 +914,7 @@ var Profile = function Profile() {
     type: "text",
     name: "firstName",
     className: "form-control",
-    value: profileData.shippingAddress.firstName,
+    value: ((_profileData$shipping = profileData.shippingAddress) === null || _profileData$shipping === void 0 ? void 0 : _profileData$shipping.firstName) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -842,7 +924,7 @@ var Profile = function Profile() {
     type: "text",
     name: "lastName",
     className: "form-control",
-    value: profileData.shippingAddress.lastName,
+    value: ((_profileData$shipping2 = profileData.shippingAddress) === null || _profileData$shipping2 === void 0 ? void 0 : _profileData$shipping2.lastName) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -852,7 +934,7 @@ var Profile = function Profile() {
     type: "text",
     name: "streetAddress",
     className: "form-control",
-    value: profileData.shippingAddress.streetAddress,
+    value: ((_profileData$shipping3 = profileData.shippingAddress) === null || _profileData$shipping3 === void 0 ? void 0 : _profileData$shipping3.streetAddress) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -862,7 +944,7 @@ var Profile = function Profile() {
     type: "text",
     name: "city",
     className: "form-control",
-    value: profileData.shippingAddress.state,
+    value: ((_profileData$shipping4 = profileData.shippingAddress) === null || _profileData$shipping4 === void 0 ? void 0 : _profileData$shipping4.city) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -872,7 +954,7 @@ var Profile = function Profile() {
     type: "text",
     name: "postalcode",
     className: "form-control",
-    value: profileData.shippingAddress.zipCode,
+    value: ((_profileData$shipping5 = profileData.shippingAddress) === null || _profileData$shipping5 === void 0 ? void 0 : _profileData$shipping5.postalcode) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -882,12 +964,12 @@ var Profile = function Profile() {
     type: "text",
     name: "province",
     className: "form-control",
-    value: profileData.shippingAddress.province,
+    value: ((_profileData$shipping6 = profileData.shippingAddress) === null || _profileData$shipping6 === void 0 ? void 0 : _profileData$shipping6.province) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "btn btn-primary",
+    className: "btn btn-primary mt-3",
     onClick: function onClick() {
       return handleSaveAddress("shippingAddress");
     }
@@ -915,14 +997,14 @@ var Profile = function Profile() {
     onChange: handleInputChange
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "col-md-6 mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Confirm Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Confirm New Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "password",
     name: "confirmPassword",
     className: "form-control",
     value: profileData.confirmPassword,
     onChange: handleInputChange
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "btn btn-primary",
+    className: "btn btn-primary mt-3",
     onClick: handlePasswordChange
   }, "Change Password")));
 };
@@ -1372,22 +1454,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
 var Logout = function Logout() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
   var handleLogout = function handleLogout() {
     // Remove the token or user data from localStorage
-    localStorage.removeItem('token');
+    localStorage.removeItem('isLoggedIn');
 
     // Redirect to the login page
     navigate('/login');
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex justify-content-center mt-4"
-  }, /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleLogout,
     className: "btn btn-danger"
   }, "Logout"));
