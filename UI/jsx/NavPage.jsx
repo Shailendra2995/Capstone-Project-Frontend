@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const NavPage = ({ title }) => {
   const location = useLocation();
   const isLoggedIn = localStorage.getItem('isLoggedIn');
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
       <Link className="navbar-brand" to="/">
@@ -53,16 +54,7 @@ const NavPage = ({ title }) => {
               Cart
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
-              to="/profile"
-              aria-current={location.pathname === '/profile' ? 'page' : undefined}
-            >
-              Profile
-            </Link>
-          </li>
-          
+
           {/* Conditional rendering based on login status */}
           {!isLoggedIn ? (
             <>
@@ -86,15 +78,26 @@ const NavPage = ({ title }) => {
               </li>
             </>
           ) : (
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === '/logout' ? 'active' : ''}`}
-                to="/logout"
-                aria-current={location.pathname === '/logout' ? 'page' : undefined}
-              >
-                Logout
-              </Link>
-            </li>
+            <>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${location.pathname === '/logout' ? 'active' : ''}`}
+                  to="/logout"
+                  aria-current={location.pathname === '/logout' ? 'page' : undefined}
+                >
+                  Logout
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
+                  to="/profile"
+                  aria-current={location.pathname === '/profile' ? 'page' : undefined}
+                >
+                  Profile
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </div>
