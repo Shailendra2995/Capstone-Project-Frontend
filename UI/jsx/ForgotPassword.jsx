@@ -24,9 +24,8 @@ const PasswordResetRequest = () => {
 
     const data = new FormData();
     data.append('email', email); 
-    data.append('action','SEND_EMAIL_LINK');
 
-    fetch('http://localhost/Capstone-Project-Backend/public/reset_password.php', {
+    fetch('http://localhost:8000/api/user/forgot-password', {
       method: 'POST',
       body: data, // Set the body to FormData
     })

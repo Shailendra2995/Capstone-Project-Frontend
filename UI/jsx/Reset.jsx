@@ -11,15 +11,12 @@ const PasswordResetForm = () => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
   const [searchParams] = useSearchParams(); // Move this to the top level
-  const sessionId = searchParams.get("PHPSESSID");
   const  token  = searchParams.get("token");
-  const cookies = new Cookies();
-  cookies.set('PHPSESSID', sessionId, { path: '/' });
 
   const validateForm = () => {
     const newErrors = {};
     if (!password) newErrors.password = 'Password is required';
-    if (password !== confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
+    if (password !== confirmPassword) newErrors.confirmPassword = 'Passwords did not match';
     return newErrors;
   };
 
@@ -30,14 +27,12 @@ const PasswordResetForm = () => {
     if (Object.keys(validationErrors).length === 0) {
       const data = new FormData();
       data.append('email', email);
-      data.append('new_password', password);
+      data.append('password', password);
       data.append('token', token);
-      data.append('action','RESET');
 
-      fetch('http://localhost/Capstone-Project-Backend/public/reset_password.php', {
+      fetch('http://localhost:8000/api/user/reset-password', {
         method: 'POST',
         body: data,
-        credentials: 'include'
       })
         .then(response => response.json())
         .then(data => {

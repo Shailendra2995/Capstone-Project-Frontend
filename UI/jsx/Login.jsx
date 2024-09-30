@@ -41,10 +41,10 @@ const Login = () => {
       const requestOptions = {
         method: 'POST',
         body: data,
-        credentials: 'include'
+        //credentials: 'include' if we are using cookies than this is required
       };
 
-      fetch('http://localhost/Capstone-Project-Backend/public/login.php', requestOptions)
+      fetch('http://localhost:8000/api/user/login', requestOptions)
         .then(response => response.json())
         .then(data => {
           if (data.status == 0) {
@@ -52,6 +52,7 @@ const Login = () => {
 
             // Save token or user data to localStorage/sessionStorage
             localStorage.setItem('isLoggedIn', true); //  'data.token' is returned
+            localStorage.setItem('token', data.data.token);
 
             navigate('/');
           } else {
@@ -97,7 +98,7 @@ const Login = () => {
         </form>
         <div className='arrange'>
           <div className="reset-link">
-            <p>Forgot Password?<Link to="/forgotpassword"> Reset</Link></p>
+            <p>Forgot Password?<Link to="/forgot-password"> Reset</Link></p>
           </div>
           <div className="register-link">
             <p>Don't have an account? <Link to="/register">Register</Link></p>

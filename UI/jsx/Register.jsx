@@ -54,7 +54,7 @@ const Register = () => {
         body: data
       };
 
-      fetch('http://localhost/Capstone-Project-Backend/public/register.php', requestOptions)
+      fetch('http://localhost:8000/api/user/register', requestOptions)
         .then(response => response.json())
         .then(data => {
           setPostId(data.id);

@@ -49,8 +49,35 @@ const Profile = () => {
     });
   };
 
-  const handleProfileImageChange = (e) => {
-    setProfileData({ ...profileData, profileImage: e.target.files[0] });
+  const handleProfileImageChange = async (e) => {
+    const file = e.target.files[0];
+
+    const formData = new FormData();
+    const token = localStorage.getItem("token");
+    formData.append("file", file);
+    try {
+      const response = await fetch("http://localhost:8000/api/upload/avatar", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Authorization" : "Bearer " + token
+        }
+      });
+
+      const data = await response.json();
+
+      if (data.status === 0) {
+        const path = "http://localhost:8000/stora"
+        setProfileData({ ...profileData, profileImage: file });
+        alert("Profile changes saved!");
+      } else {
+        alert("Failed to save changes.");
+      }
+    } catch (error) {
+      console.error("Error saving profile:", error);
+      alert("Error saving profile.");
+    }
+
   };
 
   const handleSaveChanges = async () => {
@@ -148,10 +175,13 @@ const Profile = () => {
   };
 
   const loadData = async () => {
+    const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://localhost/Capstone-Project-Backend/public/profile.php", {
+      const response = await fetch("http://localhost:8000/api/user/profile", {
         method: "GET",
-        credentials: "include"
+        headers: {
+          "Authorization" : "Bearer " + token
+        }
       });
 
       const data = await response.json();
@@ -163,7 +193,7 @@ const Profile = () => {
           username,
           email,
           phone,
-          profileImage: photoUrl, // Assuming this is the profile image URL
+          profileImage: photoUrl, 
           billingAddress: {
             firstName: billing_address?.firstName || "",
             lastName: billing_address?.lastName || "",
