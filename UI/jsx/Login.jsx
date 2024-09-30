@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -13,7 +13,7 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -21,11 +21,11 @@ const Login = () => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email address is invalid';
+      newErrors.email = "Email address is invalid";
     }
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.password) newErrors.password = "Password is required";
     return newErrors;
   };
 
@@ -35,39 +35,38 @@ const Login = () => {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
       const data = new FormData();
-      data.append('email', formData.email);
-      data.append('password', formData.password);
+      data.append("email", formData.email);
+      data.append("password", formData.password);
 
       const requestOptions = {
-        method: 'POST',
+        method: "POST",
         body: data,
         //credentials: 'include' if we are using cookies than this is required
       };
 
-      fetch('http://localhost:8000/api/user/login', requestOptions)
-        .then(response => response.json())
-        .then(data => {
+      fetch("http://localhost:8000/api/user/login", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
           if (data.status == 0) {
-            console.log('Login successful', data);
+            console.log("Login successful", data);
 
             // Save token or user data to localStorage/sessionStorage
-            localStorage.setItem('isLoggedIn', true); //  'data.token' is returned
-            localStorage.setItem('token', data.data.token);
+            localStorage.setItem("isLoggedIn", true); //  'data.token' is returned
+            localStorage.setItem("token", data.data.token);
 
-            navigate('/');
+            navigate("/");
           } else {
-            setErrors({ login: data.message || 'Login failed' });
+            setErrors({ login: data.message || "Login failed" });
           }
         })
-        .catch(error => {
-          console.error('Error during login:', error);
-          setErrors({ login: 'An error occurred. Please try again.' });
+        .catch((error) => {
+          console.error("Error during login:", error);
+          setErrors({ login: "An error occurred. Please try again." });
         });
     } else {
       setErrors(validationErrors);
     }
   };
-
 
   return (
     <div className="login-container">
@@ -96,12 +95,16 @@ const Login = () => {
 
           <button type="submit">Login</button>
         </form>
-        <div className='arrange'>
+        <div className="arrange">
           <div className="reset-link">
-            <p>Forgot Password?<Link to="/forgot-password"> Reset</Link></p>
+            <p>
+              Forgot Password?<Link to="/forgot-password"> Reset</Link>
+            </p>
           </div>
           <div className="register-link">
-            <p>Don't have an account? <Link to="/register">Register</Link></p>
+            <p>
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
           </div>
         </div>
       </div>

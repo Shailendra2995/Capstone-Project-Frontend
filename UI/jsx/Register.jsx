@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate imported
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // useNavigate imported
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
   const [postId, setPostId] = useState(null);
-  const [message, setMessage] = useState(''); // State to hold success/error message
+  const [message, setMessage] = useState(""); // State to hold success/error message
   const navigate = useNavigate(); // Initializing the navigate function
 
   // Handling data changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   // Form Validation
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.username) newErrors.username = 'Username is required';
+    if (!formData.username) newErrors.username = "Username is required";
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email address is invalid';
+      newErrors.email = "Email address is invalid";
     }
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.password) newErrors.password = "Password is required";
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = "Passwords do not match";
     }
     return newErrors;
   };
@@ -46,27 +46,29 @@ const Register = () => {
       // Proceed with form submission
       const data = new FormData();
       data.append("username", formData.username);
-      data.append('email', formData.email);
-      data.append('password', formData.password);
+      data.append("email", formData.email);
+      data.append("password", formData.password);
 
       const requestOptions = {
-        method: 'POST',
-        body: data
+        method: "POST",
+        body: data,
       };
 
-      fetch('http://localhost:8000/api/user/register', requestOptions)
-        .then(response => response.json())
-        .then(data => {
+      fetch("http://localhost:8000/api/user/register", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
           setPostId(data.id);
           if (data.status === 0) {
-            setMessage('Registration successful! Redirecting to login...'); // Display success message
-            setTimeout(() => navigate('/login'), 2000); // Redirect after 2 seconds
+            setMessage("Registration successful! Redirecting to login..."); // Display success message
+            setTimeout(() => navigate("/login"), 2000); // Redirect after 2 seconds
           } else {
-            setMessage(data.message || 'Registration failed. Please try again.'); // Display error message from backend
+            setMessage(
+              data.message || "Registration failed. Please try again."
+            ); // Display error message from backend
           }
         })
-        .catch(error => {
-          setMessage('Error during registration. Please try again later.');
+        .catch((error) => {
+          setMessage("Error during registration. Please try again later.");
         });
     } else {
       setErrors(validationErrors);
@@ -77,7 +79,8 @@ const Register = () => {
     <div className="register-container">
       <div className="register-form">
         <h2>Register</h2>
-        {message && <p className="message">{message}</p>} {/* Conditionally render message */}
+        {message && <p className="message">{message}</p>}{" "}
+        {/* Conditionally render message */}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -113,7 +116,9 @@ const Register = () => {
             value={formData.confirmPassword}
             onChange={handleChange}
           />
-          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          {errors.confirmPassword && (
+            <p className="error">{errors.confirmPassword}</p>
+          )}
 
           <button type="submit">Register</button>
         </form>

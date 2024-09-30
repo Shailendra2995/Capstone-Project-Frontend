@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const NavPage = ({ title }) => {
   const location = useLocation();
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -29,27 +29,35 @@ const NavPage = ({ title }) => {
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
             <Link
-              className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+              className={`nav-link ${
+                location.pathname === "/" ? "active" : ""
+              }`}
               to="/"
-              aria-current={location.pathname === '/' ? 'page' : undefined}
+              aria-current={location.pathname === "/" ? "page" : undefined}
             >
               Home
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`}
+              className={`nav-link ${
+                location.pathname === "/products" ? "active" : ""
+              }`}
               to="/products"
-              aria-current={location.pathname === '/products' ? 'page' : undefined}
+              aria-current={
+                location.pathname === "/products" ? "page" : undefined
+              }
             >
               Products
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              className={`nav-link ${location.pathname === '/cart' ? 'active' : ''}`}
+              className={`nav-link ${
+                location.pathname === "/cart" ? "active" : ""
+              }`}
               to="/cart"
-              aria-current={location.pathname === '/cart' ? 'page' : undefined}
+              aria-current={location.pathname === "/cart" ? "page" : undefined}
             >
               Cart
             </Link>
@@ -60,18 +68,26 @@ const NavPage = ({ title }) => {
             <>
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${location.pathname === '/register' ? 'active' : ''}`}
+                  className={`nav-link ${
+                    location.pathname === "/register" ? "active" : ""
+                  }`}
                   to="/register"
-                  aria-current={location.pathname === '/register' ? 'page' : undefined}
+                  aria-current={
+                    location.pathname === "/register" ? "page" : undefined
+                  }
                 >
                   Register
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}
+                  className={`nav-link ${
+                    location.pathname === "/login" ? "active" : ""
+                  }`}
                   to="/login"
-                  aria-current={location.pathname === '/login' ? 'page' : undefined}
+                  aria-current={
+                    location.pathname === "/login" ? "page" : undefined
+                  }
                 >
                   Login
                 </Link>
@@ -81,18 +97,26 @@ const NavPage = ({ title }) => {
             <>
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${location.pathname === '/logout' ? 'active' : ''}`}
+                  className={`nav-link ${
+                    location.pathname === "/logout" ? "active" : ""
+                  }`}
                   to="/logout"
-                  aria-current={location.pathname === '/logout' ? 'page' : undefined}
+                  aria-current={
+                    location.pathname === "/logout" ? "page" : undefined
+                  }
                 >
                   Logout
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
+                  className={`nav-link ${
+                    location.pathname === "/profile" ? "active" : ""
+                  }`}
                   to="/profile"
-                  aria-current={location.pathname === '/profile' ? 'page' : undefined}
+                  aria-current={
+                    location.pathname === "/profile" ? "page" : undefined
+                  }
                 >
                   Profile
                 </Link>

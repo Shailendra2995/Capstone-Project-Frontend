@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     // Remove the token or user data from localStorage
-    localStorage.removeItem('isLoggedIn');
-    
+    localStorage.removeItem("isLoggedIn");
+
     // Redirect to the login page
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
