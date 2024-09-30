@@ -31,10 +31,12 @@ const Profile = () => {
       province: "",
     },
     profileImage: null,
+    profileImageName: null,
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setProfileData({ ...profileData, [name]: value });
   };
 
@@ -50,11 +52,18 @@ const Profile = () => {
   };
 
   const handleProfileImageChange = async (e) => {
-    const file = e.target.files[0];
+    const file = URL.createObjectURL(e.target.files[0]);
+    setProfileData({
+      ...profileData,
+      profileImage: file,
+      profileImageName: e.target.files[0],
+    });
+  };
 
+  const handleSaveImage = async (e) => {
     const formData = new FormData();
     const token = localStorage.getItem("token");
-    formData.append("file", file);
+    formData.append("file", profileData.profileImageName);
     try {
       const response = await fetch("http://localhost:8000/api/upload/avatar", {
         method: "POST",
@@ -67,8 +76,9 @@ const Profile = () => {
       const data = await response.json();
 
       if (data.status === 0) {
-        const path = "http://localhost:8000/stora";
-        setProfileData({ ...profileData, profileImage: file });
+        const path = "http://localhost:8000/storage/" + data.data.path;
+        setProfileData({ ...profileData, profileImage: path });
+
         alert("Profile changes saved!");
       } else {
         alert("Failed to save changes.");
@@ -203,7 +213,7 @@ const Profile = () => {
           username,
           email,
           phone,
-          profileImage: photoUrl,
+          profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
           billingAddress: {
             firstName: billing_address?.firstName || "",
             lastName: billing_address?.lastName || "",
@@ -239,11 +249,7 @@ const Profile = () => {
       {/* Profile Image */}
       <div className="text-center mb-4 profile-section">
         <img
-          src={
-            profileData.profileImage
-              ? URL.createObjectURL(profileData.profileImage)
-              : "./img1.jpg"
-          }
+          src={profileData.profileImage ?? "./img1.jpg"}
           alt="Profile"
           className="rounded-circle profile-img"
         />
@@ -261,7 +267,7 @@ const Profile = () => {
             <span className="file-name">{profileData.profileImage.name}</span>
           )}
         </div>
-        <button className="btn btn-primary mt-3" onClick={handleSaveChanges}>
+        <button className="btn btn-primary mt-3" onClick={handleSaveImage}>
           Save Changes
         </button>
       </div>
