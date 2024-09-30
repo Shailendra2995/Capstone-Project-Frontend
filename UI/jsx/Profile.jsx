@@ -20,7 +20,7 @@ const Profile = () => {
       streetAddress: "",
       city: "",
       postalcode: "",
-      province: ""
+      province: "",
     },
     billingAddress: {
       firstName: "",
@@ -28,9 +28,9 @@ const Profile = () => {
       streetAddress: "",
       city: "",
       postalcode: "",
-      province: ""
+      province: "",
     },
-    profileImage: null
+    profileImage: null,
   });
 
   const handleInputChange = (e) => {
@@ -44,8 +44,8 @@ const Profile = () => {
       ...profileData,
       [addressType]: {
         ...profileData[addressType],
-        [name]: value
-      }
+        [name]: value,
+      },
     });
   };
 
@@ -60,14 +60,14 @@ const Profile = () => {
         method: "POST",
         body: formData,
         headers: {
-          "Authorization" : "Bearer " + token
-        }
+          Authorization: "Bearer " + token,
+        },
       });
 
       const data = await response.json();
 
       if (data.status === 0) {
-        const path = "http://localhost:8000/stora"
+        const path = "http://localhost:8000/stora";
         setProfileData({ ...profileData, profileImage: file });
         alert("Profile changes saved!");
       } else {
@@ -77,7 +77,6 @@ const Profile = () => {
       console.error("Error saving profile:", error);
       alert("Error saving profile.");
     }
-
   };
 
   const handleSaveChanges = async () => {
@@ -109,7 +108,7 @@ const Profile = () => {
     try {
       const response = await fetch("/api/profile/update", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (response.ok) {
@@ -133,11 +132,15 @@ const Profile = () => {
     try {
       const response = await fetch(`/api/profile/${addressType}-update`, {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (response.ok) {
-        alert(`${addressType.charAt(0).toUpperCase() + addressType.slice(1)} Address saved!`);
+        alert(
+          `${
+            addressType.charAt(0).toUpperCase() + addressType.slice(1)
+          } Address saved!`
+        );
       } else {
         alert(`Failed to save ${addressType} address.`);
       }
@@ -160,7 +163,7 @@ const Profile = () => {
     try {
       const response = await fetch("/api/profile/change-password", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (response.ok) {
@@ -180,27 +183,34 @@ const Profile = () => {
       const response = await fetch("http://localhost:8000/api/user/profile", {
         method: "GET",
         headers: {
-          "Authorization" : "Bearer " + token
-        }
+          Authorization: "Bearer " + token,
+        },
       });
 
       const data = await response.json();
 
       if (data.status === 0) {
-        const { username, email, phone, photoUrl, billing_address, shipping_address } = data.data;
+        const {
+          username,
+          email,
+          phone,
+          photoUrl,
+          billing_address,
+          shipping_address,
+        } = data.data;
         setProfileData((prevState) => ({
           ...prevState,
           username,
           email,
           phone,
-          profileImage: photoUrl, 
+          profileImage: photoUrl,
           billingAddress: {
             firstName: billing_address?.firstName || "",
             lastName: billing_address?.lastName || "",
             streetAddress: billing_address?.streetAddress || "",
             city: billing_address?.city || "",
             postalcode: billing_address?.postalcode || "",
-            province: billing_address?.province || ""
+            province: billing_address?.province || "",
           },
           shippingAddress: {
             firstName: shipping_address?.firstName || "",
@@ -208,8 +218,8 @@ const Profile = () => {
             streetAddress: shipping_address?.streetAddress || "",
             city: shipping_address?.city || "",
             postalcode: shipping_address?.postalcode || "",
-            province: shipping_address?.province || ""
-          }
+            province: shipping_address?.province || "",
+          },
         }));
       } else {
         alert("Failed to load data: " + data.msg);
@@ -229,7 +239,11 @@ const Profile = () => {
       {/* Profile Image */}
       <div className="text-center mb-4 profile-section">
         <img
-          src={profileData.profileImage ? URL.createObjectURL(profileData.profileImage) : './img1.jpg'}
+          src={
+            profileData.profileImage
+              ? URL.createObjectURL(profileData.profileImage)
+              : "./img1.jpg"
+          }
           alt="Profile"
           className="rounded-circle profile-img"
         />

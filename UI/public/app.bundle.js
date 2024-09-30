@@ -573,7 +573,7 @@ var Profile = function Profile() {
               method: "POST",
               body: formData,
               headers: {
-                "Authorization": "Bearer " + token
+                Authorization: "Bearer " + token
               }
             });
           case 7:
@@ -764,7 +764,7 @@ var Profile = function Profile() {
             return fetch("http://localhost:8000/api/user/profile", {
               method: "GET",
               headers: {
-                "Authorization": "Bearer " + token
+                Authorization: "Bearer " + token
               }
             });
           case 4:
@@ -827,7 +827,7 @@ var Profile = function Profile() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "text-center mb-4 profile-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: profileData.profileImage ? URL.createObjectURL(profileData.profileImage) : './img1.jpg',
+    src: profileData.profileImage ? URL.createObjectURL(profileData.profileImage) : "./img1.jpg",
     alt: "Profile",
     className: "rounded-circle profile-img"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
