@@ -179,11 +179,850 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 var HomePage = function HomePage() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Welcome to PrimeMart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "This is the homepage. You can navigate to different pages using the links above."));
+  var _categories$find, _allProducts$selected;
+  // Dummy Data for products categorized by type
+  var allProducts = {
+    fruits: [{
+      id: 1,
+      name: "Green Apple",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic green apple with a crisp taste."
+    }, {
+      id: 2,
+      name: "Banana",
+      price: "$0.50",
+      img: "https://via.placeholder.com/150",
+      description: "Sweet organic bananas, perfect for snacking."
+    }, {
+      id: 3,
+      name: "Orange",
+      price: "$1.00",
+      img: "https://via.placeholder.com/150",
+      description: "Juicy organic orange rich in Vitamin C."
+    }, {
+      id: 4,
+      name: "Strawberry",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic strawberries, great for desserts."
+    }, {
+      id: 5,
+      name: "Grapes",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic grapes, sweet and juicy."
+    }, {
+      id: 6,
+      name: "Mango",
+      price: "$1.80",
+      img: "https://via.placeholder.com/150",
+      description: "Ripe organic mango with tropical flavor."
+    }, {
+      id: 7,
+      name: "Pineapple",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Sweet and tangy organic pineapple."
+    }, {
+      id: 8,
+      name: "Blueberries",
+      price: "$2.20",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic blueberries, great for smoothies."
+    }, {
+      id: 9,
+      name: "Peach",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Juicy organic peaches, perfect for summer."
+    }, {
+      id: 10,
+      name: "Kiwi",
+      price: "$1.00",
+      img: "https://via.placeholder.com/150",
+      description: "Sweet and tart organic kiwi."
+    }],
+    vegetables: [{
+      id: 1,
+      name: "Tomato",
+      price: "$1.20",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic tomatoes, perfect for salads."
+    }, {
+      id: 2,
+      name: "Broccoli",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic broccoli, rich in vitamins."
+    }, {
+      id: 3,
+      name: "Carrot",
+      price: "$0.80",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic carrots, crunchy and sweet."
+    }, {
+      id: 4,
+      name: "Lettuce",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Crisp organic lettuce for fresh salads."
+    }, {
+      id: 5,
+      name: "Peppers",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic peppers, colorful and crunchy."
+    }, {
+      id: 6,
+      name: "Spinach",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic spinach, packed with nutrients."
+    }, {
+      id: 7,
+      name: "Cucumber",
+      price: "$1.00",
+      img: "https://via.placeholder.com/150",
+      description: "Crisp organic cucumbers, refreshing and hydrating."
+    }, {
+      id: 8,
+      name: "Zucchini",
+      price: "$1.20",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic zucchini, versatile for cooking."
+    }, {
+      id: 9,
+      name: "Cauliflower",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic cauliflower, great for low-carb meals."
+    }, {
+      id: 10,
+      name: "Onion",
+      price: "$0.50",
+      img: "https://via.placeholder.com/150",
+      description: "Organic onions, essential for flavor."
+    }],
+    dairy: [{
+      id: 1,
+      name: "Milk",
+      price: "$1.20",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic milk, rich and creamy."
+    }, {
+      id: 2,
+      name: "Cheese",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Organic cheese, perfect for sandwiches."
+    }, {
+      id: 3,
+      name: "Butter",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic butter, creamy and rich."
+    }, {
+      id: 4,
+      name: "Yogurt",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic yogurt, smooth and tasty."
+    }, {
+      id: 5,
+      name: "Cream",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Organic cream, perfect for desserts."
+    }, {
+      id: 6,
+      name: "Sour Cream",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Rich and tangy organic sour cream."
+    }, {
+      id: 7,
+      name: "Feta Cheese",
+      price: "$3.50",
+      img: "https://via.placeholder.com/150",
+      description: "Crumble organic feta cheese on salads."
+    }, {
+      id: 8,
+      name: "Cottage Cheese",
+      price: "$2.20",
+      img: "https://via.placeholder.com/150",
+      description: "Organic cottage cheese, great for snacks."
+    }, {
+      id: 9,
+      name: "Ice Cream",
+      price: "$4.00",
+      img: "https://via.placeholder.com/150",
+      description: "Delicious organic ice cream, creamy and sweet."
+    }, {
+      id: 10,
+      name: "Almond Milk",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Organic almond milk, dairy-free option."
+    }],
+    beverages: [{
+      id: 1,
+      name: "Orange Juice",
+      price: "$3.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh orange juice, rich in vitamin C."
+    }, {
+      id: 2,
+      name: "Green Tea",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Healthy organic green tea."
+    }, {
+      id: 3,
+      name: "Coffee",
+      price: "$4.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh brewed organic coffee."
+    }, {
+      id: 4,
+      name: "Milkshake",
+      price: "$5.00",
+      img: "https://via.placeholder.com/150",
+      description: "Delicious milkshake, rich and creamy."
+    }, {
+      id: 5,
+      name: "Smoothie",
+      price: "$4.50",
+      img: "https://via.placeholder.com/150",
+      description: "Healthy smoothie made with fresh fruits."
+    }, {
+      id: 6,
+      name: "Lemonade",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh lemonade, refreshing and sweet."
+    }, {
+      id: 7,
+      name: "Coconut Water",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Hydrating organic coconut water."
+    }, {
+      id: 8,
+      name: "Herbal Tea",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Soothing organic herbal tea."
+    }, {
+      id: 9,
+      name: "Sparkling Water",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Refreshing sparkling water."
+    }, {
+      id: 10,
+      name: "Hot Chocolate",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Rich hot chocolate, perfect for winter."
+    }],
+    snacks: [{
+      id: 1,
+      name: "Chips",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Crunchy potato chips."
+    }, {
+      id: 2,
+      name: "Cookies",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Tasty cookies, perfect for snacks."
+    }, {
+      id: 3,
+      name: "Granola",
+      price: "$3.50",
+      img: "https://via.placeholder.com/150",
+      description: "Healthy granola bars, great for energy."
+    }, {
+      id: 4,
+      name: "Popcorn",
+      price: "$1.80",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh popcorn, light and airy."
+    }, {
+      id: 5,
+      name: "Nuts",
+      price: "$4.00",
+      img: "https://via.placeholder.com/150",
+      description: "Roasted mixed nuts, healthy and crunchy."
+    }, {
+      id: 6,
+      name: "Trail Mix",
+      price: "$3.50",
+      img: "https://via.placeholder.com/150",
+      description: "Nut and dried fruit mix, energy booster."
+    }, {
+      id: 7,
+      name: "Rice Cakes",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Light and crispy rice cakes."
+    }, {
+      id: 8,
+      name: "Beef Jerky",
+      price: "$4.50",
+      img: "https://via.placeholder.com/150",
+      description: "Savory beef jerky, high in protein."
+    }, {
+      id: 9,
+      name: "Fruit Snacks",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Chewy fruit snacks, perfect for kids."
+    }, {
+      id: 10,
+      name: "Chocolate Bar",
+      price: "$1.80",
+      img: "https://via.placeholder.com/150",
+      description: "Delicious chocolate bar, sweet treat."
+    }],
+    bakery: [{
+      id: 1,
+      name: "Bread",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Freshly baked organic bread."
+    }, {
+      id: 2,
+      name: "Croissant",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Buttery croissant, flaky and delicious."
+    }, {
+      id: 3,
+      name: "Bagel",
+      price: "$1.20",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh bagels, great for breakfast."
+    }, {
+      id: 4,
+      name: "Muffin",
+      price: "$1.80",
+      img: "https://via.placeholder.com/150",
+      description: "Delicious muffin, perfect for snacks."
+    }, {
+      id: 5,
+      name: "Sourdough",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Artisan sourdough bread, tangy flavor."
+    }, {
+      id: 6,
+      name: "Baguette",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Crispy baguette, perfect for sandwiches."
+    }, {
+      id: 7,
+      name: "Pita Bread",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Soft pita bread for wraps."
+    }, {
+      id: 8,
+      name: "Brownie",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Rich chocolate brownie, sweet and fudgy."
+    }, {
+      id: 9,
+      name: "Danish Pastry",
+      price: "$2.20",
+      img: "https://via.placeholder.com/150",
+      description: "Sweet danish pastry, filled with fruit."
+    }, {
+      id: 10,
+      name: "Cookies",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh baked cookies, soft and chewy."
+    }],
+    grains: [{
+      id: 1,
+      name: "Rice",
+      price: "$1.80",
+      img: "https://via.placeholder.com/150",
+      description: "Organic rice, great for meals."
+    }, {
+      id: 2,
+      name: "Quinoa",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Healthy quinoa, high in protein."
+    }, {
+      id: 3,
+      name: "Oats",
+      price: "$1.20",
+      img: "https://via.placeholder.com/150",
+      description: "Whole grain oats, perfect for breakfast."
+    }, {
+      id: 4,
+      name: "Pasta",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Organic pasta, quick and easy meals."
+    }, {
+      id: 5,
+      name: "Barley",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Nutritious barley for soups and salads."
+    }, {
+      id: 6,
+      name: "Bread Crumbs",
+      price: "$1.00",
+      img: "https://via.placeholder.com/150",
+      description: "Organic bread crumbs for cooking."
+    }, {
+      id: 7,
+      name: "Flour",
+      price: "$1.80",
+      img: "https://via.placeholder.com/150",
+      description: "Organic flour for baking."
+    }, {
+      id: 8,
+      name: "Cornmeal",
+      price: "$2.20",
+      img: "https://via.placeholder.com/150",
+      description: "Organic cornmeal for polenta."
+    }, {
+      id: 9,
+      name: "Couscous",
+      price: "$1.50",
+      img: "https://via.placeholder.com/150",
+      description: "Fluffy couscous, great side dish."
+    }, {
+      id: 10,
+      name: "Buckwheat",
+      price: "$2.00",
+      img: "https://via.placeholder.com/150",
+      description: "Nutritious buckwheat, gluten-free option."
+    }],
+    meat: [{
+      id: 1,
+      name: "Chicken Breast",
+      price: "$5.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh organic chicken breast, lean and healthy."
+    }, {
+      id: 2,
+      name: "Ground Beef",
+      price: "$7.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh ground beef, perfect for burgers."
+    }, {
+      id: 3,
+      name: "Pork Chops",
+      price: "$6.00",
+      img: "https://via.placeholder.com/150",
+      description: "Juicy pork chops, great for grilling."
+    }, {
+      id: 4,
+      name: "Turkey Breast",
+      price: "$5.50",
+      img: "https://via.placeholder.com/150",
+      description: "Lean turkey breast, healthy protein source."
+    }, {
+      id: 5,
+      name: "Sausage",
+      price: "$4.50",
+      img: "https://via.placeholder.com/150",
+      description: "Savory sausage links, great for breakfast."
+    }, {
+      id: 6,
+      name: "Bacon",
+      price: "$5.50",
+      img: "https://via.placeholder.com/150",
+      description: "Crispy bacon, perfect for any meal."
+    }, {
+      id: 7,
+      name: "Lamb Chops",
+      price: "$8.00",
+      img: "https://via.placeholder.com/150",
+      description: "Tender lamb chops, perfect for roasting."
+    }, {
+      id: 8,
+      name: "Beef Steaks",
+      price: "$10.00",
+      img: "https://via.placeholder.com/150",
+      description: "Premium beef steaks, rich in flavor."
+    }, {
+      id: 9,
+      name: "Duck Breast",
+      price: "$9.00",
+      img: "https://via.placeholder.com/150",
+      description: "Rich duck breast, great for gourmet meals."
+    }, {
+      id: 10,
+      name: "Veal Cutlets",
+      price: "$12.00",
+      img: "https://via.placeholder.com/150",
+      description: "Tender veal cutlets, great for fine dining."
+    }],
+    seafood: [{
+      id: 1,
+      name: "Salmon",
+      price: "$12.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh salmon fillet, rich in omega-3."
+    }, {
+      id: 2,
+      name: "Shrimp",
+      price: "$10.00",
+      img: "https://via.placeholder.com/150",
+      description: "Juicy shrimp, perfect for grilling."
+    }, {
+      id: 3,
+      name: "Tuna",
+      price: "$14.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh tuna steaks, delicious and healthy."
+    }, {
+      id: 4,
+      name: "Tilapia",
+      price: "$8.00",
+      img: "https://via.placeholder.com/150",
+      description: "Mild tilapia fillet, easy to cook."
+    }, {
+      id: 5,
+      name: "Cod",
+      price: "$9.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh cod fillet, flaky and delicious."
+    }, {
+      id: 6,
+      name: "Crab Legs",
+      price: "$20.00",
+      img: "https://via.placeholder.com/150",
+      description: "Sweet crab legs, perfect for special occasions."
+    }, {
+      id: 7,
+      name: "Lobster",
+      price: "$25.00",
+      img: "https://via.placeholder.com/150",
+      description: "Succulent lobster tail, luxurious and tasty."
+    }, {
+      id: 8,
+      name: "Mussels",
+      price: "$10.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh mussels, great for pasta dishes."
+    }, {
+      id: 9,
+      name: "Oysters",
+      price: "$18.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh oysters, a delicacy."
+    }, {
+      id: 10,
+      name: "Scallops",
+      price: "$22.00",
+      img: "https://via.placeholder.com/150",
+      description: "Sweet scallops, perfect for searing."
+    }],
+    frozenFoods: [{
+      id: 1,
+      name: "Frozen Vegetables",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Mixed frozen vegetables, quick and easy."
+    }, {
+      id: 2,
+      name: "Ice Cream",
+      price: "$4.00",
+      img: "https://via.placeholder.com/150",
+      description: "Delicious ice cream, various flavors."
+    }, {
+      id: 3,
+      name: "Frozen Pizza",
+      price: "$8.00",
+      img: "https://via.placeholder.com/150",
+      description: "Quick frozen pizza, easy to cook."
+    }, {
+      id: 4,
+      name: "Frozen Berries",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Mixed frozen berries, great for smoothies."
+    }, {
+      id: 5,
+      name: "Frozen Fish",
+      price: "$6.00",
+      img: "https://via.placeholder.com/150",
+      description: "Fresh frozen fish fillets."
+    }, {
+      id: 6,
+      name: "Frozen Dinners",
+      price: "$7.00",
+      img: "https://via.placeholder.com/150",
+      description: "Complete frozen meals, easy to prepare."
+    }, {
+      id: 7,
+      name: "Frozen Potatoes",
+      price: "$3.50",
+      img: "https://via.placeholder.com/150",
+      description: "Frozen potato fries, quick side dish."
+    }, {
+      id: 8,
+      name: "Frozen Fruit Bars",
+      price: "$2.50",
+      img: "https://via.placeholder.com/150",
+      description: "Refreshing frozen fruit bars."
+    }, {
+      id: 9,
+      name: "Frozen Pancakes",
+      price: "$4.50",
+      img: "https://via.placeholder.com/150",
+      description: "Quick and easy frozen pancakes."
+    }, {
+      id: 10,
+      name: "Frozen Waffles",
+      price: "$3.00",
+      img: "https://via.placeholder.com/150",
+      description: "Delicious frozen waffles, great for breakfast."
+    }]
+  };
+  var featuredProducts = [{
+    id: 1,
+    name: "Organic Avocado",
+    price: "$2.00",
+    img: "https://via.placeholder.com/150",
+    description: "Fresh organic avocado, creamy and rich."
+  }, {
+    id: 2,
+    name: "Local Honey",
+    price: "$5.00",
+    img: "https://via.placeholder.com/150",
+    description: "Natural local honey, sweet and pure."
+  }];
+  var productsOnSale = [{
+    id: 1,
+    name: "Tomatoes",
+    price: "$0.70",
+    originalPrice: "$1.20",
+    img: "https://via.placeholder.com/150",
+    description: "Fresh organic tomatoes, now on sale!"
+  }, {
+    id: 2,
+    name: "Bananas",
+    price: "$0.30",
+    originalPrice: "$0.50",
+    img: "https://via.placeholder.com/150",
+    description: "Sweet organic bananas, discounted!"
+  }];
+  var categories = [{
+    id: 1,
+    name: "Fruits",
+    key: "fruits"
+  }, {
+    id: 2,
+    name: "Vegetables",
+    key: "vegetables"
+  }, {
+    id: 3,
+    name: "Dairy",
+    key: "dairy"
+  }, {
+    id: 4,
+    name: "Beverages",
+    key: "beverages"
+  }, {
+    id: 5,
+    name: "Snacks",
+    key: "snacks"
+  }, {
+    id: 6,
+    name: "Bakery",
+    key: "bakery"
+  }, {
+    id: 7,
+    name: "Grains",
+    key: "grains"
+  }, {
+    id: 8,
+    name: "Meat",
+    key: "meat"
+  }, {
+    id: 9,
+    name: "Seafood",
+    key: "seafood"
+  }, {
+    id: 10,
+    name: "Frozen Foods",
+    key: "frozenFoods"
+  }];
+
+  // State for the selected category
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("fruits"),
+    _useState2 = _slicedToArray(_useState, 2),
+    selectedCategory = _useState2[0],
+    setSelectedCategory = _useState2[1];
+
+  // Modal state for showing product details
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    showModal = _useState4[0],
+    setShowModal = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    modalProduct = _useState6[0],
+    setModalProduct = _useState6[1];
+  var handleCategoryClick = function handleCategoryClick(categoryKey) {
+    setSelectedCategory(categoryKey);
+  };
+  var handleProductClick = function handleProductClick(product) {
+    setModalProduct(product);
+    setShowModal(true);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    fluid: true,
+    className: "p-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "hero-section text-center p-5",
+    style: {
+      backgroundColor: "#F1F8E9"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "https://via.placeholder.com/500x250",
+    alt: "Fresh Organic Food",
+    className: "img-fluid"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Fresh & Healthy Organic Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "success"
+  }, "Shop Now"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "intro-section p-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "100% Organic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We offer organic food that is healthy and fresh.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Fresh Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our products are delivered fresh to your door.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Fast Delivery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Get your groceries delivered within 24 hours."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "categories-navbar-section py-3 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "justify-content-center"
+  }, categories.map(function (category) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Item, {
+      key: category.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Link, {
+      className: "category-link ".concat(selectedCategory === category.key ? "active" : ""),
+      onClick: function onClick() {
+        return handleCategoryClick(category.key);
+      }
+    }, category.name));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "products-section py-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "text-center mb-5"
+  }, "Products:", " ", (_categories$find = categories.find(function (cat) {
+    return cat.key === selectedCategory;
+  })) === null || _categories$find === void 0 ? void 0 : _categories$find.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, (_allProducts$selected = allProducts[selectedCategory]) === null || _allProducts$selected === void 0 ? void 0 : _allProducts$selected.map(function (product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      md: 3,
+      key: product.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      className: "mb-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Img, {
+      variant: "top",
+      src: product.img
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      variant: "primary"
+    }, "Add to Cart"))));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "special-products-section text-center py-5",
+    style: {
+      backgroundColor: "#F9F9F9"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "mb-4"
+  }, "Our Special Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "https://via.placeholder.com/500x250",
+    alt: "Special Products",
+    className: "img-fluid"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Delicious and fresh organic food just for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "success"
+  }, "Shop Now"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "testimonials-section py-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "text-center mb-5"
+  }, "What Our Clients Say"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "mb-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, "\"Best quality organic products I have ever purchased!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, null, "- Client 1")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "mb-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, "\"Fast delivery and fresh products every time!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, null, "- Client 2")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "mb-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, "\"Excellent service and product quality!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, null, "- Client 3"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "products-section py-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "text-center mb-5"
+  }, "Featured Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, featuredProducts.map(function (product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      md: 3,
+      key: product.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      className: "mb-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Img, {
+      variant: "top",
+      src: product.img
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      variant: "primary"
+    }, "Add to Cart"))));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "products-section py-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "text-center mb-5"
+  }, "Products on Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, productsOnSale.map(function (product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      md: 3,
+      key: product.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      className: "mb-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Img, {
+      variant: "top",
+      src: product.img
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, "Price: ", product.price, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        textDecoration: "line-through"
+      }
+    }, product.originalPrice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      variant: "primary"
+    }, "Add to Cart"))));
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);
 
@@ -510,47 +1349,47 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 var provinces = [{
-  id: "AB",
+  id: 1,
   name: "Alberta"
 }, {
-  id: "BC",
+  id: 2,
   name: "British Columbia"
 }, {
-  id: "MB",
+  id: 3,
   name: "Manitoba"
 }, {
-  id: "NB",
+  id: 4,
   name: "New Brunswick"
 }, {
-  id: "NL",
+  id: 5,
   name: "Newfoundland and Labrador"
 }, {
-  id: "NS",
+  id: 7,
   name: "Nova Scotia"
 }, {
-  id: "NT",
+  id: 6,
   name: "Northwest Territories"
 }, {
-  id: "NU",
+  id: 8,
   name: "Nunavut"
 }, {
-  id: "ON",
+  id: 9,
   name: "Ontario"
 }, {
-  id: "PE",
+  id: 10,
   name: "Prince Edward Island"
 }, {
-  id: "QC",
+  id: 11,
   name: "Quebec"
 }, {
-  id: "SK",
+  id: 12,
   name: "Saskatchewan"
 }, {
-  id: "YT",
+  id: 13,
   name: "Yukon"
 }];
 var Profile = function Profile() {
-  var _profileData$profileI, _profileData$billingA, _profileData$billingA2, _profileData$billingA3, _profileData$billingA4, _profileData$billingA5, _profileData$shipping, _profileData$shipping2, _profileData$shipping3, _profileData$shipping4, _profileData$shipping5;
+  var _profileData$profileI, _profileData$billingA, _profileData$billingA2, _profileData$billingA3, _profileData$billingA4, _profileData$billingA5, _profileData$billingA6, _profileData$shipping, _profileData$shipping2, _profileData$shipping3, _profileData$shipping4, _profileData$shipping5, _profileData$shipping6;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       username: "",
       email: "",
@@ -561,6 +1400,7 @@ var Profile = function Profile() {
         address: "",
         city: "",
         postcode: "",
+        phone: "",
         province_id: ""
       },
       billingAddress: {
@@ -569,11 +1409,11 @@ var Profile = function Profile() {
         address: "",
         city: "",
         postcode: "",
+        phone: "",
         province_id: ""
       },
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
+      old_password: "",
+      new_password: "",
       profileImage: null,
       profileImageName: null
     }),
@@ -728,7 +1568,7 @@ var Profile = function Profile() {
             formData = new FormData(); // Append billing address
             billingKeys = Object.keys(profileData.billingAddress);
             billingKeys.forEach(function (key) {
-              formData.append("billingAddress[".concat(key, "]"), profileData.billingAddress[key]);
+              formData.append("".concat(key), profileData.billingAddress[key]);
             });
             _context4.prev = 3;
             _context4.next = 6;
@@ -776,7 +1616,7 @@ var Profile = function Profile() {
             formData = new FormData(); // Append shipping address
             shippingKeys = Object.keys(profileData.shippingAddress);
             shippingKeys.forEach(function (key) {
-              formData.append("shippingAddress[".concat(key, "]"), profileData.shippingAddress[key]);
+              formData.append("".concat(key), profileData.shippingAddress[key]);
             });
             _context5.prev = 3;
             _context5.next = 6;
@@ -821,7 +1661,7 @@ var Profile = function Profile() {
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) switch (_context6.prev = _context6.next) {
           case 0:
-            if (!(profileData.newPassword !== profileData.confirmPassword)) {
+            if (!(profileData.new_password !== profileData.new_password_confirmation)) {
               _context6.next = 3;
               break;
             }
@@ -829,10 +1669,11 @@ var Profile = function Profile() {
             return _context6.abrupt("return");
           case 3:
             formData = new FormData();
-            formData.append("currentPassword", profileData.currentPassword);
-            formData.append("newPassword", profileData.newPassword);
-            _context6.prev = 6;
-            _context6.next = 9;
+            formData.append("old_password", profileData.old_password);
+            formData.append("new_password", profileData.new_password);
+            formData.append("new_password_confirmation", profileData.new_password_confirmation);
+            _context6.prev = 7;
+            _context6.next = 10;
             return fetch("http://localhost:8000/api/user/profile/password", {
               method: "POST",
               body: formData,
@@ -840,25 +1681,25 @@ var Profile = function Profile() {
                 Authorization: "Bearer " + localStorage.getItem("token")
               }
             });
-          case 9:
+          case 10:
             response = _context6.sent;
             if (response.ok) {
               alert("Password changed successfully!");
             } else {
               alert("Failed to change password.");
             }
-            _context6.next = 17;
+            _context6.next = 18;
             break;
-          case 13:
-            _context6.prev = 13;
-            _context6.t0 = _context6["catch"](6);
+          case 14:
+            _context6.prev = 14;
+            _context6.t0 = _context6["catch"](7);
             console.error("Error changing password:", _context6.t0);
             alert("Error changing password.");
-          case 17:
+          case 18:
           case "end":
             return _context6.stop();
         }
-      }, _callee6, null, [[6, 13]]);
+      }, _callee6, null, [[7, 14]]);
     }));
     return function handlePasswordChange() {
       return _ref6.apply(this, arguments);
@@ -895,18 +1736,20 @@ var Profile = function Profile() {
                   profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
                   billingAddress: {
                     firstname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstname) || "",
-                    lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastName) || "",
+                    lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastname) || "",
                     address: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.address) || "",
                     city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
                     postcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postcode) || "",
+                    phone: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.phone) || "",
                     province_id: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province_id) || ""
                   },
                   shippingAddress: {
                     firstname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstname) || "",
-                    lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastName) || "",
+                    lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastname) || "",
                     address: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.address) || "",
                     city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
                     postcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postcode) || "",
+                    phone: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.phone) || "",
                     province_id: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province_id) || ""
                   }
                 });
@@ -1000,9 +1843,9 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "firstName",
+    name: "firstname",
     className: "form-control",
-    value: ((_profileData$billingA = profileData.billingAddress) === null || _profileData$billingA === void 0 ? void 0 : _profileData$billingA.firstName) || "",
+    value: ((_profileData$billingA = profileData.billingAddress) === null || _profileData$billingA === void 0 ? void 0 : _profileData$billingA.firstname) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -1010,9 +1853,9 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "lastName",
+    name: "lastname",
     className: "form-control",
-    value: ((_profileData$billingA2 = profileData.billingAddress) === null || _profileData$billingA2 === void 0 ? void 0 : _profileData$billingA2.lastName) || "",
+    value: ((_profileData$billingA2 = profileData.billingAddress) === null || _profileData$billingA2 === void 0 ? void 0 : _profileData$billingA2.lastname) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -1020,9 +1863,9 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Street Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "streetAddress",
+    name: "address",
     className: "form-control",
-    value: ((_profileData$billingA3 = profileData.billingAddress) === null || _profileData$billingA3 === void 0 ? void 0 : _profileData$billingA3.streetAddress) || "",
+    value: ((_profileData$billingA3 = profileData.billingAddress) === null || _profileData$billingA3 === void 0 ? void 0 : _profileData$billingA3.address) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -1040,9 +1883,19 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Postal Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "postalcode",
+    name: "postcode",
     className: "form-control",
-    value: ((_profileData$billingA5 = profileData.billingAddress) === null || _profileData$billingA5 === void 0 ? void 0 : _profileData$billingA5.postalcode) || "",
+    value: ((_profileData$billingA5 = profileData.billingAddress) === null || _profileData$billingA5 === void 0 ? void 0 : _profileData$billingA5.postcode) || "",
+    onChange: function onChange(e) {
+      return handleAddressChange(e, "billingAddress");
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Phone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "phone",
+    className: "form-control",
+    value: ((_profileData$billingA6 = profileData.billingAddress) === null || _profileData$billingA6 === void 0 ? void 0 : _profileData$billingA6.phone) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
     }
@@ -1077,9 +1930,9 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "firstName",
+    name: "firstname",
     className: "form-control",
-    value: ((_profileData$shipping = profileData.shippingAddress) === null || _profileData$shipping === void 0 ? void 0 : _profileData$shipping.firstName) || "",
+    value: ((_profileData$shipping = profileData.shippingAddress) === null || _profileData$shipping === void 0 ? void 0 : _profileData$shipping.firstname) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -1087,9 +1940,9 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "lastName",
+    name: "lastname",
     className: "form-control",
-    value: ((_profileData$shipping2 = profileData.shippingAddress) === null || _profileData$shipping2 === void 0 ? void 0 : _profileData$shipping2.lastName) || "",
+    value: ((_profileData$shipping2 = profileData.shippingAddress) === null || _profileData$shipping2 === void 0 ? void 0 : _profileData$shipping2.lastname) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -1097,9 +1950,9 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Street Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "streetAddress",
+    name: "address",
     className: "form-control",
-    value: ((_profileData$shipping3 = profileData.shippingAddress) === null || _profileData$shipping3 === void 0 ? void 0 : _profileData$shipping3.streetAddress) || "",
+    value: ((_profileData$shipping3 = profileData.shippingAddress) === null || _profileData$shipping3 === void 0 ? void 0 : _profileData$shipping3.address) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -1117,9 +1970,19 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Postal Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "postalcode",
+    name: "postcode",
     className: "form-control",
-    value: ((_profileData$shipping5 = profileData.shippingAddress) === null || _profileData$shipping5 === void 0 ? void 0 : _profileData$shipping5.postalcode) || "",
+    value: ((_profileData$shipping5 = profileData.shippingAddress) === null || _profileData$shipping5 === void 0 ? void 0 : _profileData$shipping5.postcode) || "",
+    onChange: function onChange(e) {
+      return handleAddressChange(e, "shippingAddress");
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Phone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "phone",
+    className: "form-control",
+    value: ((_profileData$shipping6 = profileData.shippingAddress) === null || _profileData$shipping6 === void 0 ? void 0 : _profileData$shipping6.phone) || "",
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
     }
@@ -1154,23 +2017,23 @@ var Profile = function Profile() {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Current Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "password",
-    name: "currentPassword",
+    name: "old_password",
     className: "form-control",
-    value: profileData.currentPassword,
+    value: profileData.old_password,
     onChange: handleInputChange
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "New Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "password",
-    name: "newPassword",
+    name: "new_password",
     className: "form-control",
-    value: profileData.newPassword,
+    value: profileData.new_password,
     onChange: handleInputChange
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Confirm New Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "password",
-    name: "confirmPassword",
+    name: "new_password_confirmation",
     className: "form-control",
     value: profileData.confirmPassword,
     onChange: handleInputChange
@@ -2356,6 +3219,18 @@ module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%
 /******/ 				}
 /******/ 			}
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

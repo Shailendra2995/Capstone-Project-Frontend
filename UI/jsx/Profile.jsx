@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 
 const provinces = [
-  { id: "AB", name: "Alberta" },
-  { id: "BC", name: "British Columbia" },
-  { id: "MB", name: "Manitoba" },
-  { id: "NB", name: "New Brunswick" },
-  { id: "NL", name: "Newfoundland and Labrador" },
-  { id: "NS", name: "Nova Scotia" },
-  { id: "NT", name: "Northwest Territories" },
-  { id: "NU", name: "Nunavut" },
-  { id: "ON", name: "Ontario" },
-  { id: "PE", name: "Prince Edward Island" },
-  { id: "QC", name: "Quebec" },
-  { id: "SK", name: "Saskatchewan" },
-  { id: "YT", name: "Yukon" },
+  { id: 1, name: "Alberta" },
+  { id: 2, name: "British Columbia" },
+  { id: 3, name: "Manitoba" },
+  { id: 4, name: "New Brunswick" },
+  { id: 5, name: "Newfoundland and Labrador" },
+  { id: 7, name: "Nova Scotia" },
+  { id: 6, name: "Northwest Territories" },
+  { id: 8, name: "Nunavut" },
+  { id: 9, name: "Ontario" },
+  { id: 10, name: "Prince Edward Island" },
+  { id: 11, name: "Quebec" },
+  { id: 12, name: "Saskatchewan" },
+  { id: 13, name: "Yukon" },
 ];
 
 const Profile = () => {
@@ -27,6 +27,7 @@ const Profile = () => {
       address: "",
       city: "",
       postcode: "",
+      phone: "",
       province_id: "",
     },
     billingAddress: {
@@ -35,11 +36,11 @@ const Profile = () => {
       address: "",
       city: "",
       postcode: "",
+      phone: "",
       province_id: "",
     },
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+    old_password: "",
+    new_password: "",
     profileImage: null,
     profileImageName: null,
   });
@@ -141,10 +142,7 @@ const Profile = () => {
     // Append billing address
     const billingKeys = Object.keys(profileData.billingAddress);
     billingKeys.forEach((key) => {
-      formData.append(
-        `billingAddress[${key}]`,
-        profileData.billingAddress[key]
-      );
+      formData.append(`${key}`, profileData.billingAddress[key]);
     });
 
     try {
@@ -177,10 +175,7 @@ const Profile = () => {
     // Append shipping address
     const shippingKeys = Object.keys(profileData.shippingAddress);
     shippingKeys.forEach((key) => {
-      formData.append(
-        `shippingAddress[${key}]`,
-        profileData.shippingAddress[key]
-      );
+      formData.append(`${key}`, profileData.shippingAddress[key]);
     });
 
     try {
@@ -208,14 +203,18 @@ const Profile = () => {
   };
 
   const handlePasswordChange = async () => {
-    if (profileData.newPassword !== profileData.confirmPassword) {
+    if (profileData.new_password !== profileData.new_password_confirmation) {
       alert("Passwords do not match!");
       return;
     }
 
     const formData = new FormData();
-    formData.append("currentPassword", profileData.currentPassword);
-    formData.append("newPassword", profileData.newPassword);
+    formData.append("old_password", profileData.old_password);
+    formData.append("new_password", profileData.new_password);
+    formData.append(
+      "new_password_confirmation",
+      profileData.new_password_confirmation
+    );
 
     try {
       const response = await fetch(
@@ -269,18 +268,20 @@ const Profile = () => {
           profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
           billingAddress: {
             firstname: billing_address?.firstname || "",
-            lastname: billing_address?.lastName || "",
+            lastname: billing_address?.lastname || "",
             address: billing_address?.address || "",
             city: billing_address?.city || "",
             postcode: billing_address?.postcode || "",
+            phone: billing_address?.phone || "",
             province_id: billing_address?.province_id || "",
           },
           shippingAddress: {
             firstname: shipping_address?.firstname || "",
-            lastname: shipping_address?.lastName || "",
+            lastname: shipping_address?.lastname || "",
             address: shipping_address?.address || "",
             city: shipping_address?.city || "",
             postcode: shipping_address?.postcode || "",
+            phone: shipping_address?.phone || "",
             province_id: shipping_address?.province_id || "",
           },
         }));
@@ -375,9 +376,9 @@ const Profile = () => {
             <label>First Name</label>
             <input
               type="text"
-              name="firstName"
+              name="firstname"
               className="form-control"
-              value={profileData.billingAddress?.firstName || ""}
+              value={profileData.billingAddress?.firstname || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -385,9 +386,9 @@ const Profile = () => {
             <label>Last Name</label>
             <input
               type="text"
-              name="lastName"
+              name="lastname"
               className="form-control"
-              value={profileData.billingAddress?.lastName || ""}
+              value={profileData.billingAddress?.lastname || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -395,9 +396,9 @@ const Profile = () => {
             <label>Street Address</label>
             <input
               type="text"
-              name="streetAddress"
+              name="address"
               className="form-control"
-              value={profileData.billingAddress?.streetAddress || ""}
+              value={profileData.billingAddress?.address || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -415,9 +416,19 @@ const Profile = () => {
             <label>Postal Code</label>
             <input
               type="text"
-              name="postalcode"
+              name="postcode"
               className="form-control"
-              value={profileData.billingAddress?.postalcode || ""}
+              value={profileData.billingAddress?.postcode || ""}
+              onChange={(e) => handleAddressChange(e, "billingAddress")}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Phone</label>
+            <input
+              type="text"
+              name="phone"
+              className="form-control"
+              value={profileData.billingAddress?.phone || ""}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
@@ -456,9 +467,9 @@ const Profile = () => {
             <label>First Name</label>
             <input
               type="text"
-              name="firstName"
+              name="firstname"
               className="form-control"
-              value={profileData.shippingAddress?.firstName || ""}
+              value={profileData.shippingAddress?.firstname || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -466,9 +477,9 @@ const Profile = () => {
             <label>Last Name</label>
             <input
               type="text"
-              name="lastName"
+              name="lastname"
               className="form-control"
-              value={profileData.shippingAddress?.lastName || ""}
+              value={profileData.shippingAddress?.lastname || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -476,9 +487,9 @@ const Profile = () => {
             <label>Street Address</label>
             <input
               type="text"
-              name="streetAddress"
+              name="address"
               className="form-control"
-              value={profileData.shippingAddress?.streetAddress || ""}
+              value={profileData.shippingAddress?.address || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -496,9 +507,19 @@ const Profile = () => {
             <label>Postal Code</label>
             <input
               type="text"
-              name="postalcode"
+              name="postcode"
               className="form-control"
-              value={profileData.shippingAddress?.postalcode || ""}
+              value={profileData.shippingAddress?.postcode || ""}
+              onChange={(e) => handleAddressChange(e, "shippingAddress")}
+            />
+          </div>
+          <div className="col-md-6 mb-3">
+            <label>Phone</label>
+            <input
+              type="text"
+              name="phone"
+              className="form-control"
+              value={profileData.shippingAddress?.phone || ""}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
@@ -537,9 +558,9 @@ const Profile = () => {
             <label>Current Password</label>
             <input
               type="password"
-              name="currentPassword"
+              name="old_password"
               className="form-control"
-              value={profileData.currentPassword}
+              value={profileData.old_password}
               onChange={handleInputChange}
             />
           </div>
@@ -547,9 +568,9 @@ const Profile = () => {
             <label>New Password</label>
             <input
               type="password"
-              name="newPassword"
+              name="new_password"
               className="form-control"
-              value={profileData.newPassword}
+              value={profileData.new_password}
               onChange={handleInputChange}
             />
           </div>
@@ -557,7 +578,7 @@ const Profile = () => {
             <label>Confirm New Password</label>
             <input
               type="password"
-              name="confirmPassword"
+              name="new_password_confirmation"
               className="form-control"
               value={profileData.confirmPassword}
               onChange={handleInputChange}
