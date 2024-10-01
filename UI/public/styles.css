@@ -199,6 +199,7 @@
   color: #333;
 }
 
+
 /* Button Outline Styles */
 .btn-outline-success {
   color: #00bfa6;
@@ -214,6 +215,7 @@
   color: white;
   /* Change text color on hover */
 }
+
 
 /* Section Titles */
 .section-title {
@@ -324,5 +326,5 @@ hr {
 
 button:hover,
 .profile-img:hover {
-  animation: pulse 0.2s ease-in-out;
+  animation: pulse 0.3s ease-in-out ;
 }

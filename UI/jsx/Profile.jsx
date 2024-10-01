@@ -1,54 +1,66 @@
 import React, { useState, useEffect } from "react";
 
+const provinces = [
+  { id: "AB", name: "Alberta" },
+  { id: "BC", name: "British Columbia" },
+  { id: "MB", name: "Manitoba" },
+  { id: "NB", name: "New Brunswick" },
+  { id: "NL", name: "Newfoundland and Labrador" },
+  { id: "NS", name: "Nova Scotia" },
+  { id: "NT", name: "Northwest Territories" },
+  { id: "NU", name: "Nunavut" },
+  { id: "ON", name: "Ontario" },
+  { id: "PE", name: "Prince Edward Island" },
+  { id: "QC", name: "Quebec" },
+  { id: "SK", name: "Saskatchewan" },
+  { id: "YT", name: "Yukon" },
+];
+
 const Profile = () => {
   const [profileData, setProfileData] = useState({
     username: "",
-    firstName: "",
-    lastName: "",
     email: "",
     phone: "",
-    streetAddress: "",
-    state: "",
-    zipCode: "",
-    province: "",
+    shippingAddress: {
+      firstname: "",
+      lastname: "",
+      address: "",
+      city: "",
+      postcode: "",
+      province_id: "",
+    },
+    billingAddress: {
+      firstname: "",
+      lastname: "",
+      address: "",
+      city: "",
+      postcode: "",
+      province_id: "",
+    },
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
-    shippingAddress: {
-      firstName: "",
-      lastName: "",
-      streetAddress: "",
-      city: "",
-      postalcode: "",
-      province: "",
-    },
-    billingAddress: {
-      firstName: "",
-      lastName: "",
-      streetAddress: "",
-      city: "",
-      postalcode: "",
-      province: "",
-    },
     profileImage: null,
     profileImageName: null,
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    setProfileData({ ...profileData, [name]: value });
+    setProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleAddressChange = (e, addressType) => {
     const { name, value } = e.target;
-    setProfileData({
-      ...profileData,
+    setProfileData((prevState) => ({
+      ...prevState,
       [addressType]: {
-        ...profileData[addressType],
+        ...prevState[addressType],
         [name]: value,
       },
-    });
+    }));
   };
 
   const handleProfileImageChange = async (e) => {
@@ -60,7 +72,7 @@ const Profile = () => {
     });
   };
 
-  const handleSaveImage = async (e) => {
+  const handleSaveImage = async () => {
     const formData = new FormData();
     const token = localStorage.getItem("token");
     formData.append("file", profileData.profileImageName);
@@ -78,7 +90,6 @@ const Profile = () => {
       if (data.status === 0) {
         const path = "http://localhost:8000/storage/" + data.data.path;
         setProfileData({ ...profileData, profileImage: path });
-
         alert("Profile changes saved!");
       } else {
         alert("Failed to save changes.");
@@ -91,40 +102,32 @@ const Profile = () => {
 
   const handleSaveChanges = async () => {
     const formData = new FormData();
+    formData.append("username", profileData.username);
+    formData.append("email", profileData.email);
+    formData.append("phone", profileData.phone);
 
-    // Append non-nested profile fields
-    for (const key in profileData) {
-      if (key !== "profileImage" && typeof profileData[key] !== "object") {
-        formData.append(key, profileData[key]);
-      }
-    }
-
-    // Append nested address fields
-    const appendAddressFields = (addressType) => {
-      const address = profileData[addressType];
-      for (const key in address) {
-        formData.append(`${addressType}[${key}]`, address[key]);
-      }
-    };
-
-    appendAddressFields("shippingAddress");
-    appendAddressFields("billingAddress");
-
-    // Append profile image
-    if (profileData.profileImage) {
-      formData.append("profileImage", profileData.profileImage);
+    // Append profile image if it exists
+    if (profileData.profileImageName) {
+      formData.append("profileImage", profileData.profileImageName);
     }
 
     try {
-      const response = await fetch("/api/profile/update", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "http://localhost:8000/api/user/profile/basic",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
 
-      if (response.ok) {
+      const data = await response.json();
+      if (data.status === 0) {
         alert("Profile changes saved!");
       } else {
-        alert("Failed to save changes.");
+        alert("Failed to save changes: " + data.msg);
       }
     } catch (error) {
       console.error("Error saving profile:", error);
@@ -132,31 +135,75 @@ const Profile = () => {
     }
   };
 
-  const handleSaveAddress = async (addressType) => {
+  const handleSaveBillingAddress = async () => {
     const formData = new FormData();
-    const address = profileData[addressType];
-    for (const key in address) {
-      formData.append(key, address[key]);
-    }
+
+    // Append billing address
+    const billingKeys = Object.keys(profileData.billingAddress);
+    billingKeys.forEach((key) => {
+      formData.append(
+        `billingAddress[${key}]`,
+        profileData.billingAddress[key]
+      );
+    });
 
     try {
-      const response = await fetch(`/api/profile/${addressType}-update`, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "http://localhost:8000/api/user/profile/billing-address",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
 
-      if (response.ok) {
-        alert(
-          `${
-            addressType.charAt(0).toUpperCase() + addressType.slice(1)
-          } Address saved!`
-        );
+      const data = await response.json();
+      if (data.status === 0) {
+        alert("Billing address saved successfully!");
       } else {
-        alert(`Failed to save ${addressType} address.`);
+        alert("Failed to save billing address: " + data.msg);
       }
     } catch (error) {
-      console.error(`Error saving ${addressType} address:`, error);
-      alert(`Error saving ${addressType} address.`);
+      console.error("Error saving billing address:", error);
+      alert("Error saving billing address.");
+    }
+  };
+
+  const handleSaveShippingAddress = async () => {
+    const formData = new FormData();
+
+    // Append shipping address
+    const shippingKeys = Object.keys(profileData.shippingAddress);
+    shippingKeys.forEach((key) => {
+      formData.append(
+        `shippingAddress[${key}]`,
+        profileData.shippingAddress[key]
+      );
+    });
+
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/user/profile/shipping-address",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+
+      const data = await response.json();
+      if (data.status === 0) {
+        alert("Shipping address saved successfully!");
+      } else {
+        alert("Failed to save shipping address: " + data.msg);
+      }
+    } catch (error) {
+      console.error("Error saving shipping address:", error);
+      alert("Error saving shipping address.");
     }
   };
 
@@ -171,10 +218,16 @@ const Profile = () => {
     formData.append("newPassword", profileData.newPassword);
 
     try {
-      const response = await fetch("/api/profile/change-password", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "http://localhost:8000/api/user/profile/password",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
 
       if (response.ok) {
         alert("Password changed successfully!");
@@ -215,20 +268,20 @@ const Profile = () => {
           phone,
           profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
           billingAddress: {
-            firstName: billing_address?.firstName || "",
-            lastName: billing_address?.lastName || "",
-            streetAddress: billing_address?.streetAddress || "",
+            firstname: billing_address?.firstname || "",
+            lastname: billing_address?.lastName || "",
+            address: billing_address?.address || "",
             city: billing_address?.city || "",
-            postalcode: billing_address?.postalcode || "",
-            province: billing_address?.province || "",
+            postcode: billing_address?.postcode || "",
+            province_id: billing_address?.province_id || "",
           },
           shippingAddress: {
-            firstName: shipping_address?.firstName || "",
-            lastName: shipping_address?.lastName || "",
-            streetAddress: shipping_address?.streetAddress || "",
+            firstname: shipping_address?.firstname || "",
+            lastname: shipping_address?.lastName || "",
+            address: shipping_address?.address || "",
             city: shipping_address?.city || "",
-            postalcode: shipping_address?.postalcode || "",
-            province: shipping_address?.province || "",
+            postcode: shipping_address?.postcode || "",
+            province_id: shipping_address?.province_id || "",
           },
         }));
       } else {
@@ -368,20 +421,26 @@ const Profile = () => {
               onChange={(e) => handleAddressChange(e, "billingAddress")}
             />
           </div>
-          <div className="col-md-6 mb-3">
+          <div className="form-group">
             <label>Province</label>
-            <input
-              type="text"
-              name="province"
-              className="form-control"
-              value={profileData.billingAddress?.province || ""}
+            <select
+              name="province_id"
+              value={profileData.billingAddress.province_id}
               onChange={(e) => handleAddressChange(e, "billingAddress")}
-            />
+              className="form-control"
+            >
+              <option value="">Select Province</option>
+              {provinces.map((province) => (
+                <option key={province.id} value={province.id}>
+                  {province.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <button
           className="btn btn-primary mt-3"
-          onClick={() => handleSaveAddress("billingAddress")}
+          onClick={() => handleSaveBillingAddress("billingAddress")}
         >
           Save Billing Address
         </button>
@@ -443,20 +502,26 @@ const Profile = () => {
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
             />
           </div>
-          <div className="col-md-6 mb-3">
+          <div className="form-group">
             <label>Province</label>
-            <input
-              type="text"
-              name="province"
-              className="form-control"
-              value={profileData.shippingAddress?.province || ""}
+            <select
+              name="province_id"
+              value={profileData.shippingAddress.province_id}
               onChange={(e) => handleAddressChange(e, "shippingAddress")}
-            />
+              className="form-control"
+            >
+              <option value="">Select Province</option>
+              {provinces.map((province) => (
+                <option key={province.id} value={province.id}>
+                  {province.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <button
           className="btn btn-primary mt-3"
-          onClick={() => handleSaveAddress("shippingAddress")}
+          onClick={() => handleSaveShippingAddress("shippingAddress")}
         >
           Save Shipping Address
         </button>

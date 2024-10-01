@@ -509,37 +509,71 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
+var provinces = [{
+  id: "AB",
+  name: "Alberta"
+}, {
+  id: "BC",
+  name: "British Columbia"
+}, {
+  id: "MB",
+  name: "Manitoba"
+}, {
+  id: "NB",
+  name: "New Brunswick"
+}, {
+  id: "NL",
+  name: "Newfoundland and Labrador"
+}, {
+  id: "NS",
+  name: "Nova Scotia"
+}, {
+  id: "NT",
+  name: "Northwest Territories"
+}, {
+  id: "NU",
+  name: "Nunavut"
+}, {
+  id: "ON",
+  name: "Ontario"
+}, {
+  id: "PE",
+  name: "Prince Edward Island"
+}, {
+  id: "QC",
+  name: "Quebec"
+}, {
+  id: "SK",
+  name: "Saskatchewan"
+}, {
+  id: "YT",
+  name: "Yukon"
+}];
 var Profile = function Profile() {
-  var _profileData$profileI, _profileData$billingA, _profileData$billingA2, _profileData$billingA3, _profileData$billingA4, _profileData$billingA5, _profileData$billingA6, _profileData$shipping, _profileData$shipping2, _profileData$shipping3, _profileData$shipping4, _profileData$shipping5, _profileData$shipping6;
+  var _profileData$profileI, _profileData$billingA, _profileData$billingA2, _profileData$billingA3, _profileData$billingA4, _profileData$billingA5, _profileData$shipping, _profileData$shipping2, _profileData$shipping3, _profileData$shipping4, _profileData$shipping5;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       username: "",
-      firstName: "",
-      lastName: "",
       email: "",
       phone: "",
-      streetAddress: "",
-      state: "",
-      zipCode: "",
-      province: "",
+      shippingAddress: {
+        firstname: "",
+        lastname: "",
+        address: "",
+        city: "",
+        postcode: "",
+        province_id: ""
+      },
+      billingAddress: {
+        firstname: "",
+        lastname: "",
+        address: "",
+        city: "",
+        postcode: "",
+        province_id: ""
+      },
       currentPassword: "",
       newPassword: "",
       confirmPassword: "",
-      shippingAddress: {
-        firstName: "",
-        lastName: "",
-        streetAddress: "",
-        city: "",
-        postalcode: "",
-        province: ""
-      },
-      billingAddress: {
-        firstName: "",
-        lastName: "",
-        streetAddress: "",
-        city: "",
-        postalcode: "",
-        province: ""
-      },
       profileImage: null,
       profileImageName: null
     }),
@@ -550,13 +584,17 @@ var Profile = function Profile() {
     var _e$target = e.target,
       name = _e$target.name,
       value = _e$target.value;
-    setProfileData(_objectSpread(_objectSpread({}, profileData), {}, _defineProperty({}, name, value)));
+    setProfileData(function (prevState) {
+      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
+    });
   };
   var handleAddressChange = function handleAddressChange(e, addressType) {
     var _e$target2 = e.target,
       name = _e$target2.name,
       value = _e$target2.value;
-    setProfileData(_objectSpread(_objectSpread({}, profileData), {}, _defineProperty({}, addressType, _objectSpread(_objectSpread({}, profileData[addressType]), {}, _defineProperty({}, name, value)))));
+    setProfileData(function (prevState) {
+      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, addressType, _objectSpread(_objectSpread({}, prevState[addressType]), {}, _defineProperty({}, name, value))));
+    });
   };
   var handleProfileImageChange = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
@@ -580,7 +618,7 @@ var Profile = function Profile() {
     };
   }();
   var handleSaveImage = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var formData, token, response, data, path;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -625,163 +663,216 @@ var Profile = function Profile() {
         }
       }, _callee2, null, [[3, 13]]);
     }));
-    return function handleSaveImage(_x2) {
+    return function handleSaveImage() {
       return _ref2.apply(this, arguments);
     };
   }();
   var handleSaveChanges = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var formData, key, appendAddressFields, response;
+      var formData, response, data;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            formData = new FormData(); // Append non-nested profile fields
-            for (key in profileData) {
-              if (key !== "profileImage" && _typeof(profileData[key]) !== "object") {
-                formData.append(key, profileData[key]);
-              }
-            }
+            formData = new FormData();
+            formData.append("username", profileData.username);
+            formData.append("email", profileData.email);
+            formData.append("phone", profileData.phone);
 
-            // Append nested address fields
-            appendAddressFields = function appendAddressFields(addressType) {
-              var address = profileData[addressType];
-              for (var _key in address) {
-                formData.append("".concat(addressType, "[").concat(_key, "]"), address[_key]);
-              }
-            };
-            appendAddressFields("shippingAddress");
-            appendAddressFields("billingAddress");
-
-            // Append profile image
-            if (profileData.profileImage) {
-              formData.append("profileImage", profileData.profileImage);
+            // Append profile image if it exists
+            if (profileData.profileImageName) {
+              formData.append("profileImage", profileData.profileImageName);
             }
-            _context3.prev = 6;
-            _context3.next = 9;
-            return fetch("/api/profile/update", {
+            _context3.prev = 5;
+            _context3.next = 8;
+            return fetch("http://localhost:8000/api/user/profile/basic", {
               method: "POST",
-              body: formData
+              body: formData,
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+              }
             });
-          case 9:
+          case 8:
             response = _context3.sent;
-            if (response.ok) {
+            _context3.next = 11;
+            return response.json();
+          case 11:
+            data = _context3.sent;
+            if (data.status === 0) {
               alert("Profile changes saved!");
             } else {
-              alert("Failed to save changes.");
+              alert("Failed to save changes: " + data.msg);
             }
-            _context3.next = 17;
+            _context3.next = 19;
             break;
-          case 13:
-            _context3.prev = 13;
-            _context3.t0 = _context3["catch"](6);
+          case 15:
+            _context3.prev = 15;
+            _context3.t0 = _context3["catch"](5);
             console.error("Error saving profile:", _context3.t0);
             alert("Error saving profile.");
-          case 17:
+          case 19:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[6, 13]]);
+      }, _callee3, null, [[5, 15]]);
     }));
     return function handleSaveChanges() {
       return _ref3.apply(this, arguments);
     };
   }();
-  var handleSaveAddress = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(addressType) {
-      var formData, address, key, response;
+  var handleSaveBillingAddress = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var formData, billingKeys, response, data;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            formData = new FormData();
-            address = profileData[addressType];
-            for (key in address) {
-              formData.append(key, address[key]);
-            }
+            formData = new FormData(); // Append billing address
+            billingKeys = Object.keys(profileData.billingAddress);
+            billingKeys.forEach(function (key) {
+              formData.append("billingAddress[".concat(key, "]"), profileData.billingAddress[key]);
+            });
             _context4.prev = 3;
             _context4.next = 6;
-            return fetch("/api/profile/".concat(addressType, "-update"), {
+            return fetch("http://localhost:8000/api/user/profile/billing-address", {
               method: "POST",
-              body: formData
+              body: formData,
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+              }
             });
           case 6:
             response = _context4.sent;
-            if (response.ok) {
-              alert("".concat(addressType.charAt(0).toUpperCase() + addressType.slice(1), " Address saved!"));
+            _context4.next = 9;
+            return response.json();
+          case 9:
+            data = _context4.sent;
+            if (data.status === 0) {
+              alert("Billing address saved successfully!");
             } else {
-              alert("Failed to save ".concat(addressType, " address."));
+              alert("Failed to save billing address: " + data.msg);
             }
-            _context4.next = 14;
+            _context4.next = 17;
             break;
-          case 10:
-            _context4.prev = 10;
+          case 13:
+            _context4.prev = 13;
             _context4.t0 = _context4["catch"](3);
-            console.error("Error saving ".concat(addressType, " address:"), _context4.t0);
-            alert("Error saving ".concat(addressType, " address."));
-          case 14:
+            console.error("Error saving billing address:", _context4.t0);
+            alert("Error saving billing address.");
+          case 17:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[3, 10]]);
+      }, _callee4, null, [[3, 13]]);
     }));
-    return function handleSaveAddress(_x3) {
+    return function handleSaveBillingAddress() {
       return _ref4.apply(this, arguments);
     };
   }();
-  var handlePasswordChange = /*#__PURE__*/function () {
+  var handleSaveShippingAddress = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-      var formData, response;
+      var formData, shippingKeys, response, data;
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) switch (_context5.prev = _context5.next) {
           case 0:
-            if (!(profileData.newPassword !== profileData.confirmPassword)) {
-              _context5.next = 3;
-              break;
-            }
-            alert("Passwords do not match!");
-            return _context5.abrupt("return");
-          case 3:
-            formData = new FormData();
-            formData.append("currentPassword", profileData.currentPassword);
-            formData.append("newPassword", profileData.newPassword);
-            _context5.prev = 6;
-            _context5.next = 9;
-            return fetch("/api/profile/change-password", {
-              method: "POST",
-              body: formData
+            formData = new FormData(); // Append shipping address
+            shippingKeys = Object.keys(profileData.shippingAddress);
+            shippingKeys.forEach(function (key) {
+              formData.append("shippingAddress[".concat(key, "]"), profileData.shippingAddress[key]);
             });
-          case 9:
+            _context5.prev = 3;
+            _context5.next = 6;
+            return fetch("http://localhost:8000/api/user/profile/shipping-address", {
+              method: "POST",
+              body: formData,
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+              }
+            });
+          case 6:
             response = _context5.sent;
-            if (response.ok) {
-              alert("Password changed successfully!");
+            _context5.next = 9;
+            return response.json();
+          case 9:
+            data = _context5.sent;
+            if (data.status === 0) {
+              alert("Shipping address saved successfully!");
             } else {
-              alert("Failed to change password.");
+              alert("Failed to save shipping address: " + data.msg);
             }
             _context5.next = 17;
             break;
           case 13:
             _context5.prev = 13;
-            _context5.t0 = _context5["catch"](6);
-            console.error("Error changing password:", _context5.t0);
-            alert("Error changing password.");
+            _context5.t0 = _context5["catch"](3);
+            console.error("Error saving shipping address:", _context5.t0);
+            alert("Error saving shipping address.");
           case 17:
           case "end":
             return _context5.stop();
         }
-      }, _callee5, null, [[6, 13]]);
+      }, _callee5, null, [[3, 13]]);
     }));
-    return function handlePasswordChange() {
+    return function handleSaveShippingAddress() {
       return _ref5.apply(this, arguments);
     };
   }();
-  var loadData = /*#__PURE__*/function () {
+  var handlePasswordChange = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-      var token, response, data, _data$data, username, email, phone, photoUrl, billing_address, shipping_address;
+      var formData, response;
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) switch (_context6.prev = _context6.next) {
           case 0:
+            if (!(profileData.newPassword !== profileData.confirmPassword)) {
+              _context6.next = 3;
+              break;
+            }
+            alert("Passwords do not match!");
+            return _context6.abrupt("return");
+          case 3:
+            formData = new FormData();
+            formData.append("currentPassword", profileData.currentPassword);
+            formData.append("newPassword", profileData.newPassword);
+            _context6.prev = 6;
+            _context6.next = 9;
+            return fetch("http://localhost:8000/api/user/profile/password", {
+              method: "POST",
+              body: formData,
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+              }
+            });
+          case 9:
+            response = _context6.sent;
+            if (response.ok) {
+              alert("Password changed successfully!");
+            } else {
+              alert("Failed to change password.");
+            }
+            _context6.next = 17;
+            break;
+          case 13:
+            _context6.prev = 13;
+            _context6.t0 = _context6["catch"](6);
+            console.error("Error changing password:", _context6.t0);
+            alert("Error changing password.");
+          case 17:
+          case "end":
+            return _context6.stop();
+        }
+      }, _callee6, null, [[6, 13]]);
+    }));
+    return function handlePasswordChange() {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+  var loadData = /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+      var token, response, data, _data$data, username, email, phone, photoUrl, billing_address, shipping_address;
+      return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+        while (1) switch (_context7.prev = _context7.next) {
+          case 0:
             token = localStorage.getItem("token");
-            _context6.prev = 1;
-            _context6.next = 4;
+            _context7.prev = 1;
+            _context7.next = 4;
             return fetch("http://localhost:8000/api/user/profile", {
               method: "GET",
               headers: {
@@ -789,11 +880,11 @@ var Profile = function Profile() {
               }
             });
           case 4:
-            response = _context6.sent;
-            _context6.next = 7;
+            response = _context7.sent;
+            _context7.next = 7;
             return response.json();
           case 7:
-            data = _context6.sent;
+            data = _context7.sent;
             if (data.status === 0) {
               _data$data = data.data, username = _data$data.username, email = _data$data.email, phone = _data$data.phone, photoUrl = _data$data.photoUrl, billing_address = _data$data.billing_address, shipping_address = _data$data.shipping_address;
               setProfileData(function (prevState) {
@@ -803,41 +894,41 @@ var Profile = function Profile() {
                   phone: phone,
                   profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
                   billingAddress: {
-                    firstName: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstName) || "",
-                    lastName: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastName) || "",
-                    streetAddress: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.streetAddress) || "",
+                    firstname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstname) || "",
+                    lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastName) || "",
+                    address: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.address) || "",
                     city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
-                    postalcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postalcode) || "",
-                    province: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province) || ""
+                    postcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postcode) || "",
+                    province_id: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province_id) || ""
                   },
                   shippingAddress: {
-                    firstName: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstName) || "",
-                    lastName: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastName) || "",
-                    streetAddress: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.streetAddress) || "",
+                    firstname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstname) || "",
+                    lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastName) || "",
+                    address: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.address) || "",
                     city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
-                    postalcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postalcode) || "",
-                    province: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province) || ""
+                    postcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postcode) || "",
+                    province_id: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province_id) || ""
                   }
                 });
               });
             } else {
               alert("Failed to load data: " + data.msg);
             }
-            _context6.next = 15;
+            _context7.next = 15;
             break;
           case 11:
-            _context6.prev = 11;
-            _context6.t0 = _context6["catch"](1);
-            console.error("Error loading data:", _context6.t0);
+            _context7.prev = 11;
+            _context7.t0 = _context7["catch"](1);
+            console.error("Error loading data:", _context7.t0);
             alert("Error loading data.");
           case 15:
           case "end":
-            return _context6.stop();
+            return _context7.stop();
         }
-      }, _callee6, null, [[1, 11]]);
+      }, _callee7, null, [[1, 11]]);
     }));
     return function loadData() {
-      return _ref6.apply(this, arguments);
+      return _ref7.apply(this, arguments);
     };
   }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -956,19 +1047,25 @@ var Profile = function Profile() {
       return handleAddressChange(e, "billingAddress");
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "col-md-6 mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Province"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "province",
-    className: "form-control",
-    value: ((_profileData$billingA6 = profileData.billingAddress) === null || _profileData$billingA6 === void 0 ? void 0 : _profileData$billingA6.province) || "",
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Province"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "province_id",
+    value: profileData.billingAddress.province_id,
     onChange: function onChange(e) {
       return handleAddressChange(e, "billingAddress");
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    },
+    className: "form-control"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Select Province"), provinces.map(function (province) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      key: province.id,
+      value: province.id
+    }, province.name);
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btn btn-primary mt-3",
     onClick: function onClick() {
-      return handleSaveAddress("billingAddress");
+      return handleSaveBillingAddress("billingAddress");
     }
   }, "Save Billing Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "mb-5 section"
@@ -1027,19 +1124,25 @@ var Profile = function Profile() {
       return handleAddressChange(e, "shippingAddress");
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "col-md-6 mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Province"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "province",
-    className: "form-control",
-    value: ((_profileData$shipping6 = profileData.shippingAddress) === null || _profileData$shipping6 === void 0 ? void 0 : _profileData$shipping6.province) || "",
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Province"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "province_id",
+    value: profileData.shippingAddress.province_id,
     onChange: function onChange(e) {
       return handleAddressChange(e, "shippingAddress");
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    },
+    className: "form-control"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Select Province"), provinces.map(function (province) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      key: province.id,
+      value: province.id
+    }, province.name);
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btn btn-primary mt-3",
     onClick: function onClick() {
-      return handleSaveAddress("shippingAddress");
+      return handleSaveShippingAddress("shippingAddress");
     }
   }, "Save Shipping Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "mb-5 section"
@@ -1759,6 +1862,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   color: #333;
 }
 
+
 /* Button Outline Styles */
 .btn-outline-success {
   color: #00bfa6;
@@ -1774,6 +1878,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   color: white;
   /* Change text color on hover */
 }
+
 
 /* Section Titles */
 .section-title {
@@ -1884,9 +1989,8 @@ hr {
 
 button:hover,
 .profile-img:hover {
-  animation: pulse 0.2s ease-in-out;
-}
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA,6BAA6B;AAC7B;;;EAGE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;AAC3B;;AAEA,gBAAgB;AAChB;;;EAGE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;;;EAGE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA,iBAAiB;AACjB;;;EAGE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA,YAAY;AACZ;;;EAGE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA,UAAU;AACV;;;EAGE,gBAAgB;AAClB;;AAEA;;;EAGE,cAAc;EACd,qBAAqB;AACvB;;AAEA;;;;EAIE,0BAA0B;AAC5B;;AAEA,+BAA+B;AAC/B;EACE,cAAc;EACd,8BAA8B;EAC9B,eAAe;EACf,oBAAoB;EACpB,gCAAgC;AAClC;;AAEA;EACE,cAAc;EACd,gCAAgC;EAChC,eAAe;EACf,oBAAoB;EACpB,gCAAgC;AAClC;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,eAAe;EACf,uBAAuB;EACvB,yCAAyC;AAC3C;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,2BAA2B;AAC7B;;AAEA;;EAEE,cAAc;EACd,iBAAiB;AACnB;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;AACjB;;AAEA,4BAA4B;AAC5B;EACE,iBAAiB;EACjB,cAAc;EACd,aAAa;AACf;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,kBAAkB;EAClB,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,iBAAiB;EACjB,0CAA0C;EAC1C,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA,gCAAgC;AAChC;EACE,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,kBAAkB;AACpB;;AAEA,0CAA0C;AAC1C;EACE,qBAAqB;EACrB,iBAAiB;EACjB,yBAAyB;EACzB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,sCAAsC;AACxC;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,6DAA6D;AAC7D;EACE,iBAAiB;EACjB,eAAe;EACf,WAAW;AACb;;AAEA,0BAA0B;AAC1B;EACE,cAAc;EACd,qBAAqB;EACrB,gBAAgB;EAChB,oDAAoD;AACtD;;AAEA,wBAAwB;AACxB;EACE,yBAAyB;EACzB,qCAAqC;EACrC,YAAY;EACZ,+BAA+B;AACjC;;AAEA,mBAAmB;AACnB;EACE,iBAAiB;EACjB,gBAAgB;EAChB,mBAAmB;EACnB,WAAW;AACb;;AAEA,iBAAiB;AACjB;EACE,gBAAgB;EAChB,eAAe;EACf,WAAW;EACX,kBAAkB;EAClB,cAAc;AAChB;;AAEA,4BAA4B;AAC5B;;EAEE,YAAY;EACZ,eAAe;EACf,uBAAuB;EACvB,yBAAyB;EACzB,eAAe;EACf,gCAAgC;AAClC;;AAEA;;EAEE,qBAAqB;EACrB,4CAA4C;AAC9C;;AAEA,0BAA0B;AAC1B;EACE,iBAAiB;EACjB,kBAAkB;EAClB,kBAAkB;EAClB,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,sCAAsC;EACtC,yCAAyC;AAC3C;;AAEA;EACE,yBAAyB;EACzB,0CAA0C;AAC5C;;AAEA,mBAAmB;AACnB;EACE,aAAa;EACb,iBAAiB;EACjB,mBAAmB;EACnB,0CAA0C;EAC1C,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,sBAAsB;AACxB;;AAEA,sBAAsB;AACtB;EACE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;EACrB;;EAEA;;;IAGE,WAAW;IACX,gBAAgB;EAClB;;EAEA;;IAEE,WAAW;IACX,mBAAmB;EACrB;;EAEA;;IAEE,WAAW;EACb;AACF;;AAEA,oCAAoC;AACpC;EACE;IACE,mBAAmB;EACrB;;EAEA;IACE,sBAAsB;EACxB;;EAEA;IACE,mBAAmB;EACrB;AACF;;AAEA;;EAEE,iCAAiC;AACnC","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.forgot-password-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a,\r\n.reset-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1.5rem;\r\n  /* Consistent padding */\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  font-weight: 500;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.2s ease-in-out;\r\n}\r\n"],"sourceRoot":""}]);
+  animation: pulse 0.3s ease-in-out ;
+}`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.forgot-password-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a,\r\n.reset-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1.5rem;\r\n  /* Consistent padding */\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  font-weight: 500;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out ;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
