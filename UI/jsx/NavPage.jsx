@@ -1,5 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import {
+  FaHome,
+  FaProductHunt,
+  FaShoppingCart,
+  FaUserAlt,
+  FaSignInAlt,
+  FaUserPlus,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 const NavPage = ({ title }) => {
   const location = useLocation();
@@ -7,8 +16,13 @@ const NavPage = ({ title }) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
-      <Link className="navbar-brand" to="/">
-        {title}
+      <Link className="navbar-brand d-flex align-items-center" to="/">
+        {/* Adding logo */}
+        <img
+          src="./logo.svg"
+          alt="PrimeMart Logo"
+          className="img-fluid logo-img me-2"
+        />
       </Link>
 
       {/* Navbar Toggler for mobile view */}
@@ -35,7 +49,7 @@ const NavPage = ({ title }) => {
               to="/"
               aria-current={location.pathname === "/" ? "page" : undefined}
             >
-              Home
+              <FaHome /> Home
             </Link>
           </li>
           <li className="nav-item">
@@ -48,7 +62,7 @@ const NavPage = ({ title }) => {
                 location.pathname === "/products" ? "page" : undefined
               }
             >
-              Products
+              <FaProductHunt /> Products
             </Link>
           </li>
           <li className="nav-item">
@@ -59,7 +73,7 @@ const NavPage = ({ title }) => {
               to="/cart"
               aria-current={location.pathname === "/cart" ? "page" : undefined}
             >
-              Cart
+              <FaShoppingCart /> Cart
             </Link>
           </li>
 
@@ -76,7 +90,7 @@ const NavPage = ({ title }) => {
                     location.pathname === "/register" ? "page" : undefined
                   }
                 >
-                  Register
+                  <FaUserPlus /> Register
                 </Link>
               </li>
               <li className="nav-item">
@@ -89,7 +103,7 @@ const NavPage = ({ title }) => {
                     location.pathname === "/login" ? "page" : undefined
                   }
                 >
-                  Login
+                  <FaSignInAlt /> Login
                 </Link>
               </li>
             </>
@@ -105,7 +119,7 @@ const NavPage = ({ title }) => {
                     location.pathname === "/logout" ? "page" : undefined
                   }
                 >
-                  Logout
+                  <FaSignOutAlt /> Logout
                 </Link>
               </li>
               <li className="nav-item">
@@ -118,7 +132,7 @@ const NavPage = ({ title }) => {
                     location.pathname === "/profile" ? "page" : undefined
                   }
                 >
-                  Profile
+                  <FaUserAlt /> Profile
                 </Link>
               </li>
             </>

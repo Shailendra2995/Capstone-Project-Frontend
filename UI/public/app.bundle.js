@@ -841,43 +841,53 @@ var HomePage = function HomePage() {
   var categories = [{
     id: 1,
     name: "Fruits",
-    key: "fruits"
+    key: "fruits",
+    icon: "fa-apple-whole"
   }, {
     id: 2,
     name: "Vegetables",
-    key: "vegetables"
+    key: "vegetables",
+    icon: "fa-carrot"
   }, {
     id: 3,
     name: "Dairy",
-    key: "dairy"
+    key: "dairy",
+    icon: "fa-cheese"
   }, {
     id: 4,
     name: "Beverages",
-    key: "beverages"
+    key: "beverages",
+    icon: "fa-coffee"
   }, {
     id: 5,
     name: "Snacks",
-    key: "snacks"
+    key: "snacks",
+    icon: "fa-cookie"
   }, {
     id: 6,
     name: "Bakery",
-    key: "bakery"
+    key: "bakery",
+    icon: "fa-bread-slice"
   }, {
     id: 7,
     name: "Grains",
-    key: "grains"
+    key: "grains",
+    icon: "fa-seedling"
   }, {
     id: 8,
     name: "Meat",
-    key: "meat"
+    key: "meat",
+    icon: "fa-drumstick-bite"
   }, {
     id: 9,
     name: "Seafood",
-    key: "seafood"
+    key: "seafood",
+    icon: "fa-fish"
   }, {
     id: 10,
     name: "Frozen Foods",
-    key: "frozenFoods"
+    key: "frozenFoods",
+    icon: "fa-ice-cream"
   }];
 
   // State for the selected category
@@ -953,7 +963,10 @@ var HomePage = function HomePage() {
       onClick: function onClick() {
         return handleCategoryClick(category.key);
       }
-    }, category.name));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+      className: "fa ".concat(category.icon, " me-2"),
+      "aria-hidden": "true"
+    }), category.name));
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
@@ -995,15 +1008,36 @@ var HomePage = function HomePage() {
     md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     className: "mb-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Best quality organic products I have ever purchased!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 1")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "fa fa-star mb-2",
+    "aria-hidden": "true",
+    style: {
+      fontSize: "2rem",
+      color: "#007bff"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Best quality organic products I have ever purchased!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 1")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     className: "mb-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Fast delivery and fresh products every time!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 2")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "fa fa-thumbs-up mb-2",
+    "aria-hidden": "true",
+    style: {
+      fontSize: "2rem",
+      color: "#007bff"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Fast delivery and fresh products every time!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 2")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     className: "mb-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Excellent service and product quality!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 3"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "fa fa-smile mb-2",
+    "aria-hidden": "true",
+    style: {
+      fontSize: "2rem",
+      color: "#007bff"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Excellent service and product quality!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 3"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "text-center mb-5"
@@ -1194,6 +1228,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+
 
 
 var NavPage = function NavPage(_ref) {
@@ -1203,9 +1239,13 @@ var NavPage = function NavPage(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "navbar navbar-expand-lg navbar-light custom-navbar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    className: "navbar-brand",
+    className: "navbar-brand d-flex align-items-center",
     to: "/"
-  }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "./logo.svg",
+    alt: "PrimeMart Logo",
+    className: "img-fluid logo-img me-2"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "navbar-toggler",
     type: "button",
     "data-bs-toggle": "collapse",
@@ -1226,43 +1266,43 @@ var NavPage = function NavPage(_ref) {
     className: "nav-link ".concat(location.pathname === "/" ? "active" : ""),
     to: "/",
     "aria-current": location.pathname === "/" ? "page" : undefined
-  }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaHome, null), " Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/products" ? "active" : ""),
     to: "/products",
     "aria-current": location.pathname === "/products" ? "page" : undefined
-  }, "Products")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaProductHunt, null), " Products")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/cart" ? "active" : ""),
     to: "/cart",
     "aria-current": location.pathname === "/cart" ? "page" : undefined
-  }, "Cart")), !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaShoppingCart, null), " Cart")), !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/register" ? "active" : ""),
     to: "/register",
     "aria-current": location.pathname === "/register" ? "page" : undefined
-  }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUserPlus, null), " Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/login" ? "active" : ""),
     to: "/login",
     "aria-current": location.pathname === "/login" ? "page" : undefined
-  }, "Login"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSignInAlt, null), " Login"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/logout" ? "active" : ""),
     to: "/logout",
     "aria-current": location.pathname === "/logout" ? "page" : undefined
-  }, "Logout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSignOutAlt, null), " Logout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/profile" ? "active" : ""),
     to: "/profile",
     "aria-current": location.pathname === "/profile" ? "page" : undefined
-  }, "Profile"))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUserAlt, null), " Profile"))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavPage);
 
@@ -2402,24 +2442,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _NavPage_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavPage.jsx */ "./jsx/NavPage.jsx");
-/* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Footer.jsx */ "./jsx/Footer.jsx");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle.min */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
-/* harmony import */ var bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Register_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Register.jsx */ "./jsx/Register.jsx");
-/* harmony import */ var _Products_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Products.jsx */ "./jsx/Products.jsx");
-/* harmony import */ var _Cart_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Cart.jsx */ "./jsx/Cart.jsx");
-/* harmony import */ var _Login_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Login.jsx */ "./jsx/Login.jsx");
-/* harmony import */ var _ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ProductDetails.jsx */ "./jsx/ProductDetails.jsx");
-/* harmony import */ var _Profile_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Profile.jsx */ "./jsx/Profile.jsx");
-/* harmony import */ var _public_styles_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../public/styles.css */ "./public/styles.css");
-/* harmony import */ var _HomePage_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./HomePage.jsx */ "./jsx/HomePage.jsx");
-/* harmony import */ var _logout_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./logout.jsx */ "./jsx/logout.jsx");
-/* harmony import */ var _Reset_jsx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Reset.jsx */ "./jsx/Reset.jsx");
-/* harmony import */ var _ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./ForgotPassword.jsx */ "./jsx/ForgotPassword.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _fortawesome_fontawesome_free_css_all_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.min.css */ "./node_modules/@fortawesome/fontawesome-free/css/all.min.css");
+/* harmony import */ var _NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavPage.jsx */ "./jsx/NavPage.jsx");
+/* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer.jsx */ "./jsx/Footer.jsx");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle.min */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
+/* harmony import */ var bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Register_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Register.jsx */ "./jsx/Register.jsx");
+/* harmony import */ var _Products_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Products.jsx */ "./jsx/Products.jsx");
+/* harmony import */ var _Cart_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Cart.jsx */ "./jsx/Cart.jsx");
+/* harmony import */ var _Login_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Login.jsx */ "./jsx/Login.jsx");
+/* harmony import */ var _ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ProductDetails.jsx */ "./jsx/ProductDetails.jsx");
+/* harmony import */ var _Profile_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Profile.jsx */ "./jsx/Profile.jsx");
+/* harmony import */ var _public_styles_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../public/styles.css */ "./public/styles.css");
+/* harmony import */ var _HomePage_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./HomePage.jsx */ "./jsx/HomePage.jsx");
+/* harmony import */ var _logout_jsx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./logout.jsx */ "./jsx/logout.jsx");
+/* harmony import */ var _Reset_jsx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Reset.jsx */ "./jsx/Reset.jsx");
+/* harmony import */ var _ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ForgotPassword.jsx */ "./jsx/ForgotPassword.jsx");
+
 
 
 
@@ -2441,43 +2483,43 @@ __webpack_require__.r(__webpack_exports__);
 
 // Main application component
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column min-vh-100"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavPage_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: "PrimeMart"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "flex-grow-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HomePage_jsx__WEBPACK_IMPORTED_MODULE_13__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HomePage_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/register",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/login",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/products",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Products_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Products_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/cart",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cart_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cart_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/products/:id",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/profile",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Profile_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Profile_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/logout",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_logout_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_logout_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/forgot-password",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_16__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
     path: "/reset-password",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Reset_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], null)
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Reset_jsx__WEBPACK_IMPORTED_MODULE_16__["default"], null)
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 };
 
 // Root container element
@@ -2609,15 +2651,21 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
 /* Links */
 .login-link,
 .register-link,
-.forgot-password-link {
+.reset-link {
   margin-top: 20px;
 }
 
 .login-link a,
-.register-link a,
-.reset-link a {
+.register-link a {
   color: #007bff;
   text-decoration: none;
+  text-decoration: underline;
+}
+
+.reset-link a {
+  color: #ff0400;
+  text-decoration: none;
+  text-decoration: underline;
 }
 
 .login-link a:hover,
@@ -2645,10 +2693,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
 }
 
 /* Navbar Styles */
+.logo-img {
+  max-width: 18%;
+  height: auto;
+}
+
 .custom-navbar {
   background-color: rgb(2, 115, 159);
-  padding: 1.5rem;
-  /* Consistent padding */
+  padding: 0 1.5rem 0 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -2661,7 +2713,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
 .custom-navbar .navbar-nav .nav-link {
   color: white;
   font-size: 24px;
-  font-weight: 500;
   transition: color 0.3s ease;
 }
 
@@ -2742,7 +2793,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   color: #333;
 }
 
-
 /* Button Outline Styles */
 .btn-outline-success {
   color: #00bfa6;
@@ -2758,7 +2808,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   color: white;
   /* Change text color on hover */
 }
-
 
 /* Section Titles */
 .section-title {
@@ -2825,6 +2874,296 @@ hr {
   border: 1px solid #ddd;
 }
 
+button:hover,
+.profile-img:hover {
+  animation: pulse 0.3s ease-in-out;
+}
+/* HomePage.css */
+
+/* CSS Variables for Consistent Theming */
+:root {
+  --primary-color: #28a745; /* Bootstrap Success */
+  --secondary-color: #17a2b8; /* Bootstrap Info */
+  --accent-color: #ffc107; /* Bootstrap Warning */
+  --light-bg: #f9f9f9;
+  --dark-text: #343a40;
+  --font-family: "Roboto", sans-serif;
+}
+
+/* Global Styles */
+body {
+  font-family: var(--font-family);
+  color: var(--dark-text);
+}
+
+/* Hero Section */
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.hero-section img {
+  max-width: 1920px;
+  height: 600px;
+  margin-bottom: 20px;
+}
+
+.hero-section .btn {
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-section .btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+/* Introduction Section */
+.intro-section {
+  background-color: #ffffff;
+}
+
+.intro-section h4 {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.intro-section p {
+  color: #6c757d;
+}
+
+.intro-section .fa-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.intro-section .fa-icon:hover {
+  transform: scale(1.1);
+  color: var(--primary-color);
+}
+
+/* Categories Navbar Section */
+.categories-navbar-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-link {
+  color: var(--dark-text) !important;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 30px;
+  margin: 0 5px;
+}
+
+.category-link:hover,
+.category-link.active {
+  color: #fff !important;
+  background-color: var(--primary-color);
+}
+
+/* Products Section */
+.products-section {
+  background-color: #ffffff;
+}
+
+.products-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.products-section h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.products-section .card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.products-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.products-section .card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.products-section .card-img-top:hover {
+  transform: scale(1.05);
+}
+
+.products-section .btn {
+  background-color: var(--primary-color);
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.products-section .btn:hover {
+  background-color: #218838;
+}
+
+/* Special Products Section */
+.special-products-section {
+  background-color: var(--light-bg);
+}
+
+.special-products-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.special-products-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.special-products-section p {
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.special-products-section .btn {
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.special-products-section .btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  background-color: #ffffff;
+}
+
+.testimonials-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.testimonials-section h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.testimonials-section .card {
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonials-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials-section .card-footer {
+  background-color: transparent;
+  border-top: none;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Featured & Sale Products Sections */
+.featured-products-section,
+.products-on-sale-section {
+  background-color: #ffffff;
+}
+
+.featured-products-section h2,
+.products-on-sale-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.featured-products-section h2::after,
+.products-on-sale-section h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.products-on-sale-section .card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.products-on-sale-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.products-on-sale-section .card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.products-on-sale-section .card-img-top:hover {
+  transform: scale(1.05);
+}
+
+.products-on-sale-section .card-title {
+  font-weight: 600;
+}
+
+.products-on-sale-section .price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.products-on-sale-section .original-price {
+  text-decoration: line-through;
+  color: #6c757d;
+  margin-left: 10px;
+}
+
+.products-on-sale-section .btn {
+  background-color: var(--primary-color);
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.products-on-sale-section .btn:hover {
+  background-color: #218838;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .profile-img {
@@ -2867,10 +3206,45 @@ hr {
   }
 }
 
-button:hover,
-.profile-img:hover {
-  animation: pulse 0.3s ease-in-out ;
-}`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.forgot-password-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a,\r\n.reset-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 1.5rem;\r\n  /* Consistent padding */\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  font-weight: 500;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out ;\r\n}"],"sourceRoot":""}]);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .intro-section .fa-icon {
+    margin-bottom: 20px;
+  }
+
+  .categories-navbar-section .category-link {
+    padding: 8px 15px;
+    margin: 5px;
+    font-size: 0.9rem;
+  }
+
+  .products-section h2,
+  .testimonials-section h2,
+  .featured-products-section h2,
+  .products-on-sale-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .special-products-section h2,
+  .testimonials-section h2 {
+    text-align: center;
+  }
+}
+
+/* Smooth Scroll for Modal (if used) */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-50px);
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 1920px;\r\n  height: 600px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1.2rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.hero-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Introduction Section */\r\n.intro-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.intro-section h4 {\r\n  margin-top: 15px;\r\n  font-weight: 600;\r\n}\r\n\r\n.intro-section p {\r\n  color: #6c757d;\r\n}\r\n\r\n.intro-section .fa-icon {\r\n  transition: transform 0.3s ease, color 0.3s ease;\r\n}\r\n\r\n.intro-section .fa-icon:hover {\r\n  transform: scale(1.1);\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Categories Navbar Section */\r\n.categories-navbar-section {\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.category-link {\r\n  color: var(--dark-text) !important;\r\n  font-weight: 500;\r\n  padding: 10px 20px;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n  border-radius: 30px;\r\n  margin: 0 5px;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  color: #fff !important;\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n/* Products Section */\r\n.products-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.products-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n\r\n/* Special Products Section */\r\n.special-products-section {\r\n  background-color: var(--light-bg);\r\n}\r\n\r\n.special-products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.special-products-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  border-radius: 15px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section p {\r\n  color: #6c757d;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.special-products-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.testimonials-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.testimonials-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  padding: 20px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.testimonials-section .card:hover {\r\n  transform: translateY(-5px);\r\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.testimonials-section .card-footer {\r\n  background-color: transparent;\r\n  border-top: none;\r\n  font-weight: 600;\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Featured & Sale Products Sections */\r\n.featured-products-section,\r\n.products-on-sale-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.featured-products-section h2,\r\n.products-on-sale-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.featured-products-section h2::after,\r\n.products-on-sale-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-on-sale-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-on-sale-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-on-sale-section .card-title {\r\n  font-weight: 600;\r\n}\r\n\r\n.products-on-sale-section .price {\r\n  font-size: 1.2rem;\r\n  font-weight: 700;\r\n  color: var(--primary-color);\r\n}\r\n\r\n.products-on-sale-section .original-price {\r\n  text-decoration: line-through;\r\n  color: #6c757d;\r\n  margin-left: 10px;\r\n}\r\n\r\n.products-on-sale-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .intro-section .fa-icon {\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  .categories-navbar-section .category-link {\r\n    padding: 8px 15px;\r\n    margin: 5px;\r\n    font-size: 0.9rem;\r\n  }\r\n\r\n  .products-section h2,\r\n  .testimonials-section h2,\r\n  .featured-products-section h2,\r\n  .products-on-sale-section h2 {\r\n    font-size: 1.5rem;\r\n  }\r\n\r\n  .special-products-section h2,\r\n  .testimonials-section h2 {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n/* Smooth Scroll for Modal (if used) */\r\n.modal.fade .modal-dialog {\r\n  transition: transform 0.3s ease-out;\r\n  transform: translateY(-50px);\r\n}\r\n\r\n.modal.show .modal-dialog {\r\n  transform: translateY(0);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3273,6 +3647,29 @@ module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

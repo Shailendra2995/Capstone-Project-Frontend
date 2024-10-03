@@ -763,16 +763,16 @@ const HomePage = () => {
   ];
 
   const categories = [
-    { id: 1, name: "Fruits", key: "fruits" },
-    { id: 2, name: "Vegetables", key: "vegetables" },
-    { id: 3, name: "Dairy", key: "dairy" },
-    { id: 4, name: "Beverages", key: "beverages" },
-    { id: 5, name: "Snacks", key: "snacks" },
-    { id: 6, name: "Bakery", key: "bakery" },
-    { id: 7, name: "Grains", key: "grains" },
-    { id: 8, name: "Meat", key: "meat" },
-    { id: 9, name: "Seafood", key: "seafood" },
-    { id: 10, name: "Frozen Foods", key: "frozenFoods" },
+    { id: 1, name: "Fruits", key: "fruits", icon: "fa-apple-whole" },
+    { id: 2, name: "Vegetables", key: "vegetables", icon: "fa-carrot" },
+    { id: 3, name: "Dairy", key: "dairy", icon: "fa-cheese" },
+    { id: 4, name: "Beverages", key: "beverages", icon: "fa-coffee" },
+    { id: 5, name: "Snacks", key: "snacks", icon: "fa-cookie" },
+    { id: 6, name: "Bakery", key: "bakery", icon: "fa-bread-slice" },
+    { id: 7, name: "Grains", key: "grains", icon: "fa-seedling" },
+    { id: 8, name: "Meat", key: "meat", icon: "fa-drumstick-bite" },
+    { id: 9, name: "Seafood", key: "seafood", icon: "fa-fish" },
+    { id: 10, name: "Frozen Foods", key: "frozenFoods", icon: "fa-ice-cream" },
   ];
 
   // State for the selected category
@@ -848,6 +848,10 @@ const HomePage = () => {
                   }`}
                   onClick={() => handleCategoryClick(category.key)}
                 >
+                  <i
+                    className={`fa ${category.icon} me-2`}
+                    aria-hidden="true"
+                  ></i>
                   {category.name}
                 </Nav.Link>
               </Nav.Item>
@@ -910,6 +914,11 @@ const HomePage = () => {
             <Col md={4}>
               <Card className="mb-4">
                 <Card.Body>
+                  <i
+                    className="fa fa-star mb-2"
+                    aria-hidden="true"
+                    style={{ fontSize: "2rem", color: "#007bff" }}
+                  ></i>
                   <Card.Text>
                     "Best quality organic products I have ever purchased!"
                   </Card.Text>
@@ -920,6 +929,11 @@ const HomePage = () => {
             <Col md={4}>
               <Card className="mb-4">
                 <Card.Body>
+                  <i
+                    className="fa fa-thumbs-up mb-2"
+                    aria-hidden="true"
+                    style={{ fontSize: "2rem", color: "#007bff" }}
+                  ></i>
                   <Card.Text>
                     "Fast delivery and fresh products every time!"
                   </Card.Text>
@@ -930,6 +944,11 @@ const HomePage = () => {
             <Col md={4}>
               <Card className="mb-4">
                 <Card.Body>
+                  <i
+                    className="fa fa-smile mb-2"
+                    aria-hidden="true"
+                    style={{ fontSize: "2rem", color: "#007bff" }}
+                  ></i>
                   <Card.Text>
                     "Excellent service and product quality!"
                   </Card.Text>
