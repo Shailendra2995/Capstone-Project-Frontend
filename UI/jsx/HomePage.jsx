@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaLeaf, FaBox, FaTruck } from "react-icons/fa";
 import { Container, Row, Col, Button, Card, Nav, Modal } from "react-bootstrap";
 
 const HomePage = () => {
@@ -801,7 +802,7 @@ const HomePage = () => {
           <Row>
             <Col>
               <img
-                src="https://via.placeholder.com/500x250"
+                src="./image1.png"
                 alt="Fresh Organic Food"
                 className="img-fluid"
               />
@@ -817,14 +818,17 @@ const HomePage = () => {
         <Container>
           <Row className="text-center">
             <Col md={4}>
+              <FaLeaf size={50} style={{ color: "green" }} />
               <h4>100% Organic</h4>
               <p>We offer organic food that is healthy and fresh.</p>
             </Col>
             <Col md={4}>
+              <FaBox size={50} style={{ color: "orange" }} />
               <h4>Fresh Products</h4>
               <p>Our products are delivered fresh to your door.</p>
             </Col>
             <Col md={4}>
+              <FaTruck size={50} style={{ color: "blue" }} />
               <h4>Fast Delivery</h4>
               <p>Get your groceries delivered within 24 hours.</p>
             </Col>
@@ -887,7 +891,7 @@ const HomePage = () => {
           <Row>
             <Col>
               <img
-                src="https://via.placeholder.com/500x250"
+                src="./image.png"
                 alt="Special Products"
                 className="img-fluid"
               />
