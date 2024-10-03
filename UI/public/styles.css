@@ -380,11 +380,32 @@ body {
   background-color: var(--primary-color);
 }
 
+.subcategory-tabs-section .nav-link {
+  color: bold;
+  transition: color 0.3s;
+}
+
+.subcategory-tabs-section .nav-link.active {
+  font-weight: #007bff;
+}
+
 /* Products Section */
 .products-section {
   background-color: #ffffff;
 }
 
+.search-bar-section {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.search-bar-section .form-control {
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar-section .btn {
+  border-radius: 25px;
+}
 .products-section h2 {
   font-size: 2rem;
   font-weight: 700;

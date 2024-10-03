@@ -8,6 +8,7 @@ import {
   FaSignInAlt,
   FaUserPlus,
   FaSignOutAlt,
+  FaUserTie
 } from "react-icons/fa";
 
 const NavPage = ({ title }) => {
@@ -76,6 +77,17 @@ const NavPage = ({ title }) => {
               <FaShoppingCart /> Cart
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              className={`nav-link ${
+                location.pathname === "/Admin" ? "active" : ""
+              }`}
+              to="/Admin"
+              aria-current={location.pathname === "/Admin" ? "page" : undefined}
+            >
+              <FaUserTie /> Admin
+            </Link>
+          </li>
 
           {/* Conditional rendering based on login status */}
           {!isLoggedIn ? (
@@ -112,19 +124,6 @@ const NavPage = ({ title }) => {
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
-                    location.pathname === "/logout" ? "active" : ""
-                  }`}
-                  to="/logout"
-                  aria-current={
-                    location.pathname === "/logout" ? "page" : undefined
-                  }
-                >
-                  <FaSignOutAlt /> Logout
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
                     location.pathname === "/profile" ? "active" : ""
                   }`}
                   to="/profile"
@@ -133,6 +132,19 @@ const NavPage = ({ title }) => {
                   }
                 >
                   <FaUserAlt /> Profile
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${
+                    location.pathname === "/logout" ? "active" : ""
+                  }`}
+                  to="/logout"
+                  aria-current={
+                    location.pathname === "/logout" ? "page" : undefined
+                  }
+                >
+                  <FaSignOutAlt /> Logout
                 </Link>
               </li>
             </>

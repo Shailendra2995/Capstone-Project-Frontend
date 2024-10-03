@@ -2,6 +2,26 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./jsx/Admin.jsx":
+/*!***********************!*\
+  !*** ./jsx/Admin.jsx ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var Admin = function Admin() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Admin"));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Admin);
+
+/***/ }),
+
 /***/ "./jsx/Cart.jsx":
 /*!**********************!*\
   !*** ./jsx/Cart.jsx ***!
@@ -1278,7 +1298,13 @@ var NavPage = function NavPage(_ref) {
     className: "nav-link ".concat(location.pathname === "/cart" ? "active" : ""),
     to: "/cart",
     "aria-current": location.pathname === "/cart" ? "page" : undefined
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaShoppingCart, null), " Cart")), !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaShoppingCart, null), " Cart")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    className: "nav-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    className: "nav-link ".concat(location.pathname === "/Admin" ? "active" : ""),
+    to: "/Admin",
+    "aria-current": location.pathname === "/Admin" ? "page" : undefined
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUserTie, null), " Admin")), !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/register" ? "active" : ""),
@@ -1293,16 +1319,16 @@ var NavPage = function NavPage(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSignInAlt, null), " Login"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    className: "nav-link ".concat(location.pathname === "/logout" ? "active" : ""),
-    to: "/logout",
-    "aria-current": location.pathname === "/logout" ? "page" : undefined
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSignOutAlt, null), " Logout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-    className: "nav-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-link ".concat(location.pathname === "/profile" ? "active" : ""),
     to: "/profile",
     "aria-current": location.pathname === "/profile" ? "page" : undefined
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUserAlt, null), " Profile"))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUserAlt, null), " Profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    className: "nav-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    className: "nav-link ".concat(location.pathname === "/logout" ? "active" : ""),
+    to: "/logout",
+    "aria-current": location.pathname === "/logout" ? "page" : undefined
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSignOutAlt, null), " Logout"))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavPage);
 
@@ -1368,12 +1394,961 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-// Products.jsx
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
-var Products = function Products() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Product List"));
+
+
+var ProductPage = function ProductPage() {
+  var _categories$find;
+  // Define allProducts within the component
+  var allProducts = {
+    fruits: {
+      citrusFruits: [{
+        id: 3,
+        name: "Orange",
+        price: "$1.00",
+        img: "https://via.placeholder.com/150",
+        description: "Juicy organic orange rich in Vitamin C."
+      }],
+      berries: [{
+        id: 4,
+        name: "Strawberry",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic strawberries, great for desserts."
+      }, {
+        id: 8,
+        name: "Blueberries",
+        price: "$2.20",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic blueberries, great for smoothies."
+      }],
+      tropicalFruits: [{
+        id: 6,
+        name: "Mango",
+        price: "$1.80",
+        img: "https://via.placeholder.com/150",
+        description: "Ripe organic mango with tropical flavor."
+      }, {
+        id: 7,
+        name: "Pineapple",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Sweet and tangy organic pineapple."
+      }, {
+        id: 10,
+        name: "Kiwi",
+        price: "$1.00",
+        img: "https://via.placeholder.com/150",
+        description: "Sweet and tart organic kiwi."
+      }],
+      pomeFruits: [{
+        id: 1,
+        name: "Green Apple",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic green apple with a crisp taste."
+      }],
+      stoneFruits: [{
+        id: 9,
+        name: "Peach",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Juicy organic peaches, perfect for summer."
+      }],
+      otherFruits: [{
+        id: 2,
+        name: "Banana",
+        price: "$0.50",
+        img: "https://via.placeholder.com/150",
+        description: "Sweet organic bananas, perfect for snacking."
+      }, {
+        id: 5,
+        name: "Grapes",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic grapes, sweet and juicy."
+      }]
+    },
+    vegetables: {
+      leafyGreens: [{
+        id: 4,
+        name: "Lettuce",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Crisp organic lettuce for fresh salads."
+      }, {
+        id: 6,
+        name: "Spinach",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic spinach, packed with nutrients."
+      }],
+      cruciferousVegetables: [{
+        id: 2,
+        name: "Broccoli",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic broccoli, rich in vitamins."
+      }, {
+        id: 9,
+        name: "Cauliflower",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic cauliflower, great for low-carb meals."
+      }],
+      rootVegetables: [{
+        id: 3,
+        name: "Carrot",
+        price: "$0.80",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic carrots, crunchy and sweet."
+      }],
+      alliums: [{
+        id: 10,
+        name: "Onion",
+        price: "$0.50",
+        img: "https://via.placeholder.com/150",
+        description: "Organic onions, essential for flavor."
+      }],
+      nightshades: [{
+        id: 1,
+        name: "Tomato",
+        price: "$1.20",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic tomatoes, perfect for salads."
+      }, {
+        id: 5,
+        name: "Peppers",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic peppers, colorful and crunchy."
+      }],
+      otherVegetables: [{
+        id: 7,
+        name: "Cucumber",
+        price: "$1.00",
+        img: "https://via.placeholder.com/150",
+        description: "Crisp organic cucumbers, refreshing and hydrating."
+      }, {
+        id: 8,
+        name: "Zucchini",
+        price: "$1.20",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic zucchini, versatile for cooking."
+      }]
+    },
+    dairy: {
+      milkProducts: [{
+        id: 1,
+        name: "Milk",
+        price: "$1.20",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic milk, rich and creamy."
+      }, {
+        id: 10,
+        name: "Almond Milk",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Organic almond milk, dairy-free option."
+      }],
+      cheese: [{
+        id: 2,
+        name: "Cheese",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Organic cheese, perfect for sandwiches."
+      }, {
+        id: 7,
+        name: "Feta Cheese",
+        price: "$3.50",
+        img: "https://via.placeholder.com/150",
+        description: "Crumble organic feta cheese on salads."
+      }, {
+        id: 8,
+        name: "Cottage Cheese",
+        price: "$2.20",
+        img: "https://via.placeholder.com/150",
+        description: "Organic cottage cheese, great for snacks."
+      }],
+      butterAndCream: [{
+        id: 3,
+        name: "Butter",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic butter, creamy and rich."
+      }, {
+        id: 5,
+        name: "Cream",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Organic cream, perfect for desserts."
+      }, {
+        id: 6,
+        name: "Sour Cream",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Rich and tangy organic sour cream."
+      }],
+      yogurtAndIceCream: [{
+        id: 4,
+        name: "Yogurt",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic yogurt, smooth and tasty."
+      }, {
+        id: 9,
+        name: "Ice Cream",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        description: "Delicious organic ice cream, creamy and sweet."
+      }]
+    },
+    beverages: {
+      juices: [{
+        id: 1,
+        name: "Orange Juice",
+        price: "$3.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh orange juice, rich in vitamin C."
+      }],
+      teasAndCoffees: [{
+        id: 2,
+        name: "Green Tea",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Healthy organic green tea."
+      }, {
+        id: 8,
+        name: "Herbal Tea",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Soothing organic herbal tea."
+      }, {
+        id: 3,
+        name: "Coffee",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh brewed organic coffee."
+      }],
+      coldDrinks: [{
+        id: 6,
+        name: "Lemonade",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh lemonade, refreshing and sweet."
+      }, {
+        id: 7,
+        name: "Coconut Water",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Hydrating organic coconut water."
+      }, {
+        id: 9,
+        name: "Sparkling Water",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Refreshing sparkling water."
+      }],
+      hotDrinks: [{
+        id: 10,
+        name: "Hot Chocolate",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Rich hot chocolate, perfect for winter."
+      }],
+      blendedDrinks: [{
+        id: 4,
+        name: "Milkshake",
+        price: "$5.00",
+        img: "https://via.placeholder.com/150",
+        description: "Delicious milkshake, rich and creamy."
+      }, {
+        id: 5,
+        name: "Smoothie",
+        price: "$4.50",
+        img: "https://via.placeholder.com/150",
+        description: "Healthy smoothie made with fresh fruits."
+      }]
+    },
+    snacks: {
+      saltySnacks: [{
+        id: 1,
+        name: "Chips",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Crunchy potato chips."
+      }, {
+        id: 4,
+        name: "Popcorn",
+        price: "$1.80",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh popcorn, light and airy."
+      }, {
+        id: 5,
+        name: "Nuts",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        description: "Roasted mixed nuts, healthy and crunchy."
+      }, {
+        id: 8,
+        name: "Beef Jerky",
+        price: "$4.50",
+        img: "https://via.placeholder.com/150",
+        description: "Savory beef jerky, high in protein."
+      }],
+      sweetSnacks: [{
+        id: 2,
+        name: "Cookies",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Tasty cookies, perfect for snacks."
+      }, {
+        id: 10,
+        name: "Chocolate Bar",
+        price: "$1.80",
+        img: "https://via.placeholder.com/150",
+        description: "Delicious chocolate bar, sweet treat."
+      }, {
+        id: 9,
+        name: "Fruit Snacks",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Chewy fruit snacks, perfect for kids."
+      }],
+      healthySnacks: [{
+        id: 3,
+        name: "Granola",
+        price: "$3.50",
+        img: "https://via.placeholder.com/150",
+        description: "Healthy granola bars, great for energy."
+      }, {
+        id: 6,
+        name: "Trail Mix",
+        price: "$3.50",
+        img: "https://via.placeholder.com/150",
+        description: "Nut and dried fruit mix, energy booster."
+      }, {
+        id: 7,
+        name: "Rice Cakes",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Light and crispy rice cakes."
+      }]
+    },
+    bakery: {
+      breads: [{
+        id: 1,
+        name: "Bread",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Freshly baked organic bread."
+      }, {
+        id: 5,
+        name: "Sourdough",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Artisan sourdough bread, tangy flavor."
+      }, {
+        id: 6,
+        name: "Baguette",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Crispy baguette, perfect for sandwiches."
+      }, {
+        id: 7,
+        name: "Pita Bread",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Soft pita bread for wraps."
+      }],
+      pastriesAndSweets: [{
+        id: 2,
+        name: "Croissant",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Buttery croissant, flaky and delicious."
+      }, {
+        id: 4,
+        name: "Muffin",
+        price: "$1.80",
+        img: "https://via.placeholder.com/150",
+        description: "Delicious muffin, perfect for snacks."
+      }, {
+        id: 8,
+        name: "Brownie",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Rich chocolate brownie, sweet and fudgy."
+      }, {
+        id: 9,
+        name: "Danish Pastry",
+        price: "$2.20",
+        img: "https://via.placeholder.com/150",
+        description: "Sweet danish pastry, filled with fruit."
+      }, {
+        id: 10,
+        name: "Cookies",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh baked cookies, soft and chewy."
+      }],
+      breakfastItems: [{
+        id: 3,
+        name: "Bagel",
+        price: "$1.20",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh bagels, great for breakfast."
+      }]
+    },
+    grains: {
+      wholeGrains: [{
+        id: 1,
+        name: "Rice",
+        price: "$1.80",
+        img: "https://via.placeholder.com/150",
+        description: "Organic rice, great for meals."
+      }, {
+        id: 2,
+        name: "Quinoa",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Healthy quinoa, high in protein."
+      }, {
+        id: 3,
+        name: "Oats",
+        price: "$1.20",
+        img: "https://via.placeholder.com/150",
+        description: "Whole grain oats, perfect for breakfast."
+      }, {
+        id: 10,
+        name: "Buckwheat",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Nutritious buckwheat, gluten-free option."
+      }],
+      pastaAndCouscous: [{
+        id: 4,
+        name: "Pasta",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Organic pasta, quick and easy meals."
+      }, {
+        id: 9,
+        name: "Couscous",
+        price: "$1.50",
+        img: "https://via.placeholder.com/150",
+        description: "Fluffy couscous, great side dish."
+      }],
+      bakingIngredients: [{
+        id: 7,
+        name: "Flour",
+        price: "$1.80",
+        img: "https://via.placeholder.com/150",
+        description: "Organic flour for baking."
+      }, {
+        id: 6,
+        name: "Bread Crumbs",
+        price: "$1.00",
+        img: "https://via.placeholder.com/150",
+        description: "Organic bread crumbs for cooking."
+      }, {
+        id: 8,
+        name: "Cornmeal",
+        price: "$2.20",
+        img: "https://via.placeholder.com/150",
+        description: "Organic cornmeal for polenta."
+      }],
+      otherGrains: [{
+        id: 5,
+        name: "Barley",
+        price: "$2.00",
+        img: "https://via.placeholder.com/150",
+        description: "Nutritious barley for soups and salads."
+      }]
+    },
+    meat: {
+      poultry: [{
+        id: 1,
+        name: "Chicken Breast",
+        price: "$5.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh organic chicken breast, lean and healthy."
+      }, {
+        id: 4,
+        name: "Turkey Breast",
+        price: "$5.50",
+        img: "https://via.placeholder.com/150",
+        description: "Lean turkey breast, healthy protein source."
+      }],
+      beefAndPork: [{
+        id: 2,
+        name: "Ground Beef",
+        price: "$7.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh ground beef, perfect for burgers."
+      }, {
+        id: 3,
+        name: "Pork Chops",
+        price: "$6.00",
+        img: "https://via.placeholder.com/150",
+        description: "Juicy pork chops, great for grilling."
+      }, {
+        id: 8,
+        name: "Beef Steaks",
+        price: "$10.00",
+        img: "https://via.placeholder.com/150",
+        description: "Premium beef steaks, rich in flavor."
+      }],
+      processedMeats: [{
+        id: 5,
+        name: "Sausage",
+        price: "$4.50",
+        img: "https://via.placeholder.com/150",
+        description: "Savory sausage links, great for breakfast."
+      }, {
+        id: 6,
+        name: "Bacon",
+        price: "$5.50",
+        img: "https://via.placeholder.com/150",
+        description: "Crispy bacon, perfect for any meal."
+      }],
+      lambAndVeal: [{
+        id: 7,
+        name: "Lamb Chops",
+        price: "$8.00",
+        img: "https://via.placeholder.com/150",
+        description: "Tender lamb chops, perfect for roasting."
+      }, {
+        id: 10,
+        name: "Veal Cutlets",
+        price: "$12.00",
+        img: "https://via.placeholder.com/150",
+        description: "Tender veal cutlets, great for fine dining."
+      }],
+      otherMeats: [{
+        id: 9,
+        name: "Duck Breast",
+        price: "$9.00",
+        img: "https://via.placeholder.com/150",
+        description: "Rich duck breast, great for gourmet meals."
+      }]
+    },
+    seafood: {
+      fish: [{
+        id: 1,
+        name: "Salmon",
+        price: "$12.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh salmon fillet, rich in omega-3."
+      }, {
+        id: 3,
+        name: "Tuna",
+        price: "$14.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh tuna steaks, delicious and healthy."
+      }, {
+        id: 4,
+        name: "Tilapia",
+        price: "$8.00",
+        img: "https://via.placeholder.com/150",
+        description: "Mild tilapia fillet, easy to cook."
+      }, {
+        id: 5,
+        name: "Cod",
+        price: "$9.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh cod fillet, flaky and delicious."
+      }, {
+        id: 6,
+        name: "Frozen Fish",
+        price: "$6.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh frozen fish fillets."
+      }],
+      shellfish: [{
+        id: 2,
+        name: "Shrimp",
+        price: "$10.00",
+        img: "https://via.placeholder.com/150",
+        description: "Juicy shrimp, perfect for grilling."
+      }, {
+        id: 7,
+        name: "Lobster",
+        price: "$25.00",
+        img: "https://via.placeholder.com/150",
+        description: "Succulent lobster tail, luxurious and tasty."
+      }, {
+        id: 3,
+        name: "Crab Legs",
+        price: "$20.00",
+        img: "https://via.placeholder.com/150",
+        description: "Sweet crab legs, perfect for special occasions."
+      }, {
+        id: 8,
+        name: "Mussels",
+        price: "$10.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh mussels, great for pasta dishes."
+      }, {
+        id: 9,
+        name: "Oysters",
+        price: "$18.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh oysters, a delicacy."
+      }, {
+        id: 10,
+        name: "Scallops",
+        price: "$22.00",
+        img: "https://via.placeholder.com/150",
+        description: "Sweet scallops, perfect for searing."
+      }]
+    },
+    frozenFoods: {
+      frozenVegetablesAndFruits: [{
+        id: 1,
+        name: "Frozen Vegetables",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Mixed frozen vegetables, quick and easy."
+      }, {
+        id: 4,
+        name: "Frozen Berries",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Mixed frozen berries, great for smoothies."
+      }, {
+        id: 8,
+        name: "Frozen Fruit Bars",
+        price: "$2.50",
+        img: "https://via.placeholder.com/150",
+        description: "Refreshing frozen fruit bars."
+      }],
+      frozenMeals: [{
+        id: 3,
+        name: "Frozen Pizza",
+        price: "$8.00",
+        img: "https://via.placeholder.com/150",
+        description: "Quick frozen pizza, easy to cook."
+      }, {
+        id: 6,
+        name: "Frozen Dinners",
+        price: "$7.00",
+        img: "https://via.placeholder.com/150",
+        description: "Complete frozen meals, easy to prepare."
+      }, {
+        id: 9,
+        name: "Frozen Pancakes",
+        price: "$4.50",
+        img: "https://via.placeholder.com/150",
+        description: "Quick and easy frozen pancakes."
+      }, {
+        id: 10,
+        name: "Frozen Waffles",
+        price: "$3.00",
+        img: "https://via.placeholder.com/150",
+        description: "Delicious frozen waffles, great for breakfast."
+      }],
+      frozenSnacks: [{
+        id: 2,
+        name: "Ice Cream",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        description: "Delicious ice cream, various flavors."
+      }, {
+        id: 7,
+        name: "Frozen Potatoes",
+        price: "$3.50",
+        img: "https://via.placeholder.com/150",
+        description: "Frozen potato fries, quick side dish."
+      }],
+      frozenFish: [{
+        id: 5,
+        name: "Frozen Fish",
+        price: "$6.00",
+        img: "https://via.placeholder.com/150",
+        description: "Fresh frozen fish fillets."
+      }]
+    }
+  };
+
+  // Define categories
+  var categories = [{
+    id: 1,
+    name: "Fruits",
+    key: "fruits",
+    icon: "fa-apple-whole"
+  }, {
+    id: 2,
+    name: "Vegetables",
+    key: "vegetables",
+    icon: "fa-carrot"
+  }, {
+    id: 3,
+    name: "Dairy",
+    key: "dairy",
+    icon: "fa-cheese"
+  }, {
+    id: 4,
+    name: "Beverages",
+    key: "beverages",
+    icon: "fa-coffee"
+  }, {
+    id: 5,
+    name: "Snacks",
+    key: "snacks",
+    icon: "fa-cookie"
+  }, {
+    id: 6,
+    name: "Bakery",
+    key: "bakery",
+    icon: "fa-bread-slice"
+  }, {
+    id: 7,
+    name: "Grains",
+    key: "grains",
+    icon: "fa-seedling"
+  }, {
+    id: 8,
+    name: "Meat",
+    key: "meat",
+    icon: "fa-drumstick-bite"
+  }, {
+    id: 9,
+    name: "Seafood",
+    key: "seafood",
+    icon: "fa-fish"
+  }, {
+    id: 10,
+    name: "Frozen Foods",
+    key: "frozenFoods",
+    icon: "fa-ice-cream"
+  }];
+
+  // Extract categoryKey from URL parameters
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useParams)(),
+    categoryKey = _useParams.categoryKey;
+
+  // State variables
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(categoryKey || "fruits"),
+    _useState2 = _slicedToArray(_useState, 2),
+    selectedCategory = _useState2[0],
+    setSelectedCategory = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    selectedSubcategory = _useState4[0],
+    setSelectedSubcategory = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    searchQuery = _useState6[0],
+    setSearchQuery = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(searchQuery),
+    _useState8 = _slicedToArray(_useState7, 2),
+    debouncedSearch = _useState8[0],
+    setDebouncedSearch = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    showModal = _useState10[0],
+    setShowModal = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    modalProduct = _useState12[0],
+    setModalProduct = _useState12[1];
+  // Update selectedCategory when categoryKey changes
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (categoryKey && categoryKey !== selectedCategory) {
+      setSelectedCategory(categoryKey);
+      setSelectedSubcategory(null); // Reset subcategory when category changes
+    }
+  }, [categoryKey]);
+
+  // Debounce the search input to optimize performance
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var handler = setTimeout(function () {
+      setDebouncedSearch(searchQuery);
+    }, 300); // 300ms delay
+
+    return function () {
+      clearTimeout(handler);
+    };
+  }, [searchQuery]);
+
+  // Get current category data
+  var category = allProducts[selectedCategory];
+
+  // Handle category click
+  var handleCategoryClick = function handleCategoryClick(categoryKey) {
+    setSelectedCategory(categoryKey);
+    setSelectedSubcategory(null); // Reset subcategory on category change
+  };
+
+  // Handle subcategory click
+  var handleSubcategoryClick = function handleSubcategoryClick(subcategory) {
+    setSelectedSubcategory(subcategory);
+  };
+
+  // Handle product click to show modal
+  var handleProductClick = function handleProductClick(product) {
+    setModalProduct(product);
+    setShowModal(true);
+  };
+
+  // Handle modal close
+  var handleCloseModal = function handleCloseModal() {
+    setShowModal(false);
+    setModalProduct(null);
+  };
+
+  // Format subcategory names
+  var formatSubcategoryName = function formatSubcategoryName(name) {
+    return name.replace(/([A-Z])/g, " $1") // Insert space before capital letters
+    .replace(/^./, function (str) {
+      return str.toUpperCase();
+    }); // Capitalize first letter
+  };
+
+  // Get subcategories
+  var subcategories = category ? Object.keys(category) : [];
+
+  // Get products based on selected subcategory
+  var products = [];
+  if (selectedSubcategory) {
+    products = category[selectedSubcategory] || [];
+  } else {
+    // Flatten all products from all subcategories
+    products = Object.values(category || {}).flat();
+  }
+
+  // Filter products based on search query
+  var filteredProducts = products.filter(function (product) {
+    return product.name.toLowerCase().includes(debouncedSearch.toLowerCase());
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    fluid: true,
+    className: "p-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "search-bar-section py-3 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    md: 6
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    type: "text",
+    placeholder: "Search Products",
+    className: "me-2",
+    value: searchQuery,
+    onChange: function onChange(e) {
+      return setSearchQuery(e.target.value);
+    },
+    "aria-label": "Search Products"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    variant: "outline-success"
+  }, "Search")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "categories-navbar-section py-3 bg-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    className: "justify-content-center"
+  }, categories.map(function (category) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+      key: category.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Link, {
+      className: "category-link ".concat(selectedCategory === category.key ? "active" : ""),
+      onClick: function onClick() {
+        return handleCategoryClick(category.key);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+      className: "fa ".concat(category.icon, " me-2"),
+      "aria-hidden": "true"
+    }), category.name));
+  })))), subcategories.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "subcategory-tabs-section py-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    variant: "tabs",
+    className: "justify-content-center flex-wrap"
+  }, subcategories.map(function (subcategory) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+      key: subcategory
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Link, {
+      active: selectedSubcategory === subcategory,
+      onClick: function onClick() {
+        return handleSubcategoryClick(subcategory);
+      }
+    }, formatSubcategoryName(subcategory)));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Link, {
+    active: selectedSubcategory === null,
+    onClick: function onClick() {
+      return handleSubcategoryClick(null);
+    }
+  }, "All"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "products-section py-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "text-center mb-5 text-capitalize"
+  }, selectedSubcategory ? "".concat(formatSubcategoryName(selectedSubcategory)) : "".concat((_categories$find = categories.find(function (cat) {
+    return cat.key === selectedCategory;
+  })) === null || _categories$find === void 0 ? void 0 : _categories$find.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, filteredProducts.length > 0 ? filteredProducts.map(function (product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      md: 3,
+      key: product.id,
+      className: "mb-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      className: "h-100"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Img, {
+      variant: "top",
+      src: product.img,
+      alt: "".concat(product.name, " image"),
+      loading: "lazy",
+      style: {
+        cursor: "pointer"
+      },
+      onClick: function onClick() {
+        return handleProductClick(product);
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Body, {
+      className: "d-flex flex-column"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Text, {
+      className: "flex-grow-1"
+    }, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      variant: "primary",
+      onClick: function onClick() {
+        return addToCart(product);
+      }
+    }, "Add to Cart"))));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "No products found"))))), modalProduct && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    show: showModal,
+    onHide: handleCloseModal,
+    centered: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Header, {
+    closeButton: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Title, null, modalProduct.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: modalProduct.img,
+    alt: "".concat(modalProduct.name, " image"),
+    className: "img-fluid mb-3"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Price: ", modalProduct.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, modalProduct.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    variant: "secondary",
+    onClick: handleCloseModal
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    variant: "primary"
+  }, "Add to Cart"))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Products);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductPage);
 
 /***/ }),
 
@@ -2442,8 +3417,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _fortawesome_fontawesome_free_css_all_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.min.css */ "./node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 /* harmony import */ var _NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavPage.jsx */ "./jsx/NavPage.jsx");
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer.jsx */ "./jsx/Footer.jsx");
@@ -2461,6 +3436,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logout_jsx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./logout.jsx */ "./jsx/logout.jsx");
 /* harmony import */ var _Reset_jsx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Reset.jsx */ "./jsx/Reset.jsx");
 /* harmony import */ var _ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ForgotPassword.jsx */ "./jsx/ForgotPassword.jsx");
+/* harmony import */ var _Admin_jsx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Admin.jsx */ "./jsx/Admin.jsx");
+
 
 
 
@@ -2483,40 +3460,43 @@ __webpack_require__.r(__webpack_exports__);
 
 // Main application component
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column min-vh-100"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: "PrimeMart"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "flex-grow-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HomePage_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/register",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/products",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Products_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/cart",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cart_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/products/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/profile",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Profile_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
+    path: "/Admin",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Admin_jsx__WEBPACK_IMPORTED_MODULE_18__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/logout",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_logout_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/forgot-password",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
     path: "/reset-password",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Reset_jsx__WEBPACK_IMPORTED_MODULE_16__["default"], null)
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
@@ -2965,11 +3945,32 @@ body {
   background-color: var(--primary-color);
 }
 
+.subcategory-tabs-section .nav-link {
+  color: bold;
+  transition: color 0.3s;
+}
+
+.subcategory-tabs-section .nav-link.active {
+  font-weight: #007bff;
+}
+
 /* Products Section */
 .products-section {
   background-color: #ffffff;
 }
 
+.search-bar-section {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.search-bar-section .form-control {
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar-section .btn {
+  border-radius: 25px;
+}
 .products-section h2 {
   font-size: 2rem;
   font-weight: 700;
@@ -3244,7 +4245,7 @@ body {
 .modal.show .modal-dialog {
   transform: translateY(0);
 }
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA,6BAA6B;AAC7B;;;EAGE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;AAC3B;;AAEA,gBAAgB;AAChB;;;EAGE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;AACpB;;AAEA;;;EAGE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA,iBAAiB;AACjB;;;EAGE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;AACjB;;AAEA,YAAY;AACZ;;;EAGE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA,UAAU;AACV;;;EAGE,gBAAgB;AAClB;;AAEA;;EAEE,cAAc;EACd,qBAAqB;EACrB,0BAA0B;AAC5B;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,0BAA0B;AAC5B;;AAEA;;;;EAIE,0BAA0B;AAC5B;;AAEA,+BAA+B;AAC/B;EACE,cAAc;EACd,8BAA8B;EAC9B,eAAe;EACf,oBAAoB;EACpB,gCAAgC;AAClC;;AAEA;EACE,cAAc;EACd,gCAAgC;EAChC,eAAe;EACf,oBAAoB;EACpB,gCAAgC;AAClC;;AAEA,kBAAkB;AAClB;EACE,cAAc;EACd,YAAY;AACd;;AAEA;EACE,kCAAkC;EAClC,0BAA0B;EAC1B,yCAAyC;AAC3C;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,2BAA2B;AAC7B;;AAEA;;EAEE,cAAc;EACd,iBAAiB;AACnB;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;AACjB;;AAEA,4BAA4B;AAC5B;EACE,iBAAiB;EACjB,cAAc;EACd,aAAa;AACf;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,mBAAmB;EACnB,iCAAiC;EACjC,kBAAkB;EAClB,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,iBAAiB;EACjB,0CAA0C;EAC1C,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA,gCAAgC;AAChC;EACE,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,kBAAkB;AACpB;;AAEA,0CAA0C;AAC1C;EACE,qBAAqB;EACrB,iBAAiB;EACjB,yBAAyB;EACzB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,sCAAsC;AACxC;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,6DAA6D;AAC7D;EACE,iBAAiB;EACjB,eAAe;EACf,WAAW;AACb;;AAEA,0BAA0B;AAC1B;EACE,cAAc;EACd,qBAAqB;EACrB,gBAAgB;EAChB,oDAAoD;AACtD;;AAEA,wBAAwB;AACxB;EACE,yBAAyB;EACzB,qCAAqC;EACrC,YAAY;EACZ,+BAA+B;AACjC;;AAEA,mBAAmB;AACnB;EACE,iBAAiB;EACjB,gBAAgB;EAChB,mBAAmB;EACnB,WAAW;AACb;;AAEA,iBAAiB;AACjB;EACE,gBAAgB;EAChB,eAAe;EACf,WAAW;EACX,kBAAkB;EAClB,cAAc;AAChB;;AAEA,4BAA4B;AAC5B;;EAEE,YAAY;EACZ,eAAe;EACf,uBAAuB;EACvB,yBAAyB;EACzB,eAAe;EACf,gCAAgC;AAClC;;AAEA;;EAEE,qBAAqB;EACrB,4CAA4C;AAC9C;;AAEA,0BAA0B;AAC1B;EACE,iBAAiB;EACjB,kBAAkB;EAClB,kBAAkB;EAClB,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,sCAAsC;EACtC,yCAAyC;AAC3C;;AAEA;EACE,yBAAyB;EACzB,0CAA0C;AAC5C;;AAEA,mBAAmB;AACnB;EACE,aAAa;EACb,iBAAiB;EACjB,mBAAmB;EACnB,0CAA0C;EAC1C,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,sBAAsB;AACxB;;AAEA;;EAEE,iCAAiC;AACnC;AACA,iBAAiB;;AAEjB,yCAAyC;AACzC;EACE,wBAAwB,EAAE,sBAAsB;EAChD,0BAA0B,EAAE,mBAAmB;EAC/C,uBAAuB,EAAE,sBAAsB;EAC/C,mBAAmB;EACnB,oBAAoB;EACpB,mCAAmC;AACrC;;AAEA,kBAAkB;AAClB;EACE,+BAA+B;EAC/B,uBAAuB;AACzB;;AAEA,iBAAiB;;AAEjB;EACE,eAAe;EACf,gBAAgB;EAChB,gBAAgB;AAClB;;AAEA;EACE,iBAAiB;EACjB,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,2DAA2D;AAC7D;;AAEA;EACE,yBAAyB;EACzB,2BAA2B;AAC7B;;AAEA,yBAAyB;AACzB;EACE,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;AAClB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,gDAAgD;AAClD;;AAEA;EACE,qBAAqB;EACrB,2BAA2B;AAC7B;;AAEA,8BAA8B;AAC9B;EACE,wCAAwC;AAC1C;;AAEA;EACE,kCAAkC;EAClC,gBAAgB;EAChB,kBAAkB;EAClB,uDAAuD;EACvD,mBAAmB;EACnB,aAAa;AACf;;AAEA;;EAEE,sBAAsB;EACtB,sCAAsC;AACxC;;AAEA,qBAAqB;AACrB;EACE,yBAAyB;AAC3B;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,WAAW;EACX,WAAW;EACX,WAAW;EACX,sCAAsC;EACtC,cAAc;EACd,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,mBAAmB;EACnB,gBAAgB;EAChB,qDAAqD;AACvD;;AAEA;EACE,4BAA4B;EAC5B,0CAA0C;AAC5C;;AAEA;EACE,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,6BAA6B;AAC7B;EACE,iCAAiC;AACnC;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,mBAAmB;AACrB;;AAEA;EACE,kBAAkB;EAClB,eAAe;EACf,mBAAmB;EACnB,2DAA2D;AAC7D;;AAEA;EACE,yBAAyB;EACzB,2BAA2B;AAC7B;;AAEA,yBAAyB;AACzB;EACE,yBAAyB;AAC3B;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,WAAW;EACX,WAAW;EACX,WAAW;EACX,sCAAsC;EACtC,cAAc;EACd,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,mBAAmB;EACnB,aAAa;EACb,wCAAwC;EACxC,qDAAqD;AACvD;;AAEA;EACE,2BAA2B;EAC3B,yCAAyC;AAC3C;;AAEA;EACE,6BAA6B;EAC7B,gBAAgB;EAChB,gBAAgB;EAChB,2BAA2B;AAC7B;;AAEA,sCAAsC;AACtC;;EAEE,yBAAyB;AAC3B;;AAEA;;EAEE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;;EAEE,WAAW;EACX,WAAW;EACX,WAAW;EACX,sCAAsC;EACtC,cAAc;EACd,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,mBAAmB;EACnB,gBAAgB;EAChB,qDAAqD;AACvD;;AAEA;EACE,4BAA4B;EAC5B,0CAA0C;AAC5C;;AAEA;EACE,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,iBAAiB;EACjB,gBAAgB;EAChB,2BAA2B;AAC7B;;AAEA;EACE,6BAA6B;EAC7B,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;;AAEA;EACE,yBAAyB;AAC3B;AACA,sBAAsB;AACtB;EACE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;EACrB;;EAEA;;;IAGE,WAAW;IACX,gBAAgB;EAClB;;EAEA;;IAEE,WAAW;IACX,mBAAmB;EACrB;;EAEA;;IAEE,WAAW;EACb;AACF;;AAEA,oCAAoC;AACpC;EACE;IACE,mBAAmB;EACrB;;EAEA;IACE,sBAAsB;EACxB;;EAEA;IACE,mBAAmB;EACrB;AACF;;AAEA,sBAAsB;AACtB;EACE;IACE,eAAe;EACjB;;EAEA;IACE,mBAAmB;EACrB;;EAEA;IACE,iBAAiB;IACjB,WAAW;IACX,iBAAiB;EACnB;;EAEA;;;;IAIE,iBAAiB;EACnB;;EAEA;;IAEE,kBAAkB;EACpB;AACF;;AAEA,sCAAsC;AACtC;EACE,mCAAmC;EACnC,4BAA4B;AAC9B;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 1920px;\r\n  height: 600px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1.2rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.hero-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Introduction Section */\r\n.intro-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.intro-section h4 {\r\n  margin-top: 15px;\r\n  font-weight: 600;\r\n}\r\n\r\n.intro-section p {\r\n  color: #6c757d;\r\n}\r\n\r\n.intro-section .fa-icon {\r\n  transition: transform 0.3s ease, color 0.3s ease;\r\n}\r\n\r\n.intro-section .fa-icon:hover {\r\n  transform: scale(1.1);\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Categories Navbar Section */\r\n.categories-navbar-section {\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.category-link {\r\n  color: var(--dark-text) !important;\r\n  font-weight: 500;\r\n  padding: 10px 20px;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n  border-radius: 30px;\r\n  margin: 0 5px;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  color: #fff !important;\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n/* Products Section */\r\n.products-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.products-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n\r\n/* Special Products Section */\r\n.special-products-section {\r\n  background-color: var(--light-bg);\r\n}\r\n\r\n.special-products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.special-products-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  border-radius: 15px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section p {\r\n  color: #6c757d;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.special-products-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.testimonials-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.testimonials-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  padding: 20px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.testimonials-section .card:hover {\r\n  transform: translateY(-5px);\r\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.testimonials-section .card-footer {\r\n  background-color: transparent;\r\n  border-top: none;\r\n  font-weight: 600;\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Featured & Sale Products Sections */\r\n.featured-products-section,\r\n.products-on-sale-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.featured-products-section h2,\r\n.products-on-sale-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.featured-products-section h2::after,\r\n.products-on-sale-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-on-sale-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-on-sale-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-on-sale-section .card-title {\r\n  font-weight: 600;\r\n}\r\n\r\n.products-on-sale-section .price {\r\n  font-size: 1.2rem;\r\n  font-weight: 700;\r\n  color: var(--primary-color);\r\n}\r\n\r\n.products-on-sale-section .original-price {\r\n  text-decoration: line-through;\r\n  color: #6c757d;\r\n  margin-left: 10px;\r\n}\r\n\r\n.products-on-sale-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .intro-section .fa-icon {\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  .categories-navbar-section .category-link {\r\n    padding: 8px 15px;\r\n    margin: 5px;\r\n    font-size: 0.9rem;\r\n  }\r\n\r\n  .products-section h2,\r\n  .testimonials-section h2,\r\n  .featured-products-section h2,\r\n  .products-on-sale-section h2 {\r\n    font-size: 1.5rem;\r\n  }\r\n\r\n  .special-products-section h2,\r\n  .testimonials-section h2 {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n/* Smooth Scroll for Modal (if used) */\r\n.modal.fade .modal-dialog {\r\n  transition: transform 0.3s ease-out;\r\n  transform: translateY(-50px);\r\n}\r\n\r\n.modal.show .modal-dialog {\r\n  transform: translateY(0);\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 1920px;\r\n  height: 600px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1.2rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.hero-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Introduction Section */\r\n.intro-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.intro-section h4 {\r\n  margin-top: 15px;\r\n  font-weight: 600;\r\n}\r\n\r\n.intro-section p {\r\n  color: #6c757d;\r\n}\r\n\r\n.intro-section .fa-icon {\r\n  transition: transform 0.3s ease, color 0.3s ease;\r\n}\r\n\r\n.intro-section .fa-icon:hover {\r\n  transform: scale(1.1);\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Categories Navbar Section */\r\n.categories-navbar-section {\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.category-link {\r\n  color: var(--dark-text) !important;\r\n  font-weight: 500;\r\n  padding: 10px 20px;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n  border-radius: 30px;\r\n  margin: 0 5px;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  color: #fff !important;\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.subcategory-tabs-section .nav-link {\r\n  color: bold;\r\n  transition: color 0.3s;\r\n}\r\n\r\n.subcategory-tabs-section .nav-link.active {\r\n  font-weight: #007bff;\r\n}\r\n\r\n/* Products Section */\r\n.products-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.search-bar-section {\r\n  border-bottom: 1px solid #dee2e6;\r\n}\r\n\r\n.search-bar-section .form-control {\r\n  border-radius: 25px;\r\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.search-bar-section .btn {\r\n  border-radius: 25px;\r\n}\r\n.products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.products-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n\r\n/* Special Products Section */\r\n.special-products-section {\r\n  background-color: var(--light-bg);\r\n}\r\n\r\n.special-products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.special-products-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  border-radius: 15px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section p {\r\n  color: #6c757d;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.special-products-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.testimonials-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.testimonials-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  padding: 20px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.testimonials-section .card:hover {\r\n  transform: translateY(-5px);\r\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.testimonials-section .card-footer {\r\n  background-color: transparent;\r\n  border-top: none;\r\n  font-weight: 600;\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Featured & Sale Products Sections */\r\n.featured-products-section,\r\n.products-on-sale-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.featured-products-section h2,\r\n.products-on-sale-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.featured-products-section h2::after,\r\n.products-on-sale-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-on-sale-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-on-sale-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-on-sale-section .card-title {\r\n  font-weight: 600;\r\n}\r\n\r\n.products-on-sale-section .price {\r\n  font-size: 1.2rem;\r\n  font-weight: 700;\r\n  color: var(--primary-color);\r\n}\r\n\r\n.products-on-sale-section .original-price {\r\n  text-decoration: line-through;\r\n  color: #6c757d;\r\n  margin-left: 10px;\r\n}\r\n\r\n.products-on-sale-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .intro-section .fa-icon {\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  .categories-navbar-section .category-link {\r\n    padding: 8px 15px;\r\n    margin: 5px;\r\n    font-size: 0.9rem;\r\n  }\r\n\r\n  .products-section h2,\r\n  .testimonials-section h2,\r\n  .featured-products-section h2,\r\n  .products-on-sale-section h2 {\r\n    font-size: 1.5rem;\r\n  }\r\n\r\n  .special-products-section h2,\r\n  .testimonials-section h2 {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n/* Smooth Scroll for Modal (if used) */\r\n.modal.fade .modal-dialog {\r\n  transition: transform 0.3s ease-out;\r\n  transform: translateY(-50px);\r\n}\r\n\r\n.modal.show .modal-dialog {\r\n  transform: translateY(0);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
