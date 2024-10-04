@@ -49,7 +49,7 @@ const Admin = () => {
             <p>58</p>
           </div>
           <div className="stat-box">
-            <h3>Customers</h3>
+            <h3>Total Customers</h3>
             <p>8,200</p>
           </div>
         </section>
@@ -58,7 +58,7 @@ const Admin = () => {
         <section className="charts">
           <div className="chart-box">
             <h3>Sales Chart</h3>
-            <div className="chart-placeholder">Chart goes here</div>
+            <div className="chart-placeholder">Orders Sale Data will be shown here.</div>
           </div>
         </section>
 
@@ -68,7 +68,7 @@ const Admin = () => {
             <h3>Recent Activity</h3>
             <ul>
               <li>User JohnDoe placed a new order.</li>
-              <li>New product added: "Wireless Headphones"</li>
+              <li>New product added: "Pineapple and Banana"</li>
               <li>Discount applied to the order #3456</li>
             </ul>
           </div>
