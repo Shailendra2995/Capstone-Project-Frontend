@@ -239,13 +239,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -253,623 +260,38 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
+ // Using useNavigate for navigation
 
 
 var HomePage = function HomePage() {
-  var _categories$find, _allProducts$selected;
-  // Dummy Data for products categorized by type
-  var allProducts = {
-    fruits: [{
-      id: 1,
-      name: "Green Apple",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic green apple with a crisp taste."
-    }, {
-      id: 2,
-      name: "Banana",
-      price: "$0.50",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet organic bananas, perfect for snacking."
-    }, {
-      id: 3,
-      name: "Orange",
-      price: "$1.00",
-      img: "https://via.placeholder.com/150",
-      description: "Juicy organic orange rich in Vitamin C."
-    }, {
-      id: 4,
-      name: "Strawberry",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic strawberries, great for desserts."
-    }, {
-      id: 5,
-      name: "Grapes",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic grapes, sweet and juicy."
-    }, {
-      id: 6,
-      name: "Mango",
-      price: "$1.80",
-      img: "https://via.placeholder.com/150",
-      description: "Ripe organic mango with tropical flavor."
-    }, {
-      id: 7,
-      name: "Pineapple",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet and tangy organic pineapple."
-    }, {
-      id: 8,
-      name: "Blueberries",
-      price: "$2.20",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic blueberries, great for smoothies."
-    }, {
-      id: 9,
-      name: "Peach",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Juicy organic peaches, perfect for summer."
-    }, {
-      id: 10,
-      name: "Kiwi",
-      price: "$1.00",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet and tart organic kiwi."
-    }],
-    vegetables: [{
-      id: 1,
-      name: "Tomato",
-      price: "$1.20",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic tomatoes, perfect for salads."
-    }, {
-      id: 2,
-      name: "Broccoli",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic broccoli, rich in vitamins."
-    }, {
-      id: 3,
-      name: "Carrot",
-      price: "$0.80",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic carrots, crunchy and sweet."
-    }, {
-      id: 4,
-      name: "Lettuce",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Crisp organic lettuce for fresh salads."
-    }, {
-      id: 5,
-      name: "Peppers",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic peppers, colorful and crunchy."
-    }, {
-      id: 6,
-      name: "Spinach",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic spinach, packed with nutrients."
-    }, {
-      id: 7,
-      name: "Cucumber",
-      price: "$1.00",
-      img: "https://via.placeholder.com/150",
-      description: "Crisp organic cucumbers, refreshing and hydrating."
-    }, {
-      id: 8,
-      name: "Zucchini",
-      price: "$1.20",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic zucchini, versatile for cooking."
-    }, {
-      id: 9,
-      name: "Cauliflower",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic cauliflower, great for low-carb meals."
-    }, {
-      id: 10,
-      name: "Onion",
-      price: "$0.50",
-      img: "https://via.placeholder.com/150",
-      description: "Organic onions, essential for flavor."
-    }],
-    dairy: [{
-      id: 1,
-      name: "Milk",
-      price: "$1.20",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic milk, rich and creamy."
-    }, {
-      id: 2,
-      name: "Cheese",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Organic cheese, perfect for sandwiches."
-    }, {
-      id: 3,
-      name: "Butter",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic butter, creamy and rich."
-    }, {
-      id: 4,
-      name: "Yogurt",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic yogurt, smooth and tasty."
-    }, {
-      id: 5,
-      name: "Cream",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Organic cream, perfect for desserts."
-    }, {
-      id: 6,
-      name: "Sour Cream",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Rich and tangy organic sour cream."
-    }, {
-      id: 7,
-      name: "Feta Cheese",
-      price: "$3.50",
-      img: "https://via.placeholder.com/150",
-      description: "Crumble organic feta cheese on salads."
-    }, {
-      id: 8,
-      name: "Cottage Cheese",
-      price: "$2.20",
-      img: "https://via.placeholder.com/150",
-      description: "Organic cottage cheese, great for snacks."
-    }, {
-      id: 9,
-      name: "Ice Cream",
-      price: "$4.00",
-      img: "https://via.placeholder.com/150",
-      description: "Delicious organic ice cream, creamy and sweet."
-    }, {
-      id: 10,
-      name: "Almond Milk",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Organic almond milk, dairy-free option."
-    }],
-    beverages: [{
-      id: 1,
-      name: "Orange Juice",
-      price: "$3.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh orange juice, rich in vitamin C."
-    }, {
-      id: 2,
-      name: "Green Tea",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Healthy organic green tea."
-    }, {
-      id: 3,
-      name: "Coffee",
-      price: "$4.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh brewed organic coffee."
-    }, {
-      id: 4,
-      name: "Milkshake",
-      price: "$5.00",
-      img: "https://via.placeholder.com/150",
-      description: "Delicious milkshake, rich and creamy."
-    }, {
-      id: 5,
-      name: "Smoothie",
-      price: "$4.50",
-      img: "https://via.placeholder.com/150",
-      description: "Healthy smoothie made with fresh fruits."
-    }, {
-      id: 6,
-      name: "Lemonade",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh lemonade, refreshing and sweet."
-    }, {
-      id: 7,
-      name: "Coconut Water",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Hydrating organic coconut water."
-    }, {
-      id: 8,
-      name: "Herbal Tea",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Soothing organic herbal tea."
-    }, {
-      id: 9,
-      name: "Sparkling Water",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Refreshing sparkling water."
-    }, {
-      id: 10,
-      name: "Hot Chocolate",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Rich hot chocolate, perfect for winter."
-    }],
-    snacks: [{
-      id: 1,
-      name: "Chips",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Crunchy potato chips."
-    }, {
-      id: 2,
-      name: "Cookies",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Tasty cookies, perfect for snacks."
-    }, {
-      id: 3,
-      name: "Granola",
-      price: "$3.50",
-      img: "https://via.placeholder.com/150",
-      description: "Healthy granola bars, great for energy."
-    }, {
-      id: 4,
-      name: "Popcorn",
-      price: "$1.80",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh popcorn, light and airy."
-    }, {
-      id: 5,
-      name: "Nuts",
-      price: "$4.00",
-      img: "https://via.placeholder.com/150",
-      description: "Roasted mixed nuts, healthy and crunchy."
-    }, {
-      id: 6,
-      name: "Trail Mix",
-      price: "$3.50",
-      img: "https://via.placeholder.com/150",
-      description: "Nut and dried fruit mix, energy booster."
-    }, {
-      id: 7,
-      name: "Rice Cakes",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Light and crispy rice cakes."
-    }, {
-      id: 8,
-      name: "Beef Jerky",
-      price: "$4.50",
-      img: "https://via.placeholder.com/150",
-      description: "Savory beef jerky, high in protein."
-    }, {
-      id: 9,
-      name: "Fruit Snacks",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Chewy fruit snacks, perfect for kids."
-    }, {
-      id: 10,
-      name: "Chocolate Bar",
-      price: "$1.80",
-      img: "https://via.placeholder.com/150",
-      description: "Delicious chocolate bar, sweet treat."
-    }],
-    bakery: [{
-      id: 1,
-      name: "Bread",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Freshly baked organic bread."
-    }, {
-      id: 2,
-      name: "Croissant",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Buttery croissant, flaky and delicious."
-    }, {
-      id: 3,
-      name: "Bagel",
-      price: "$1.20",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh bagels, great for breakfast."
-    }, {
-      id: 4,
-      name: "Muffin",
-      price: "$1.80",
-      img: "https://via.placeholder.com/150",
-      description: "Delicious muffin, perfect for snacks."
-    }, {
-      id: 5,
-      name: "Sourdough",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Artisan sourdough bread, tangy flavor."
-    }, {
-      id: 6,
-      name: "Baguette",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Crispy baguette, perfect for sandwiches."
-    }, {
-      id: 7,
-      name: "Pita Bread",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Soft pita bread for wraps."
-    }, {
-      id: 8,
-      name: "Brownie",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Rich chocolate brownie, sweet and fudgy."
-    }, {
-      id: 9,
-      name: "Danish Pastry",
-      price: "$2.20",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet danish pastry, filled with fruit."
-    }, {
-      id: 10,
-      name: "Cookies",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh baked cookies, soft and chewy."
-    }],
-    grains: [{
-      id: 1,
-      name: "Rice",
-      price: "$1.80",
-      img: "https://via.placeholder.com/150",
-      description: "Organic rice, great for meals."
-    }, {
-      id: 2,
-      name: "Quinoa",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Healthy quinoa, high in protein."
-    }, {
-      id: 3,
-      name: "Oats",
-      price: "$1.20",
-      img: "https://via.placeholder.com/150",
-      description: "Whole grain oats, perfect for breakfast."
-    }, {
-      id: 4,
-      name: "Pasta",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Organic pasta, quick and easy meals."
-    }, {
-      id: 5,
-      name: "Barley",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Nutritious barley for soups and salads."
-    }, {
-      id: 6,
-      name: "Bread Crumbs",
-      price: "$1.00",
-      img: "https://via.placeholder.com/150",
-      description: "Organic bread crumbs for cooking."
-    }, {
-      id: 7,
-      name: "Flour",
-      price: "$1.80",
-      img: "https://via.placeholder.com/150",
-      description: "Organic flour for baking."
-    }, {
-      id: 8,
-      name: "Cornmeal",
-      price: "$2.20",
-      img: "https://via.placeholder.com/150",
-      description: "Organic cornmeal for polenta."
-    }, {
-      id: 9,
-      name: "Couscous",
-      price: "$1.50",
-      img: "https://via.placeholder.com/150",
-      description: "Fluffy couscous, great side dish."
-    }, {
-      id: 10,
-      name: "Buckwheat",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Nutritious buckwheat, gluten-free option."
-    }],
-    meat: [{
-      id: 1,
-      name: "Chicken Breast",
-      price: "$5.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic chicken breast, lean and healthy."
-    }, {
-      id: 2,
-      name: "Ground Beef",
-      price: "$7.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh ground beef, perfect for burgers."
-    }, {
-      id: 3,
-      name: "Pork Chops",
-      price: "$6.00",
-      img: "https://via.placeholder.com/150",
-      description: "Juicy pork chops, great for grilling."
-    }, {
-      id: 4,
-      name: "Turkey Breast",
-      price: "$5.50",
-      img: "https://via.placeholder.com/150",
-      description: "Lean turkey breast, healthy protein source."
-    }, {
-      id: 5,
-      name: "Sausage",
-      price: "$4.50",
-      img: "https://via.placeholder.com/150",
-      description: "Savory sausage links, great for breakfast."
-    }, {
-      id: 6,
-      name: "Bacon",
-      price: "$5.50",
-      img: "https://via.placeholder.com/150",
-      description: "Crispy bacon, perfect for any meal."
-    }, {
-      id: 7,
-      name: "Lamb Chops",
-      price: "$8.00",
-      img: "https://via.placeholder.com/150",
-      description: "Tender lamb chops, perfect for roasting."
-    }, {
-      id: 8,
-      name: "Beef Steaks",
-      price: "$10.00",
-      img: "https://via.placeholder.com/150",
-      description: "Premium beef steaks, rich in flavor."
-    }, {
-      id: 9,
-      name: "Duck Breast",
-      price: "$9.00",
-      img: "https://via.placeholder.com/150",
-      description: "Rich duck breast, great for gourmet meals."
-    }, {
-      id: 10,
-      name: "Veal Cutlets",
-      price: "$12.00",
-      img: "https://via.placeholder.com/150",
-      description: "Tender veal cutlets, great for fine dining."
-    }],
-    seafood: [{
-      id: 1,
-      name: "Salmon",
-      price: "$12.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh salmon fillet, rich in omega-3."
-    }, {
-      id: 2,
-      name: "Shrimp",
-      price: "$10.00",
-      img: "https://via.placeholder.com/150",
-      description: "Juicy shrimp, perfect for grilling."
-    }, {
-      id: 3,
-      name: "Tuna",
-      price: "$14.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh tuna steaks, delicious and healthy."
-    }, {
-      id: 4,
-      name: "Tilapia",
-      price: "$8.00",
-      img: "https://via.placeholder.com/150",
-      description: "Mild tilapia fillet, easy to cook."
-    }, {
-      id: 5,
-      name: "Cod",
-      price: "$9.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh cod fillet, flaky and delicious."
-    }, {
-      id: 6,
-      name: "Crab Legs",
-      price: "$20.00",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet crab legs, perfect for special occasions."
-    }, {
-      id: 7,
-      name: "Lobster",
-      price: "$25.00",
-      img: "https://via.placeholder.com/150",
-      description: "Succulent lobster tail, luxurious and tasty."
-    }, {
-      id: 8,
-      name: "Mussels",
-      price: "$10.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh mussels, great for pasta dishes."
-    }, {
-      id: 9,
-      name: "Oysters",
-      price: "$18.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh oysters, a delicacy."
-    }, {
-      id: 10,
-      name: "Scallops",
-      price: "$22.00",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet scallops, perfect for searing."
-    }],
-    frozenFoods: [{
-      id: 1,
-      name: "Frozen Vegetables",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Mixed frozen vegetables, quick and easy."
-    }, {
-      id: 2,
-      name: "Ice Cream",
-      price: "$4.00",
-      img: "https://via.placeholder.com/150",
-      description: "Delicious ice cream, various flavors."
-    }, {
-      id: 3,
-      name: "Frozen Pizza",
-      price: "$8.00",
-      img: "https://via.placeholder.com/150",
-      description: "Quick frozen pizza, easy to cook."
-    }, {
-      id: 4,
-      name: "Frozen Berries",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Mixed frozen berries, great for smoothies."
-    }, {
-      id: 5,
-      name: "Frozen Fish",
-      price: "$6.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh frozen fish fillets."
-    }, {
-      id: 6,
-      name: "Frozen Dinners",
-      price: "$7.00",
-      img: "https://via.placeholder.com/150",
-      description: "Complete frozen meals, easy to prepare."
-    }, {
-      id: 7,
-      name: "Frozen Potatoes",
-      price: "$3.50",
-      img: "https://via.placeholder.com/150",
-      description: "Frozen potato fries, quick side dish."
-    }, {
-      id: 8,
-      name: "Frozen Fruit Bars",
-      price: "$2.50",
-      img: "https://via.placeholder.com/150",
-      description: "Refreshing frozen fruit bars."
-    }, {
-      id: 9,
-      name: "Frozen Pancakes",
-      price: "$4.50",
-      img: "https://via.placeholder.com/150",
-      description: "Quick and easy frozen pancakes."
-    }, {
-      id: 10,
-      name: "Frozen Waffles",
-      price: "$3.00",
-      img: "https://via.placeholder.com/150",
-      description: "Delicious frozen waffles, great for breakfast."
-    }]
-  };
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  var token = localStorage.getItem("token");
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    categories = _useState2[0],
+    setCategories = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    error = _useState6[0],
+    setError = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    selectedCategory = _useState8[0],
+    setSelectedCategory = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState10 = _slicedToArray(_useState9, 2),
+    products = _useState10[0],
+    setProducts = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState12 = _slicedToArray(_useState11, 2),
+    loadingProducts = _useState12[0],
+    setLoadingProducts = _useState12[1];
+
+  // Dummy data for featured products and products on sale
   var featuredProducts = [{
     id: 1,
     name: "Organic Avocado",
@@ -898,81 +320,143 @@ var HomePage = function HomePage() {
     img: "https://via.placeholder.com/150",
     description: "Sweet organic bananas, discounted!"
   }];
-  var categories = [{
-    id: 1,
-    name: "Fruits",
-    key: "fruits",
-    icon: "fa-apple-whole"
-  }, {
-    id: 2,
-    name: "Vegetables",
-    key: "vegetables",
-    icon: "fa-carrot"
-  }, {
-    id: 3,
-    name: "Dairy",
-    key: "dairy",
-    icon: "fa-cheese"
-  }, {
-    id: 4,
-    name: "Beverages",
-    key: "beverages",
-    icon: "fa-coffee"
-  }, {
-    id: 5,
-    name: "Snacks",
-    key: "snacks",
-    icon: "fa-cookie"
-  }, {
-    id: 6,
-    name: "Bakery",
-    key: "bakery",
-    icon: "fa-bread-slice"
-  }, {
-    id: 7,
-    name: "Grains",
-    key: "grains",
-    icon: "fa-seedling"
-  }, {
-    id: 8,
-    name: "Meat",
-    key: "meat",
-    icon: "fa-drumstick-bite"
-  }, {
-    id: 9,
-    name: "Seafood",
-    key: "seafood",
-    icon: "fa-fish"
-  }, {
-    id: 10,
-    name: "Frozen Foods",
-    key: "frozenFoods",
-    icon: "fa-ice-cream"
-  }];
-
-  // State for the selected category
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("fruits"),
-    _useState2 = _slicedToArray(_useState, 2),
-    selectedCategory = _useState2[0],
-    setSelectedCategory = _useState2[1];
-
-  // Modal state for showing product details
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    showModal = _useState4[0],
-    setShowModal = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState6 = _slicedToArray(_useState5, 2),
-    modalProduct = _useState6[0],
-    setModalProduct = _useState6[1];
+  var fetchCategories = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var response, data;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            setLoading(true);
+            setError(null);
+            _context.prev = 2;
+            _context.next = 5;
+            return fetch("http://localhost:8000/api/category", {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+              }
+            });
+          case 5:
+            response = _context.sent;
+            if (response.ok) {
+              _context.next = 8;
+              break;
+            }
+            throw new Error("HTTP error! Status: ".concat(response.status));
+          case 8:
+            _context.next = 10;
+            return response.json();
+          case 10:
+            data = _context.sent;
+            if (!(data.status === 0 && Array.isArray(data.data))) {
+              _context.next = 16;
+              break;
+            }
+            setCategories(data.data);
+            if (!selectedCategory && data.data.length > 0) {
+              setSelectedCategory(data.data[0].id);
+            }
+            _context.next = 17;
+            break;
+          case 16:
+            throw new Error(data.msg || "Failed to load categories.");
+          case 17:
+            _context.next = 22;
+            break;
+          case 19:
+            _context.prev = 19;
+            _context.t0 = _context["catch"](2);
+            setError(_context.t0.message || "Error fetching categories.");
+          case 22:
+            _context.prev = 22;
+            setLoading(false);
+            return _context.finish(22);
+          case 25:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[2, 19, 22, 25]]);
+    }));
+    return function fetchCategories() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var fetchProducts = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(categoryId, search) {
+      var params, response, data;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            setLoadingProducts(true);
+            setError(null);
+            _context2.prev = 2;
+            params = new URLSearchParams();
+            if (categoryId) params.append("category_id", categoryId);
+            if (search) params.append("name", search);
+            _context2.next = 8;
+            return fetch("http://localhost:8000/api/product?".concat(params.toString()), {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+              }
+            });
+          case 8:
+            response = _context2.sent;
+            if (response.ok) {
+              _context2.next = 11;
+              break;
+            }
+            throw new Error("HTTP error! Status: ".concat(response.status));
+          case 11:
+            _context2.next = 13;
+            return response.json();
+          case 13:
+            data = _context2.sent;
+            if (!(data.status === 0 && Array.isArray(data.data))) {
+              _context2.next = 18;
+              break;
+            }
+            setProducts(data.data);
+            _context2.next = 19;
+            break;
+          case 18:
+            throw new Error(data.msg || "Failed to load products.");
+          case 19:
+            _context2.next = 24;
+            break;
+          case 21:
+            _context2.prev = 21;
+            _context2.t0 = _context2["catch"](2);
+            setError(_context2.t0.message || "Error fetching products.");
+          case 24:
+            _context2.prev = 24;
+            setLoadingProducts(false);
+            return _context2.finish(24);
+          case 27:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[2, 21, 24, 27]]);
+    }));
+    return function fetchProducts(_x, _x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchCategories();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (selectedCategory) {
+      fetchProducts(selectedCategory);
+    }
+  }, [selectedCategory]);
   var handleCategoryClick = function handleCategoryClick(categoryKey) {
     setSelectedCategory(categoryKey);
+    navigate("/products");
   };
-  var handleProductClick = function handleProductClick(product) {
-    setModalProduct(product);
-    setShowModal(true);
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
     fluid: true,
     className: "p-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
@@ -980,69 +464,86 @@ var HomePage = function HomePage() {
     style: {
       backgroundColor: "#F1F8E9"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: "./image1.png",
     alt: "Fresh Organic Food",
     className: "img-fluid"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Fresh & Healthy Organic Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "success"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Fresh & Healthy Organic Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    variant: "success",
+    onClick: function onClick() {
+      return navigate("/products");
+    }
   }, "Shop Now"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "intro-section p-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 4
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaLeaf, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaLeaf, {
     size: 50,
     style: {
       color: "green"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "100% Organic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We offer organic food that is healthy and fresh.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "100% Organic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We offer organic food that is healthy and fresh.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 4
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBox, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBox, {
     size: 50,
     style: {
       color: "orange"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Fresh Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our products are delivered fresh to your door.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Fresh Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our products are delivered fresh to your door.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 4
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTruck, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTruck, {
     size: 50,
     style: {
       color: "blue"
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Fast Delivery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Get your groceries delivered within 24 hours."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "categories-navbar-section py-3 bg-light"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    className: "justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    animation: "border",
+    variant: "primary"
+  })) : error ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    variant: "danger",
+    className: "text-center"
+  }, error) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    className: "justify-content-center flex-wrap"
   }, categories.map(function (category) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Item, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
       key: category.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Link, {
-      className: "category-link ".concat(selectedCategory === category.key ? "active" : ""),
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Link, {
+      className: "category-link ".concat(selectedCategory === category.id ? "active" : ""),
       onClick: function onClick() {
-        return handleCategoryClick(category.key);
+        return handleCategoryClick(category.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
       className: "fa ".concat(category.icon, " me-2"),
       "aria-hidden": "true"
     }), category.name));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Link, {
+    className: "category-link ".concat(selectedCategory === null ? "active" : ""),
+    onClick: function onClick() {
+      return handleCategoryClick(null);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "fa fa-th-large me-2",
+    "aria-hidden": "true"
+  }), "All"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "text-center mb-5"
-  }, "Products:", " ", (_categories$find = categories.find(function (cat) {
-    return cat.key === selectedCategory;
-  })) === null || _categories$find === void 0 ? void 0 : _categories$find.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, (_allProducts$selected = allProducts[selectedCategory]) === null || _allProducts$selected === void 0 ? void 0 : _allProducts$selected.map(function (product) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, "Featured Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, featuredProducts.map(function (product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
       md: 3,
       key: product.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
       className: "mb-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Img, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Img, {
       variant: "top",
       src: product.img
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
       variant: "primary"
     }, "Add to Cart"))));
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
@@ -1050,87 +551,74 @@ var HomePage = function HomePage() {
     style: {
       backgroundColor: "#F9F9F9"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "mb-4"
-  }, "Our Special Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }, "Our Special Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: "./image.png",
     alt: "Special Products",
     className: "img-fluid"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Delicious and fresh organic food just for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "success"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Delicious and fresh organic food just for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    variant: "success",
+    onClick: function onClick() {
+      return navigate("/products");
+    }
   }, "Shop Now"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "testimonials-section py-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "text-center mb-5"
-  }, "What Our Clients Say"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "What Our Clients Say"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 4
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
     className: "mb-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
     className: "fa fa-star mb-2",
     "aria-hidden": "true",
     style: {
       fontSize: "2rem",
       color: "#007bff"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Best quality organic products I have ever purchased!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 1")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, "\"Best quality organic products I have ever purchased!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Footer, null, "- Client 1")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 4
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
     className: "mb-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
     className: "fa fa-thumbs-up mb-2",
     "aria-hidden": "true",
     style: {
       fontSize: "2rem",
       color: "#007bff"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Fast delivery and fresh products every time!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 2")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, "\"Fast delivery and fresh products every time!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Footer, null, "- Client 2")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     md: 4
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
     className: "mb-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
     className: "fa fa-smile mb-2",
     "aria-hidden": "true",
     style: {
       fontSize: "2rem",
       color: "#007bff"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "\"Excellent service and product quality!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, null, "- Client 3"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, "\"Excellent service and product quality!\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Footer, null, "- Client 3"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "text-center mb-5"
-  }, "Featured Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, featuredProducts.map(function (product) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, "Products on Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, productsOnSale.map(function (product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
       md: 3,
       key: product.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
       className: "mb-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Img, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Img, {
       variant: "top",
       src: product.img
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      variant: "primary"
-    }, "Add to Cart"))));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    className: "products-section py-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
-    className: "text-center mb-5"
-  }, "Products on Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, productsOnSale.map(function (product) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      md: 3,
-      key: product.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      className: "mb-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Img, {
-      variant: "top",
-      src: product.img
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, "Price: ", product.price, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, "Price: ", product.price, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       style: {
         textDecoration: "line-through"
       }
-    }, product.originalPrice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, product.originalPrice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
       variant: "primary"
     }, "Add to Cart"))));
   })))));
@@ -1440,10 +928,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+<<<<<<< HEAD
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+=======
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+>>>>>>> fc0335cd0e1cb0cfefac0d7cd37bbc50b23b441b
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -1455,744 +956,16 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 var ProductPage = function ProductPage() {
   var _categories$find;
-  // Define allProducts within the component
-  var allProducts = {
-    fruits: {
-      citrusFruits: [{
-        id: 3,
-        name: "Orange",
-        price: "$1.00",
-        img: "https://via.placeholder.com/150",
-        description: "Juicy organic orange rich in Vitamin C."
-      }],
-      berries: [{
-        id: 4,
-        name: "Strawberry",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic strawberries, great for desserts."
-      }, {
-        id: 8,
-        name: "Blueberries",
-        price: "$2.20",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic blueberries, great for smoothies."
-      }],
-      tropicalFruits: [{
-        id: 6,
-        name: "Mango",
-        price: "$1.80",
-        img: "https://via.placeholder.com/150",
-        description: "Ripe organic mango with tropical flavor."
-      }, {
-        id: 7,
-        name: "Pineapple",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Sweet and tangy organic pineapple."
-      }, {
-        id: 10,
-        name: "Kiwi",
-        price: "$1.00",
-        img: "https://via.placeholder.com/150",
-        description: "Sweet and tart organic kiwi."
-      }],
-      pomeFruits: [{
-        id: 1,
-        name: "Green Apple",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic green apple with a crisp taste."
-      }],
-      stoneFruits: [{
-        id: 9,
-        name: "Peach",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Juicy organic peaches, perfect for summer."
-      }],
-      otherFruits: [{
-        id: 2,
-        name: "Banana",
-        price: "$0.50",
-        img: "https://via.placeholder.com/150",
-        description: "Sweet organic bananas, perfect for snacking."
-      }, {
-        id: 5,
-        name: "Grapes",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic grapes, sweet and juicy."
-      }]
-    },
-    vegetables: {
-      leafyGreens: [{
-        id: 4,
-        name: "Lettuce",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Crisp organic lettuce for fresh salads."
-      }, {
-        id: 6,
-        name: "Spinach",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic spinach, packed with nutrients."
-      }],
-      cruciferousVegetables: [{
-        id: 2,
-        name: "Broccoli",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic broccoli, rich in vitamins."
-      }, {
-        id: 9,
-        name: "Cauliflower",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic cauliflower, great for low-carb meals."
-      }],
-      rootVegetables: [{
-        id: 3,
-        name: "Carrot",
-        price: "$0.80",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic carrots, crunchy and sweet."
-      }],
-      alliums: [{
-        id: 10,
-        name: "Onion",
-        price: "$0.50",
-        img: "https://via.placeholder.com/150",
-        description: "Organic onions, essential for flavor."
-      }],
-      nightshades: [{
-        id: 1,
-        name: "Tomato",
-        price: "$1.20",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic tomatoes, perfect for salads."
-      }, {
-        id: 5,
-        name: "Peppers",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic peppers, colorful and crunchy."
-      }],
-      otherVegetables: [{
-        id: 7,
-        name: "Cucumber",
-        price: "$1.00",
-        img: "https://via.placeholder.com/150",
-        description: "Crisp organic cucumbers, refreshing and hydrating."
-      }, {
-        id: 8,
-        name: "Zucchini",
-        price: "$1.20",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic zucchini, versatile for cooking."
-      }]
-    },
-    dairy: {
-      milkProducts: [{
-        id: 1,
-        name: "Milk",
-        price: "$1.20",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic milk, rich and creamy."
-      }, {
-        id: 10,
-        name: "Almond Milk",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Organic almond milk, dairy-free option."
-      }],
-      cheese: [{
-        id: 2,
-        name: "Cheese",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Organic cheese, perfect for sandwiches."
-      }, {
-        id: 7,
-        name: "Feta Cheese",
-        price: "$3.50",
-        img: "https://via.placeholder.com/150",
-        description: "Crumble organic feta cheese on salads."
-      }, {
-        id: 8,
-        name: "Cottage Cheese",
-        price: "$2.20",
-        img: "https://via.placeholder.com/150",
-        description: "Organic cottage cheese, great for snacks."
-      }],
-      butterAndCream: [{
-        id: 3,
-        name: "Butter",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic butter, creamy and rich."
-      }, {
-        id: 5,
-        name: "Cream",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Organic cream, perfect for desserts."
-      }, {
-        id: 6,
-        name: "Sour Cream",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Rich and tangy organic sour cream."
-      }],
-      yogurtAndIceCream: [{
-        id: 4,
-        name: "Yogurt",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic yogurt, smooth and tasty."
-      }, {
-        id: 9,
-        name: "Ice Cream",
-        price: "$4.00",
-        img: "https://via.placeholder.com/150",
-        description: "Delicious organic ice cream, creamy and sweet."
-      }]
-    },
-    beverages: {
-      juices: [{
-        id: 1,
-        name: "Orange Juice",
-        price: "$3.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh orange juice, rich in vitamin C."
-      }],
-      teasAndCoffees: [{
-        id: 2,
-        name: "Green Tea",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Healthy organic green tea."
-      }, {
-        id: 8,
-        name: "Herbal Tea",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Soothing organic herbal tea."
-      }, {
-        id: 3,
-        name: "Coffee",
-        price: "$4.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh brewed organic coffee."
-      }],
-      coldDrinks: [{
-        id: 6,
-        name: "Lemonade",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh lemonade, refreshing and sweet."
-      }, {
-        id: 7,
-        name: "Coconut Water",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Hydrating organic coconut water."
-      }, {
-        id: 9,
-        name: "Sparkling Water",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Refreshing sparkling water."
-      }],
-      hotDrinks: [{
-        id: 10,
-        name: "Hot Chocolate",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Rich hot chocolate, perfect for winter."
-      }],
-      blendedDrinks: [{
-        id: 4,
-        name: "Milkshake",
-        price: "$5.00",
-        img: "https://via.placeholder.com/150",
-        description: "Delicious milkshake, rich and creamy."
-      }, {
-        id: 5,
-        name: "Smoothie",
-        price: "$4.50",
-        img: "https://via.placeholder.com/150",
-        description: "Healthy smoothie made with fresh fruits."
-      }]
-    },
-    snacks: {
-      saltySnacks: [{
-        id: 1,
-        name: "Chips",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Crunchy potato chips."
-      }, {
-        id: 4,
-        name: "Popcorn",
-        price: "$1.80",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh popcorn, light and airy."
-      }, {
-        id: 5,
-        name: "Nuts",
-        price: "$4.00",
-        img: "https://via.placeholder.com/150",
-        description: "Roasted mixed nuts, healthy and crunchy."
-      }, {
-        id: 8,
-        name: "Beef Jerky",
-        price: "$4.50",
-        img: "https://via.placeholder.com/150",
-        description: "Savory beef jerky, high in protein."
-      }],
-      sweetSnacks: [{
-        id: 2,
-        name: "Cookies",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Tasty cookies, perfect for snacks."
-      }, {
-        id: 10,
-        name: "Chocolate Bar",
-        price: "$1.80",
-        img: "https://via.placeholder.com/150",
-        description: "Delicious chocolate bar, sweet treat."
-      }, {
-        id: 9,
-        name: "Fruit Snacks",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Chewy fruit snacks, perfect for kids."
-      }],
-      healthySnacks: [{
-        id: 3,
-        name: "Granola",
-        price: "$3.50",
-        img: "https://via.placeholder.com/150",
-        description: "Healthy granola bars, great for energy."
-      }, {
-        id: 6,
-        name: "Trail Mix",
-        price: "$3.50",
-        img: "https://via.placeholder.com/150",
-        description: "Nut and dried fruit mix, energy booster."
-      }, {
-        id: 7,
-        name: "Rice Cakes",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Light and crispy rice cakes."
-      }]
-    },
-    bakery: {
-      breads: [{
-        id: 1,
-        name: "Bread",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Freshly baked organic bread."
-      }, {
-        id: 5,
-        name: "Sourdough",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Artisan sourdough bread, tangy flavor."
-      }, {
-        id: 6,
-        name: "Baguette",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Crispy baguette, perfect for sandwiches."
-      }, {
-        id: 7,
-        name: "Pita Bread",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Soft pita bread for wraps."
-      }],
-      pastriesAndSweets: [{
-        id: 2,
-        name: "Croissant",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Buttery croissant, flaky and delicious."
-      }, {
-        id: 4,
-        name: "Muffin",
-        price: "$1.80",
-        img: "https://via.placeholder.com/150",
-        description: "Delicious muffin, perfect for snacks."
-      }, {
-        id: 8,
-        name: "Brownie",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Rich chocolate brownie, sweet and fudgy."
-      }, {
-        id: 9,
-        name: "Danish Pastry",
-        price: "$2.20",
-        img: "https://via.placeholder.com/150",
-        description: "Sweet danish pastry, filled with fruit."
-      }, {
-        id: 10,
-        name: "Cookies",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh baked cookies, soft and chewy."
-      }],
-      breakfastItems: [{
-        id: 3,
-        name: "Bagel",
-        price: "$1.20",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh bagels, great for breakfast."
-      }]
-    },
-    grains: {
-      wholeGrains: [{
-        id: 1,
-        name: "Rice",
-        price: "$1.80",
-        img: "https://via.placeholder.com/150",
-        description: "Organic rice, great for meals."
-      }, {
-        id: 2,
-        name: "Quinoa",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Healthy quinoa, high in protein."
-      }, {
-        id: 3,
-        name: "Oats",
-        price: "$1.20",
-        img: "https://via.placeholder.com/150",
-        description: "Whole grain oats, perfect for breakfast."
-      }, {
-        id: 10,
-        name: "Buckwheat",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Nutritious buckwheat, gluten-free option."
-      }],
-      pastaAndCouscous: [{
-        id: 4,
-        name: "Pasta",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Organic pasta, quick and easy meals."
-      }, {
-        id: 9,
-        name: "Couscous",
-        price: "$1.50",
-        img: "https://via.placeholder.com/150",
-        description: "Fluffy couscous, great side dish."
-      }],
-      bakingIngredients: [{
-        id: 7,
-        name: "Flour",
-        price: "$1.80",
-        img: "https://via.placeholder.com/150",
-        description: "Organic flour for baking."
-      }, {
-        id: 6,
-        name: "Bread Crumbs",
-        price: "$1.00",
-        img: "https://via.placeholder.com/150",
-        description: "Organic bread crumbs for cooking."
-      }, {
-        id: 8,
-        name: "Cornmeal",
-        price: "$2.20",
-        img: "https://via.placeholder.com/150",
-        description: "Organic cornmeal for polenta."
-      }],
-      otherGrains: [{
-        id: 5,
-        name: "Barley",
-        price: "$2.00",
-        img: "https://via.placeholder.com/150",
-        description: "Nutritious barley for soups and salads."
-      }]
-    },
-    meat: {
-      poultry: [{
-        id: 1,
-        name: "Chicken Breast",
-        price: "$5.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh organic chicken breast, lean and healthy."
-      }, {
-        id: 4,
-        name: "Turkey Breast",
-        price: "$5.50",
-        img: "https://via.placeholder.com/150",
-        description: "Lean turkey breast, healthy protein source."
-      }],
-      beefAndPork: [{
-        id: 2,
-        name: "Ground Beef",
-        price: "$7.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh ground beef, perfect for burgers."
-      }, {
-        id: 3,
-        name: "Pork Chops",
-        price: "$6.00",
-        img: "https://via.placeholder.com/150",
-        description: "Juicy pork chops, great for grilling."
-      }, {
-        id: 8,
-        name: "Beef Steaks",
-        price: "$10.00",
-        img: "https://via.placeholder.com/150",
-        description: "Premium beef steaks, rich in flavor."
-      }],
-      processedMeats: [{
-        id: 5,
-        name: "Sausage",
-        price: "$4.50",
-        img: "https://via.placeholder.com/150",
-        description: "Savory sausage links, great for breakfast."
-      }, {
-        id: 6,
-        name: "Bacon",
-        price: "$5.50",
-        img: "https://via.placeholder.com/150",
-        description: "Crispy bacon, perfect for any meal."
-      }],
-      lambAndVeal: [{
-        id: 7,
-        name: "Lamb Chops",
-        price: "$8.00",
-        img: "https://via.placeholder.com/150",
-        description: "Tender lamb chops, perfect for roasting."
-      }, {
-        id: 10,
-        name: "Veal Cutlets",
-        price: "$12.00",
-        img: "https://via.placeholder.com/150",
-        description: "Tender veal cutlets, great for fine dining."
-      }],
-      otherMeats: [{
-        id: 9,
-        name: "Duck Breast",
-        price: "$9.00",
-        img: "https://via.placeholder.com/150",
-        description: "Rich duck breast, great for gourmet meals."
-      }]
-    },
-    seafood: {
-      fish: [{
-        id: 1,
-        name: "Salmon",
-        price: "$12.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh salmon fillet, rich in omega-3."
-      }, {
-        id: 3,
-        name: "Tuna",
-        price: "$14.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh tuna steaks, delicious and healthy."
-      }, {
-        id: 4,
-        name: "Tilapia",
-        price: "$8.00",
-        img: "https://via.placeholder.com/150",
-        description: "Mild tilapia fillet, easy to cook."
-      }, {
-        id: 5,
-        name: "Cod",
-        price: "$9.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh cod fillet, flaky and delicious."
-      }, {
-        id: 6,
-        name: "Frozen Fish",
-        price: "$6.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh frozen fish fillets."
-      }],
-      shellfish: [{
-        id: 2,
-        name: "Shrimp",
-        price: "$10.00",
-        img: "https://via.placeholder.com/150",
-        description: "Juicy shrimp, perfect for grilling."
-      }, {
-        id: 7,
-        name: "Lobster",
-        price: "$25.00",
-        img: "https://via.placeholder.com/150",
-        description: "Succulent lobster tail, luxurious and tasty."
-      }, {
-        id: 3,
-        name: "Crab Legs",
-        price: "$20.00",
-        img: "https://via.placeholder.com/150",
-        description: "Sweet crab legs, perfect for special occasions."
-      }, {
-        id: 8,
-        name: "Mussels",
-        price: "$10.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh mussels, great for pasta dishes."
-      }, {
-        id: 9,
-        name: "Oysters",
-        price: "$18.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh oysters, a delicacy."
-      }, {
-        id: 10,
-        name: "Scallops",
-        price: "$22.00",
-        img: "https://via.placeholder.com/150",
-        description: "Sweet scallops, perfect for searing."
-      }]
-    },
-    frozenFoods: {
-      frozenVegetablesAndFruits: [{
-        id: 1,
-        name: "Frozen Vegetables",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Mixed frozen vegetables, quick and easy."
-      }, {
-        id: 4,
-        name: "Frozen Berries",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Mixed frozen berries, great for smoothies."
-      }, {
-        id: 8,
-        name: "Frozen Fruit Bars",
-        price: "$2.50",
-        img: "https://via.placeholder.com/150",
-        description: "Refreshing frozen fruit bars."
-      }],
-      frozenMeals: [{
-        id: 3,
-        name: "Frozen Pizza",
-        price: "$8.00",
-        img: "https://via.placeholder.com/150",
-        description: "Quick frozen pizza, easy to cook."
-      }, {
-        id: 6,
-        name: "Frozen Dinners",
-        price: "$7.00",
-        img: "https://via.placeholder.com/150",
-        description: "Complete frozen meals, easy to prepare."
-      }, {
-        id: 9,
-        name: "Frozen Pancakes",
-        price: "$4.50",
-        img: "https://via.placeholder.com/150",
-        description: "Quick and easy frozen pancakes."
-      }, {
-        id: 10,
-        name: "Frozen Waffles",
-        price: "$3.00",
-        img: "https://via.placeholder.com/150",
-        description: "Delicious frozen waffles, great for breakfast."
-      }],
-      frozenSnacks: [{
-        id: 2,
-        name: "Ice Cream",
-        price: "$4.00",
-        img: "https://via.placeholder.com/150",
-        description: "Delicious ice cream, various flavors."
-      }, {
-        id: 7,
-        name: "Frozen Potatoes",
-        price: "$3.50",
-        img: "https://via.placeholder.com/150",
-        description: "Frozen potato fries, quick side dish."
-      }],
-      frozenFish: [{
-        id: 5,
-        name: "Frozen Fish",
-        price: "$6.00",
-        img: "https://via.placeholder.com/150",
-        description: "Fresh frozen fish fillets."
-      }]
-    }
-  };
-
-  // Define categories
-  var categories = [{
-    id: 1,
-    name: "Fruits",
-    key: "fruits",
-    icon: "fa-apple-whole"
-  }, {
-    id: 2,
-    name: "Vegetables",
-    key: "vegetables",
-    icon: "fa-carrot"
-  }, {
-    id: 3,
-    name: "Dairy",
-    key: "dairy",
-    icon: "fa-cheese"
-  }, {
-    id: 4,
-    name: "Beverages",
-    key: "beverages",
-    icon: "fa-coffee"
-  }, {
-    id: 5,
-    name: "Snacks",
-    key: "snacks",
-    icon: "fa-cookie"
-  }, {
-    id: 6,
-    name: "Bakery",
-    key: "bakery",
-    icon: "fa-bread-slice"
-  }, {
-    id: 7,
-    name: "Grains",
-    key: "grains",
-    icon: "fa-seedling"
-  }, {
-    id: 8,
-    name: "Meat",
-    key: "meat",
-    icon: "fa-drumstick-bite"
-  }, {
-    id: 9,
-    name: "Seafood",
-    key: "seafood",
-    icon: "fa-fish"
-  }, {
-    id: 10,
-    name: "Frozen Foods",
-    key: "frozenFoods",
-    icon: "fa-ice-cream"
-  }];
-
-  // Extract categoryKey from URL parameters
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useParams)(),
     categoryKey = _useParams.categoryKey;
-
-  // State variables
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(categoryKey || "fruits"),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
-    selectedCategory = _useState2[0],
-    setSelectedCategory = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    categories = _useState2[0],
+    setCategories = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(categoryKey ? Number(categoryKey) : null),
     _useState4 = _slicedToArray(_useState3, 2),
-    selectedSubcategory = _useState4[0],
-    setSelectedSubcategory = _useState4[1];
+    selectedCategory = _useState4[0],
+    setSelectedCategory = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState6 = _slicedToArray(_useState5, 2),
     searchQuery = _useState6[0],
@@ -2209,75 +982,177 @@ var ProductPage = function ProductPage() {
     _useState12 = _slicedToArray(_useState11, 2),
     modalProduct = _useState12[0],
     setModalProduct = _useState12[1];
-  // Update selectedCategory when categoryKey changes
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState14 = _slicedToArray(_useState13, 2),
+    products = _useState14[0],
+    setProducts = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState16 = _slicedToArray(_useState15, 2),
+    loadingCategories = _useState16[0],
+    setLoadingCategories = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState18 = _slicedToArray(_useState17, 2),
+    loadingProducts = _useState18[0],
+    setLoadingProducts = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    error = _useState20[0],
+    setError = _useState20[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (categoryKey && categoryKey !== selectedCategory) {
-      setSelectedCategory(categoryKey);
-      setSelectedSubcategory(null); // Reset subcategory when category changes
-    }
-  }, [categoryKey]);
-
-  // Debounce the search input to optimize performance
+    fetchCategories();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchProducts(selectedCategory, debouncedSearch);
+  }, [selectedCategory, debouncedSearch]);
+  var fetchCategories = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var token, response, data;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            setLoadingCategories(true);
+            setError(null);
+            _context.prev = 3;
+            _context.next = 6;
+            return fetch("http://localhost:8000/api/category", {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+              }
+            });
+          case 6:
+            response = _context.sent;
+            if (response.ok) {
+              _context.next = 9;
+              break;
+            }
+            throw new Error("HTTP error! Status: ".concat(response.status));
+          case 9:
+            _context.next = 11;
+            return response.json();
+          case 11:
+            data = _context.sent;
+            if (!(data.status === 0 && Array.isArray(data.data))) {
+              _context.next = 17;
+              break;
+            }
+            setCategories(data.data);
+            if (!categoryKey && data.data.length > 0) {
+              setSelectedCategory(data.data[0].id);
+            }
+            _context.next = 18;
+            break;
+          case 17:
+            throw new Error(data.msg || "Failed to load categories.");
+          case 18:
+            _context.next = 23;
+            break;
+          case 20:
+            _context.prev = 20;
+            _context.t0 = _context["catch"](3);
+            setError(_context.t0.message || "Error fetching categories.");
+          case 23:
+            _context.prev = 23;
+            setLoadingCategories(false);
+            return _context.finish(23);
+          case 26:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[3, 20, 23, 26]]);
+    }));
+    return function fetchCategories() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var fetchProducts = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(categoryId, search) {
+      var token, params, response, data;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            setLoadingProducts(true);
+            setError(null);
+            _context2.prev = 3;
+            // Construct query parameters correctly
+            params = new URLSearchParams();
+            if (categoryId) params.append("category_id", categoryId);
+            if (search) params.append("name", search);
+            _context2.next = 9;
+            return fetch("http://localhost:8000/api/product?".concat(params.toString()), {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+              }
+            });
+          case 9:
+            response = _context2.sent;
+            if (response.ok) {
+              _context2.next = 12;
+              break;
+            }
+            throw new Error("HTTP error! Status: ".concat(response.status));
+          case 12:
+            _context2.next = 14;
+            return response.json();
+          case 14:
+            data = _context2.sent;
+            if (!(data.status === 0 && Array.isArray(data.data))) {
+              _context2.next = 19;
+              break;
+            }
+            setProducts(data.data);
+            _context2.next = 20;
+            break;
+          case 19:
+            throw new Error(data.msg || "Failed to load products.");
+          case 20:
+            _context2.next = 25;
+            break;
+          case 22:
+            _context2.prev = 22;
+            _context2.t0 = _context2["catch"](3);
+            setError(_context2.t0.message || "Error fetching products.");
+          case 25:
+            _context2.prev = 25;
+            setLoadingProducts(false);
+            return _context2.finish(25);
+          case 28:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[3, 22, 25, 28]]);
+    }));
+    return function fetchProducts(_x, _x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var handler = setTimeout(function () {
       setDebouncedSearch(searchQuery);
-    }, 300); // 300ms delay
-
+    }, 300);
     return function () {
       clearTimeout(handler);
     };
   }, [searchQuery]);
-
-  // Get current category data
-  var category = allProducts[selectedCategory];
-
-  // Handle category click
-  var handleCategoryClick = function handleCategoryClick(categoryKey) {
-    setSelectedCategory(categoryKey);
-    setSelectedSubcategory(null); // Reset subcategory on category change
+  var handleCategoryClick = function handleCategoryClick(categoryId) {
+    setSelectedCategory(categoryId);
   };
-
-  // Handle subcategory click
-  var handleSubcategoryClick = function handleSubcategoryClick(subcategory) {
-    setSelectedSubcategory(subcategory);
-  };
-
-  // Handle product click to show modal
   var handleProductClick = function handleProductClick(product) {
     setModalProduct(product);
     setShowModal(true);
   };
-
-  // Handle modal close
   var handleCloseModal = function handleCloseModal() {
     setShowModal(false);
     setModalProduct(null);
   };
-
-  // Format subcategory names
-  var formatSubcategoryName = function formatSubcategoryName(name) {
-    return name.replace(/([A-Z])/g, " $1") // Insert space before capital letters
-    .replace(/^./, function (str) {
-      return str.toUpperCase();
-    }); // Capitalize first letter
+  var addToCart = function addToCart(product) {
+    console.log("".concat(product.name, " added to cart"));
   };
-
-  // Get subcategories
-  var subcategories = category ? Object.keys(category) : [];
-
-  // Get products based on selected subcategory
-  var products = [];
-  if (selectedSubcategory) {
-    products = category[selectedSubcategory] || [];
-  } else {
-    // Flatten all products from all subcategories
-    products = Object.values(category || {}).flat();
-  }
-
-  // Filter products based on search query
-  var filteredProducts = products.filter(function (product) {
-    return product.name.toLowerCase().includes(debouncedSearch.toLowerCase());
-  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
     fluid: true,
     className: "p-0"
@@ -2302,66 +1177,73 @@ var ProductPage = function ProductPage() {
     variant: "outline-success"
   }, "Search")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "categories-navbar-section py-3 bg-light"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    className: "justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, loadingCategories ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    animation: "border",
+    variant: "primary"
+  })) : error ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    variant: "danger",
+    className: "text-center"
+  }, error) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    className: "justify-content-center flex-wrap"
   }, categories.map(function (category) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
       key: category.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Link, {
-      className: "category-link ".concat(selectedCategory === category.key ? "active" : ""),
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Link, {
+      className: "category-link ".concat(selectedCategory === category.id ? "active" : ""),
       onClick: function onClick() {
-        return handleCategoryClick(category.key);
+        return handleCategoryClick(category.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
       className: "fa ".concat(category.icon, " me-2"),
       "aria-hidden": "true"
     }), category.name));
-  })))), subcategories.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    className: "subcategory-tabs-section py-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    variant: "tabs",
-    className: "justify-content-center flex-wrap"
-  }, subcategories.map(function (subcategory) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
-      key: subcategory
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Link, {
-      active: selectedSubcategory === subcategory,
-      onClick: function onClick() {
-        return handleSubcategoryClick(subcategory);
-      }
-    }, formatSubcategoryName(subcategory)));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Link, {
-    active: selectedSubcategory === null,
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Link, {
+    className: "category-link ".concat(selectedCategory === null ? "active" : ""),
     onClick: function onClick() {
-      return handleSubcategoryClick(null);
+      return handleCategoryClick(null);
     }
-  }, "All"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "fa fa-th-large me-2",
+    "aria-hidden": "true"
+  }), "All"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "text-center mb-5 text-capitalize"
-  }, selectedSubcategory ? "".concat(formatSubcategoryName(selectedSubcategory)) : "".concat((_categories$find = categories.find(function (cat) {
-    return cat.key === selectedCategory;
-  })) === null || _categories$find === void 0 ? void 0 : _categories$find.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, filteredProducts.length > 0 ? filteredProducts.map(function (product) {
+  }, selectedCategory ? (_categories$find = categories.find(function (cat) {
+    return cat.id === selectedCategory;
+  })) === null || _categories$find === void 0 ? void 0 : _categories$find.name : "All Products"), loadingProducts ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    animation: "border",
+    variant: "primary"
+  })) : error ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    variant: "danger",
+    className: "text-center"
+  }, error) : products.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, products.map(function (product) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
       md: 3,
       key: product.id,
       className: "mb-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
       className: "h-100"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Img, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Img, {
       variant: "top",
       src: product.img,
       alt: "".concat(product.name, " image"),
       loading: "lazy",
       style: {
-        cursor: "pointer"
+        cursor: "pointer",
+        objectFit: "cover",
+        height: "200px"
       },
       onClick: function onClick() {
         return handleProductClick(product);
       }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Body, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Body, {
       className: "d-flex flex-column"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Text, null, "Price: ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Text, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Text, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Price:"), " $", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Text, {
       className: "flex-grow-1"
     }, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
       variant: "primary",
@@ -2369,23 +1251,27 @@ var ProductPage = function ProductPage() {
         return addToCart(product);
       }
     }, "Add to Cart"))));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: "text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "No products found"))))), modalProduct && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "No products found."))))), modalProduct && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
     show: showModal,
     onHide: handleCloseModal,
     centered: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Header, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Title, null, modalProduct.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Title, null, modalProduct.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: modalProduct.img,
     alt: "".concat(modalProduct.name, " image"),
     className: "img-fluid mb-3"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Price: ", modalProduct.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, modalProduct.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, modalProduct.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Price:"), " $", modalProduct.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "secondary",
     onClick: handleCloseModal
   }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    variant: "primary"
+    variant: "primary",
+    onClick: function onClick() {
+      addToCart(modalProduct);
+      handleCloseModal();
+    }
   }, "Add to Cart"))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductPage);
@@ -3922,8 +2808,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+<<<<<<< HEAD
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+=======
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+>>>>>>> fc0335cd0e1cb0cfefac0d7cd37bbc50b23b441b
 /* harmony import */ var _fortawesome_fontawesome_free_css_all_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.min.css */ "./node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 /* harmony import */ var _NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavPage.jsx */ "./jsx/NavPage.jsx");
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer.jsx */ "./jsx/Footer.jsx");
@@ -3942,8 +2833,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Reset_jsx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Reset.jsx */ "./jsx/Reset.jsx");
 /* harmony import */ var _ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ForgotPassword.jsx */ "./jsx/ForgotPassword.jsx");
 /* harmony import */ var _Admin_jsx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Admin.jsx */ "./jsx/Admin.jsx");
+<<<<<<< HEAD
 /* harmony import */ var _ProductsPage_jsx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./ProductsPage.jsx */ "./jsx/ProductsPage.jsx");
 
+=======
+>>>>>>> fc0335cd0e1cb0cfefac0d7cd37bbc50b23b441b
 
 
 
@@ -3967,7 +2861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Main application component
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column min-vh-100"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: "PrimeMart"
@@ -3976,7 +2870,11 @@ var App = function App() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HomePage_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null)
+<<<<<<< HEAD
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+=======
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
+>>>>>>> fc0335cd0e1cb0cfefac0d7cd37bbc50b23b441b
     path: "/register",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
@@ -3997,6 +2895,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
     path: "/Admin",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Admin_jsx__WEBPACK_IMPORTED_MODULE_18__["default"], null)
+<<<<<<< HEAD
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
     path: "/productspage",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductsPage_jsx__WEBPACK_IMPORTED_MODULE_19__["default"], null)
@@ -4007,6 +2906,15 @@ var App = function App() {
     path: "/forgot-password",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+=======
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
+    path: "/logout",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_logout_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
+    path: "/forgot-password",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
+>>>>>>> fc0335cd0e1cb0cfefac0d7cd37bbc50b23b441b
     path: "/reset-password",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Reset_jsx__WEBPACK_IMPORTED_MODULE_16__["default"], null)
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
