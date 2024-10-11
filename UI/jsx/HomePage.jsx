@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Using useNavigate for navigation
+import { useNavigate } from "react-router-dom"; // For navigation
 import { FaLeaf, FaBox, FaTruck } from "react-icons/fa";
 import {
   Container,
@@ -12,99 +12,66 @@ import {
   Alert,
 } from "react-bootstrap";
 
+// Reusable ProductCard Component
+const ProductCard = ({ product, onAddToCart }) => (
+  <Col md={3} sm={6} xs={12} key={product.id}>
+    <Card className="mb-4">
+      <Card.Img
+        variant="top"
+        src={`http://localhost:8000/storage/products/${product.image_url}`}
+        alt={product.name}
+      />
+      <Card.Body>
+        <Card.Title>{product.name}</Card.Title>
+        <Card.Text>Price: {product.price}</Card.Text>
+        {product.onsale_price && (
+          <Card.Text>
+            <span style={{ textDecoration: "line-through", color: "red" }}>
+              {product.original_price}
+            </span>
+          </Card.Text>
+        )}
+        <Card.Text>{product.description}</Card.Text>
+        <Button variant="primary" onClick={() => onAddToCart(product)}>
+          Add to Cart
+        </Button>
+      </Card.Body>
+    </Card>
+  </Col>
+);
+
 const HomePage = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+
+  // State for Categories
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [errorCategories, setErrorCategories] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [products, setProducts] = useState([]);
-  const [loadingProducts, setLoadingProducts] = useState(true);
 
-  // Dummy data for featured products and products on sale
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "Organic Avocado",
-      price: "$2.00",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic avocado, creamy and rich.",
-    },
-    {
-      id: 2,
-      name: "Local Honey",
-      price: "$5.00",
-      img: "https://via.placeholder.com/150",
-      description: "Natural local honey, sweet and pure.",
-    },
-  ];
+  // State for Featured Products
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [loadingFeatured, setLoadingFeatured] = useState(true);
+  const [errorFeatured, setErrorFeatured] = useState(null);
 
-  const productsOnSale = [
-    {
-      id: 1,
-      name: "Tomatoes",
-      price: "$0.70",
-      originalPrice: "$1.20",
-      img: "https://via.placeholder.com/150",
-      description: "Fresh organic tomatoes, now on sale!",
-    },
-    {
-      id: 2,
-      name: "Bananas",
-      price: "$0.30",
-      originalPrice: "$0.50",
-      img: "https://via.placeholder.com/150",
-      description: "Sweet organic bananas, discounted!",
-    },
-  ];
+  // State for Products on Sale
+  const [productsOnSale, setProductsOnSale] = useState([]);
+  const [loadingSale, setLoadingSale] = useState(true);
+  const [errorSale, setErrorSale] = useState(null);
 
-  const fetchCategories = async () => {
+  // Generic Fetch Function
+  const fetchProducts = async (params, setState, setLoading, setError) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:8000/api/category", {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      if (data.status === 0 && Array.isArray(data.data)) {
-        setCategories(data.data);
-        if (!selectedCategory && data.data.length > 0) {
-          setSelectedCategory(data.data[0].id);
-        }
-      } else {
-        throw new Error(data.msg || "Failed to load categories.");
-      }
-    } catch (err) {
-      setError(err.message || "Error fetching categories.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchProducts = async (categoryId, search) => {
-    setLoadingProducts(true);
-    setError(null);
-    try {
-      const params = new URLSearchParams();
-      if (categoryId) params.append("category_id", categoryId);
-      if (search) params.append("name", search);
-
+      const queryParams = new URLSearchParams(params).toString();
       const response = await fetch(
-        `http://localhost:8000/api/product?${params.toString()}`,
+        `http://localhost:8000/api/product?${queryParams}`,
         {
           method: "GET",
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
@@ -116,30 +83,80 @@ const HomePage = () => {
 
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
-        setProducts(data.data);
+        setState(data.data);
       } else {
         throw new Error(data.msg || "Failed to load products.");
       }
     } catch (err) {
       setError(err.message || "Error fetching products.");
     } finally {
-      setLoadingProducts(false);
+      setLoading(false);
     }
   };
 
+  // Fetch Categories
+  const fetchCategories = async () => {
+    setLoadingCategories(true);
+    setErrorCategories(null);
+    try {
+      const response = await fetch("http://localhost:8000/api/category", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.status === 0 && Array.isArray(data.data)) {
+        setCategories(data.data);
+      } else {
+        throw new Error(data.msg || "Failed to load categories.");
+      }
+    } catch (err) {
+      setErrorCategories(err.message || "Error fetching categories.");
+    } finally {
+      setLoadingCategories(false);
+    }
+  };
+
+  // Fetch Featured Products
+  const fetchFeaturedProducts = () => {
+    const params = { is_featured: "true" };
+    fetchProducts(
+      params,
+      setFeaturedProducts,
+      setLoadingFeatured,
+      setErrorFeatured
+    );
+  };
+
+  // Fetch Products on Sale
+  const fetchProductsOnSale = () => {
+    const params = { is_onsale: "true" };
+    fetchProducts(params, setProductsOnSale, setLoadingSale, setErrorSale);
+  };
+
+  // Initial Data Fetching
   useEffect(() => {
     fetchCategories();
+    fetchFeaturedProducts();
+    fetchProductsOnSale();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (selectedCategory) {
-      fetchProducts(selectedCategory);
-    }
-  }, [selectedCategory]);
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId);
+    navigate(`/products?category=${categoryId}`);
+  };
 
-  const handleCategoryClick = (categoryKey) => {
-    setSelectedCategory(categoryKey);
-    navigate(`/products`);
+  const handleAddToCart = (product) => {
+    // Implement your Add to Cart logic here
+    console.log("Adding to cart:", product);
   };
 
   return (
@@ -157,8 +174,12 @@ const HomePage = () => {
                 alt="Fresh Organic Food"
                 className="img-fluid"
               />
-              <h1>Fresh & Healthy Organic Food</h1>
-              <Button variant="success" onClick={() => navigate("/products")}>
+              <h1 className="mt-4">Fresh & Healthy Organic Food</h1>
+              <Button
+                variant="success"
+                onClick={() => navigate("/products")}
+                className="mt-3"
+              >
                 Shop Now
               </Button>
             </Col>
@@ -170,19 +191,19 @@ const HomePage = () => {
       <section className="intro-section p-5">
         <Container>
           <Row className="text-center">
-            <Col md={4}>
+            <Col md={4} sm={12} className="mb-4">
               <FaLeaf size={50} style={{ color: "green" }} />
-              <h4>100% Organic</h4>
+              <h4 className="mt-3">100% Organic</h4>
               <p>We offer organic food that is healthy and fresh.</p>
             </Col>
-            <Col md={4}>
+            <Col md={4} sm={12} className="mb-4">
               <FaBox size={50} style={{ color: "orange" }} />
-              <h4>Fresh Products</h4>
+              <h4 className="mt-3">Fresh Products</h4>
               <p>Our products are delivered fresh to your door.</p>
             </Col>
-            <Col md={4}>
+            <Col md={4} sm={12} className="mb-4">
               <FaTruck size={50} style={{ color: "blue" }} />
-              <h4>Fast Delivery</h4>
+              <h4 className="mt-3">Fast Delivery</h4>
               <p>Get your groceries delivered within 24 hours.</p>
             </Col>
           </Row>
@@ -192,16 +213,28 @@ const HomePage = () => {
       {/* Categories Navbar Section */}
       <section className="categories-navbar-section py-3 bg-light">
         <Container>
-          {loading ? (
+          {loadingCategories ? (
             <div className="d-flex justify-content-center">
               <Spinner animation="border" variant="primary" />
             </div>
-          ) : error ? (
+          ) : errorCategories ? (
             <Alert variant="danger" className="text-center">
-              {error}
+              {errorCategories}
             </Alert>
           ) : (
             <Nav className="justify-content-center flex-wrap">
+              <Nav.Link
+                className={`category-link ${
+                  selectedCategory === null ? "active" : ""
+                }`}
+                onClick={() => {
+                  setSelectedCategory(null);
+                  navigate("/products");
+                }}
+              >
+                <i className="fa fa-th-large me-2" aria-hidden="true"></i>
+                All
+              </Nav.Link>
               {categories.map((category) => (
                 <Nav.Item key={category.id}>
                   <Nav.Link
@@ -218,17 +251,7 @@ const HomePage = () => {
                   </Nav.Link>
                 </Nav.Item>
               ))}
-              <Nav.Item>
-                <Nav.Link
-                  className={`category-link ${
-                    selectedCategory === null ? "active" : ""
-                  }`}
-                  onClick={() => handleCategoryClick(null)}
-                >
-                  <i className="fa fa-th-large me-2" aria-hidden="true"></i>
-                  All
-                </Nav.Link>
-              </Nav.Item>
+              <Nav.Item></Nav.Item>
             </Nav>
           )}
         </Container>
@@ -238,21 +261,29 @@ const HomePage = () => {
       <section className="products-section py-5">
         <Container>
           <h2 className="text-center mb-5">Featured Products</h2>
-          <Row>
-            {featuredProducts.map((product) => (
-              <Col md={3} key={product.id}>
-                <Card className="mb-4">
-                  <Card.Img variant="top" src={product.img} />
-                  <Card.Body>
-                    <Card.Title>{product.name}</Card.Title>
-                    <Card.Text>Price: {product.price}</Card.Text>
-                    <Card.Text>{product.description}</Card.Text>
-                    <Button variant="primary">Add to Cart</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+          {loadingFeatured ? (
+            <div className="d-flex justify-content-center">
+              <Spinner animation="border" variant="primary" />
+            </div>
+          ) : errorFeatured ? (
+            <Alert variant="danger" className="text-center">
+              {errorFeatured}
+            </Alert>
+          ) : featuredProducts.length === 0 ? (
+            <Alert variant="info" className="text-center">
+              No featured products available.
+            </Alert>
+          ) : (
+            <Row>
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={handleAddToCart}
+                />
+              ))}
+            </Row>
+          )}
         </Container>
       </section>
 
@@ -270,8 +301,14 @@ const HomePage = () => {
                 alt="Special Products"
                 className="img-fluid"
               />
-              <p>Delicious and fresh organic food just for you!</p>
-              <Button variant="success" onClick={() => navigate("/products")}>
+              <p className="mt-3">
+                Delicious and fresh organic food just for you!
+              </p>
+              <Button
+                variant="success"
+                onClick={() => navigate("/products")}
+                className="mt-3"
+              >
                 Shop Now
               </Button>
             </Col>
@@ -284,49 +321,49 @@ const HomePage = () => {
         <Container>
           <h2 className="text-center mb-5">What Our Clients Say</h2>
           <Row className="text-center">
-            <Col md={4}>
-              <Card className="mb-4">
+            <Col md={4} sm={12} className="mb-4">
+              <Card className="h-100">
                 <Card.Body>
                   <i
-                    className="fa fa-star mb-2"
+                    className="fa fa-star mb-3"
                     aria-hidden="true"
                     style={{ fontSize: "2rem", color: "#007bff" }}
                   ></i>
                   <Card.Text>
                     "Best quality organic products I have ever purchased!"
                   </Card.Text>
-                  <Card.Footer>- Client 1</Card.Footer>
                 </Card.Body>
+                <Card.Footer>- Client 1</Card.Footer>
               </Card>
             </Col>
-            <Col md={4}>
-              <Card className="mb-4">
+            <Col md={4} sm={12} className="mb-4">
+              <Card className="h-100">
                 <Card.Body>
                   <i
-                    className="fa fa-thumbs-up mb-2"
+                    className="fa fa-thumbs-up mb-3"
                     aria-hidden="true"
                     style={{ fontSize: "2rem", color: "#007bff" }}
                   ></i>
                   <Card.Text>
                     "Fast delivery and fresh products every time!"
                   </Card.Text>
-                  <Card.Footer>- Client 2</Card.Footer>
                 </Card.Body>
+                <Card.Footer>- Client 2</Card.Footer>
               </Card>
             </Col>
-            <Col md={4}>
-              <Card className="mb-4">
+            <Col md={4} sm={12} className="mb-4">
+              <Card className="h-100">
                 <Card.Body>
                   <i
-                    className="fa fa-smile mb-2"
+                    className="fa fa-smile mb-3"
                     aria-hidden="true"
                     style={{ fontSize: "2rem", color: "#007bff" }}
                   ></i>
                   <Card.Text>
                     "Excellent service and product quality!"
                   </Card.Text>
-                  <Card.Footer>- Client 3</Card.Footer>
                 </Card.Body>
+                <Card.Footer>- Client 3</Card.Footer>
               </Card>
             </Col>
           </Row>
@@ -337,26 +374,29 @@ const HomePage = () => {
       <section className="products-section py-5">
         <Container>
           <h2 className="text-center mb-5">Products on Sale</h2>
-          <Row>
-            {productsOnSale.map((product) => (
-              <Col md={3} key={product.id}>
-                <Card className="mb-4">
-                  <Card.Img variant="top" src={product.img} />
-                  <Card.Body>
-                    <Card.Title>{product.name}</Card.Title>
-                    <Card.Text>
-                      Price: {product.price}{" "}
-                      <span style={{ textDecoration: "line-through" }}>
-                        {product.originalPrice}
-                      </span>
-                    </Card.Text>
-                    <Card.Text>{product.description}</Card.Text>
-                    <Button variant="primary">Add to Cart</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+          {loadingSale ? (
+            <div className="d-flex justify-content-center">
+              <Spinner animation="border" variant="primary" />
+            </div>
+          ) : errorSale ? (
+            <Alert variant="danger" className="text-center">
+              {errorSale}
+            </Alert>
+          ) : productsOnSale.length === 0 ? (
+            <Alert variant="info" className="text-center">
+              No products on sale at the moment.
+            </Alert>
+          ) : (
+            <Row>
+              {productsOnSale.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={handleAddToCart}
+                />
+              ))}
+            </Row>
+          )}
         </Container>
       </section>
     </Container>

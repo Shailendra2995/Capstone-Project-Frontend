@@ -12,7 +12,7 @@ import {
   Spinner,
   Alert,
 } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ProductPage = () => {
   const { categoryKey } = useParams();
@@ -20,6 +20,7 @@ const ProductPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(
     categoryKey ? Number(categoryKey) : null
   );
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState(searchQuery);
   const [showModal, setShowModal] = useState(false);
@@ -57,9 +58,9 @@ const ProductPage = () => {
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
         setCategories(data.data);
-        if (!categoryKey && data.data.length > 0) {
-          setSelectedCategory(data.data[0].id);
-        }
+        /*if (!categoryKey && data.data.length > 0) {
+          setSelectedCategory(0);
+        }*/
       } else {
         throw new Error(data.msg || "Failed to load categories.");
       }
@@ -78,7 +79,7 @@ const ProductPage = () => {
       // Construct query parameters correctly
       const params = new URLSearchParams();
       if (categoryId) params.append("category_id", categoryId);
-      if (search) params.append("name", search); 
+      if (search) params.append("name", search);
 
       const response = await fetch(
         `http://localhost:8000/api/product?${params.toString()}`,
@@ -125,6 +126,7 @@ const ProductPage = () => {
   const handleProductClick = (product) => {
     setModalProduct(product);
     setShowModal(true);
+    navigate(`/products/${product.id}`);
   };
 
   const handleCloseModal = () => {
@@ -151,7 +153,6 @@ const ProductPage = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Search Products"
                 />
-                <Button variant="outline-success">Search</Button>
               </Form>
             </Col>
           </Row>
@@ -170,6 +171,17 @@ const ProductPage = () => {
             </Alert>
           ) : (
             <Nav className="justify-content-center flex-wrap">
+              <Nav.Item>
+                <Nav.Link
+                  className={`category-link ${
+                    selectedCategory === null ? "active" : ""
+                  }`}
+                  onClick={() => handleCategoryClick(null)}
+                >
+                  <i className="fa fa-th-large me-2" aria-hidden="true"></i>
+                  All
+                </Nav.Link>
+              </Nav.Item>
               {categories.map((category) => (
                 <Nav.Item key={category.id}>
                   <Nav.Link
@@ -186,17 +198,6 @@ const ProductPage = () => {
                   </Nav.Link>
                 </Nav.Item>
               ))}
-              <Nav.Item>
-                <Nav.Link
-                  className={`category-link ${
-                    selectedCategory === null ? "active" : ""
-                  }`}
-                  onClick={() => handleCategoryClick(null)}
-                >
-                  <i className="fa fa-th-large me-2" aria-hidden="true"></i>
-                  All
-                </Nav.Link>
-              </Nav.Item>
             </Nav>
           )}
         </Container>
@@ -224,14 +225,11 @@ const ProductPage = () => {
                   <Card className="h-100">
                     <Card.Img
                       variant="top"
-                      src={product.img}
+                      src={
+                        `http://localhost:8000/storage/products/${product.image_url}`
+                      }
                       alt={`${product.name} image`}
                       loading="lazy"
-                      style={{
-                        cursor: "pointer",
-                        objectFit: "cover",
-                        height: "200px",
-                      }}
                       onClick={() => handleProductClick(product)}
                     />
                     <Card.Body className="d-flex flex-column">
