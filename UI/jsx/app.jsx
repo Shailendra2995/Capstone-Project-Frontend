@@ -17,7 +17,8 @@ import HomePage from "./HomePage.jsx";
 import Logout from "./logout.jsx";
 import PasswordResetForm from "./Reset.jsx";
 import PasswordResetRequest from "./ForgotPassword.jsx";
-import Admin from "./Admin.jsx"
+import Admin from "./Admin.jsx";
+import ProductsPage from "./ProductsPage.jsx";
 
 // Main application component
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/productspage" element={<ProductsPage />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/forgot-password" element={<PasswordResetRequest />} />
           <Route path="/reset-password" element={<PasswordResetForm />} />

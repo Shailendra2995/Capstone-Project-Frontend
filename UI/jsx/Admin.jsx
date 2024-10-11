@@ -13,7 +13,7 @@ const Admin = () => {
               <FaChartLine /> <a href="/Admin">Dashboard</a>
             </li>
             <li>
-              <FaBox /> <a href="/productspage">Products</a>
+              <FaBox /> <a href="/productsPage">Products</a>
             </li>
             <li>
               <FaUsers /> <a href="/customerspage">Customers</a>
