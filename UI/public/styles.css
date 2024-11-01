@@ -370,17 +370,7 @@ body {
   margin: 10px;
 }
 
-/* Footer Styles */
-.footer {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
 
-.footer p {
-  margin: 0;
-}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
