@@ -74,11 +74,708 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Table.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
-var Cart = function Cart() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Cart"));
-};
+
+
+
+function Cart() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    cartItems = _useState2[0],
+    setCartItems = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState4 = _slicedToArray(_useState3, 2),
+    total = _useState4[0],
+    setTotal = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState6 = _slicedToArray(_useState5, 2),
+    tax = _useState6[0],
+    setTax = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState8 = _slicedToArray(_useState7, 2),
+    finalTotal = _useState8[0],
+    setFinalTotal = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState10 = _slicedToArray(_useState9, 2),
+    loading = _useState10[0],
+    setLoading = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    error = _useState12[0],
+    setError = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    coupon = _useState14[0],
+    setCoupon = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState16 = _slicedToArray(_useState15, 2),
+    discount = _useState16[0],
+    setDiscount = _useState16[1];
+  var TAX_RATE = 0.13; // 13% tax
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchCart();
+  }, []);
+  var fetchCart = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var token, _response$data, response, items;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            setLoading(true);
+            setError(null);
+            _context.prev = 3;
+            _context.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("http://localhost:8000/api/cart", {
+              headers: {
+                Authorization: "Bearer ".concat(token),
+                "Content-Type": "application/json"
+              }
+            });
+          case 6:
+            response = _context.sent;
+            items = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.data) || [];
+            setCartItems(items);
+            calculateTotal(items);
+            _context.next = 16;
+            break;
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](3);
+            setError("Error fetching cart items. Please try again.");
+            console.error("Error fetching cart items:", _context.t0);
+          case 16:
+            _context.prev = 16;
+            setLoading(false);
+            return _context.finish(16);
+          case 19:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[3, 12, 16, 19]]);
+    }));
+    return function fetchCart() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var calculateTotal = function calculateTotal(items) {
+    var subtotal = items.reduce(function (acc, item) {
+      return acc + (Number(item.price) * item.quantity || 0);
+    }, 0);
+    setTotal(subtotal);
+    var taxAmount = subtotal * TAX_RATE; // Calculate tax
+    setTax(taxAmount);
+    setFinalTotal(subtotal + taxAmount - discount); // Final total after applying discount
+  };
+  var updateQuantity = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id, quantity) {
+      var token;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            _context2.prev = 1;
+            _context2.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("http://localhost:8000/api/cart/".concat(id), {
+              quantity: quantity
+            }, {
+              headers: {
+                Authorization: "Bearer ".concat(token),
+                "Content-Type": "application/json"
+              }
+            });
+          case 4:
+            fetchCart();
+            _context2.next = 10;
+            break;
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](1);
+            console.error("Error updating quantity:", _context2.t0);
+          case 10:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[1, 7]]);
+    }));
+    return function updateQuantity(_x, _x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var removeItem = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+      var token;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            _context3.prev = 1;
+            _context3.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1__["default"].delete("http://localhost:8000/api/cart/".concat(id), {
+              headers: {
+                Authorization: "Bearer ".concat(token),
+                "Content-Type": "application/json"
+              }
+            });
+          case 4:
+            fetchCart();
+            _context3.next = 10;
+            break;
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](1);
+            console.error("Error removing item:", _context3.t0);
+          case 10:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[1, 7]]);
+    }));
+    return function removeItem(_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var applyCoupon = function applyCoupon(e) {
+    e.preventDefault();
+    // Simple coupon logic for demonstration
+    if (coupon === "SAVE10") {
+      setDiscount(10);
+    } else {
+      alert("Invalid coupon code");
+      setDiscount(0);
+    }
+    setCoupon(""); // Clear the coupon input
+  };
+  if (loading) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      className: "my-5 text-center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      animation: "border",
+      variant: "primary"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      className: "mt-3"
+    }, "Loading your cart..."));
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "my-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "text-center mb-4"
+  }, "Shopping Cart"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "danger",
+    className: "text-center"
+  }, error), cartItems.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Your cart is empty."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    href: "/",
+    variant: "primary",
+    className: "mt-3"
+  }, "Continue Shopping")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    md: 8
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    responsive: "sm",
+    bordered: true,
+    hover: true,
+    className: "bg-white shadow"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", {
+    className: "table-light"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Quantity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, cartItems.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
+      className: "d-flex align-items-center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: item.product.image,
+      alt: item.product.name,
+      className: "me-3",
+      style: {
+        width: "80px",
+        height: "80px",
+        objectFit: "contain",
+        borderRadius: "5px"
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, item.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      style: {
+        fontSize: "12px",
+        color: "#888"
+      }
+    }, item.product.description))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "$", Number(item.price).toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "outline-secondary",
+      size: "sm",
+      onClick: function onClick() {
+        return updateQuantity(item.id, item.quantity - 1);
+      },
+      disabled: item.quantity === 1,
+      className: "me-2"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_9__.FaMinus, null)), item.quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "outline-secondary",
+      size: "sm",
+      onClick: function onClick() {
+        return updateQuantity(item.id, item.quantity + 1);
+      },
+      className: "ms-2"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_9__.FaPlus, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "$", (Number(item.price) * item.quantity).toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "danger",
+      size: "sm",
+      onClick: function onClick() {
+        return removeItem(item.id);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_9__.FaTrash, null))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onSubmit: applyCoupon,
+    className: "mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Group, {
+    controlId: "couponCode"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Label, null, "Coupon Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Control, {
+    type: "text",
+    value: coupon,
+    onChange: function onChange(e) {
+      return setCoupon(e.target.value);
+    },
+    placeholder: "Enter coupon code"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    type: "submit",
+    variant: "primary",
+    className: "ms-2"
+  }, "Apply"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    className: "shadow"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Subtotal:"), " $", total.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Tax (13%):"), " $", tax.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Discount:"), " -$", discount.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
+    className: "mt-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Total:"), " $", finalTotal.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "mt-4 w-100",
+    variant: "primary",
+    onClick: function onClick() {
+      return window.location.href = "/checkout";
+    }
+  }, "Proceed to Checkout"))))));
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cart);
+
+/***/ }),
+
+/***/ "./jsx/Checkout.jsx":
+/*!**************************!*\
+  !*** ./jsx/Checkout.jsx ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+function CheckoutPage() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    useBillingAsDelivery = _useState2[0],
+    setUseBillingAsDelivery = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    validated = _useState4[0],
+    setValidated = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    paymentMethod = _useState6[0],
+    setPaymentMethod = _useState6[1];
+
+  // Canadian Postal Code Regex
+  var postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+
+  // Handle form submit
+  var handleSubmit = function handleSubmit(event) {
+    var form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-container container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    noValidate: true,
+    validated: validated,
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    className: "mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, {
+    className: "form-section-title"
+  }, "Gift Options"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Check, {
+    type: "checkbox",
+    label: "Order includes gift(s). The packing slip included with your order will not display prices."
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
+    className: "form-section-title"
+  }, "Billing Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AddressForm, {
+    postalCodeRegex: postalCodeRegex
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
+    className: "form-section-title"
+  }, "Delivery Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Check, {
+    type: "checkbox",
+    label: "Use as billing address",
+    onChange: function onChange(e) {
+      return setUseBillingAsDelivery(e.target.checked);
+    }
+  }), !useBillingAsDelivery && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AddressForm, {
+    postalCodeRegex: postalCodeRegex
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ContactInfo, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
+    className: "form-section-title"
+  }, "Payment Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    controlId: "paymentMethod"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    as: "select",
+    required: true,
+    value: paymentMethod,
+    onChange: function onChange(e) {
+      return setPaymentMethod(e.target.value);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Choose..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "credit"
+  }, "Credit Card"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "paypal"
+  }, "PayPal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "debit"
+  }, "Debit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please select a payment method.")), paymentMethod && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(PaymentDetails, {
+    paymentMethod: paymentMethod
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-actions mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    variant: "primary",
+    type: "submit",
+    className: "checkout-button"
+  }, "Checkout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    variant: "secondary",
+    className: "back-button"
+  }, "Back")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(OrderSummary, null));
+}
+function AddressForm(_ref) {
+  var postalCodeRegex = _ref.postalCodeRegex;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "6",
+    controlId: "firstName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "First Name",
+    required: true,
+    pattern: "^[A-Za-z]+$"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "First name should only contain alphabets.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "6",
+    controlId: "lastName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "Last Name",
+    required: true,
+    pattern: "^[A-Za-z]+$"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Last name should only contain alphabets.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "12",
+    className: "mt-2",
+    controlId: "streetAddress"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Street Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "Street Address",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid street address.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "12",
+    className: "mt-2",
+    controlId: "apt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Apt/Suite/Floor (Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "Apt/Suite/Floor"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "6",
+    className: "mt-2",
+    controlId: "city"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "City",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid city.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "3",
+    className: "mt-2",
+    controlId: "province"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Province"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    as: "select",
+    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Choose..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "ON"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "QC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "BC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "AB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "MB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "SK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "NS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "NB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "NL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "PE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please select a province.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "3",
+    className: "mt-2",
+    controlId: "postalCode"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Postal Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "Postal Code",
+    required: true,
+    pattern: postalCodeRegex.source
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid Canadian postal code.")));
+}
+function ContactInfo() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "6",
+    controlId: "email"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Email for Order Tracking"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "email",
+    placeholder: "Email",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid email.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"],
+    md: "6",
+    controlId: "phone"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Phone for Delivery Contact"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "tel",
+    placeholder: "Phone",
+    required: true,
+    pattern: "^\\d{10}$"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid 10-digit phone number.")));
+}
+function PaymentDetails(_ref2) {
+  var paymentMethod = _ref2.paymentMethod;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mt-3"
+  }, paymentMethod === "credit" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    controlId: "creditCardNumber"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Credit Card Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "XXXX XXXX XXXX XXXX",
+    required: true,
+    pattern: "^\\d{16}$"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid 16-digit credit card number.")), paymentMethod === "paypal" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    controlId: "paypalEmail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "PayPal Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "email",
+    placeholder: "PayPal Email",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid PayPal email.")), paymentMethod === "debit" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    controlId: "debitCardNumber"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Debit Card Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    type: "text",
+    placeholder: "Debit Card Number",
+    required: true,
+    pattern: "^\\d{16}$"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
+    type: "invalid"
+  }, "Please enter a valid 16-digit debit card number.")));
+}
+function OrderSummary() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "order-summary mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, null, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "0 Item(s) in Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Order Subtotal: $0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Shipping: $8.99"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Tax (13%): $0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total: $8.99")));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutPage);
+
+/***/ }),
+
+/***/ "./jsx/Coupon.jsx":
+/*!************************!*\
+  !*** ./jsx/Coupon.jsx ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var Coupon = function Coupon() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    coupon = _useState2[0],
+    setCoupon = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var lastGeneratedDate = localStorage.getItem("lastGeneratedDate");
+    var today = new Date().toDateString();
+    if (lastGeneratedDate === today) {
+      var savedCoupon = localStorage.getItem("coupon");
+      setCoupon(savedCoupon);
+    }
+  }, []);
+  var fetchCouponFromBackend = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var today, lastGeneratedDate, response, data, couponCode;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            today = new Date().toDateString();
+            lastGeneratedDate = localStorage.getItem("lastGeneratedDate");
+            if (!(lastGeneratedDate === today)) {
+              _context.next = 5;
+              break;
+            }
+            setError("You have already generated a coupon today. Try again tomorrow!");
+            return _context.abrupt("return");
+          case 5:
+            _context.prev = 5;
+            _context.next = 8;
+            return fetch("http://localhost:8000/api/coupons/generate", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json"
+              }
+            });
+          case 8:
+            response = _context.sent;
+            if (response.ok) {
+              _context.next = 11;
+              break;
+            }
+            throw new Error("Failed to fetch coupon. Please try again.");
+          case 11:
+            _context.next = 13;
+            return response.json();
+          case 13:
+            data = _context.sent;
+            couponCode = data.couponCode;
+            localStorage.setItem("coupon", couponCode);
+            localStorage.setItem("lastGeneratedDate", today);
+            setCoupon(couponCode);
+            _context.next = 23;
+            break;
+          case 20:
+            _context.prev = 20;
+            _context.t0 = _context["catch"](5);
+            setError(_context.t0.message);
+          case 23:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[5, 20]]);
+    }));
+    return function fetchCouponFromBackend() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var handleCopy = function handleCopy() {
+    navigator.clipboard.writeText(coupon);
+    alert("Coupon copied to clipboard!");
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "enhanced-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "coupon-card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "card-title"
+  }, "Exclusive Coupon Just for You!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "coupon-subtext"
+  }, "Generate a new discount code daily and save on your next purchase."), coupon ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "coupon-code"
+  }, coupon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "primary",
+    onClick: handleCopy
+  }, "Copy Coupon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    className: "mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "coupon-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Usage Instructions:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Apply this code at checkout to enjoy your discount!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "coupon-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Validity:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Valid for 24 hours from the time of generation.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "success",
+    className: "generate-btn",
+    onClick: fetchCouponFromBackend
+  }, "Generate Coupon"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    variant: "warning",
+    className: "mt-3"
+  }, error))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Coupon);
 
 /***/ }),
 
@@ -479,6 +1176,64 @@ var HomePage = function HomePage() {
     };
     fetchProducts(params, setProductsOnSale, setLoadingSale, setErrorSale);
   };
+  var handleAddToCart = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(product) {
+      var token, response, data;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            _context3.prev = 1;
+            _context3.next = 4;
+            return fetch("http://localhost:8000/api/cart", {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                product_id: product.id
+              })
+            });
+          case 4:
+            response = _context3.sent;
+            if (response.ok) {
+              _context3.next = 7;
+              break;
+            }
+            throw new Error("HTTP error! Status: ".concat(response.status));
+          case 7:
+            _context3.next = 9;
+            return response.json();
+          case 9:
+            data = _context3.sent;
+            if (!(data.status === 0)) {
+              _context3.next = 14;
+              break;
+            }
+            alert("".concat(product.name, " added to cart!"));
+            _context3.next = 15;
+            break;
+          case 14:
+            throw new Error(data.msg || "Failed to add to cart.");
+          case 15:
+            _context3.next = 21;
+            break;
+          case 17:
+            _context3.prev = 17;
+            _context3.t0 = _context3["catch"](1);
+            console.error("Error adding to cart:", _context3.t0);
+            alert(_context3.t0.message || "Error adding item to cart.");
+          case 21:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[1, 17]]);
+    }));
+    return function handleAddToCart(_x5) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
 
   // Initial Data Fetching
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -490,10 +1245,6 @@ var HomePage = function HomePage() {
   var handleCategoryClick = function handleCategoryClick(categoryId) {
     setSelectedCategory(categoryId);
     navigate("/products?category=".concat(categoryId));
-  };
-  var handleAddToCart = function handleAddToCart(product) {
-    // Implement your Add to Cart logic here
-    console.log("Adding to cart:", product);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     fluid: true,
@@ -977,6 +1728,7 @@ var ProductDetailPage = function ProductDetailPage() {
     _useState6 = _slicedToArray(_useState5, 2),
     error = _useState6[0],
     setError = _useState6[1];
+  var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchProduct = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -986,7 +1738,12 @@ var ProductDetailPage = function ProductDetailPage() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return fetch("http://localhost:8000/api/products/:".concat(id));
+              return fetch("http://localhost:8000/api/product/".concat(id), {
+                headers: {
+                  Authorization: "Bearer " + token,
+                  "Content-Type": "application/json"
+                }
+              });
             case 3:
               response = _context.sent;
               if (response.ok) {
@@ -1165,9 +1922,6 @@ var ProductPage = function ProductPage() {
               break;
             }
             setCategories(data.data);
-            /*if (!categoryKey && data.data.length > 0) {
-              setSelectedCategory(0);
-            }*/
             _context.next = 17;
             break;
           case 16:
@@ -1203,7 +1957,6 @@ var ProductPage = function ProductPage() {
             setLoadingProducts(true);
             setError(null);
             _context2.prev = 3;
-            // Construct query parameters correctly
             params = new URLSearchParams();
             if (categoryId) params.append("category_id", categoryId);
             if (search) params.append("name", search);
@@ -1271,15 +2024,70 @@ var ProductPage = function ProductPage() {
   var handleProductClick = function handleProductClick(product) {
     setModalProduct(product);
     setShowModal(true);
-    navigate("/products/".concat(product.id));
+    navigate("/product/".concat(product.id));
   };
   var handleCloseModal = function handleCloseModal() {
     setShowModal(false);
     setModalProduct(null);
   };
-  var addToCart = function addToCart(product) {
-    console.log("".concat(product.name, " added to cart"));
-  };
+  var addToCart = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(product) {
+      var token, response, data;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            _context3.prev = 1;
+            _context3.next = 4;
+            return fetch("http://localhost:8000/api/cart", {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                product_id: product.id
+              })
+            });
+          case 4:
+            response = _context3.sent;
+            if (response.ok) {
+              _context3.next = 7;
+              break;
+            }
+            throw new Error("HTTP error! Status: ".concat(response.status));
+          case 7:
+            _context3.next = 9;
+            return response.json();
+          case 9:
+            data = _context3.sent;
+            if (!(data.status === 0)) {
+              _context3.next = 14;
+              break;
+            }
+            alert("".concat(product.name, " added to cart!"));
+            _context3.next = 15;
+            break;
+          case 14:
+            throw new Error(data.msg || "Failed to add to cart.");
+          case 15:
+            _context3.next = 21;
+            break;
+          case 17:
+            _context3.prev = 17;
+            _context3.t0 = _context3["catch"](1);
+            console.error("Error adding to cart:", _context3.t0);
+            alert(_context3.t0.message || "Error adding item to cart.");
+          case 21:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[1, 17]]);
+    }));
+    return function addToCart(_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
     fluid: true,
     className: "p-0"
@@ -2928,8 +3736,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _fortawesome_fontawesome_free_css_all_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.min.css */ "./node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 /* harmony import */ var _NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavPage.jsx */ "./jsx/NavPage.jsx");
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer.jsx */ "./jsx/Footer.jsx");
@@ -2949,6 +3757,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ForgotPassword.jsx */ "./jsx/ForgotPassword.jsx");
 /* harmony import */ var _Admin_jsx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Admin.jsx */ "./jsx/Admin.jsx");
 /* harmony import */ var _ProductsPage_jsx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./ProductsPage.jsx */ "./jsx/ProductsPage.jsx");
+/* harmony import */ var _Checkout_jsx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Checkout.jsx */ "./jsx/Checkout.jsx");
+/* harmony import */ var _Coupon_jsx__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Coupon.jsx */ "./jsx/Coupon.jsx");
+
+
 
 
 
@@ -2973,48 +3785,54 @@ __webpack_require__.r(__webpack_exports__);
 
 // Main application component
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column min-vh-100"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavPage_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: "PrimeMart"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "flex-grow-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HomePage_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/register",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Register_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/products",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Products_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/cart",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cart_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
-    path: "/products/:id",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+    path: "/product/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/profile",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Profile_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/Admin",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Admin_jsx__WEBPACK_IMPORTED_MODULE_18__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/productspage",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductsPage_jsx__WEBPACK_IMPORTED_MODULE_19__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/logout",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_logout_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/forgot-password",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ForgotPassword_jsx__WEBPACK_IMPORTED_MODULE_17__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
     path: "/reset-password",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Reset_jsx__WEBPACK_IMPORTED_MODULE_16__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+    path: "/checkout",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Checkout_jsx__WEBPACK_IMPORTED_MODULE_20__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+    path: "/coupon",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Coupon_jsx__WEBPACK_IMPORTED_MODULE_21__["default"], null)
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 };
 
@@ -3101,6 +3919,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   max-width: 400px;
   width: 100%;
   text-align: center;
+  transition: box-shadow 0.3s ease;
 }
 
 .register-form h2,
@@ -3121,6 +3940,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.register-form input:focus,
+.login-form input:focus,
+.forgot-password-form input:focus {
+  border-color: #00bfa6;
 }
 
 /* Buttons */
@@ -3136,6 +3962,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   cursor: pointer;
   border-radius: 5px;
   margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
 .register-form button:hover,
@@ -3174,30 +4001,51 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
 /* Error and Success Messages */
 .error {
   color: #ff3333;
-  /* Consolidated error styles */
   font-size: 14px;
   margin: -10px 0 10px;
-  /* Shortened margin definition */
 }
 
 .success {
   color: #28a745;
-  /* Consolidated success styles */
   font-size: 14px;
   margin: -10px 0 10px;
-  /* Shortened margin definition */
 }
 
 /* Navbar Styles */
+.custom-navbar {
+  background-color: rgb(2, 115, 159);
+  padding: 0 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo-img {
   max-width: 18%;
   height: auto;
 }
 
-.custom-navbar {
-  background-color: rgb(2, 115, 159);
-  padding: 0 1.5rem 0 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Update navbar for mobile view */
+@media (max-width: 768px) {
+  .custom-navbar .navbar-nav {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: rgb(2, 115, 159);
+    width: 100%;
+    display: none;
+    flex-direction: column;
+  }
+
+  .custom-navbar.active .navbar-nav {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+    cursor: pointer;
+  }
 }
 
 .custom-navbar .navbar-brand {
@@ -3237,11 +4085,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
 .profile-section {
   display: flex;
   flex-direction: column;
-  /* Stack children vertically */
   align-items: center;
-  /* Center children horizontally */
   text-align: center;
-  /* Center text inside */
 }
 
 .profile-img {
@@ -3294,15 +4139,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* General Container Styles */
   color: #00bfa6;
   border-color: #00bfa6;
   margin-top: 10px;
-  /* Add some space between the image and the button */
 }
 
-/* Button hover effect */
 .btn-outline-success:hover {
   background-color: #00bfa6;
-  /* Change background color on hover */
   color: white;
-  /* Change text color on hover */
 }
 
 /* Section Titles */
@@ -3347,7 +4188,7 @@ button {
   background-color: #00bfa6;
   color: white;
   border: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -3374,6 +4215,7 @@ button:hover,
 .profile-img:hover {
   animation: pulse 0.3s ease-in-out;
 }
+
 /* HomePage.css */
 
 /* CSS Variables for Consistent Theming */
@@ -3393,7 +4235,6 @@ body {
 }
 
 /* Hero Section */
-
 .hero-section h1 {
   font-size: 3rem;
   margin-top: 20px;
@@ -3401,494 +4242,289 @@ body {
 }
 
 .hero-section img {
-  max-width: 1920px;
-  height: 600px;
+  max-width: 100%;
+  height: auto;
   margin-bottom: 20px;
 }
 
 .hero-section .btn {
-  padding: 10px 30px;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.hero-section .btn:hover {
-  background-color: #218838;
-  transform: translateY(-3px);
-}
-
-/* Introduction Section */
-.intro-section {
-  background-color: #ffffff;
-}
-
-.intro-section h4 {
-  margin-top: 15px;
-  font-weight: 600;
-}
-
-.intro-section p {
-  color: #6c757d;
-}
-
-.intro-section .fa-icon {
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.intro-section .fa-icon:hover {
-  transform: scale(1.1);
-  color: var(--primary-color);
-}
-
-/* Categories Navbar Section */
-.categories-navbar-section {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.category-link {
-  color: var(--dark-text) !important;
-  font-weight: 500;
   padding: 10px 20px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  border-radius: 30px;
-  margin: 0 5px;
-}
-
-.category-link:hover,
-.category-link.active {
-  color: #fff !important;
-  background-color: var(--primary-color);
-}
-
-.subcategory-tabs-section .nav-link {
-  color: bold;
-  transition: color 0.3s;
-}
-
-.subcategory-tabs-section .nav-link.active {
-  font-weight: #007bff;
-}
-
-/* Products Section */
-.products-section {
-  background-color: #ffffff;
-}
-
-.search-bar-section {
-  border-bottom: 1px solid #dee2e6;
-}
-
-.search-bar-section .form-control {
-  border-radius: 25px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar-section .btn {
-  border-radius: 25px;
-}
-.products-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.products-section h2::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary-color);
-  display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-
-.products-section .card {
-  border: none;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.products-section .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.products-section .card-img-top {
-  transition: transform 0.3s ease;
-}
-
-.products-section .card-img-top:hover {
-  transform: scale(1.05);
-}
-
-.products-section .btn {
-  background-color: var(--primary-color);
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.products-section .btn:hover {
-  background-color: #218838;
-}
-
-/* Special Products Section */
-.special-products-section {
-  background-color: var(--light-bg);
-}
-
-.special-products-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-
-.special-products-section img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-
-.special-products-section p {
-  color: #6c757d;
-  margin-bottom: 20px;
-}
-
-.special-products-section .btn {
-  padding: 10px 30px;
-  font-size: 1rem;
-  border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.special-products-section .btn:hover {
-  background-color: #218838;
-  transform: translateY(-3px);
+  font-size: 18px;
 }
 
 /* Testimonials Section */
 .testimonials-section {
-  background-color: #ffffff;
+  background-color: var(--light-bg);
+  padding: 30px 0;
 }
 
 .testimonials-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  position: relative;
+  text-align: center;
 }
 
-.testimonials-section h2::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary-color);
-  display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-
-.testimonials-section .card {
-  border: none;
-  border-radius: 15px;
+.testimonials-section .testimonial {
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
 }
 
-.testimonials-section .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.testimonials-section .card-footer {
-  background-color: transparent;
-  border-top: none;
-  font-weight: 600;
-  color: var(--primary-color);
-}
-
-/* Featured & Sale Products Sections */
-.featured-products-section,
-.products-on-sale-section {
-  background-color: #ffffff;
-}
-
-.featured-products-section h2,
-.products-on-sale-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.featured-products-section h2::after,
-.products-on-sale-section h2::after {
-  content: "";
-  width: 60px;
-  height: 4px;
+/* Footer Styles */
+.footer {
   background-color: var(--primary-color);
-  display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-.products-on-sale-section .card {
-  border: none;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.footer p {
+  margin: 0;
 }
 
-.products-on-sale-section .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.products-on-sale-section .card-img-top {
-  transition: transform 0.3s ease;
-}
-
-.products-on-sale-section .card-img-top:hover {
-  transform: scale(1.05);
-}
-
-.products-on-sale-section .card-title {
-  font-weight: 600;
-}
-
-.products-on-sale-section .price {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-.products-on-sale-section .original-price {
-  text-decoration: line-through;
-  color: #6c757d;
-  margin-left: 10px;
-}
-
-.products-on-sale-section .btn {
-  background-color: var(--primary-color);
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.products-on-sale-section .btn:hover {
-  background-color: #218838;
-}
-/* Responsive Design */
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-  .profile-img {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 15px;
+  .navbar-brand {
+    font-size: 28px;
   }
 
-  .btn-outline-success,
-  .btn-primary,
-  .btn-success {
-    width: 100%;
-    margin-top: 15px;
+  .navbar-nav .nav-link {
+    font-size: 20px;
   }
 
-  .col-md-6,
-  .col-md-4 {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  input,
-  select {
-    width: 100%;
-  }
-}
-
-/* Animations for Interactive Feel */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.05);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2rem;
   }
 
-  .intro-section .fa-icon {
-    margin-bottom: 20px;
+  .register-form,
+  .login-form,
+  .forgot-password-form {
+    max-width: 90%;
   }
 
-  .categories-navbar-section .category-link {
-    padding: 8px 15px;
-    margin: 5px;
-    font-size: 0.9rem;
+  .testimonials-section .testimonial {
+    margin: 5px 0;
   }
 
-  .products-section h2,
-  .testimonials-section h2,
-  .featured-products-section h2,
-  .products-on-sale-section h2 {
-    font-size: 1.5rem;
-  }
-
-  .special-products-section h2,
-  .testimonials-section h2 {
-    text-align: center;
+  .profile-img {
+    width: 200px;
+    height: 200px;
   }
 }
-
-/* Smooth Scroll for Modal (if used) */
-.modal.fade .modal-dialog {
-  transition: transform 0.3s ease-out;
-  transform: translateY(-50px);
-}
-
-.modal.show .modal-dialog {
-  transform: translateY(0);
-}
-
-
-/* Admin.css */
-
-/* General Layout */
-.admin-container {
-  display: flex;
-  height: 100vh;
-}
-
-/* Sidebar Styles */
-.sidebar {
-  width: 250px;
-  background-color: #2f3640;
-  padding: 20px;
-  color: #fff;
-}
-
-.sidebar h2 {
-  margin-bottom: 20px;
-}
-
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar nav ul li {
-  margin-bottom: 10px;
-}
-
-.sidebar nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Main Content Styles */
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f5f6fa;
-}
-
-.header {
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-.header p {
-  color: #7f8c8d;
-}
-
-/* Stats Overview */
-.stats-overview {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.stat-box {
-  background-color: #fff;
-  padding: 20px;
-  flex: 1;
-  margin: 0 10px;
+/* Product Card Container */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.stat-box h3 {
-  margin-bottom: 10px;
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.stat-box p {
-  font-size: 1.5rem;
-  font-weight: bold;
+/* Card Image Hover Effect */
+.card-img-top {
+  display: block;
+  padding-left: 30px;
+  margin: 0 auto;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* Charts Section */
-.charts {
-  margin-bottom: 20px;
+.card:hover .card-img-top {
+  transform: scale(1.05);
 }
 
-.chart-box {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Card Body */
+.card-body {
+  text-align: center;
 }
 
-.chart-placeholder {
-  height: 300px;
-  background-color: #eaeaea;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Card Title */
+.card-title {
   font-size: 1.2rem;
-  color: #7f8c8d;
-}
-
-/* Recent Activity */
-.recent-activity {
-  margin-bottom: 20px;
-}
-
-.activity-box {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.activity-box h3 {
+  font-weight: bold;
   margin-bottom: 10px;
+  color: #333;
 }
 
-.activity-box ul {
-  list-style: none;
-  padding: 0;
+/* Card Price */
+.card-text {
+  font-size: 1rem;
+  color: #07260e;
+  margin-bottom: 15px;
 }
 
-.activity-box ul li {
-  margin-bottom: 5px;
-  color: #2c3e50;
+/* Add to Cart Button */
+.card-body .btn {
+  background-color: #0d4cdf;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
 }
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  /* Consolidated error styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  /* Consolidated success styles */\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n  /* Shortened margin definition */\r\n}\r\n\r\n/* Navbar Styles */\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  /* Stack children vertically */\r\n  align-items: center;\r\n  /* Center children horizontally */\r\n  text-align: center;\r\n  /* Center text inside */\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n  /* Add some space between the image and the button */\r\n}\r\n\r\n/* Button hover effect */\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  /* Change background color on hover */\r\n  color: white;\r\n  /* Change text color on hover */\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 1920px;\r\n  height: 600px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1.2rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.hero-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Introduction Section */\r\n.intro-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.intro-section h4 {\r\n  margin-top: 15px;\r\n  font-weight: 600;\r\n}\r\n\r\n.intro-section p {\r\n  color: #6c757d;\r\n}\r\n\r\n.intro-section .fa-icon {\r\n  transition: transform 0.3s ease, color 0.3s ease;\r\n}\r\n\r\n.intro-section .fa-icon:hover {\r\n  transform: scale(1.1);\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Categories Navbar Section */\r\n.categories-navbar-section {\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.category-link {\r\n  color: var(--dark-text) !important;\r\n  font-weight: 500;\r\n  padding: 10px 20px;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n  border-radius: 30px;\r\n  margin: 0 5px;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  color: #fff !important;\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.subcategory-tabs-section .nav-link {\r\n  color: bold;\r\n  transition: color 0.3s;\r\n}\r\n\r\n.subcategory-tabs-section .nav-link.active {\r\n  font-weight: #007bff;\r\n}\r\n\r\n/* Products Section */\r\n.products-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.search-bar-section {\r\n  border-bottom: 1px solid #dee2e6;\r\n}\r\n\r\n.search-bar-section .form-control {\r\n  border-radius: 25px;\r\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.search-bar-section .btn {\r\n  border-radius: 25px;\r\n}\r\n.products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.products-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n\r\n/* Special Products Section */\r\n.special-products-section {\r\n  background-color: var(--light-bg);\r\n}\r\n\r\n.special-products-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 30px;\r\n}\r\n\r\n.special-products-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  border-radius: 15px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section p {\r\n  color: #6c757d;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.special-products-section .btn {\r\n  padding: 10px 30px;\r\n  font-size: 1rem;\r\n  border-radius: 30px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n}\r\n\r\n.special-products-section .btn:hover {\r\n  background-color: #218838;\r\n  transform: translateY(-3px);\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.testimonials-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.testimonials-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  padding: 20px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.testimonials-section .card:hover {\r\n  transform: translateY(-5px);\r\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.testimonials-section .card-footer {\r\n  background-color: transparent;\r\n  border-top: none;\r\n  font-weight: 600;\r\n  color: var(--primary-color);\r\n}\r\n\r\n/* Featured & Sale Products Sections */\r\n.featured-products-section,\r\n.products-on-sale-section {\r\n  background-color: #ffffff;\r\n}\r\n\r\n.featured-products-section h2,\r\n.products-on-sale-section h2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n  margin-bottom: 40px;\r\n  position: relative;\r\n}\r\n\r\n.featured-products-section h2::after,\r\n.products-on-sale-section h2::after {\r\n  content: \"\";\r\n  width: 60px;\r\n  height: 4px;\r\n  background-color: var(--primary-color);\r\n  display: block;\r\n  margin: 10px auto 0;\r\n  border-radius: 2px;\r\n}\r\n\r\n.products-on-sale-section .card {\r\n  border: none;\r\n  border-radius: 15px;\r\n  overflow: hidden;\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card:hover {\r\n  transform: translateY(-10px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.products-on-sale-section .card-img-top {\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .card-img-top:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n.products-on-sale-section .card-title {\r\n  font-weight: 600;\r\n}\r\n\r\n.products-on-sale-section .price {\r\n  font-size: 1.2rem;\r\n  font-weight: 700;\r\n  color: var(--primary-color);\r\n}\r\n\r\n.products-on-sale-section .original-price {\r\n  text-decoration: line-through;\r\n  color: #6c757d;\r\n  margin-left: 10px;\r\n}\r\n\r\n.products-on-sale-section .btn {\r\n  background-color: var(--primary-color);\r\n  border: none;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.products-on-sale-section .btn:hover {\r\n  background-color: #218838;\r\n}\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .profile-img {\r\n    width: 120px;\r\n    height: 120px;\r\n    margin-bottom: 15px;\r\n  }\r\n\r\n  .btn-outline-success,\r\n  .btn-primary,\r\n  .btn-success {\r\n    width: 100%;\r\n    margin-top: 15px;\r\n  }\r\n\r\n  .col-md-6,\r\n  .col-md-4 {\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  input,\r\n  select {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n/* Animations for Interactive Feel */\r\n@keyframes pulse {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n\r\n  50% {\r\n    transform: scale(1.05);\r\n  }\r\n\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .intro-section .fa-icon {\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  .categories-navbar-section .category-link {\r\n    padding: 8px 15px;\r\n    margin: 5px;\r\n    font-size: 0.9rem;\r\n  }\r\n\r\n  .products-section h2,\r\n  .testimonials-section h2,\r\n  .featured-products-section h2,\r\n  .products-on-sale-section h2 {\r\n    font-size: 1.5rem;\r\n  }\r\n\r\n  .special-products-section h2,\r\n  .testimonials-section h2 {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n/* Smooth Scroll for Modal (if used) */\r\n.modal.fade .modal-dialog {\r\n  transition: transform 0.3s ease-out;\r\n  transform: translateY(-50px);\r\n}\r\n\r\n.modal.show .modal-dialog {\r\n  transform: translateY(0);\r\n}\r\n\r\n\r\n/* Admin.css */\r\n\r\n/* General Layout */\r\n.admin-container {\r\n  display: flex;\r\n  height: 100vh;\r\n}\r\n\r\n/* Sidebar Styles */\r\n.sidebar {\r\n  width: 250px;\r\n  background-color: #2f3640;\r\n  padding: 20px;\r\n  color: #fff;\r\n}\r\n\r\n.sidebar h2 {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.sidebar nav ul {\r\n  list-style: none;\r\n  padding: 0;\r\n}\r\n\r\n.sidebar nav ul li {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.sidebar nav ul li a {\r\n  color: #fff;\r\n  text-decoration: none;\r\n}\r\n\r\n/* Main Content Styles */\r\n.main-content {\r\n  flex-grow: 1;\r\n  padding: 20px;\r\n  background-color: #f5f6fa;\r\n}\r\n\r\n.header {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.header h1 {\r\n  margin: 0;\r\n}\r\n\r\n.header p {\r\n  color: #7f8c8d;\r\n}\r\n\r\n/* Stats Overview */\r\n.stats-overview {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.stat-box {\r\n  background-color: #fff;\r\n  padding: 20px;\r\n  flex: 1;\r\n  margin: 0 10px;\r\n  border-radius: 10px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.stat-box h3 {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.stat-box p {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Charts Section */\r\n.charts {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.chart-box {\r\n  background-color: #fff;\r\n  padding: 20px;\r\n  border-radius: 10px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.chart-placeholder {\r\n  height: 300px;\r\n  background-color: #eaeaea;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-size: 1.2rem;\r\n  color: #7f8c8d;\r\n}\r\n\r\n/* Recent Activity */\r\n.recent-activity {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.activity-box {\r\n  background-color: #fff;\r\n  padding: 20px;\r\n  border-radius: 10px;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.activity-box h3 {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.activity-box ul {\r\n  list-style: none;\r\n  padding: 0;\r\n}\r\n\r\n.activity-box ul li {\r\n  margin-bottom: 5px;\r\n  color: #2c3e50;\r\n}\r\n"],"sourceRoot":""}]);
+
+.card-body .btn:hover {
+  background-color: #019f87;
+  transform: translateY(-2px);
+}
+/* Mobile-first approach */
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  margin: auto;
+}
+
+.checkout-form, .order-summary {
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary {
+  margin-top: 2rem;
+}
+
+.form-section-title, .order-summary-title {
+  color: #007bff;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-button, .back-button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  .checkout-container {
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 1200px;
+  }
+
+  .checkout-form {
+    flex: 2;
+    max-width: 700px;
+  }
+
+  .order-summary {
+    flex: 1;
+    max-width: 400px;
+    height: fit-content;
+    margin-top: 0;
+  }
+
+  .form-actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .checkout-button, .back-button {
+    width: auto;
+    margin-top: 0;
+  }
+}
+ 
+/* General Styling */
+
+.enhanced-container {
+  margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Card Styling */
+.coupon-card {
+  width: 400px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.coupon-card:hover {
+  transform: scale(1.03);
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3a3b3c;
+  margin-bottom: 1rem;
+}
+
+.coupon-subtext {
+  color: #626567;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Coupon Code Styling */
+.coupon-code {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4a90e2;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  margin: 1rem 0;
+}
+
+/* Button Styling */
+.generate-btn, .btn-primary {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);
+}
+
+.generate-btn:hover, .btn-primary:hover {
+  background-color: #4a90e2;
+  box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Coupon Information */
+.coupon-info h5 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+.coupon-info p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Alert Styling */
+.alert-warning {
+  font-size: 0.9rem;
+  color: #d63031;
+  background-color: #ffeaa7;
+  border: none;
+  border-radius: 8px;
+}
+`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n  transition: box-shadow 0.3s ease;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n.register-form input:focus,\r\n.login-form input:focus,\r\n.forgot-password-form input:focus {\r\n  border-color: #00bfa6;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n/* Update navbar for mobile view */\r\n@media (max-width: 768px) {\r\n  .custom-navbar .navbar-nav {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 60px;\r\n    background-color: rgb(2, 115, 159);\r\n    width: 100%;\r\n    display: none;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .custom-navbar.active .navbar-nav {\r\n    display: flex;\r\n  }\r\n\r\n  .navbar-toggle {\r\n    display: block;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  text-align: center;\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  color: white;\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 20px;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: var(--light-bg);\r\n  padding: 30px 0;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  text-align: center;\r\n}\r\n\r\n.testimonials-section .testimonial {\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n}\r\n\r\n/* Footer Styles */\r\n.footer {\r\n  background-color: var(--primary-color);\r\n  color: white;\r\n  padding: 20px;\r\n  text-align: center;\r\n}\r\n\r\n.footer p {\r\n  margin: 0;\r\n}\r\n\r\n/* Media Queries for Responsiveness */\r\n@media (max-width: 768px) {\r\n  .navbar-brand {\r\n    font-size: 28px;\r\n  }\r\n\r\n  .navbar-nav .nav-link {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .register-form,\r\n  .login-form,\r\n  .forgot-password-form {\r\n    max-width: 90%;\r\n  }\r\n\r\n  .testimonials-section .testimonial {\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .profile-img {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n}\r\n/* Product Card Container */\r\n.card {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card:hover {\r\n  transform: translateY(-8px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Card Image Hover Effect */\r\n.card-img-top {\r\n  display: block;\r\n  padding-left: 30px;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n  height: 400px;\r\n  object-fit: contain;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.card:hover .card-img-top {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Card Body */\r\n.card-body {\r\n  text-align: center;\r\n}\r\n\r\n/* Card Title */\r\n.card-title {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  margin-bottom: 10px;\r\n  color: #333;\r\n}\r\n\r\n/* Card Price */\r\n.card-text {\r\n  font-size: 1rem;\r\n  color: #07260e;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Add to Cart Button */\r\n.card-body .btn {\r\n  background-color: #0d4cdf;\r\n  color: white;\r\n  font-size: 1rem;\r\n  padding: 10px 15px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n  display: inline-block;\r\n}\r\n\r\n.card-body .btn:hover {\r\n  background-color: #019f87;\r\n  transform: translateY(-2px);\r\n}\r\n/* Mobile-first approach */\r\n.checkout-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 90%;\r\n  margin: auto;\r\n}\r\n\r\n.checkout-form, .order-summary {\r\n  padding: 1.5rem;\r\n  background-color: #f9f9f9;\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.order-summary {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.form-section-title, .order-summary-title {\r\n  color: #007bff;\r\n  font-size: 1.25rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-actions {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.checkout-button, .back-button {\r\n  width: 100%;\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* Tablet and larger screens */\r\n@media (min-width: 768px) {\r\n  .checkout-container {\r\n    flex-direction: row;\r\n    gap: 2rem;\r\n    max-width: 1200px;\r\n  }\r\n\r\n  .checkout-form {\r\n    flex: 2;\r\n    max-width: 700px;\r\n  }\r\n\r\n  .order-summary {\r\n    flex: 1;\r\n    max-width: 400px;\r\n    height: fit-content;\r\n    margin-top: 0;\r\n  }\r\n\r\n  .form-actions {\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n  }\r\n\r\n  .checkout-button, .back-button {\r\n    width: auto;\r\n    margin-top: 0;\r\n  }\r\n}\r\n \r\n/* General Styling */\r\n\r\n.enhanced-container {\r\n  margin-top: 180px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n/* Card Styling */\r\n.coupon-card {\r\n  width: 400px;\r\n  text-align: center;\r\n  border-radius: 20px;\r\n  padding: 2rem;\r\n  background: linear-gradient(145deg, #ffffff, #f0f0f0);\r\n  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.5);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.coupon-card:hover {\r\n  transform: scale(1.03);\r\n}\r\n\r\n.card-title {\r\n  font-size: 2rem;\r\n  font-weight: bold;\r\n  color: #3a3b3c;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.coupon-subtext {\r\n  color: #626567;\r\n  font-size: 1rem;\r\n  margin-bottom: 1.5rem;\r\n}\r\n\r\n/* Coupon Code Styling */\r\n.coupon-code {\r\n  font-size: 2.5rem;\r\n  font-weight: 700;\r\n  color: #4a90e2;\r\n  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);\r\n  margin: 1rem 0;\r\n}\r\n\r\n/* Button Styling */\r\n.generate-btn, .btn-primary {\r\n  font-size: 1.2rem;\r\n  padding: 0.75rem 1.5rem;\r\n  border-radius: 50px;\r\n  transition: all 0.3s ease;\r\n  box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);\r\n}\r\n\r\n.generate-btn:hover, .btn-primary:hover {\r\n  background-color: #4a90e2;\r\n  box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);\r\n  transform: translateY(-2px);\r\n}\r\n\r\n/* Coupon Information */\r\n.coupon-info h5 {\r\n  font-size: 1.1rem;\r\n  font-weight: bold;\r\n  color: #4a4a4a;\r\n}\r\n\r\n.coupon-info p {\r\n  color: #7f8c8d;\r\n  font-size: 0.9rem;\r\n}\r\n\r\n/* Alert Styling */\r\n.alert-warning {\r\n  font-size: 0.9rem;\r\n  color: #d63031;\r\n  background-color: #ffeaa7;\r\n  border: none;\r\n  border-radius: 8px;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

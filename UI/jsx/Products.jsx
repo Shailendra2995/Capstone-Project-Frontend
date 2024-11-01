@@ -58,9 +58,6 @@ const ProductPage = () => {
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
         setCategories(data.data);
-        /*if (!categoryKey && data.data.length > 0) {
-          setSelectedCategory(0);
-        }*/
       } else {
         throw new Error(data.msg || "Failed to load categories.");
       }
@@ -76,7 +73,6 @@ const ProductPage = () => {
     setLoadingProducts(true);
     setError(null);
     try {
-      // Construct query parameters correctly
       const params = new URLSearchParams();
       if (categoryId) params.append("category_id", categoryId);
       if (search) params.append("name", search);
@@ -126,7 +122,7 @@ const ProductPage = () => {
   const handleProductClick = (product) => {
     setModalProduct(product);
     setShowModal(true);
-    navigate(`/products/${product.id}`);
+    navigate(`/product/${product.id}`);
   };
 
   const handleCloseModal = () => {
@@ -134,12 +130,36 @@ const ProductPage = () => {
     setModalProduct(null);
   };
 
-  const addToCart = (product) => {
-    console.log(`${product.name} added to cart`);
+  const addToCart = async (product) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch("http://localhost:8000/api/cart", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ product_id: product.id }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.status === 0) {
+        alert(`${product.name} added to cart!`);
+      } else {
+        throw new Error(data.msg || "Failed to add to cart.");
+      }
+    } catch (err) {
+      console.error("Error adding to cart:", err);
+      alert(err.message || "Error adding item to cart.");
+    }
   };
 
   return (
-    <Container fluid className="p-0">
+  <Container fluid className="p-0">
       <section className="search-bar-section py-3 bg-light">
         <Container>
           <Row className="justify-content-center">

@@ -8,16 +8,25 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/products/:${id}`
+          `http://localhost:8000/api/product/${id}`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "application/json",
+            },
+          }
         );
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
         const data = await response.json();
         setProduct(data);
       } catch (err) {

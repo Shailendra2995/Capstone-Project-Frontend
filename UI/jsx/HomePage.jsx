@@ -140,6 +140,33 @@ const HomePage = () => {
     const params = { is_onsale: "true" };
     fetchProducts(params, setProductsOnSale, setLoadingSale, setErrorSale);
   };
+  const handleAddToCart = async (product) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch("http://localhost:8000/api/cart", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ product_id: product.id }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.status === 0) {
+        alert(`${product.name} added to cart!`);
+      } else {
+        throw new Error(data.msg || "Failed to add to cart.");
+      }
+    } catch (err) {
+      console.error("Error adding to cart:", err);
+      alert(err.message || "Error adding item to cart.");
+    }
+  };
 
   // Initial Data Fetching
   useEffect(() => {
@@ -152,11 +179,6 @@ const HomePage = () => {
   const handleCategoryClick = (categoryId) => {
     setSelectedCategory(categoryId);
     navigate(`/products?category=${categoryId}`);
-  };
-
-  const handleAddToCart = (product) => {
-    // Implement your Add to Cart logic here
-    console.log("Adding to cart:", product);
   };
 
   return (
