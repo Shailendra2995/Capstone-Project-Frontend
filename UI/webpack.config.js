@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
+// const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -60,7 +60,7 @@ module.exports = {
     new webpack.DefinePlugin({
       __isBrowser__: 'true',
     }),
-    new Dotenv(), // Add this line
+    new Dotenv(), 
   ],
   devtool: 'source-map',
 };

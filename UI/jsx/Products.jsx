@@ -159,7 +159,7 @@ const ProductPage = () => {
   };
 
   return (
-  <Container fluid className="p-0">
+    <Container fluid className="p-0">
       <section className="search-bar-section py-3 bg-light">
         <Container>
           <Row className="justify-content-center">
@@ -245,9 +245,7 @@ const ProductPage = () => {
                   <Card className="h-100">
                     <Card.Img
                       variant="top"
-                      src={
-                        `http://localhost:8000/storage/products/${product.image_url}`
-                      }
+                      src={`http://localhost:8000/storage/products/${product.image_url}`}
                       alt={`${product.name} image`}
                       loading="lazy"
                       onClick={() => handleProductClick(product)}

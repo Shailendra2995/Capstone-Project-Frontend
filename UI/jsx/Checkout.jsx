@@ -252,9 +252,13 @@ function OrderSummary() {
       <Card.Body>
         <Card.Title>Order Summary</Card.Title>
         <div>0 Item(s) in Cart</div>
+        <hr></hr>
         <div>Order Subtotal: $0.00</div>
+        <hr></hr>
         <div>Shipping: $8.99</div>
+        <hr></hr>
         <div>Tax (13%): $0.00</div>
+        <hr></hr>
         <div>Total: $8.99</div>
       </Card.Body>
     </Card>

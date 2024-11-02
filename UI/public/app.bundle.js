@@ -306,7 +306,7 @@ function Cart() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "d-flex align-items-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      src: item.product.image,
+      src: "http://localhost:8000/storage/products/".concat(item.product.image_url),
       alt: item.product.name,
       className: "me-3",
       style: {
@@ -364,9 +364,9 @@ function Cart() {
     md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
     className: "shadow"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Subtotal:"), " $", total.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Tax (13%):"), " $", tax.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Discount:"), " -$", discount.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Subtotal:"), " $", total.toFixed(2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Tax (13%):"), " $", tax.toFixed(2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Discount:"), " -$", discount.toFixed(2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
     className: "mt-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Total:"), " $", finalTotal.toFixed(2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Total:"), " $", finalTotal.toFixed(2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "mt-4 w-100",
     variant: "primary",
     onClick: function onClick() {
@@ -635,7 +635,7 @@ function PaymentDetails(_ref2) {
 function OrderSummary() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "order-summary mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, null, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "0 Item(s) in Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Order Subtotal: $0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Shipping: $8.99"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Tax (13%): $0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total: $8.99")));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, null, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "0 Item(s) in Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Order Subtotal: $0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Shipping: $8.99"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Tax (13%): $0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total: $8.99")));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutPage);
 
@@ -1696,9 +1696,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -1715,30 +1713,25 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var ProductDetailPage = function ProductDetailPage() {
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useParams)(),
     id = _useParams.id;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     product = _useState2[0],
     setProduct = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    loading = _useState4[0],
-    setLoading = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState6 = _slicedToArray(_useState5, 2),
-    error = _useState6[0],
-    setError = _useState6[1];
+    error = _useState4[0],
+    setError = _useState4[1];
   var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchProduct = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response, data;
+        var response, _err$response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return fetch("http://localhost:8000/api/product/".concat(id), {
+              return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://localhost:8000/api/product/".concat(id), {
                 headers: {
                   Authorization: "Bearer " + token,
                   "Content-Type": "application/json"
@@ -1746,32 +1739,18 @@ var ProductDetailPage = function ProductDetailPage() {
               });
             case 3:
               response = _context.sent;
-              if (response.ok) {
-                _context.next = 6;
-                break;
-              }
-              throw new Error("HTTP error! Status: ".concat(response.status));
-            case 6:
-              _context.next = 8;
-              return response.json();
-            case 8:
-              data = _context.sent;
-              setProduct(data);
-              _context.next = 15;
+              setProduct(response.data.data);
+              _context.next = 10;
               break;
-            case 12:
-              _context.prev = 12;
+            case 7:
+              _context.prev = 7;
               _context.t0 = _context["catch"](0);
-              setError(_context.t0.message);
-            case 15:
-              _context.prev = 15;
-              setLoading(false);
-              return _context.finish(15);
-            case 18:
+              setError(((_err$response = _context.t0.response) === null || _err$response === void 0 || (_err$response = _err$response.data) === null || _err$response === void 0 ? void 0 : _err$response.msg) || "Error fetching product details");
+            case 10:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 12, 15, 18]]);
+        }, _callee, null, [[0, 7]]);
       }));
       return function fetchProduct() {
         return _ref.apply(this, arguments);
@@ -1779,21 +1758,57 @@ var ProductDetailPage = function ProductDetailPage() {
     }();
     fetchProduct();
   }, [id]);
-  if (loading) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      animation: "border",
-      variant: "primary"
-    });
-  }
   if (error) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      variant: "danger"
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "alert alert-danger"
     }, error);
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: product.image,
-    alt: product.name
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: $", product.price));
+  if (!product) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "text-center"
+    }, "Loading...");
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container my-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "http://localhost:8000/storage/products/".concat(product.image_url),
+    alt: product.name,
+    className: "card-img-top"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "col-md-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
+    className: "card-title"
+  }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Price:"), " $", product.price), product.onsale_price && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "On Sale Price:"), " $", product.onsale_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Brand:"), " ", product.brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Description:"), " ", product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Specifications:"), " ", product.specifications), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "card-text"
+  }, product.stock < 5 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-warning"
+  }, "(Selling out fast! Only a few left)")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "No reviews yet.")))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetailPage);
 
@@ -4269,8 +4284,6 @@ body {
   margin: 10px;
 }
 
-
-
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .navbar-brand {
@@ -4369,11 +4382,12 @@ body {
 .checkout-container {
   display: flex;
   flex-direction: column;
-  max-width: 90%;
+  max-width: 100%;
   margin: auto;
 }
 
-.checkout-form, .order-summary {
+.checkout-form,
+.order-summary {
   padding: 1.5rem;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -4385,7 +4399,8 @@ body {
   margin-top: 2rem;
 }
 
-.form-section-title, .order-summary-title {
+.form-section-title,
+.order-summary-title {
   color: #007bff;
   font-size: 1.25rem;
   margin-bottom: 1rem;
@@ -4396,7 +4411,8 @@ body {
   flex-direction: column;
 }
 
-.checkout-button, .back-button {
+.checkout-button,
+.back-button {
   width: 100%;
   margin-top: 1rem;
 }
@@ -4406,17 +4422,17 @@ body {
   .checkout-container {
     flex-direction: row;
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 1800px;
   }
 
   .checkout-form {
     flex: 2;
-    max-width: 700px;
+    max-width: 1200px;
   }
 
   .order-summary {
     flex: 1;
-    max-width: 400px;
+    max-width: 600px;
     height: fit-content;
     margin-top: 0;
   }
@@ -4426,12 +4442,13 @@ body {
     justify-content: space-between;
   }
 
-  .checkout-button, .back-button {
+  .checkout-button,
+  .back-button {
     width: auto;
     margin-top: 0;
   }
 }
- 
+
 /* General Styling */
 
 .enhanced-container {
@@ -4444,12 +4461,14 @@ body {
 
 /* Card Styling */
 .coupon-card {
-  width: 400px;
+  width: 800px;
+  height: fit-content;
   text-align: center;
   border-radius: 20px;
   padding: 2rem;
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.5);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.5);
   transition: transform 0.3s ease;
 }
 
@@ -4480,7 +4499,8 @@ body {
 }
 
 /* Button Styling */
-.generate-btn, .btn-primary {
+.generate-btn,
+.btn-primary {
   font-size: 1.2rem;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
@@ -4488,7 +4508,8 @@ body {
   box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);
 }
 
-.generate-btn:hover, .btn-primary:hover {
+.generate-btn:hover,
+.btn-primary:hover {
   background-color: #4a90e2;
   box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);
   transform: translateY(-2px);
@@ -4514,7 +4535,23 @@ body {
   border: none;
   border-radius: 8px;
 }
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n  transition: box-shadow 0.3s ease;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n.register-form input:focus,\r\n.login-form input:focus,\r\n.forgot-password-form input:focus {\r\n  border-color: #00bfa6;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n/* Update navbar for mobile view */\r\n@media (max-width: 768px) {\r\n  .custom-navbar .navbar-nav {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 60px;\r\n    background-color: rgb(2, 115, 159);\r\n    width: 100%;\r\n    display: none;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .custom-navbar.active .navbar-nav {\r\n    display: flex;\r\n  }\r\n\r\n  .navbar-toggle {\r\n    display: block;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  text-align: center;\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  color: white;\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 20px;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: var(--light-bg);\r\n  padding: 30px 0;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  text-align: center;\r\n}\r\n\r\n.testimonials-section .testimonial {\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n}\r\n\r\n\r\n\r\n/* Media Queries for Responsiveness */\r\n@media (max-width: 768px) {\r\n  .navbar-brand {\r\n    font-size: 28px;\r\n  }\r\n\r\n  .navbar-nav .nav-link {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .register-form,\r\n  .login-form,\r\n  .forgot-password-form {\r\n    max-width: 90%;\r\n  }\r\n\r\n  .testimonials-section .testimonial {\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .profile-img {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n}\r\n/* Product Card Container */\r\n.card {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card:hover {\r\n  transform: translateY(-8px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Card Image Hover Effect */\r\n.card-img-top {\r\n  display: block;\r\n  padding-left: 30px;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n  height: 400px;\r\n  object-fit: contain;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.card:hover .card-img-top {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Card Body */\r\n.card-body {\r\n  text-align: center;\r\n}\r\n\r\n/* Card Title */\r\n.card-title {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  margin-bottom: 10px;\r\n  color: #333;\r\n}\r\n\r\n/* Card Price */\r\n.card-text {\r\n  font-size: 1rem;\r\n  color: #07260e;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Add to Cart Button */\r\n.card-body .btn {\r\n  background-color: #0d4cdf;\r\n  color: white;\r\n  font-size: 1rem;\r\n  padding: 10px 15px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n  display: inline-block;\r\n}\r\n\r\n.card-body .btn:hover {\r\n  background-color: #019f87;\r\n  transform: translateY(-2px);\r\n}\r\n/* Mobile-first approach */\r\n.checkout-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 90%;\r\n  margin: auto;\r\n}\r\n\r\n.checkout-form, .order-summary {\r\n  padding: 1.5rem;\r\n  background-color: #f9f9f9;\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.order-summary {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.form-section-title, .order-summary-title {\r\n  color: #007bff;\r\n  font-size: 1.25rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-actions {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.checkout-button, .back-button {\r\n  width: 100%;\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* Tablet and larger screens */\r\n@media (min-width: 768px) {\r\n  .checkout-container {\r\n    flex-direction: row;\r\n    gap: 2rem;\r\n    max-width: 1200px;\r\n  }\r\n\r\n  .checkout-form {\r\n    flex: 2;\r\n    max-width: 700px;\r\n  }\r\n\r\n  .order-summary {\r\n    flex: 1;\r\n    max-width: 400px;\r\n    height: fit-content;\r\n    margin-top: 0;\r\n  }\r\n\r\n  .form-actions {\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n  }\r\n\r\n  .checkout-button, .back-button {\r\n    width: auto;\r\n    margin-top: 0;\r\n  }\r\n}\r\n \r\n/* General Styling */\r\n\r\n.enhanced-container {\r\n  margin-top: 180px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n/* Card Styling */\r\n.coupon-card {\r\n  width: 400px;\r\n  text-align: center;\r\n  border-radius: 20px;\r\n  padding: 2rem;\r\n  background: linear-gradient(145deg, #ffffff, #f0f0f0);\r\n  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.5);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.coupon-card:hover {\r\n  transform: scale(1.03);\r\n}\r\n\r\n.card-title {\r\n  font-size: 2rem;\r\n  font-weight: bold;\r\n  color: #3a3b3c;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.coupon-subtext {\r\n  color: #626567;\r\n  font-size: 1rem;\r\n  margin-bottom: 1.5rem;\r\n}\r\n\r\n/* Coupon Code Styling */\r\n.coupon-code {\r\n  font-size: 2.5rem;\r\n  font-weight: 700;\r\n  color: #4a90e2;\r\n  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);\r\n  margin: 1rem 0;\r\n}\r\n\r\n/* Button Styling */\r\n.generate-btn, .btn-primary {\r\n  font-size: 1.2rem;\r\n  padding: 0.75rem 1.5rem;\r\n  border-radius: 50px;\r\n  transition: all 0.3s ease;\r\n  box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);\r\n}\r\n\r\n.generate-btn:hover, .btn-primary:hover {\r\n  background-color: #4a90e2;\r\n  box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);\r\n  transform: translateY(-2px);\r\n}\r\n\r\n/* Coupon Information */\r\n.coupon-info h5 {\r\n  font-size: 1.1rem;\r\n  font-weight: bold;\r\n  color: #4a4a4a;\r\n}\r\n\r\n.coupon-info p {\r\n  color: #7f8c8d;\r\n  font-size: 0.9rem;\r\n}\r\n\r\n/* Alert Styling */\r\n.alert-warning {\r\n  font-size: 0.9rem;\r\n  color: #d63031;\r\n  background-color: #ffeaa7;\r\n  border: none;\r\n  border-radius: 8px;\r\n}\r\n"],"sourceRoot":""}]);
+.card {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: auto;
+  width: auto;
+  padding-bottom: 20px;
+  object-fit: cover;
+}
+.text-warning {
+  font-weight: bold;
+  color: #ffc107;
+}
+`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n  transition: box-shadow 0.3s ease;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n.register-form input:focus,\r\n.login-form input:focus,\r\n.forgot-password-form input:focus {\r\n  border-color: #00bfa6;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n/* Update navbar for mobile view */\r\n@media (max-width: 768px) {\r\n  .custom-navbar .navbar-nav {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 60px;\r\n    background-color: rgb(2, 115, 159);\r\n    width: 100%;\r\n    display: none;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .custom-navbar.active .navbar-nav {\r\n    display: flex;\r\n  }\r\n\r\n  .navbar-toggle {\r\n    display: block;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  text-align: center;\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  color: white;\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 20px;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: var(--light-bg);\r\n  padding: 30px 0;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  text-align: center;\r\n}\r\n\r\n.testimonials-section .testimonial {\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n}\r\n\r\n/* Media Queries for Responsiveness */\r\n@media (max-width: 768px) {\r\n  .navbar-brand {\r\n    font-size: 28px;\r\n  }\r\n\r\n  .navbar-nav .nav-link {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .register-form,\r\n  .login-form,\r\n  .forgot-password-form {\r\n    max-width: 90%;\r\n  }\r\n\r\n  .testimonials-section .testimonial {\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .profile-img {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n}\r\n/* Product Card Container */\r\n.card {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card:hover {\r\n  transform: translateY(-8px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Card Image Hover Effect */\r\n.card-img-top {\r\n  display: block;\r\n  padding-left: 30px;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n  height: 400px;\r\n  object-fit: contain;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.card:hover .card-img-top {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Card Body */\r\n.card-body {\r\n  text-align: center;\r\n}\r\n\r\n/* Card Title */\r\n.card-title {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  margin-bottom: 10px;\r\n  color: #333;\r\n}\r\n\r\n/* Card Price */\r\n.card-text {\r\n  font-size: 1rem;\r\n  color: #07260e;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Add to Cart Button */\r\n.card-body .btn {\r\n  background-color: #0d4cdf;\r\n  color: white;\r\n  font-size: 1rem;\r\n  padding: 10px 15px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n  display: inline-block;\r\n}\r\n\r\n.card-body .btn:hover {\r\n  background-color: #019f87;\r\n  transform: translateY(-2px);\r\n}\r\n/* Mobile-first approach */\r\n.checkout-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 100%;\r\n  margin: auto;\r\n}\r\n\r\n.checkout-form,\r\n.order-summary {\r\n  padding: 1.5rem;\r\n  background-color: #f9f9f9;\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.order-summary {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.form-section-title,\r\n.order-summary-title {\r\n  color: #007bff;\r\n  font-size: 1.25rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-actions {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.checkout-button,\r\n.back-button {\r\n  width: 100%;\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* Tablet and larger screens */\r\n@media (min-width: 768px) {\r\n  .checkout-container {\r\n    flex-direction: row;\r\n    gap: 2rem;\r\n    max-width: 1800px;\r\n  }\r\n\r\n  .checkout-form {\r\n    flex: 2;\r\n    max-width: 1200px;\r\n  }\r\n\r\n  .order-summary {\r\n    flex: 1;\r\n    max-width: 600px;\r\n    height: fit-content;\r\n    margin-top: 0;\r\n  }\r\n\r\n  .form-actions {\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n  }\r\n\r\n  .checkout-button,\r\n  .back-button {\r\n    width: auto;\r\n    margin-top: 0;\r\n  }\r\n}\r\n\r\n/* General Styling */\r\n\r\n.enhanced-container {\r\n  margin-top: 180px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n/* Card Styling */\r\n.coupon-card {\r\n  width: 800px;\r\n  height: fit-content;\r\n  text-align: center;\r\n  border-radius: 20px;\r\n  padding: 2rem;\r\n  background: linear-gradient(145deg, #ffffff, #f0f0f0);\r\n  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),\r\n    -5px -5px 15px rgba(255, 255, 255, 0.5);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.coupon-card:hover {\r\n  transform: scale(1.03);\r\n}\r\n\r\n.card-title {\r\n  font-size: 2rem;\r\n  font-weight: bold;\r\n  color: #3a3b3c;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.coupon-subtext {\r\n  color: #626567;\r\n  font-size: 1rem;\r\n  margin-bottom: 1.5rem;\r\n}\r\n\r\n/* Coupon Code Styling */\r\n.coupon-code {\r\n  font-size: 2.5rem;\r\n  font-weight: 700;\r\n  color: #4a90e2;\r\n  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);\r\n  margin: 1rem 0;\r\n}\r\n\r\n/* Button Styling */\r\n.generate-btn,\r\n.btn-primary {\r\n  font-size: 1.2rem;\r\n  padding: 0.75rem 1.5rem;\r\n  border-radius: 50px;\r\n  transition: all 0.3s ease;\r\n  box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);\r\n}\r\n\r\n.generate-btn:hover,\r\n.btn-primary:hover {\r\n  background-color: #4a90e2;\r\n  box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);\r\n  transform: translateY(-2px);\r\n}\r\n\r\n/* Coupon Information */\r\n.coupon-info h5 {\r\n  font-size: 1.1rem;\r\n  font-weight: bold;\r\n  color: #4a4a4a;\r\n}\r\n\r\n.coupon-info p {\r\n  color: #7f8c8d;\r\n  font-size: 0.9rem;\r\n}\r\n\r\n/* Alert Styling */\r\n.alert-warning {\r\n  font-size: 0.9rem;\r\n  color: #d63031;\r\n  background-color: #ffeaa7;\r\n  border: none;\r\n  border-radius: 8px;\r\n}\r\n.card {\r\n  border: 1px solid #ddd;\r\n  border-radius: 0.5rem;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card-img-top {\r\n  height: auto;\r\n  width: auto;\r\n  padding-bottom: 20px;\r\n  object-fit: cover;\r\n}\r\n.text-warning {\r\n  font-weight: bold;\r\n  color: #ffc107;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -370,8 +370,6 @@ body {
   margin: 10px;
 }
 
-
-
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .navbar-brand {
@@ -470,11 +468,12 @@ body {
 .checkout-container {
   display: flex;
   flex-direction: column;
-  max-width: 90%;
+  max-width: 100%;
   margin: auto;
 }
 
-.checkout-form, .order-summary {
+.checkout-form,
+.order-summary {
   padding: 1.5rem;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -486,7 +485,8 @@ body {
   margin-top: 2rem;
 }
 
-.form-section-title, .order-summary-title {
+.form-section-title,
+.order-summary-title {
   color: #007bff;
   font-size: 1.25rem;
   margin-bottom: 1rem;
@@ -497,7 +497,8 @@ body {
   flex-direction: column;
 }
 
-.checkout-button, .back-button {
+.checkout-button,
+.back-button {
   width: 100%;
   margin-top: 1rem;
 }
@@ -507,17 +508,17 @@ body {
   .checkout-container {
     flex-direction: row;
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 1800px;
   }
 
   .checkout-form {
     flex: 2;
-    max-width: 700px;
+    max-width: 1200px;
   }
 
   .order-summary {
     flex: 1;
-    max-width: 400px;
+    max-width: 600px;
     height: fit-content;
     margin-top: 0;
   }
@@ -527,12 +528,13 @@ body {
     justify-content: space-between;
   }
 
-  .checkout-button, .back-button {
+  .checkout-button,
+  .back-button {
     width: auto;
     margin-top: 0;
   }
 }
- 
+
 /* General Styling */
 
 .enhanced-container {
@@ -545,12 +547,14 @@ body {
 
 /* Card Styling */
 .coupon-card {
-  width: 400px;
+  width: 800px;
+  height: fit-content;
   text-align: center;
   border-radius: 20px;
   padding: 2rem;
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.5);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.5);
   transition: transform 0.3s ease;
 }
 
@@ -581,7 +585,8 @@ body {
 }
 
 /* Button Styling */
-.generate-btn, .btn-primary {
+.generate-btn,
+.btn-primary {
   font-size: 1.2rem;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
@@ -589,7 +594,8 @@ body {
   box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);
 }
 
-.generate-btn:hover, .btn-primary:hover {
+.generate-btn:hover,
+.btn-primary:hover {
   background-color: #4a90e2;
   box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);
   transform: translateY(-2px);
@@ -614,4 +620,20 @@ body {
   background-color: #ffeaa7;
   border: none;
   border-radius: 8px;
+}
+.card {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: auto;
+  width: auto;
+  padding-bottom: 20px;
+  object-fit: cover;
+}
+.text-warning {
+  font-weight: bold;
+  color: #ffc107;
 }

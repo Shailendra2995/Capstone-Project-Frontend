@@ -150,7 +150,7 @@ function Cart() {
                   <tr key={item.id}>
                     <td className="d-flex align-items-center">
                       <img
-                        src={item.product.image}
+                        src={`http://localhost:8000/storage/products/${item.product.image_url}`}
                         alt={item.product.name}
                         className="me-3"
                         style={{
@@ -231,15 +231,19 @@ function Cart() {
                 <hr />
                 <p>
                   <strong>Subtotal:</strong> ${total.toFixed(2)}
+                  <hr></hr>
                 </p>
                 <p>
                   <strong>Tax (13%):</strong> ${tax.toFixed(2)}
+                  <hr></hr>
                 </p>
                 <p>
                   <strong>Discount:</strong> -${discount.toFixed(2)}
+                  <hr></hr>
                 </p>
                 <h5 className="mt-3">
                   <strong>Total:</strong> ${finalTotal.toFixed(2)}
+                  <hr></hr>
                 </h5>
                 <Button
                   className="mt-4 w-100"
