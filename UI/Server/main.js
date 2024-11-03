@@ -10,7 +10,8 @@ app.use(express.static(publicPath));
 
 const apiProxyTarget = process.env.API_PROXY_TARGET || "http://localhost:5000/graphql";
 const UI_API_ENDPOINT = process.env.UI_API_ENDPOINT || apiProxyTarget;
-const env = { UI_API_ENDPOINT };
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const env = { UI_API_ENDPOINT, REACT_APP_API_URL };
 
 // Proxy API requests to the GraphQL server
 if (apiProxyTarget) {

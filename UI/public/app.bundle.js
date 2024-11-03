@@ -2451,7 +2451,7 @@ var ProductPage = function ProductPage() {
             setError(null);
             _context.prev = 3;
             _context.next = 6;
-            return fetch("http://localhost:8000/api/category", {
+            return fetch("".concat(window.ENV.REACT_APP_API_URL, "/api/category"), {
               method: "GET",
               headers: {
                 Authorization: "Bearer " + token,
@@ -2514,7 +2514,7 @@ var ProductPage = function ProductPage() {
             if (categoryId) params.append("category_id", categoryId);
             if (search) params.append("name", search);
             _context2.next = 9;
-            return fetch("http://localhost:8000/api/product?".concat(params.toString()), {
+            return fetch("".concat(window.ENV.REACT_APP_API_URL, "/api/product?").concat(params.toString()), {
               method: "GET",
               headers: {
                 Authorization: "Bearer " + token,
@@ -2592,7 +2592,7 @@ var ProductPage = function ProductPage() {
             token = localStorage.getItem("token");
             _context3.prev = 1;
             _context3.next = 4;
-            return fetch("http://localhost:8000/api/cart", {
+            return fetch("".concat(window.ENV.REACT_APP_API_URL, "/api/cart"), {
               method: "POST",
               headers: {
                 Authorization: "Bearer " + token,
@@ -2681,7 +2681,7 @@ var ProductPage = function ProductPage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
     className: "fa fa-th-large me-2",
     "aria-hidden": "true"
-  }), "All")), categories.map(function (category) {
+  }), " All")), categories.map(function (category) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
       key: category.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Link, {
@@ -2692,7 +2692,7 @@ var ProductPage = function ProductPage() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
       className: "fa ".concat(category.icon, " me-2"),
       "aria-hidden": "true"
-    }), category.name));
+    }), " ", category.name));
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
@@ -2716,7 +2716,7 @@ var ProductPage = function ProductPage() {
       className: "h-100"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Img, {
       variant: "top",
-      src: "http://localhost:8000/storage/products/".concat(product.image_url),
+      src: "".concat(window.ENV.REACT_APP_API_URL, "/storage/").concat(product.image_url),
       alt: "".concat(product.name, " image"),
       loading: "lazy",
       onClick: function onClick() {
@@ -2741,7 +2741,7 @@ var ProductPage = function ProductPage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Header, {
     closeButton: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Title, null, modalProduct.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: modalProduct.img,
+    src: "".concat(window.ENV.REACT_APP_API_URL, "/storage/").concat(modalProduct.image_url),
     alt: "".concat(modalProduct.name, " image"),
     className: "img-fluid mb-3"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, modalProduct.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Price:"), " $", modalProduct.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -2812,6 +2812,7 @@ function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.fre
 
 var StyledCard = (0,_emotion_styled__WEBPACK_IMPORTED_MODULE_1__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  margin: 16px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n"])));
 var ProductsPage = function ProductsPage() {
+  var _window$ENV;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     products = _useState2[0],
@@ -2831,7 +2832,8 @@ var ProductsPage = function ProductsPage() {
       stock: '',
       is_featured: false,
       category_id: '',
-      image_url: ''
+      image_url: '',
+      image_file: null
     }),
     _useState6 = _slicedToArray(_useState5, 2),
     formData = _useState6[0],
@@ -2856,6 +2858,11 @@ var ProductsPage = function ProductsPage() {
     _useState16 = _slicedToArray(_useState15, 2),
     formVisible = _useState16[0],
     setFormVisible = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    imagePreview = _useState18[0],
+    setImagePreview = _useState18[1];
+  var API_URL = ((_window$ENV = window.ENV) === null || _window$ENV === void 0 ? void 0 : _window$ENV.REACT_APP_API_URL) || 'http://localhost:8000';
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProducts();
     fetchCategories();
@@ -2868,7 +2875,7 @@ var ProductsPage = function ProductsPage() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/product');
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("".concat(API_URL, "/api/product"));
           case 3:
             response = _context.sent;
             setProducts(response.data.data || []);
@@ -2899,7 +2906,7 @@ var ProductsPage = function ProductsPage() {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/category');
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("".concat(API_URL, "/api/category"));
           case 3:
             response = _context2.sent;
             setCategories(response.data.data || []);
@@ -2930,94 +2937,167 @@ var ProductsPage = function ProductsPage() {
       checked = _e$target.checked;
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, name, type === 'checkbox' ? checked : value)));
   };
-  var handleSubmit = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
+  var handleFileChange = function handleFileChange(e) {
+    var file = e.target.files[0];
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, {
+      image_file: file
+    }));
+    if (file) {
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+  var handleImageUpload = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(file) {
+      var formData, response;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            e.preventDefault();
-            _context3.prev = 1;
-            if (!isEditing) {
-              _context3.next = 8;
+            formData = new FormData();
+            formData.append('file', file);
+            _context3.prev = 2;
+            _context3.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("".concat(API_URL, "/api/upload/product"), formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+          case 5:
+            response = _context3.sent;
+            if (!(response.data.status === 0)) {
+              _context3.next = 10;
               break;
             }
-            _context3.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/product/".concat(formData.id), formData);
-          case 5:
-            setSnackbarMessage('Product updated successfully!');
-            _context3.next = 11;
-            break;
-          case 8:
-            _context3.next = 10;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('/api/product', formData);
+            return _context3.abrupt("return", response.data.data.path);
           case 10:
-            setSnackbarMessage('Product added successfully!');
+            throw new Error(response.data.msg || 'Failed to upload image');
           case 11:
+            _context3.next = 17;
+            break;
+          case 13:
+            _context3.prev = 13;
+            _context3.t0 = _context3["catch"](2);
+            console.error('Error uploading image:', _context3.t0);
+            throw _context3.t0;
+          case 17:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[2, 13]]);
+    }));
+    return function handleImageUpload(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
+      var imagePath, productData;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            e.preventDefault();
+            _context4.prev = 1;
+            imagePath = formData.image_url;
+            if (!formData.image_file) {
+              _context4.next = 7;
+              break;
+            }
+            _context4.next = 6;
+            return handleImageUpload(formData.image_file);
+          case 6:
+            imagePath = _context4.sent;
+          case 7:
+            productData = _objectSpread(_objectSpread({}, formData), {}, {
+              image_url: imagePath
+            });
+            if (!isEditing) {
+              _context4.next = 14;
+              break;
+            }
+            _context4.next = 11;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("".concat(API_URL, "/api/product/").concat(formData.id), productData);
+          case 11:
+            setSnackbarMessage('Product updated successfully!');
+            _context4.next = 17;
+            break;
+          case 14:
+            _context4.next = 16;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("".concat(API_URL, "/api/product"), productData);
+          case 16:
+            setSnackbarMessage('Product added successfully!');
+          case 17:
             setSnackbarSeverity('success');
             fetchProducts();
             resetForm();
             closeForm();
             handleSnackbarOpen();
-            _context3.next = 24;
+            _context4.next = 30;
             break;
-          case 18:
-            _context3.prev = 18;
-            _context3.t0 = _context3["catch"](1);
-            console.error("Error saving product:", _context3.t0);
+          case 24:
+            _context4.prev = 24;
+            _context4.t0 = _context4["catch"](1);
+            console.error("Error saving product:", _context4.t0);
             setSnackbarMessage('Failed to save product.');
             setSnackbarSeverity('error');
             handleSnackbarOpen();
-          case 24:
+          case 30:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3, null, [[1, 18]]);
+      }, _callee4, null, [[1, 24]]);
     }));
-    return function handleSubmit(_x) {
-      return _ref3.apply(this, arguments);
+    return function handleSubmit(_x2) {
+      return _ref4.apply(this, arguments);
     };
   }();
   var handleEdit = function handleEdit(product) {
     setFormData(_objectSpread(_objectSpread({}, product), {}, {
-      is_featured: product.is_featured === 1
+      is_featured: product.is_featured === 1,
+      image_file: null
     }));
     setIsEditing(true);
+    setImagePreview(null);
     openForm();
   };
   var handleDelete = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id) {
-      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(id) {
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
           case 0:
             if (!window.confirm("Are you sure you want to delete this product?")) {
-              _context4.next = 16;
+              _context5.next = 16;
               break;
             }
-            _context4.prev = 1;
-            _context4.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].delete("/api/product/".concat(id));
+            _context5.prev = 1;
+            _context5.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].delete("".concat(API_URL, "/api/product/").concat(id));
           case 4:
             fetchProducts();
             setSnackbarMessage('Product deleted successfully!');
             setSnackbarSeverity('success');
             handleSnackbarOpen();
-            _context4.next = 16;
+            _context5.next = 16;
             break;
           case 10:
-            _context4.prev = 10;
-            _context4.t0 = _context4["catch"](1);
-            console.error("Error deleting product:", _context4.t0);
+            _context5.prev = 10;
+            _context5.t0 = _context5["catch"](1);
+            console.error("Error deleting product:", _context5.t0);
             setSnackbarMessage('Failed to delete product.');
             setSnackbarSeverity('error');
             handleSnackbarOpen();
           case 16:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
-      }, _callee4, null, [[1, 10]]);
+      }, _callee5, null, [[1, 10]]);
     }));
-    return function handleDelete(_x2) {
-      return _ref4.apply(this, arguments);
+    return function handleDelete(_x3) {
+      return _ref5.apply(this, arguments);
     };
   }();
   var resetForm = function resetForm() {
@@ -3032,9 +3112,11 @@ var ProductsPage = function ProductsPage() {
       stock: '',
       is_featured: false,
       category_id: '',
-      image_url: ''
+      image_url: '',
+      image_file: null
     });
     setIsEditing(false);
+    setImagePreview(null);
   };
   var openForm = function openForm() {
     setFormVisible(true);
@@ -3169,13 +3251,37 @@ var ProductsPage = function ProductsPage() {
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    fullWidth: true,
-    label: "Image URL",
-    name: "image_url",
-    value: formData.image_url,
-    onChange: handleChange,
-    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    accept: "image/*",
+    type: "file",
+    onChange: handleFileChange,
+    style: {
+      display: 'none'
+    },
+    id: "raised-button-file"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "raised-button-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    variant: "contained",
+    component: "span"
+  }, "Upload Image")), imagePreview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: imagePreview,
+    alt: "Preview",
+    style: {
+      marginLeft: '10px',
+      maxWidth: '100px',
+      maxHeight: '100px',
+      verticalAlign: 'middle'
+    }
+  }), formData.image_url && !imagePreview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "".concat(API_URL, "/storage/").concat(formData.image_url),
+    alt: "Current Image",
+    style: {
+      marginLeft: '10px',
+      maxWidth: '100px',
+      maxHeight: '100px',
+      verticalAlign: 'middle'
+    }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     item: true,
     xs: 12
@@ -3222,7 +3328,15 @@ var ProductsPage = function ProductsPage() {
       variant: "body2"
     }, "Stock: ", product.stock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
       variant: "body2"
-    }, "Featured: ", product.is_featured ? 'Yes' : 'No')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, "Featured: ", product.is_featured ? 'Yes' : 'No'), product.image_url && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: "".concat(API_URL, "/storage/").concat(product.image_url),
+      alt: product.name,
+      style: {
+        maxWidth: '100px',
+        maxHeight: '100px',
+        marginTop: '10px'
+      }
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
       size: "small",
       color: "primary",
       onClick: function onClick() {

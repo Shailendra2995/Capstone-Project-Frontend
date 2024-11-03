@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  Nav,
-  Form,
-  FormControl,
-  Modal,
-  Spinner,
-  Alert,
-} from "react-bootstrap";
+import { Container, Row, Col, Button, Card, Nav, Form, FormControl, Modal, Spinner, Alert } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 
 const ProductPage = () => {
@@ -43,18 +31,16 @@ const ProductPage = () => {
     setLoadingCategories(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:8000/api/category", {
+      const response = await fetch(`${window.ENV.REACT_APP_API_URL}/api/category`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
         setCategories(data.data);
@@ -76,9 +62,8 @@ const ProductPage = () => {
       const params = new URLSearchParams();
       if (categoryId) params.append("category_id", categoryId);
       if (search) params.append("name", search);
-
       const response = await fetch(
-        `http://localhost:8000/api/product?${params.toString()}`,
+        `${window.ENV.REACT_APP_API_URL}/api/product?${params.toString()}`,
         {
           method: "GET",
           headers: {
@@ -87,11 +72,9 @@ const ProductPage = () => {
           },
         }
       );
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
         setProducts(data.data);
@@ -109,7 +92,6 @@ const ProductPage = () => {
     const handler = setTimeout(() => {
       setDebouncedSearch(searchQuery);
     }, 300);
-
     return () => {
       clearTimeout(handler);
     };
@@ -133,7 +115,7 @@ const ProductPage = () => {
   const addToCart = async (product) => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://localhost:8000/api/cart", {
+      const response = await fetch(`${window.ENV.REACT_APP_API_URL}/api/cart`, {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,
@@ -141,11 +123,9 @@ const ProductPage = () => {
         },
         body: JSON.stringify({ product_id: product.id }),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.status === 0) {
         alert(`${product.name} added to cart!`);
@@ -178,7 +158,6 @@ const ProductPage = () => {
           </Row>
         </Container>
       </section>
-
       <section className="categories-navbar-section py-3 bg-light">
         <Container>
           {loadingCategories ? (
@@ -198,8 +177,7 @@ const ProductPage = () => {
                   }`}
                   onClick={() => handleCategoryClick(null)}
                 >
-                  <i className="fa fa-th-large me-2" aria-hidden="true"></i>
-                  All
+                  <i className="fa fa-th-large me-2" aria-hidden="true"></i> All
                 </Nav.Link>
               </Nav.Item>
               {categories.map((category) => (
@@ -213,7 +191,7 @@ const ProductPage = () => {
                     <i
                       className={`fa ${category.icon} me-2`}
                       aria-hidden="true"
-                    ></i>
+                    ></i>{" "}
                     {category.name}
                   </Nav.Link>
                 </Nav.Item>
@@ -222,7 +200,6 @@ const ProductPage = () => {
           )}
         </Container>
       </section>
-
       <section className="products-section py-5">
         <Container>
           <h2 className="text-center mb-5 text-capitalize">
@@ -245,7 +222,7 @@ const ProductPage = () => {
                   <Card className="h-100">
                     <Card.Img
                       variant="top"
-                      src={`http://localhost:8000/storage/products/${product.image_url}`}
+                      src={`${window.ENV.REACT_APP_API_URL}/storage/${product.image_url}`}
                       alt={`${product.name} image`}
                       loading="lazy"
                       onClick={() => handleProductClick(product)}
@@ -278,7 +255,6 @@ const ProductPage = () => {
           )}
         </Container>
       </section>
-
       {modalProduct && (
         <Modal show={showModal} onHide={handleCloseModal} centered>
           <Modal.Header closeButton>
@@ -286,7 +262,7 @@ const ProductPage = () => {
           </Modal.Header>
           <Modal.Body>
             <img
-              src={modalProduct.img}
+              src={`${window.ENV.REACT_APP_API_URL}/storage/${modalProduct.image_url}`}
               alt={`${modalProduct.name} image`}
               className="img-fluid mb-3"
             />

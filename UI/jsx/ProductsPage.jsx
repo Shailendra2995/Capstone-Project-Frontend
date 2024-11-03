@@ -23,12 +23,16 @@ const ProductsPage = () => {
     is_featured: false,
     category_id: '',
     image_url: '',
+    image_file: null,
   });
   const [isEditing, setIsEditing] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const API_URL = window.ENV?.REACT_APP_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
     fetchProducts();
@@ -37,7 +41,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('/api/product');
+      const response = await axios.get(`${API_URL}/api/product`);
       setProducts(response.data.data || []);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -49,7 +53,7 @@ const ProductsPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('/api/category');
+      const response = await axios.get(`${API_URL}/api/category`);
       setCategories(response.data.data || []);
     } catch (err) {
       console.error("Error fetching categories:", err);
@@ -67,14 +71,61 @@ const ProductsPage = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, image_file: file });
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await axios.post(`${API_URL}/api/upload/product`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      if (response.data.status === 0) {
+        return response.data.data.path;
+      } else {
+        throw new Error(response.data.msg || 'Failed to upload image');
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let imagePath = formData.image_url;
+      if (formData.image_file) {
+        imagePath = await handleImageUpload(formData.image_file);
+      }
+
+      const productData = {
+        ...formData,
+        image_url: imagePath,
+      };
+
       if (isEditing) {
-        await axios.post(`/api/product/${formData.id}`, formData);
+        await axios.post(`${API_URL}/api/product/${formData.id}`, productData);
         setSnackbarMessage('Product updated successfully!');
       } else {
-        await axios.post('/api/product', formData);
+        await axios.post(`${API_URL}/api/product`, productData);
         setSnackbarMessage('Product added successfully!');
       }
       setSnackbarSeverity('success');
@@ -93,16 +144,18 @@ const ProductsPage = () => {
   const handleEdit = (product) => {
     setFormData({
       ...product,
-      is_featured: product.is_featured === 1
+      is_featured: product.is_featured === 1,
+      image_file: null
     });
     setIsEditing(true);
+    setImagePreview(null);
     openForm();
   };
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        await axios.delete(`/api/product/${id}`);
+        await axios.delete(`${API_URL}/api/product/${id}`);
         fetchProducts();
         setSnackbarMessage('Product deleted successfully!');
         setSnackbarSeverity('success');
@@ -129,8 +182,10 @@ const ProductsPage = () => {
       is_featured: false,
       category_id: '',
       image_url: '',
+      image_file: null,
     });
     setIsEditing(false);
+    setImagePreview(null);
   };
 
   const openForm = () => {
@@ -201,7 +256,32 @@ const ProductsPage = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label="Image URL" name="image_url" value={formData.image_url} onChange={handleChange} required />
+              <input
+                accept="image/*"
+                type="file"
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+                id="raised-button-file"
+              />
+              <label htmlFor="raised-button-file">
+                <Button variant="contained" component="span">
+                  Upload Image
+                </Button>
+              </label>
+              {imagePreview && (
+                <img 
+                  src={imagePreview}
+                  alt="Preview" 
+                  style={{ marginLeft: '10px', maxWidth: '100px', maxHeight: '100px', verticalAlign: 'middle' }} 
+                />
+              )}
+              {formData.image_url && !imagePreview && (
+                <img 
+                  src={`${API_URL}/storage/${formData.image_url}`}
+                  alt="Current Image" 
+                  style={{ marginLeft: '10px', maxWidth: '100px', maxHeight: '100px', verticalAlign: 'middle' }} 
+                />
+              )}
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -237,6 +317,13 @@ const ProductsPage = () => {
               <Typography variant="body2">Price: ${product.price}</Typography>
               <Typography variant="body2">Stock: {product.stock}</Typography>
               <Typography variant="body2">Featured: {product.is_featured ? 'Yes' : 'No'}</Typography>
+              {product.image_url && (
+                <img 
+                  src={`${API_URL}/storage/${product.image_url}`}
+                  alt={product.name}
+                  style={{ maxWidth: '100px', maxHeight: '100px', marginTop: '10px' }}
+                />
+              )}
             </CardContent>
             <CardActions>
               <Button size="small" color="primary" onClick={() => handleEdit(product)}>Edit</Button>
