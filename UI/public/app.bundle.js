@@ -2842,12 +2842,12 @@ var ProductsPage = function ProductsPage() {
     setIsEditing = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState10 = _slicedToArray(_useState9, 2),
-    error = _useState10[0],
-    setError = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    snackbarMessage = _useState10[0],
+    setSnackbarMessage = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('success'),
     _useState12 = _slicedToArray(_useState11, 2),
-    successMessage = _useState12[0],
-    setSuccessMessage = _useState12[1];
+    snackbarSeverity = _useState12[0],
+    setSnackbarSeverity = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState14 = _slicedToArray(_useState13, 2),
     snackbarOpen = _useState14[0],
@@ -2872,20 +2872,20 @@ var ProductsPage = function ProductsPage() {
           case 3:
             response = _context.sent;
             setProducts(response.data.data || []);
-            setError('');
             _context.next = 13;
             break;
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
             console.error("Error fetching products:", _context.t0);
-            setError('Failed to fetch products.');
+            setSnackbarMessage('Failed to fetch products.');
+            setSnackbarSeverity('error');
             handleSnackbarOpen();
           case 13:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[0, 8]]);
+      }, _callee, null, [[0, 7]]);
     }));
     return function fetchProducts() {
       return _ref.apply(this, arguments);
@@ -2903,20 +2903,20 @@ var ProductsPage = function ProductsPage() {
           case 3:
             response = _context2.sent;
             setCategories(response.data.data || []);
-            setError('');
             _context2.next = 13;
             break;
-          case 8:
-            _context2.prev = 8;
+          case 7:
+            _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
             console.error("Error fetching categories:", _context2.t0);
-            setError('Failed to fetch categories.');
+            setSnackbarMessage('Failed to fetch categories.');
+            setSnackbarSeverity('error');
             handleSnackbarOpen();
           case 13:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 8]]);
+      }, _callee2, null, [[0, 7]]);
     }));
     return function fetchCategories() {
       return _ref2.apply(this, arguments);
@@ -2944,32 +2944,34 @@ var ProductsPage = function ProductsPage() {
             _context3.next = 5;
             return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/product/".concat(formData.id), formData);
           case 5:
-            setSuccessMessage('Product updated successfully!');
+            setSnackbarMessage('Product updated successfully!');
             _context3.next = 11;
             break;
           case 8:
             _context3.next = 10;
             return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('/api/product', formData);
           case 10:
-            setSuccessMessage('Product added successfully!');
+            setSnackbarMessage('Product added successfully!');
           case 11:
+            setSnackbarSeverity('success');
             fetchProducts();
             resetForm();
             closeForm();
             handleSnackbarOpen();
-            _context3.next = 22;
+            _context3.next = 24;
             break;
-          case 17:
-            _context3.prev = 17;
+          case 18:
+            _context3.prev = 18;
             _context3.t0 = _context3["catch"](1);
             console.error("Error saving product:", _context3.t0);
-            setError('Failed to save product.');
+            setSnackbarMessage('Failed to save product.');
+            setSnackbarSeverity('error');
             handleSnackbarOpen();
-          case 22:
+          case 24:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[1, 17]]);
+      }, _callee3, null, [[1, 18]]);
     }));
     return function handleSubmit(_x) {
       return _ref3.apply(this, arguments);
@@ -2988,7 +2990,7 @@ var ProductsPage = function ProductsPage() {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
             if (!window.confirm("Are you sure you want to delete this product?")) {
-              _context4.next = 14;
+              _context4.next = 16;
               break;
             }
             _context4.prev = 1;
@@ -2996,21 +2998,23 @@ var ProductsPage = function ProductsPage() {
             return axios__WEBPACK_IMPORTED_MODULE_3__["default"].delete("/api/product/".concat(id));
           case 4:
             fetchProducts();
-            setSuccessMessage('Product deleted successfully!');
+            setSnackbarMessage('Product deleted successfully!');
+            setSnackbarSeverity('success');
             handleSnackbarOpen();
-            _context4.next = 14;
+            _context4.next = 16;
             break;
-          case 9:
-            _context4.prev = 9;
+          case 10:
+            _context4.prev = 10;
             _context4.t0 = _context4["catch"](1);
             console.error("Error deleting product:", _context4.t0);
-            setError('Failed to delete product.');
+            setSnackbarMessage('Failed to delete product.');
+            setSnackbarSeverity('error');
             handleSnackbarOpen();
-          case 14:
+          case 16:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[1, 9]]);
+      }, _callee4, null, [[1, 10]]);
     }));
     return function handleDelete(_x2) {
       return _ref4.apply(this, arguments);
@@ -3031,8 +3035,6 @@ var ProductsPage = function ProductsPage() {
       image_url: ''
     });
     setIsEditing(false);
-    setError('');
-    setSuccessMessage('');
   };
   var openForm = function openForm() {
     setFormVisible(true);
@@ -3044,7 +3046,10 @@ var ProductsPage = function ProductsPage() {
   var handleSnackbarOpen = function handleSnackbarOpen() {
     setSnackbarOpen(true);
   };
-  var handleSnackbarClose = function handleSnackbarClose() {
+  var handleSnackbarClose = function handleSnackbarClose(event, reason) {
+    if (reason === 'clickaway') {
+      return;
+    }
     setSnackbarOpen(false);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -3236,8 +3241,8 @@ var ProductsPage = function ProductsPage() {
     onClose: handleSnackbarClose
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
     onClose: handleSnackbarClose,
-    severity: error ? "error" : "success"
-  }, error || successMessage)));
+    severity: snackbarSeverity
+  }, snackbarMessage)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductsPage);
 

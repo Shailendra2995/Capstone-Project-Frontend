@@ -25,8 +25,8 @@ const ProductsPage = () => {
     image_url: '',
   });
   const [isEditing, setIsEditing] = useState(false);
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
 
@@ -39,10 +39,10 @@ const ProductsPage = () => {
     try {
       const response = await axios.get('/api/product');
       setProducts(response.data.data || []);
-      setError('');
     } catch (err) {
       console.error("Error fetching products:", err);
-      setError('Failed to fetch products.');
+      setSnackbarMessage('Failed to fetch products.');
+      setSnackbarSeverity('error');
       handleSnackbarOpen();
     }
   };
@@ -51,10 +51,10 @@ const ProductsPage = () => {
     try {
       const response = await axios.get('/api/category');
       setCategories(response.data.data || []);
-      setError('');
     } catch (err) {
       console.error("Error fetching categories:", err);
-      setError('Failed to fetch categories.');
+      setSnackbarMessage('Failed to fetch categories.');
+      setSnackbarSeverity('error');
       handleSnackbarOpen();
     }
   };
@@ -72,18 +72,20 @@ const ProductsPage = () => {
     try {
       if (isEditing) {
         await axios.post(`/api/product/${formData.id}`, formData);
-        setSuccessMessage('Product updated successfully!');
+        setSnackbarMessage('Product updated successfully!');
       } else {
         await axios.post('/api/product', formData);
-        setSuccessMessage('Product added successfully!');
+        setSnackbarMessage('Product added successfully!');
       }
+      setSnackbarSeverity('success');
       fetchProducts();
       resetForm();
       closeForm();
       handleSnackbarOpen();
     } catch (err) {
       console.error("Error saving product:", err);
-      setError('Failed to save product.');
+      setSnackbarMessage('Failed to save product.');
+      setSnackbarSeverity('error');
       handleSnackbarOpen();
     }
   };
@@ -102,11 +104,13 @@ const ProductsPage = () => {
       try {
         await axios.delete(`/api/product/${id}`);
         fetchProducts();
-        setSuccessMessage('Product deleted successfully!');
+        setSnackbarMessage('Product deleted successfully!');
+        setSnackbarSeverity('success');
         handleSnackbarOpen();
       } catch (err) {
         console.error("Error deleting product:", err);
-        setError('Failed to delete product.');
+        setSnackbarMessage('Failed to delete product.');
+        setSnackbarSeverity('error');
         handleSnackbarOpen();
       }
     }
@@ -127,8 +131,6 @@ const ProductsPage = () => {
       image_url: '',
     });
     setIsEditing(false);
-    setError('');
-    setSuccessMessage('');
   };
 
   const openForm = () => {
@@ -144,7 +146,10 @@ const ProductsPage = () => {
     setSnackbarOpen(true);
   };
 
-  const handleSnackbarClose = () => {
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
     setSnackbarOpen(false);
   };
 
@@ -243,8 +248,8 @@ const ProductsPage = () => {
         <Typography>No products available.</Typography>
       )}
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-        <Alert onClose={handleSnackbarClose} severity={error ? "error" : "success"}>
-          {error || successMessage}
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+          {snackbarMessage}
         </Alert>
       </Snackbar>
     </Container>
