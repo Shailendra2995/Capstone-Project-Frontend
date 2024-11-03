@@ -2782,10 +2782,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/InputLabel/InputLabel.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Select/Select.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/MenuItem/MenuItem.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardActions/CardActions.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Snackbar/Snackbar.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Alert/Alert.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormControlLabel/FormControlLabel.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Checkbox/Checkbox.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardActions/CardActions.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Snackbar/Snackbar.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Alert/Alert.js");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/styled */ "./node_modules/@emotion/styled/dist/emotion-styled.browser.development.esm.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _templateObject;
@@ -2808,7 +2810,7 @@ function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.fre
 
 
 
-var StyledCard = (0,_emotion_styled__WEBPACK_IMPORTED_MODULE_1__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    margin: 16px;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n"])));
+var StyledCard = (0,_emotion_styled__WEBPACK_IMPORTED_MODULE_1__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  margin: 16px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n"])));
 var ProductsPage = function ProductsPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -2829,8 +2831,7 @@ var ProductsPage = function ProductsPage() {
       stock: '',
       is_featured: false,
       category_id: '',
-      image_url: null,
-      image_file: null
+      image_url: ''
     }),
     _useState6 = _slicedToArray(_useState5, 2),
     formData = _useState6[0],
@@ -2854,8 +2855,7 @@ var ProductsPage = function ProductsPage() {
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState16 = _slicedToArray(_useState15, 2),
     formVisible = _useState16[0],
-    setFormVisible = _useState16[1]; // State to control form visibility
-
+    setFormVisible = _useState16[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProducts();
     fetchCategories();
@@ -2902,7 +2902,6 @@ var ProductsPage = function ProductsPage() {
             return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/category');
           case 3:
             response = _context2.sent;
-            // Assuming this endpoint returns categories
             setCategories(response.data.data || []);
             setError('');
             _context2.next = 13;
@@ -2931,65 +2930,46 @@ var ProductsPage = function ProductsPage() {
       checked = _e$target.checked;
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, name, type === 'checkbox' ? checked : value)));
   };
-  var handleFileChange = function handleFileChange(e) {
-    var file = e.target.files[0];
-    if (file) {
-      setFormData(_objectSpread(_objectSpread({}, formData), {}, {
-        image_file: file,
-        image_url: URL.createObjectURL(file) // Preview the image
-      }));
-    }
-  };
   var handleSubmit = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
-      var data, key;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             e.preventDefault();
-
-            // Prepare form data for upload
-            data = new FormData();
-            for (key in formData) {
-              if (key === 'image_file') {
-                data.append('file', formData.image_file);
-              } else {
-                data.append(key, formData[key]);
-              }
-            }
-            _context3.prev = 3;
+            _context3.prev = 1;
             if (!isEditing) {
-              _context3.next = 10;
+              _context3.next = 8;
               break;
             }
-            _context3.next = 7;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/product/".concat(formData.id), data);
-          case 7:
+            _context3.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/product/".concat(formData.id), formData);
+          case 5:
             setSuccessMessage('Product updated successfully!');
-            _context3.next = 13;
+            _context3.next = 11;
             break;
+          case 8:
+            _context3.next = 10;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('/api/product', formData);
           case 10:
-            _context3.next = 12;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('/api/product', data);
-          case 12:
             setSuccessMessage('Product added successfully!');
-          case 13:
+          case 11:
             fetchProducts();
             resetForm();
-            closeForm(); // Close the form after submission
-            _context3.next = 23;
+            closeForm();
+            handleSnackbarOpen();
+            _context3.next = 22;
             break;
-          case 18:
-            _context3.prev = 18;
-            _context3.t0 = _context3["catch"](3);
+          case 17:
+            _context3.prev = 17;
+            _context3.t0 = _context3["catch"](1);
             console.error("Error saving product:", _context3.t0);
             setError('Failed to save product.');
             handleSnackbarOpen();
-          case 23:
+          case 22:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[3, 18]]);
+      }, _callee3, null, [[1, 17]]);
     }));
     return function handleSubmit(_x) {
       return _ref3.apply(this, arguments);
@@ -2997,10 +2977,10 @@ var ProductsPage = function ProductsPage() {
   }();
   var handleEdit = function handleEdit(product) {
     setFormData(_objectSpread(_objectSpread({}, product), {}, {
-      image_file: null // Reset image file on edit
+      is_featured: product.is_featured === 1
     }));
     setIsEditing(true);
-    openForm(); // Open the form for editing
+    openForm();
   };
   var handleDelete = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id) {
@@ -3048,19 +3028,18 @@ var ProductsPage = function ProductsPage() {
       stock: '',
       is_featured: false,
       category_id: '',
-      image_url: null,
-      image_file: null
+      image_url: ''
     });
     setIsEditing(false);
     setError('');
     setSuccessMessage('');
   };
   var openForm = function openForm() {
-    resetForm(); // Reset form data when opening
-    setFormVisible(true); // Show the form
+    setFormVisible(true);
   };
   var closeForm = function closeForm() {
-    setFormVisible(false); // Hide the form
+    setFormVisible(false);
+    resetForm();
   };
   var handleSnackbarOpen = function handleSnackbarOpen() {
     setSnackbarOpen(true);
@@ -3184,46 +3163,39 @@ var ProductsPage = function ProductsPage() {
     }, category.name);
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     item: true,
-    xs: 12,
-    sm: 6
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    accept: "image/*",
-    type: "file",
-    onChange: handleFileChange,
-    style: {
-      display: 'none'
-    },
-    id: "upload-image"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "upload-image"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    variant: "contained",
-    component: "span"
-  }, "Upload Image")), formData.image_url && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: formData.image_url,
-    alt: "Preview",
-    style: {
-      marginTop: '10px',
-      maxWidth: '100%',
-      maxHeight: '200px'
-    }
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    fullWidth: true,
+    label: "Image URL",
+    name: "image_url",
+    value: formData.image_url,
+    onChange: handleChange,
+    required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     item: true,
-    xs: 12,
-    sm: 6
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Featured:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "checkbox",
-    name: "is_featured",
-    checked: formData.is_featured,
-    onChange: handleChange
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    control: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      checked: formData.is_featured,
+      onChange: handleChange,
+      name: "is_featured"
+    }),
+    label: "Featured"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     variant: "contained",
     color: "primary",
-    type: "submit"
+    type: "submit",
+    style: {
+      marginTop: '20px'
+    }
   }, isEditing ? 'Update Product' : 'Add Product'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     variant: "outlined",
     color: "secondary",
-    onClick: closeForm
+    onClick: closeForm,
+    style: {
+      marginLeft: '10px',
+      marginTop: '20px'
+    }
   }, "Cancel")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     variant: "h5",
     gutterBottom: true,
@@ -3233,13 +3205,19 @@ var ProductsPage = function ProductsPage() {
   }, "Product List"), products.length > 0 ? products.map(function (product) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledCard, {
       key: product.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
       variant: "h6"
     }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
       color: "textSecondary"
     }, product.brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
       variant: "body2"
-    }, product.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "body2"
+    }, "Price: $", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "body2"
+    }, "Stock: ", product.stock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "body2"
+    }, "Featured: ", product.is_featured ? 'Yes' : 'No')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
       size: "small",
       color: "primary",
       onClick: function onClick() {
@@ -3252,18 +3230,14 @@ var ProductsPage = function ProductsPage() {
         return handleDelete(product.id);
       }
     }, "Delete")));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], null, "No products available.") // Handle case when there are no products.
-  , /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], null, "No products available."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
     open: snackbarOpen,
     autoHideDuration: 6000,
     onClose: handleSnackbarClose
-  }, successMessage ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
     onClose: handleSnackbarClose,
-    severity: "success"
-  }, successMessage) : error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
-    onClose: handleSnackbarClose,
-    severity: "error"
-  }, error)));
+    severity: error ? "error" : "success"
+  }, error || successMessage)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductsPage);
 
