@@ -1273,7 +1273,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // For navigation
+
 
 
 
@@ -1290,14 +1290,18 @@ var ProductCard = function ProductCard(_ref) {
     className: "mb-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Img, {
     variant: "top",
-    src: "http://localhost:8000/storage/products/".concat(product.image_url),
-    alt: product.name
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, "Price: ", product.price), product.onsale_price && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    src: "http://localhost:8000/storage/".concat(product.image_url),
+    alt: product.name,
+    onError: function onError(e) {
+      e.target.onerror = null;
+      e.target.src = 'https://via.placeholder.com/150?text=Image+Not+Found';
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, "Price: $", product.price), product.onsale_price && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     style: {
       textDecoration: "line-through",
       color: "red"
     }
-  }, product.original_price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, "$", product.price), " ", "$", product.onsale_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "primary",
     onClick: function onClick() {
       return onAddToCart(product);
@@ -1556,7 +1560,6 @@ var HomePage = function HomePage() {
     fetchCategories();
     fetchFeaturedProducts();
     fetchProductsOnSale();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   var handleCategoryClick = function handleCategoryClick(categoryId) {
     setSelectedCategory(categoryId);
@@ -1570,11 +1573,7 @@ var HomePage = function HomePage() {
     style: {
       backgroundColor: "#F1F8E9"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "./image1.png",
-    alt: "Fresh Organic Food",
-    className: "img-fluid"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "mt-4"
   }, "Fresh & Healthy Organic Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "success",
@@ -1640,7 +1639,7 @@ var HomePage = function HomePage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
     className: "fa fa-th-large me-2",
     "aria-hidden": "true"
-  }), "All"), categories.map(function (category) {
+  }), " All"), categories.map(function (category) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
       key: category.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Link, {
@@ -1651,7 +1650,7 @@ var HomePage = function HomePage() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
       className: "fa ".concat(category.icon, " me-2"),
       "aria-hidden": "true"
-    }), category.name));
+    }), " ", category.name));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "products-section py-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
@@ -1680,11 +1679,7 @@ var HomePage = function HomePage() {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "mb-4"
-  }, "Our Special Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "./image.png",
-    alt: "Special Products",
-    className: "img-fluid"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, "Our Special Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "mt-3"
   }, "Delicious and fresh organic food just for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "success",
@@ -2072,6 +2067,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 var ProductDetailPage = function ProductDetailPage() {
+  var _window$ENV;
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useParams)(),
     id = _useParams.id;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
@@ -2103,6 +2099,7 @@ var ProductDetailPage = function ProductDetailPage() {
     totalPages = _useState12[0],
     setTotalPages = _useState12[1];
   var token = localStorage.getItem("token");
+  var API_URL = ((_window$ENV = window.ENV) === null || _window$ENV === void 0 ? void 0 : _window$ENV.REACT_APP_API_URL) || 'http://localhost:8000';
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProduct();
     fetchReviews();
@@ -2115,7 +2112,7 @@ var ProductDetailPage = function ProductDetailPage() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://localhost:8000/api/product/".concat(id), {
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("".concat(API_URL, "/api/product/").concat(id), {
               headers: {
                 Authorization: "Bearer " + token,
                 "Content-Type": "application/json"
@@ -2148,7 +2145,7 @@ var ProductDetailPage = function ProductDetailPage() {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://localhost:8000/api/review", {
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("".concat(API_URL, "/api/review"), {
               params: {
                 product_id: id,
                 page_num: currentPage,
@@ -2191,7 +2188,7 @@ var ProductDetailPage = function ProductDetailPage() {
             e.preventDefault();
             _context3.prev = 1;
             _context3.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post("http://localhost:8000/api/review", _objectSpread({
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post("".concat(API_URL, "/api/review"), _objectSpread({
               product_id: id
             }, newReview), {
               headers: {
@@ -2241,7 +2238,7 @@ var ProductDetailPage = function ProductDetailPage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "http://localhost:8000/storage/products/".concat(product.image_url),
+    src: "".concat(API_URL, "/storage/").concat(product.image_url),
     alt: product.name,
     className: "card-img-top"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {

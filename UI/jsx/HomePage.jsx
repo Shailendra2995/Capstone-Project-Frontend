@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // For navigation
+import { useNavigate } from "react-router-dom";
 import { FaLeaf, FaBox, FaTruck } from "react-icons/fa";
 import {
   Container,
@@ -18,17 +18,22 @@ const ProductCard = ({ product, onAddToCart }) => (
     <Card className="mb-4">
       <Card.Img
         variant="top"
-        src={`http://localhost:8000/storage/products/${product.image_url}`}
+        src={`http://localhost:8000/storage/${product.image_url}`}
         alt={product.name}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = 'https://via.placeholder.com/150?text=Image+Not+Found';
+        }}
       />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
-        <Card.Text>Price: {product.price}</Card.Text>
+        <Card.Text>Price: ${product.price}</Card.Text>
         {product.onsale_price && (
           <Card.Text>
             <span style={{ textDecoration: "line-through", color: "red" }}>
-              {product.original_price}
-            </span>
+              ${product.price}
+            </span>{" "}
+            ${product.onsale_price}
           </Card.Text>
         )}
         <Card.Text>{product.description}</Card.Text>
@@ -76,11 +81,9 @@ const HomePage = () => {
           },
         }
       );
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
         setState(data.data);
@@ -106,11 +109,9 @@ const HomePage = () => {
           "Content-Type": "application/json",
         },
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.status === 0 && Array.isArray(data.data)) {
         setCategories(data.data);
@@ -140,6 +141,7 @@ const HomePage = () => {
     const params = { is_onsale: "true" };
     fetchProducts(params, setProductsOnSale, setLoadingSale, setErrorSale);
   };
+
   const handleAddToCart = async (product) => {
     const token = localStorage.getItem("token");
     try {
@@ -151,11 +153,9 @@ const HomePage = () => {
         },
         body: JSON.stringify({ product_id: product.id }),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.status === 0) {
         alert(`${product.name} added to cart!`);
@@ -173,7 +173,6 @@ const HomePage = () => {
     fetchCategories();
     fetchFeaturedProducts();
     fetchProductsOnSale();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCategoryClick = (categoryId) => {
@@ -191,11 +190,6 @@ const HomePage = () => {
         <Container>
           <Row>
             <Col>
-              <img
-                src="./image1.png"
-                alt="Fresh Organic Food"
-                className="img-fluid"
-              />
               <h1 className="mt-4">Fresh & Healthy Organic Food</h1>
               <Button
                 variant="success"
@@ -254,8 +248,7 @@ const HomePage = () => {
                   navigate("/products");
                 }}
               >
-                <i className="fa fa-th-large me-2" aria-hidden="true"></i>
-                All
+                <i className="fa fa-th-large me-2" aria-hidden="true"></i> All
               </Nav.Link>
               {categories.map((category) => (
                 <Nav.Item key={category.id}>
@@ -268,7 +261,7 @@ const HomePage = () => {
                     <i
                       className={`fa ${category.icon} me-2`}
                       aria-hidden="true"
-                    ></i>
+                    ></i>{" "}
                     {category.name}
                   </Nav.Link>
                 </Nav.Item>
@@ -318,11 +311,6 @@ const HomePage = () => {
           <h2 className="mb-4">Our Special Products</h2>
           <Row>
             <Col>
-              <img
-                src="./image.png"
-                alt="Special Products"
-                className="img-fluid"
-              />
               <p className="mt-3">
                 Delicious and fresh organic food just for you!
               </p>
@@ -381,9 +369,7 @@ const HomePage = () => {
                     aria-hidden="true"
                     style={{ fontSize: "2rem", color: "#007bff" }}
                   ></i>
-                  <Card.Text>
-                    "Excellent service and product quality!"
-                  </Card.Text>
+                  <Card.Text>"Excellent service and product quality!"</Card.Text>
                 </Card.Body>
                 <Card.Footer>- Client 3</Card.Footer>
               </Card>

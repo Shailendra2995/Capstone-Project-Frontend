@@ -12,6 +12,8 @@ const ProductDetailPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const token = localStorage.getItem("token");
 
+  const API_URL = window.ENV?.REACT_APP_API_URL || 'http://localhost:8000';
+
   useEffect(() => {
     fetchProduct();
     fetchReviews();
@@ -20,7 +22,7 @@ const ProductDetailPage = () => {
   const fetchProduct = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/product/${id}`,
+        `${API_URL}/api/product/${id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -37,7 +39,7 @@ const ProductDetailPage = () => {
   const fetchReviews = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/review`,
+        `${API_URL}/api/review`,
         {
           params: {
             product_id: id,
@@ -65,7 +67,7 @@ const ProductDetailPage = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8000/api/review",
+        `${API_URL}/api/review`,
         {
           product_id: id,
           ...newReview,
@@ -98,7 +100,7 @@ const ProductDetailPage = () => {
         <div className="col-md-6">
           <div className="card">
             <img
-              src={`http://localhost:8000/storage/products/${product.image_url}`}
+              src={`${API_URL}/storage/${product.image_url}`}
               alt={product.name}
               className="card-img-top"
             />
