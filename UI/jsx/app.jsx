@@ -14,10 +14,11 @@ import ProductDetails from "./ProductDetails.jsx";
 import Profile from "./Profile.jsx";
 import "../public/styles.css";
 import HomePage from "./HomePage.jsx";
-import Logout from "./logout.jsx"; // Ensure this import matches your file structure
+import Logout from "./logout.jsx";
 import PasswordResetForm from "./Reset.jsx";
 import PasswordResetRequest from "./ForgotPassword.jsx";
 import Admin from "./Admin.jsx";
+import AdminLayout from "./AdminLayout.jsx";
 import ProductsPage from "./ProductsPage.jsx";
 import CategoriesPage from "./CategoriesPage.jsx";
 import UsersPage from "./UsersPage.jsx";
@@ -26,12 +27,11 @@ import CouponPage from "./Coupon.jsx";
 
 // Main application component
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token")); // Check if token exists
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
 
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        {/* Pass isAuthenticated prop to NavPage */}
         <NavPage title="PrimeMart" isAuthenticated={isAuthenticated} />
         <main className="flex-grow-1">
           <Routes>
@@ -42,15 +42,19 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/Admin" element={<Admin />} />
-            <Route path="/productspage" element={<ProductsPage />} />
-            <Route path="/categoriespage" element={<CategoriesPage />} />
-            <Route path="/userspage" element={<UsersPage />} />
-            <Route path="/logout" element={<Logout setIsAuthenticated={setIsAuthenticated} />} /> {/* Pass prop here */}
+            <Route path="/logout" element={<Logout setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/forgot-password" element={<PasswordResetRequest />} />
             <Route path="/reset-password" element={<PasswordResetForm />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/coupon" element={<CouponPage />} />
+
+            {/* Admin routes using AdminLayout */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Admin />} />
+              <Route path="products" element={<ProductsPage />} />
+              <Route path="categories" element={<CategoriesPage />} />
+              <Route path="users" element={<UsersPage />} />
+            </Route>
           </Routes>
         </main>
         <Footer />
