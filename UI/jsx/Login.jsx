@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => { // Accept a prop to manage auth state
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -29,40 +30,38 @@ const Login = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      const data = new FormData();
-      data.append("email", formData.email);
-      data.append("password", formData.password);
-
-      const requestOptions = {
-        method: "POST",
-        body: data,
-        //credentials: 'include' if we are using cookies than this is required
-      };
-
-      fetch("http://localhost:8000/api/user/login", requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.status == 0) {
-            console.log("Login successful", data);
-
-            // Save token or user data to localStorage/sessionStorage
-            localStorage.setItem("isLoggedIn", true); //  'data.token' is returned
-            localStorage.setItem("token", data.data.token);
-
-            navigate("/");
-          } else {
-            setErrors({ login: data.message || "Login failed" });
-          }
-        })
-        .catch((error) => {
-          console.error("Error during login:", error);
-          setErrors({ login: "An error occurred. Please try again." });
+      try {
+        // Send login request to the backend
+        const response = await axios.post('http://localhost:8000/api/user/login', formData, {
+          withCredentials: true, // Important for session-based auth
         });
+
+        // Check if login was successful
+        if (response.data.status === 0) {
+          console.log("Login successful", response.data);
+
+          // Save token or user data to localStorage (if needed)
+          localStorage.setItem("token", response.data.data.token);
+
+          // Set axios default headers for future requests
+          axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.data.token}`;
+
+          // Update authentication state
+          setIsAuthenticated(true); // Call prop function to update auth state
+
+          navigate("/"); // Redirect to home or another page
+        } else {
+          setErrors({ login: response.data.message || "Login failed" });
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        setErrors({ login: "An error occurred. Please try again." });
+      }
     } else {
       setErrors(validationErrors);
     }

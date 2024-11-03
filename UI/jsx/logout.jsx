@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Logout = () => {
+const Logout = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     // Remove the token or user data from localStorage
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("token"); // Change this to "token" if you're using that for auth
+    localStorage.removeItem("isLoggedIn"); // Optional: remove isLoggedIn if used
+
+    // Update authentication state
+    setIsAuthenticated(false); // Update the auth state in parent component
 
     // Redirect to the login page
     navigate("/login");

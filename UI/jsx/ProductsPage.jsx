@@ -1,411 +1,376 @@
-import React, { useState, useEffect } from "react";
-import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { 
+    Container, 
+    Typography, 
+    TextField, 
+    Button, 
+    Grid, 
+    Card, 
+    CardContent, 
+    CardActions, 
+    Snackbar,
+    Alert,
+    Select,
+    MenuItem,
+    InputLabel,
+    FormControl
+} from '@mui/material';
+import styled from '@emotion/styled';
 
-const mockProducts = [
-  {
-    id: 1,
-    name: "Apples",
-    category: "Fruits",
-    price: 1.2,
-    stock: 150,
-  },
-  {
-    id: 2,
-    name: "Bananas",
-    category: "Fruits",
-    price: 0.8,
-    stock: 200,
-  },
-  {
-    id: 3,
-    name: "Carrots",
-    category: "Vegetables",
-    price: 0.5,
-    stock: 180,
-  },
-  // Add more mock products as needed
-];
+const StyledCard = styled(Card)`
+    margin: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+`;
 
 const ProductsPage = () => {
-  const [products, setProducts] = useState([]);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState(null);
-  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-  const [productToDelete, setProductToDelete] = useState(null);
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [formData, setFormData] = useState({
+        id: '',
+        brand: '',
+        name: '',
+        description: '',
+        specifications: '',
+        price: '',
+        onsale_price: '',
+        stock: '',
+        is_featured: false,
+        category_id: '',
+        image_url: null,
+        image_file: null
+    });
+    const [isEditing, setIsEditing] = useState(false);
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [formVisible, setFormVisible] = useState(false); // State to control form visibility
 
-  // Simulate fetching products from an API
-  useEffect(() => {
-    // In a real app, replace this with an API call
-    setProducts(mockProducts);
-  }, []);
+    useEffect(() => {
+        fetchProducts();
+        fetchCategories();
+    }, []);
 
-  const openAddForm = () => {
-    setCurrentProduct(null);
-    setIsFormOpen(true);
-  };
-
-  const openEditForm = (product) => {
-    setCurrentProduct(product);
-    setIsFormOpen(true);
-  };
-
-  const closeForm = () => {
-    setIsFormOpen(false);
-    setCurrentProduct(null);
-  };
-
-  const handleFormSubmit = (product) => {
-    if (product.id) {
-      // Edit existing product
-      setProducts((prevProducts) =>
-        prevProducts.map((p) => (p.id === product.id ? product : p))
-      );
-    } else {
-      // Add new product
-      const newProduct = { ...product, id: Date.now() };
-      setProducts((prevProducts) => [...prevProducts, newProduct]);
-    }
-    closeForm();
-  };
-
-  const openConfirmDialog = (product) => {
-    setProductToDelete(product);
-    setIsConfirmOpen(true);
-  };
-
-  const closeConfirmDialog = () => {
-    setIsConfirmOpen(false);
-    setProductToDelete(null);
-  };
-
-  const handleDelete = () => {
-    setProducts((prevProducts) =>
-      prevProducts.filter((p) => p.id !== productToDelete.id)
-    );
-    closeConfirmDialog();
-  };
-
-  return (
-    <div style={styles.productsPage}>
-      <header style={styles.productsHeader}>
-        <h1 style={styles.headerTitle}>Product Management</h1>
-        <button style={styles.addButton} onClick={openAddForm}>
-          <FaPlus style={{ marginRight: "5px" }} /> Add Product
-        </button>
-      </header>
-
-      <table style={styles.productsTable}>
-        <thead>
-          <tr>
-            <th style={styles.tableHeader}>Name</th>
-            <th style={styles.tableHeader}>Category</th>
-            <th style={styles.tableHeader}>Price ($)</th>
-            <th style={styles.tableHeader}>Stock</th>
-            <th style={styles.tableHeader}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.length === 0 ? (
-            <tr>
-              <td style={styles.noData} colSpan="5">
-                No products available.
-              </td>
-            </tr>
-          ) : (
-            products.map((product) => (
-              <tr key={product.id}>
-                <td style={styles.tableCell}>{product.name}</td>
-                <td style={styles.tableCell}>{product.category}</td>
-                <td style={styles.tableCell}>{product.price.toFixed(2)}</td>
-                <td style={styles.tableCell}>{product.stock}</td>
-                <td style={styles.tableCell}>
-                  <button
-                    style={{ ...styles.actionButton, ...styles.editButton }}
-                    onClick={() => openEditForm(product)}
-                  >
-                    <FaEdit style={{ marginRight: "5px" }} /> Edit
-                  </button>
-                  <button
-                    style={{ ...styles.actionButton, ...styles.deleteButton }}
-                    onClick={() => openConfirmDialog(product)}
-                  >
-                    <FaTrash style={{ marginRight: "5px" }} /> Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      {/* Product Form Modal */}
-      {isFormOpen && (
-        <ProductForm
-          product={currentProduct}
-          onClose={closeForm}
-          onSubmit={handleFormSubmit}
-        />
-      )}
-
-      {/* Confirm Delete Dialog */}
-      {isConfirmOpen && (
-        <ConfirmDialog
-          message={`Are you sure you want to delete "${productToDelete.name}"?`}
-          onCancel={closeConfirmDialog}
-          onConfirm={handleDelete}
-        />
-      )}
-    </div>
-  );
-};
-
-// Inline Styles
-const styles = {
-  productsPage: {
-    padding: "20px",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  },
-  productsHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "20px",
-  },
-  headerTitle: {
-    margin: 0,
-    fontSize: "24px",
-    color: "#333",
-  },
-  addButton: {
-    backgroundColor: "#28a745",
-    color: "white",
-    border: "none",
-    padding: "10px 15px",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    borderRadius: "4px",
-    fontSize: "14px",
-  },
-  productsTable: {
-    width: "100%",
-    borderCollapse: "collapse",
-  },
-  tableHeader: {
-    border: "1px solid #ddd",
-    padding: "12px",
-    backgroundColor: "#f2f2f2",
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-  tableCell: {
-    border: "1px solid #ddd",
-    padding: "10px",
-    textAlign: "center",
-    color: "#555",
-  },
-  noData: {
-    padding: "20px",
-    textAlign: "center",
-    color: "#777",
-  },
-  actionButton: {
-    border: "none",
-    padding: "5px 10px",
-    margin: "0 2px",
-    cursor: "pointer",
-    color: "white",
-    display: "inline-flex",
-    alignItems: "center",
-    borderRadius: "4px",
-    fontSize: "12px",
-  },
-  editButton: {
-    backgroundColor: "#007bff",
-  },
-  deleteButton: {
-    backgroundColor: "#dc3545",
-  },
-  // Modal Styles
-  modal: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 1000,
-  },
-  modalContent: {
-    backgroundColor: "white",
-    padding: "20px",
-    width: "400px",
-    borderRadius: "5px",
-    position: "relative",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.3)",
-  },
-  productForm: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  formLabel: {
-    marginBottom: "10px",
-    color: "#333",
-  },
-  formInput: {
-    width: "100%",
-    padding: "8px",
-    marginTop: "5px",
-    boxSizing: "border-box",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-  },
-  formActions: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "20px",
-  },
-  submitButton: {
-    backgroundColor: "#28a745",
-    color: "white",
-    border: "none",
-    padding: "8px 12px",
-    cursor: "pointer",
-    marginRight: "10px",
-    borderRadius: "4px",
-  },
-  cancelButton: {
-    backgroundColor: "#6c757d",
-    color: "white",
-    border: "none",
-    padding: "8px 12px",
-    cursor: "pointer",
-    borderRadius: "4px",
-  },
-  confirmDialog: {
-    textAlign: "center",
-  },
-  dialogActions: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "20px",
-  },
-  confirmButton: {
-    backgroundColor: "#dc3545",
-    color: "white",
-    border: "none",
-    padding: "8px 12px",
-    cursor: "pointer",
-    marginRight: "10px",
-    borderRadius: "4px",
-  },
-};
-
-// ProductForm Component
-const ProductForm = ({ product, onClose, onSubmit }) => {
-  const [name, setName] = useState(product ? product.name : "");
-  const [category, setCategory] = useState(product ? product.category : "");
-  const [price, setPrice] = useState(product ? product.price : "");
-  const [stock, setStock] = useState(product ? product.stock : "");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name || !category || price === "" || stock === "") {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    const newProduct = {
-      id: product ? product.id : null,
-      name,
-      category,
-      price: parseFloat(price),
-      stock: parseInt(stock, 10),
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get('/api/product');
+            setProducts(response.data.data || []);
+            setError('');
+        } catch (err) {
+            console.error("Error fetching products:", err);
+            setError('Failed to fetch products.');
+            handleSnackbarOpen();
+        }
     };
 
-    onSubmit(newProduct);
-  };
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get('/api/category'); // Assuming this endpoint returns categories
+            setCategories(response.data.data || []);
+            setError('');
+        } catch (err) {
+            console.error("Error fetching categories:", err);
+            setError('Failed to fetch categories.');
+            handleSnackbarOpen();
+        }
+    };
 
-  return (
-    <div style={styles.modal}>
-      <div style={styles.modalContent}>
-        <h2 style={{ marginTop: 0 }}>{product ? "Edit Product" : "Add New Product"}</h2>
-        <form onSubmit={handleSubmit} style={styles.productForm}>
-          <label style={styles.formLabel}>
-            Name:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              style={styles.formInput}
-            />
-          </label>
-          <label style={styles.formLabel}>
-            Category:
-            <input
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-              style={styles.formInput}
-            />
-          </label>
-          <label style={styles.formLabel}>
-            Price ($):
-            <input
-              type="number"
-              step="0.01"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              required
-              style={styles.formInput}
-            />
-          </label>
-          <label style={styles.formLabel}>
-            Stock:
-            <input
-              type="number"
-              value={stock}
-              onChange={(e) => setStock(e.target.value)}
-              required
-              style={styles.formInput}
-            />
-          </label>
-          <div style={styles.formActions}>
-            <button type="submit" style={styles.submitButton}>
-              {product ? "Update" : "Add"}
-            </button>
-            <button type="button" style={styles.cancelButton} onClick={onClose}>
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value
+        });
+    };
 
-// ConfirmDialog Component
-const ConfirmDialog = ({ message, onCancel, onConfirm }) => {
-  return (
-    <div style={styles.modal}>
-      <div style={{ ...styles.modalContent, ...styles.confirmDialog }}>
-        <p>{message}</p>
-        <div style={styles.dialogActions}>
-          <button style={styles.confirmButton} onClick={onConfirm}>
-            Yes
-          </button>
-          <button style={styles.cancelButton} onClick={onCancel}>
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData({
+                ...formData,
+                image_file: file,
+                image_url: URL.createObjectURL(file) // Preview the image
+            });
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        // Prepare form data for upload
+        const data = new FormData();
+        
+        for (const key in formData) {
+            if (key === 'image_file') {
+                data.append('file', formData.image_file);
+            } else {
+                data.append(key, formData[key]);
+            }
+        }
+
+        try {
+            if (isEditing) {
+                await axios.post(`/api/product/${formData.id}`, data);
+                setSuccessMessage('Product updated successfully!');
+            } else {
+                await axios.post('/api/product', data);
+                setSuccessMessage('Product added successfully!');
+            }
+            fetchProducts();
+            resetForm();
+            closeForm(); // Close the form after submission
+        } catch (err) {
+            console.error("Error saving product:", err);
+            setError('Failed to save product.');
+            handleSnackbarOpen();
+        }
+    };
+
+    const handleEdit = (product) => {
+        setFormData({
+            ...product,
+            image_file: null // Reset image file on edit
+        });
+        setIsEditing(true);
+        openForm(); // Open the form for editing
+    };
+
+    const handleDelete = async (id) => {
+        if (window.confirm("Are you sure you want to delete this product?")) {
+            try {
+                await axios.delete(`/api/product/${id}`);
+                fetchProducts();
+                setSuccessMessage('Product deleted successfully!');
+                handleSnackbarOpen();
+            } catch (err) {
+                console.error("Error deleting product:", err);
+                setError('Failed to delete product.');
+                handleSnackbarOpen();
+            }
+        }
+    };
+
+    const resetForm = () => {
+        setFormData({
+            id: '',
+            brand: '',
+            name: '',
+            description: '',
+            specifications: '',
+            price: '',
+            onsale_price: '',
+            stock: '',
+            is_featured: false,
+            category_id: '',
+            image_url: null,
+            image_file: null
+        });
+        setIsEditing(false);
+        setError('');
+        setSuccessMessage('');
+    };
+
+    const openForm = () => {
+        resetForm(); // Reset form data when opening
+        setFormVisible(true); // Show the form
+    };
+
+    const closeForm = () => {
+        setFormVisible(false); // Hide the form
+    };
+
+    const handleSnackbarOpen = () => {
+        setSnackbarOpen(true);
+    };
+
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
+    };
+
+    return (
+        <Container>
+            <Typography variant="h4" gutterBottom>
+                Manage Products
+            </Typography>
+
+              {/* Add Product Button */}
+              <Button variant="contained" color="primary" onClick={openForm}>
+                  Add Product
+              </Button>
+
+              {/* Conditional rendering of the form */}
+              {formVisible && (
+                  <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+                      <Grid container spacing={2}>
+                          <Grid item xs={12} sm={6}>
+                              <TextField
+                                  fullWidth
+                                  label="Brand"
+                                  name="brand"
+                                  value={formData.brand}
+                                  onChange={handleChange}
+                                  required
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                              <TextField
+                                  fullWidth
+                                  label="Product Name"
+                                  name="name"
+                                  value={formData.name}
+                                  onChange={handleChange}
+                                  required
+                              />
+                          </Grid>
+                          <Grid item xs={12}>
+                              <TextField
+                                  fullWidth
+                                  label="Description"
+                                  name="description"
+                                  value={formData.description}
+                                  onChange={handleChange}
+                                  multiline
+                                  rows={4}
+                                  required
+                              />
+                          </Grid>
+                          <Grid item xs={12}>
+                              <TextField
+                                  fullWidth
+                                  label="Specifications"
+                                  name="specifications"
+                                  value={formData.specifications}
+                                  onChange={handleChange}
+                                  multiline
+                                  rows={4}
+                                  required
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                              <TextField
+                                  fullWidth
+                                  label="Price"
+                                  name="price"
+                                  type="number"
+                                  value={formData.price}
+                                  onChange={handleChange}
+                                  required
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                              <TextField
+                                  fullWidth
+                                  label="On Sale Price"
+                                  name="onsale_price"
+                                  type="number"
+                                  value={formData.onsale_price}
+                                  onChange={handleChange}
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                              <TextField
+                                  fullWidth
+                                  label="Stock"
+                                  name="stock"
+                                  type="number"
+                                  value={formData.stock}
+                                  onChange={handleChange}
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                              <FormControl fullWidth required>
+                                <InputLabel id="category-label">Category</InputLabel>
+                                <Select
+                                    labelId="category-label"
+                                    name="category_id"
+                                    value={formData.category_id}
+                                    onChange={handleChange}
+                                >
+                                    {categories.map(category => (
+                                        <MenuItem key={category.id} value={category.id}>{category.name}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <input 
+                                accept="image/*" 
+                                type="file" 
+                                onChange={handleFileChange} 
+                                style={{ display: 'none' }} 
+                                id="upload-image" 
+                            />
+                            <label htmlFor="upload-image">
+                                <Button variant="contained" component="span">
+                                    Upload Image
+                                </Button>
+                            </label>
+                            {formData.image_url && (
+                                <img src={formData.image_url} alt="Preview" style={{ marginTop: '10px', maxWidth: '100%', maxHeight: '200px' }} />
+                            )}
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <label>
+                                Featured:
+                                <input 
+                                    type="checkbox" 
+                                    name="is_featured" 
+                                    checked={formData.is_featured} 
+                                    onChange={handleChange} 
+                                />
+                            </label>
+                        </Grid>
+                    </Grid>
+
+                    <Button variant="contained" color="primary" type="submit">
+                        {isEditing ? 'Update Product' : 'Add Product'}
+                    </Button>
+                    <Button variant="outlined" color="secondary" onClick={closeForm}>
+                        Cancel
+                    </Button>
+                </form>
+              )}
+
+              {/* Product List */}
+              <Typography variant="h5" gutterBottom style={{ marginTop: '20px' }}>
+                  Product List
+              </Typography>
+
+              {products.length > 0 ? (
+                  products.map(product => (
+                      <StyledCard key={product.id}>
+                          <CardContent>
+                              <Typography variant="h6">{product.name}</Typography>
+                              <Typography color="textSecondary">{product.brand}</Typography>
+                              <Typography variant="body2">{product.description}</Typography>
+                          </CardContent>
+                          <CardActions>
+                              <Button size="small" color="primary" onClick={() => handleEdit(product)}>Edit</Button>
+                              <Button size="small" color="secondary" onClick={() => handleDelete(product.id)}>Delete</Button>
+                          </CardActions>
+                      </StyledCard>
+                  ))
+              ) : (
+                  <Typography>No products available.</Typography> // Handle case when there are no products.
+              )}
+
+              {/* Snackbar for notifications */}
+              <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                  {successMessage ? (
+                      <Alert onClose={handleSnackbarClose} severity="success">
+                          {successMessage}
+                      </Alert>
+                  ) : (
+                      error && (
+                          <Alert onClose={handleSnackbarClose} severity="error">
+                              {error}
+                          </Alert>
+                      )
+                  )}
+              </Snackbar>
+
+          </Container>
+      );
 };
 
 export default ProductsPage;

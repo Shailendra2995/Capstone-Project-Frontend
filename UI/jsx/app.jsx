@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -14,41 +14,50 @@ import ProductDetails from "./ProductDetails.jsx";
 import Profile from "./Profile.jsx";
 import "../public/styles.css";
 import HomePage from "./HomePage.jsx";
-import Logout from "./logout.jsx";
+import Logout from "./logout.jsx"; // Ensure this import matches your file structure
 import PasswordResetForm from "./Reset.jsx";
 import PasswordResetRequest from "./ForgotPassword.jsx";
 import Admin from "./Admin.jsx";
 import ProductsPage from "./ProductsPage.jsx";
+import CategoriesPage from "./CategoriesPage.jsx";
+import UsersPage from "./UsersPage.jsx";
 import CheckoutPage from "./Checkout.jsx";
 import CouponPage from "./Coupon.jsx";
 
 // Main application component
-const App = () => (
-  <Router>
-    <div className="d-flex flex-column min-vh-100">
-      <NavPage title="PrimeMart" />
-      <main className="flex-grow-1">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/Admin" element={<Admin />} />
-          <Route path="/productspage" element={<ProductsPage />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/forgot-password" element={<PasswordResetRequest />} />
-          <Route path="/reset-password" element={<PasswordResetForm />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/coupon" element={<CouponPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-  </Router>
-);
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token")); // Check if token exists
+
+  return (
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        {/* Pass isAuthenticated prop to NavPage */}
+        <NavPage title="PrimeMart" isAuthenticated={isAuthenticated} />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/Admin" element={<Admin />} />
+            <Route path="/productspage" element={<ProductsPage />} />
+            <Route path="/categoriespage" element={<CategoriesPage />} />
+            <Route path="/userspage" element={<UsersPage />} />
+            <Route path="/logout" element={<Logout setIsAuthenticated={setIsAuthenticated} />} /> {/* Pass prop here */}
+            <Route path="/forgot-password" element={<PasswordResetRequest />} />
+            <Route path="/reset-password" element={<PasswordResetForm />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/coupon" element={<CouponPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
 
 // Root container element
 const container = document.getElementById("contents");

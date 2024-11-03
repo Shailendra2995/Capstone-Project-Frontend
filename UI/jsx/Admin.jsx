@@ -16,16 +16,10 @@ const Admin = () => {
               <FaBox /> <a href="/productsPage">Products</a>
             </li>
             <li>
-              <FaUsers /> <a href="/customerspage">Customers</a>
+              <FaUsers /> <a href="/categoriesPage">Categories</a>
             </li>
             <li>
-              <FaTag /> <a href="/discounts">Discounts</a>
-            </li>
-            <li>
-              <FaFileAlt /> <a href="/reports">Reports</a>
-            </li>
-            <li>
-              <FaCog /> <a href="/settings">Settings</a>
+              <FaTag /> <a href="/usersPage">Users</a>
             </li>
           </ul>
         </nav>
