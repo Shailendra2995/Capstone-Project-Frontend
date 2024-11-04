@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button, Card, Nav, Form, FormControl, Modal, Spinner, Alert } from "react-bootstrap";
+import { Container, Row, Col, Button, Card, Nav, Form, FormControl, Spinner, Alert } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
+import ProductModal from "./ProductModalComponent.jsx";
 
 const ProductPage = () => {
   const { categoryKey } = useParams();
@@ -102,8 +103,6 @@ const ProductPage = () => {
   };
 
   const handleProductClick = (product) => {
-    setModalProduct(product);
-    setShowModal(true);
     navigate(`/product/${product.id}`);
   };
 
@@ -220,28 +219,34 @@ const ProductPage = () => {
               {products.map((product) => (
                 <Col md={3} key={product.id} className="mb-4">
                   <Card className="h-100">
-                    <Card.Img
-                      variant="top"
-                      src={`${window.ENV.REACT_APP_API_URL}/storage/${product.image_url}`}
-                      alt={`${product.name} image`}
-                      loading="lazy"
-                      onClick={() => handleProductClick(product)}
-                    />
-                    <Card.Body className="d-flex flex-column">
-                      <Card.Title>{product.name}</Card.Title>
-                      <Card.Text>
-                        <strong>Price:</strong> ${product.price}
-                      </Card.Text>
-                      <Card.Text className="flex-grow-1">
-                        {product.description}
-                      </Card.Text>
+                    <div onClick={() => handleProductClick(product)}>
+                      <Card.Img
+                        variant="top"
+                        src={`${window.ENV.REACT_APP_API_URL}/storage/${product.image_url}`}
+                        alt={`${product.name} image`}
+                        loading="lazy"
+                      />
+                      <Card.Body className="d-flex flex-column">
+                        <Card.Title>{product.name}</Card.Title>
+                        <Card.Text>
+                          <strong>Price:</strong> ${product.price}
+                        </Card.Text>
+                        <Card.Text className="flex-grow-1">
+                          {product.description}
+                        </Card.Text>
+                      </Card.Body>
+                    </div>
+                    <Card.Footer>
                       <Button
                         variant="primary"
-                        onClick={() => addToCart(product)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addToCart(product);
+                        }}
                       >
                         Add to Cart
                       </Button>
-                    </Card.Body>
+                    </Card.Footer>
                   </Card>
                 </Col>
               ))}
@@ -255,38 +260,12 @@ const ProductPage = () => {
           )}
         </Container>
       </section>
-      {modalProduct && (
-        <Modal show={showModal} onHide={handleCloseModal} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>{modalProduct.name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <img
-              src={`${window.ENV.REACT_APP_API_URL}/storage/${modalProduct.image_url}`}
-              alt={`${modalProduct.name} image`}
-              className="img-fluid mb-3"
-            />
-            <p>{modalProduct.description}</p>
-            <p>
-              <strong>Price:</strong> ${modalProduct.price}
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              Close
-            </Button>
-            <Button
-              variant="primary"
-              onClick={() => {
-                addToCart(modalProduct);
-                handleCloseModal();
-              }}
-            >
-              Add to Cart
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
+      <ProductModal
+        show={showModal}
+        onClose={handleCloseModal}
+        product={modalProduct}
+        onAddToCart={addToCart}
+      />
     </Container>
   );
 };
