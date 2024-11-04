@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Container, Row, Col, Button, Card, Spinner, Alert } from "react-bootstrap";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -10,6 +11,7 @@ const ProductDetailPage = () => {
   const [newReview, setNewReview] = useState({ title: "", content: "", stars: 5 });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
   const API_URL = window.ENV?.REACT_APP_API_URL || 'http://localhost:8000';
@@ -25,7 +27,7 @@ const ProductDetailPage = () => {
         `${API_URL}/api/product/${id}`,
         {
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
@@ -33,6 +35,8 @@ const ProductDetailPage = () => {
       setProduct(response.data.data);
     } catch (err) {
       setError(err.response?.data?.msg || "Error fetching product details");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,15 +51,22 @@ const ProductDetailPage = () => {
             page_size: 10
           },
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
       );
-      setReviews(response.data.data);
-      setTotalPages(Math.ceil(response.data.total / response.data.page_size));
+      if (response.data.status === 0 && response.data.data.list) {
+        setReviews(response.data.data.list);
+        setTotalPages(Math.ceil(response.data.data.total / response.data.data.page_size));
+      } else {
+        setReviews([]);
+        setTotalPages(1);
+      }
     } catch (err) {
       console.error("Error fetching reviews:", err);
+      setReviews([]);
+      setTotalPages(1);
     }
   };
 
@@ -74,154 +85,151 @@ const ProductDetailPage = () => {
         },
         {
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
       );
-      setNewReview({ title: "", content: "", stars: 5 }); // Reset form
-      fetchReviews(); // Refresh reviews after submitting
+      setNewReview({ title: "", content: "", stars: 5 });
+      fetchReviews();
     } catch (err) {
       setError(err.response?.data?.msg || "Error submitting review");
     }
   };
 
+  if (loading) {
+    return (
+      <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <Spinner animation="border" variant="primary" />
+      </Container>
+    );
+  }
+
   if (error) {
-    return <div className="alert alert-danger">{error}</div>;
+    return <Alert variant="danger" className="m-3">{error}</Alert>;
   }
 
   if (!product) {
-    return <div className="text-center">Loading...</div>;
+    return <Alert variant="info" className="m-3">Product not found.</Alert>;
   }
 
   return (
-    <div className="container my-4">
-      <div className="row">
-        <div className="col-md-6">
-          <div className="card">
-            <img
+    <Container className="my-4">
+      <Row>
+        <Col md={6}>
+          <Card>
+            <Card.Img
               src={`${API_URL}/storage/${product.image_url}`}
               alt={product.name}
-              className="card-img-top"
+              className="img-fluid"
             />
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">{product.name}</h5>
-              <p className="card-text">
-                <strong>Price:</strong> ${product.price}
-              </p>
+          </Card>
+        </Col>
+        <Col md={6}>
+          <Card>
+            <Card.Body>
+              <Card.Title>{product.name}</Card.Title>
+              <Card.Text><strong>Price:</strong> ${product.price}</Card.Text>
               {product.onsale_price && (
-                <p className="card-text">
-                  <strong>On Sale Price:</strong> ${product.onsale_price}
-                </p>
+                <Card.Text><strong>On Sale Price:</strong> ${product.onsale_price}</Card.Text>
               )}
-              <p className="card-text">
-                <strong>Brand:</strong> {product.brand}
-              </p>
-              <p className="card-text">
-                <strong>Description:</strong> {product.description}
-              </p>
-              <p className="card-text">
-                <strong>Specifications:</strong> {product.specifications}
-              </p>
-              <p className="card-text">
-                {product.stock < 5 && (
-                  <span className="text-warning">
-                    (Selling out fast! Only a few left)
-                  </span>
-                )}
-              </p>
+              <Card.Text><strong>Brand:</strong> {product.brand}</Card.Text>
+              <Card.Text><strong>Description:</strong> {product.description}</Card.Text>
+              <Card.Text><strong>Specifications:</strong> {product.specifications}</Card.Text>
+              {product.stock < 5 && (
+                <Card.Text className="text-warning">
+                  (Selling out fast! Only a few left)
+                </Card.Text>
+              )}
+              <Button variant="primary" onClick={() => {/* Add to cart logic */}}>
+                Add to Cart
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <h3 className="mt-4">Reviews</h3>
+      <Card className="mb-3">
+        <Card.Body>
+          <h5>Add a Review</h5>
+          <form onSubmit={submitReview}>
+            <div className="mb-3">
+              <label htmlFor="title" className="form-label">Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="title"
+                name="title"
+                value={newReview.title}
+                onChange={handleReviewChange}
+                required
+              />
             </div>
-          </div>
-        </div>
-      </div>
+            <div className="mb-3">
+              <label htmlFor="content" className="form-label">Content</label>
+              <textarea
+                className="form-control"
+                id="content"
+                name="content"
+                value={newReview.content}
+                onChange={handleReviewChange}
+                required
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="stars" className="form-label">Rating</label>
+              <select
+                className="form-control"
+                id="stars"
+                name="stars"
+                value={newReview.stars}
+                onChange={handleReviewChange}
+                required
+              >
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <option key={num} value={num}>{num} stars</option>
+                ))}
+              </select>
+            </div>
+            <Button type="submit" variant="primary">Submit Review</Button>
+          </form>
+        </Card.Body>
+      </Card>
+      
+      <Card>
+        <Card.Body>
+          {reviews.length > 0 ? (
+            reviews.map((review) => (
+              <div key={review.id} className="mb-3">
+                <h5>{review.title}</h5>
+                <p>{review.content}</p>
+                <p>Rating: {review.stars} stars</p>
+                <small className="text-muted">
+                  By {review.reviewer?.username || 'Unknown'} on {new Date(review.created_at).toLocaleDateString()}
+                </small>
+              </div>
+            ))
+          ) : (
+            <p>No reviews yet.</p>
+          )}
+        </Card.Body>
+      </Card>
 
-      <div className="mt-4">
-        <h3>Reviews</h3>
-        <div className="card mb-3">
-          <div className="card-body">
-            <h5>Add a Review</h5>
-            <form onSubmit={submitReview}>
-              <div className="mb-3">
-                <label htmlFor="title" className="form-label">Title</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="title"
-                  name="title"
-                  value={newReview.title}
-                  onChange={handleReviewChange}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="content" className="form-label">Content</label>
-                <textarea
-                  className="form-control"
-                  id="content"
-                  name="content"
-                  value={newReview.content}
-                  onChange={handleReviewChange}
-                  required
-                ></textarea>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="stars" className="form-label">Rating</label>
-                <select
-                  className="form-control"
-                  id="stars"
-                  name="stars"
-                  value={newReview.stars}
-                  onChange={handleReviewChange}
-                  required
-                >
-                  {[1, 2, 3, 4, 5].map((num) => (
-                    <option key={num} value={num}>{num} stars</option>
-                  ))}
-                </select>
-              </div>
-              <button type="submit" className="btn btn-primary">Submit Review</button>
-            </form>
-          </div>
-        </div>
-        
-        <div className="card">
-          <div className="card-body">
-            {reviews.length > 0 ? (
-              reviews.map((review) => (
-                <div key={review.id} className="mb-3">
-                  <h5>{review.title}</h5>
-                  <p>{review.content}</p>
-                  <p>Rating: {review.stars} stars</p>
-                  <small className="text-muted">
-                    By {review.reviewer?.username || 'Unknown'} on {new Date(review.created_at).toLocaleDateString()}
-                  </small>
-                </div>
-              ))
-            ) : (
-              <p>No reviews yet.</p>
-            )}
-          </div>
-        </div>
-
-        {totalPages > 1 && (
-          <nav aria-label="Review pagination" className="mt-3">
-            <ul className="pagination">
-              {[...Array(totalPages).keys()].map((page) => (
-                <li key={page + 1} className={`page-item ${currentPage === page + 1 ? 'active' : ''}`}>
-                  <button className="page-link" onClick={() => setCurrentPage(page + 1)}>
-                    {page + 1}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-      </div>
-    </div>
+      {totalPages > 1 && (
+        <nav aria-label="Review pagination" className="mt-3">
+          <ul className="pagination">
+            {[...Array(totalPages).keys()].map((page) => (
+              <li key={page + 1} className={`page-item ${currentPage === page + 1 ? 'active' : ''}`}>
+                <Button className="page-link" onClick={() => setCurrentPage(page + 1)}>
+                  {page + 1}
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </Container>
   );
 };
 
