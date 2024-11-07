@@ -399,6 +399,7 @@ body {
     height: 200px;
   }
 }
+
 /* Product Card Container */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -431,6 +432,10 @@ body {
 /* Card Body */
 .card-body {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Card Title */
@@ -464,6 +469,7 @@ body {
   background-color: #019f87;
   transform: translateY(-2px);
 }
+
 /* Mobile-first approach */
 .checkout-container {
   display: flex;
@@ -568,72 +574,36 @@ body {
   color: #3a3b3c;
   margin-bottom: 1rem;
 }
-
-.coupon-subtext {
-  color: #626567;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Coupon Code Styling */
-.coupon-code {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #4a90e2;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
-  margin: 1rem 0;
-}
-
-/* Button Styling */
-.generate-btn,
-.btn-primary {
-  font-size: 1.2rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  box-shadow: 0px 8px 15px rgba(74, 144, 226, 0.4);
-}
-
-.generate-btn:hover,
-.btn-primary:hover {
-  background-color: #4a90e2;
-  box-shadow: 0px 8px 20px rgba(74, 144, 226, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Coupon Information */
-.coupon-info h5 {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #4a4a4a;
-}
-
-.coupon-info p {
-  color: #7f8c8d;
-  font-size: 0.9rem;
-}
-
-/* Alert Styling */
-.alert-warning {
-  font-size: 0.9rem;
-  color: #d63031;
-  background-color: #ffeaa7;
-  border: none;
-  border-radius: 8px;
-}
 .card {
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
-.card-img-top {
-  height: auto;
-  width: auto;
-  padding-bottom: 20px;
-  object-fit: cover;
+.card-body {
+  flex: 1 0 auto;
 }
-.text-warning {
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card-footer .btn {
+  width: 100%;
+  max-width: 200px;
+}
+/* Increase the size of categories link */
+.category-link {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #ffc107;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.category-link:hover,
+.category-link.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--primary-color);
 }
