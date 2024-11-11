@@ -11,7 +11,7 @@ import {
   FaUserTie
 } from "react-icons/fa";
 
-const NavPage = ({ title, isAuthenticated }) => { // Accept isAuthenticated as a prop
+const NavPage = ({ title, isAuthenticated,isAdmin }) => { 
   const location = useLocation();
 
   return (
@@ -68,7 +68,7 @@ const NavPage = ({ title, isAuthenticated }) => { // Accept isAuthenticated as a
               <FaShoppingCart /> Cart
             </Link>
           </li>
-          {isAuthenticated && ( // Show Admin link only if authenticated
+          {isAdmin && ( 
             <li className="nav-item">
               <Link
                 className={`nav-link ${location.pathname === "/Admin" ? "active" : ""}`}

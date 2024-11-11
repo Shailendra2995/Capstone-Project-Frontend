@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer, useCallback } from "react";
 import axios from "axios";
 import {
   Container,
@@ -10,18 +10,111 @@ import {
   Spinner,
   Alert,
   Form,
+  Modal,
 } from "react-bootstrap";
-import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import {
+  FaTrash,
+  FaMinus,
+  FaPlus,
+  FaArrowLeft,
+  FaArrowRight,
+} from "react-icons/fa"; // Use FaArrowLeft for backward arrow
+
+// Initial state for the cart
+const initialState = {
+  cartItems: [],
+  total: 0,
+  tax: 0,
+  finalTotal: 0,
+  loading: true,
+  error: null,
+  coupon: "",
+  discount: 0,
+  showModal: false,
+  itemToRemove: null,
+};
+
+// Cart reducer function
+function cartReducer(state, action) {
+  switch (action.type) {
+    case "SET_CART":
+      return {
+        ...state,
+        cartItems: action.payload,
+        loading: false,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
+    case "SET_TOTAL":
+      return {
+        ...state,
+        total: action.payload,
+      };
+    case "SET_TAX":
+      return {
+        ...state,
+        tax: action.payload,
+      };
+    case "SET_FINAL_TOTAL":
+      return {
+        ...state,
+        finalTotal: action.payload,
+      };
+    case "SET_COUPON":
+      return {
+        ...state,
+        coupon: action.payload,
+      };
+    case "SET_DISCOUNT":
+      return {
+        ...state,
+        discount: action.payload,
+      };
+    case "SHOW_MODAL":
+      return {
+        ...state,
+        showModal: true,
+        itemToRemove: action.payload,
+      };
+    case "HIDE_MODAL":
+      return {
+        ...state,
+        showModal: false,
+        itemToRemove: null,
+      };
+    case "REMOVE_ITEM":
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+      };
+    default:
+      return state;
+  }
+}
 
 function Cart() {
-  const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [tax, setTax] = useState(0);
-  const [finalTotal, setFinalTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [coupon, setCoupon] = useState("");
-  const [discount, setDiscount] = useState(0);
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+  const {
+    cartItems,
+    total,
+    tax,
+    finalTotal,
+    loading,
+    error,
+    coupon,
+    discount,
+    showModal,
+    itemToRemove,
+  } = state;
 
   const TAX_RATE = 0.13; // 13% tax
 
@@ -31,8 +124,8 @@ function Cart() {
 
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
-    setLoading(true);
-    setError(null);
+    dispatch({ type: "SET_LOADING", payload: true });
+    dispatch({ type: "SET_ERROR", payload: null });
     try {
       const response = await axios.get("http://localhost:8000/api/cart", {
         headers: {
@@ -41,26 +134,33 @@ function Cart() {
         },
       });
       const items = response.data?.data || [];
-      setCartItems(items);
+      dispatch({ type: "SET_CART", payload: items });
       calculateTotal(items);
     } catch (error) {
-      setError("Error fetching cart items. Please try again.");
+      dispatch({
+        type: "SET_ERROR",
+        payload: "Error fetching cart items. Please try again.",
+      });
       console.error("Error fetching cart items:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
-  const calculateTotal = (items) => {
-    const subtotal = items.reduce(
-      (acc, item) => acc + (Number(item.price) * item.quantity || 0),
-      0
-    );
-    setTotal(subtotal);
-    const taxAmount = subtotal * TAX_RATE; // Calculate tax
-    setTax(taxAmount);
-    setFinalTotal(subtotal + taxAmount - discount); // Final total after applying discount
-  };
+  const calculateTotal = useCallback(
+    (items) => {
+      const subtotal = items.reduce(
+        (acc, item) => acc + (Number(item.price) * item.quantity || 0),
+        0
+      );
+      dispatch({ type: "SET_TOTAL", payload: subtotal });
+      const taxAmount = subtotal * TAX_RATE;
+      dispatch({ type: "SET_TAX", payload: taxAmount });
+      dispatch({
+        type: "SET_FINAL_TOTAL",
+        payload: subtotal + taxAmount - discount,
+      });
+    },
+    [discount]
+  );
 
   const updateQuantity = async (id, quantity) => {
     const token = localStorage.getItem("token");
@@ -81,31 +181,36 @@ function Cart() {
     }
   };
 
-  const removeItem = async (id) => {
-    const token = localStorage.getItem("token");
-    try {
-      await axios.delete(`http://localhost:8000/api/cart/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      fetchCart();
-    } catch (error) {
-      console.error("Error removing item:", error);
-    }
-  };
-
   const applyCoupon = (e) => {
     e.preventDefault();
-    // Simple coupon logic for demonstration
     if (coupon === "SAVE10") {
-      setDiscount(10);
+      dispatch({ type: "SET_DISCOUNT", payload: 10 });
     } else {
       alert("Invalid coupon code");
-      setDiscount(0);
+      dispatch({ type: "SET_DISCOUNT", payload: 0 });
     }
-    setCoupon(""); // Clear the coupon input
+    dispatch({ type: "SET_COUPON", payload: "" });
+  };
+
+  const handleRemoveItem = async () => {
+    const token = localStorage.getItem("token");
+    if (itemToRemove) {
+      try {
+        await axios.delete(
+          `http://localhost:8000/api/cart/${itemToRemove.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        dispatch({ type: "REMOVE_ITEM", payload: itemToRemove.id });
+        dispatch({ type: "HIDE_MODAL" });
+      } catch (error) {
+        console.error("Error removing item:", error);
+      }
+    }
   };
 
   if (loading) {
@@ -129,12 +234,13 @@ function Cart() {
         <div className="text-center">
           <h4>Your cart is empty.</h4>
           <Button href="/" variant="primary" className="mt-3">
-            Continue Shopping
+            <FaArrowLeft /> Continue Shopping
           </Button>
         </div>
       ) : (
         <Row>
-          <Col md={8}>
+          {/* Cart items section */}
+          <Col xs={12} md={8}>
             <Table responsive="sm" bordered hover className="bg-white shadow">
               <thead className="table-light">
                 <tr>
@@ -197,7 +303,9 @@ function Cart() {
                       <Button
                         variant="danger"
                         size="sm"
-                        onClick={() => removeItem(item.id)}
+                        onClick={() =>
+                          dispatch({ type: "SHOW_MODAL", payload: item })
+                        }
                       >
                         <FaTrash />
                       </Button>
@@ -206,57 +314,92 @@ function Cart() {
                 ))}
               </tbody>
             </Table>
-
-            <Form onSubmit={applyCoupon} className="mb-3">
-              <Form.Group controlId="couponCode">
-                <Form.Label>Coupon Code</Form.Label>
-                <div className="d-flex">
-                  <Form.Control
-                    type="text"
-                    value={coupon}
-                    onChange={(e) => setCoupon(e.target.value)}
-                    placeholder="Enter coupon code"
-                  />
-                  <Button type="submit" variant="primary" className="ms-2">
-                    Apply
-                  </Button>
-                </div>
-              </Form.Group>
-            </Form>
           </Col>
-          <Col md={4}>
+
+          {/* Order Summary and Actions Section */}
+          <Col xs={12} md={4}>
+            {/* Continue Shopping button above the summary card with backward arrow */}
+            <Button href="/" variant="primary" className="w-100 mb-3">
+              <FaArrowLeft /> Continue Shopping
+            </Button>
+
             <Card className="shadow">
               <Card.Body>
-                <h4>Order Summary</h4>
+                <h5>Summary</h5>
                 <hr />
-                <p>
-                  <strong>Subtotal:</strong> ${total.toFixed(2)}
-                  <hr></hr>
-                </p>
-                <p>
-                  <strong>Tax (13%):</strong> ${tax.toFixed(2)}
-                  <hr></hr>
-                </p>
-                <p>
-                  <strong>Discount:</strong> -${discount.toFixed(2)}
-                  <hr></hr>
-                </p>
-                <h5 className="mt-3">
-                  <strong>Total:</strong> ${finalTotal.toFixed(2)}
-                  <hr></hr>
-                </h5>
+                <div className="d-flex justify-content-between">
+                  <strong>Subtotal:</strong>
+                  <span>${total.toFixed(2)}</span>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <strong>Tax (13%):</strong>
+                  <span>${tax.toFixed(2)}</span>
+                </div>
+
+                {/* Coupon form inside the summary */}
+                <Form onSubmit={applyCoupon}>
+                  <Form.Group className="mb-2">
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter coupon code"
+                      value={coupon}
+                      onChange={(e) =>
+                        dispatch({
+                          type: "SET_COUPON",
+                          payload: e.target.value,
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Button type="submit" variant="primary" className="w-100">
+                    Apply Coupon
+                  </Button>
+                </Form>
+                {discount > 0 && (
+                  <div className="d-flex justify-content-between mt-2">
+                    <span>Discount:</span>
+                    <span>-${discount}</span>
+                  </div>
+                )}
+                <hr />
+                <div className="d-flex justify-content-between">
+                  <strong>Total:</strong>
+                  <strong>${finalTotal.toFixed(2)}</strong>
+                </div>
+                {/* Go to Checkout button at the bottom */}
                 <Button
-                  className="mt-4 w-100"
-                  variant="primary"
-                  onClick={() => (window.location.href = "/checkout")}
+                  href="/checkout"
+                  variant="success"
+                  className="mt-3 w-100"
                 >
-                  Proceed to Checkout
+                  Go to Checkout <FaArrowRight />
                 </Button>
               </Card.Body>
             </Card>
           </Col>
         </Row>
       )}
+
+      {/* Modal for confirmation */}
+      <Modal show={showModal} onHide={() => dispatch({ type: "HIDE_MODAL" })}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Removal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to remove this item from your cart?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => dispatch({ type: "HIDE_MODAL" })}
+          >
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleRemoveItem}>
+            Remove Item
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }

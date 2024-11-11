@@ -23,6 +23,7 @@ import ProductsPage from "./ProductsPage.jsx";
 import CategoriesPage from "./CategoriesPage.jsx";
 import UsersPage from "./UsersPage.jsx";
 import CheckoutPage from "./Checkout.jsx";
+import PurchaseHistory from "./purchaseHistory.jsx"
 import CouponPage from "./Coupon.jsx";
 
 // Main application component
@@ -46,7 +47,7 @@ const App = () => {
             <Route path="/forgot-password" element={<PasswordResetRequest />} />
             <Route path="/reset-password" element={<PasswordResetForm />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/coupon" element={<CouponPage />} />
+            <Route path="/history" element={<PurchaseHistory />} />
 
             {/* Admin routes using AdminLayout */}
             <Route path="/admin" element={<AdminLayout />}>

@@ -1,4 +1,36 @@
 import React, { useState, useEffect } from "react";
+import CheckoutPage from "./Checkout.jsx";
+
+//Static object to store profile data that can be accessed from other components
+const ProfileData = {
+  data: {
+    username: "",
+    email: "",
+    phone: "",
+    shippingAddress: {
+      firstname: "",
+      lastname: "",
+      address: "",
+      city: "",
+      postcode: "",
+      phone: "",
+      province_id: "",
+    },
+    billingAddress: {
+      firstname: "",
+      lastname: "",
+      address: "",
+      city: "",
+      postcode: "",
+      phone: "",
+      province_id: "",
+    },
+    old_password: "",
+    new_password: "",
+    profileImage: null,
+    profileImageName: null,
+  },
+};
 
 const provinces = [
   { id: 1, name: "Alberta" },
@@ -44,6 +76,10 @@ const Profile = () => {
     profileImage: null,
     profileImageName: null,
   });
+
+  useEffect(() => {
+    ProfileData.data = profileData;
+  }, [profileData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
