@@ -451,6 +451,7 @@ const ProductDetailPage = () => {
                 as="textarea"
                 rows={3}
                 name="content"
+                rows="4"
                 value={newReview.content}
                 onChange={handleReviewChange}
                 required
