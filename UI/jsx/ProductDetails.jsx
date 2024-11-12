@@ -36,7 +36,6 @@ const ProductDetailPage = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [addingToCart, setAddingToCart] = useState(false);
-  const [wishlist, setWishlist] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [showShareModal, setShowShareModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -265,17 +264,6 @@ const ProductDetailPage = () => {
                 <div>
                   <OverlayTrigger
                     placement="top"
-                    overlay={<Tooltip>Add to Wishlist</Tooltip>}
-                  >
-                    <Button
-                      variant="outline-danger"
-                      onClick={() => setWishlist(!wishlist)}
-                    >
-                      <FaHeart color={wishlist ? "red" : "gray"} />
-                    </Button>
-                  </OverlayTrigger>
-                  <OverlayTrigger
-                    placement="top"
                     overlay={<Tooltip>Share Product</Tooltip>}
                   >
                     <Button
@@ -433,58 +421,59 @@ const ProductDetailPage = () => {
           </Card>
 
           {/* Review Form */}
-          <h5>Write a Review</h5>
-          <Form onSubmit={submitReview}>
-            <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                name="title"
-                value={newReview.title}
-                onChange={handleReviewChange}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Your Review</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="content"
-                rows="4"
-                value={newReview.content}
-                onChange={handleReviewChange}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Rating</Form.Label>
-              <div className="d-flex align-items-center">
-                <Form.Select
-                  name="stars"
-                  value={newReview.stars}
+          <Card className="p-4">
+            <h5>Write a Review</h5>
+            <Form onSubmit={submitReview}>
+              <Form.Group className="mb-3">
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  value={newReview.title}
                   onChange={handleReviewChange}
-                  style={{ width: "200px" }}
-                >
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <option key={star} value={star}>
-                      {star} star{star !== 1 ? "s" : ""}
-                    </option>
-                  ))}
-                </Form.Select>
-                <div className="ms-3">
-                  {Array(newReview.stars)
-                    .fill()
-                    .map((_, i) => (
-                      <FaStar key={i} className="text-warning" />
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Your Review</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="content"
+                  value={newReview.content}
+                  onChange={handleReviewChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Rating</Form.Label>
+                <div className="d-flex align-items-center">
+                  <Form.Select
+                    name="stars"
+                    value={newReview.stars}
+                    onChange={handleReviewChange}
+                    style={{ width: "200px" }}
+                  >
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <option key={star} value={star}>
+                        {star} star{star !== 1 ? "s" : ""}
+                      </option>
                     ))}
+                  </Form.Select>
+                  <div className="ms-3">
+                    {Array(newReview.stars)
+                      .fill()
+                      .map((_, i) => (
+                        <FaStar key={i} className="text-warning" />
+                      ))}
+                  </div>
                 </div>
-              </div>
-            </Form.Group>
-            <Button type="submit" variant="primary">
-              Submit Review
-            </Button>
-          </Form>
+              </Form.Group>
+              <Button type="submit" variant="primary">
+                Submit Review
+              </Button>
+            </Form>
+          </Card>
         </motion.div>
       )}
 

@@ -279,6 +279,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Alert.js");
@@ -289,7 +290,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -305,6 +305,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -650,16 +651,29 @@ function Cart() {
     md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     href: "/",
-    variant: "primary",
-    className: "w-100 mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaArrowLeft, null), " Continue Shopping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    className: "shadow"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "$", total.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Tax (13%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "$", tax.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    onSubmit: applyCoupon
+    variant: "outline-primary",
+    className: "w-100 mb-3 d-flex align-items-center justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaArrowLeft, {
+    className: "me-2"
+  }), " Continue Shopping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    className: "shadow-lg rounded"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
+    className: "summary-title text-center mb-4"
+  }, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "subtotal-price"
+  }, "$", total.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, "Tax (13%):"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "tax"
+  }, "$", tax.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    onSubmit: applyCoupon,
+    className: "my-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Group, {
     className: "mb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Control, {
@@ -674,17 +688,25 @@ function Cart() {
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     type: "submit",
-    variant: "primary",
+    variant: "outline-primary",
     className: "w-100"
   }, "Apply Coupon")), discount > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between mt-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Discount:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "-$", discount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Total:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "$", finalTotal.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "d-flex justify-content-between text-success mt-2 savings"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Discount:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "-$", discount.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between estimated-total"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Total:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", {
+    className: "total-amount"
+  }, "$", finalTotal.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     href: "/checkout",
     variant: "success",
-    className: "mt-3 w-100"
-  }, "Go to Checkout ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaArrowRight, null)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    className: "mt-3 w-100 d-flex align-items-center justify-content-center"
+  }, "Go to Checkout ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaArrowRight, {
+    className: "ms-2"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "small-note text-muted text-center mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaReceipt, {
+    className: "me-2"
+  }), " All fees and taxes are estimates. Final charges will be itemized on your receipt."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
     show: showModal,
     onHide: function onHide() {
       return dispatch({
@@ -1043,35 +1065,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
-function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
-function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
-function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
-function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
-function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
+
+
 
 
 
@@ -1119,27 +1134,34 @@ var PROVINCES = [{
 }];
 function CheckoutPage(_ref) {
   var _profileData$billingA, _profileData$billingA2, _profileData$billingA3, _profileData$billingA4, _profileData$billingA5, _profileData$billingA6, _profileData$billingA7, _profileData$shipping, _profileData$shipping2, _profileData$shipping3, _profileData$shipping4, _profileData$shipping5, _profileData$shipping6, _profileData$shipping7;
-  _objectDestructuringEmpty(_ref);
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _ref$initialProfileDa = _ref.initialProfileData,
+    initialProfileData = _ref$initialProfileDa === void 0 ? {
+      email: "",
+      phone: "",
+      billingAddress: {},
+      shippingAddress: {}
+    } : _ref$initialProfileDa;
+  // Add state for profileData
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialProfileData),
     _useState2 = _slicedToArray(_useState, 2),
-    useBillingAsDelivery = _useState2[0],
-    setUseBillingAsDelivery = _useState2[1];
+    profileData = _useState2[0],
+    setProfileData = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    useProfileAddresses = _useState4[0],
-    setUseProfileAddresses = _useState4[1];
+    useBillingAsDelivery = _useState4[0],
+    setUseBillingAsDelivery = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    validated = _useState6[0],
-    setValidated = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    useProfileAddresses = _useState6[0],
+    setUseProfileAddresses = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    paymentMethod = _useState8[0],
-    setPaymentMethod = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(profileData),
+    validated = _useState8[0],
+    setValidated = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState10 = _slicedToArray(_useState9, 2),
-    profileData = _useState10[0],
-    setProfileData = _useState10[1];
+    paymentMethod = _useState10[0],
+    setPaymentMethod = _useState10[1];
 
   // Initialize state with profileData
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -1183,6 +1205,107 @@ function CheckoutPage(_ref) {
 
   // Canadian Postal Code Regex
   var postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+  var loadData = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var token, response, data, _data$data, username, email, phone, billing_address, shipping_address;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          token = localStorage.getItem("token");
+          _context.prev = 1;
+          _context.next = 4;
+          return fetch("http://localhost:8000/api/user/profile", {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          });
+        case 4:
+          response = _context.sent;
+          _context.next = 7;
+          return response.json();
+        case 7:
+          data = _context.sent;
+          if (data.status === 0) {
+            _data$data = data.data, username = _data$data.username, email = _data$data.email, phone = _data$data.phone, billing_address = _data$data.billing_address, shipping_address = _data$data.shipping_address; // Update profileData
+            setProfileData(function (prevState) {
+              return _objectSpread(_objectSpread({}, prevState), {}, {
+                username: username,
+                email: email,
+                phone: phone,
+                profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
+                billingAddress: {
+                  firstname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstname) || "",
+                  lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastname) || "",
+                  address: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.address) || "",
+                  city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
+                  postcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postcode) || "",
+                  phone: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.phone) || "",
+                  province_id: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province_id) || ""
+                },
+                shippingAddress: {
+                  firstname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstname) || "",
+                  lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastname) || "",
+                  address: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.address) || "",
+                  city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
+                  postcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postcode) || "",
+                  phone: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.phone) || "",
+                  province_id: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province_id) || ""
+                }
+              });
+            });
+
+            // Update billing address
+            setBillingAddress(function (prevState) {
+              return _objectSpread(_objectSpread({}, prevState), {}, {
+                firstname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstname) || "",
+                lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastname) || "",
+                address: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.address) || "",
+                city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
+                postcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postcode) || "",
+                phone: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.phone) || "",
+                province_id: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province_id) || ""
+              });
+            });
+
+            // Update shipping address
+            setShippingAddress(function (prevState) {
+              return _objectSpread(_objectSpread({}, prevState), {}, {
+                firstname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstname) || "",
+                lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastname) || "",
+                address: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.address) || "",
+                city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
+                postcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postcode) || "",
+                phone: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.phone) || "",
+                province_id: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province_id) || ""
+              });
+            });
+
+            // Update contact info
+            setContactInfo(function (prevState) {
+              return _objectSpread(_objectSpread({}, prevState), {}, {
+                email: email,
+                phone: phone
+              });
+            });
+          } else {
+            alert("Failed to load data: " + data.msg);
+          }
+          _context.next = 15;
+          break;
+        case 11:
+          _context.prev = 11;
+          _context.t0 = _context["catch"](1);
+          console.error("Error loading data:", _context.t0);
+          alert("Error loading data.");
+        case 15:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee, null, [[1, 11]]);
+  })), []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    loadData();
+  }, [loadData]);
 
   // Handle form submit
   var handleSubmit = function handleSubmit(event) {
@@ -1227,106 +1350,6 @@ function CheckoutPage(_ref) {
       return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, id, value));
     });
   };
-  var loadData = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var token, response, data, _data$data, username, email, phone, billing_address, shipping_address;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            token = localStorage.getItem("token");
-            _context.prev = 1;
-            _context.next = 4;
-            return fetch("http://localhost:8000/api/user/profile", {
-              method: "GET",
-              headers: {
-                Authorization: "Bearer " + token
-              }
-            });
-          case 4:
-            response = _context.sent;
-            _context.next = 7;
-            return response.json();
-          case 7:
-            data = _context.sent;
-            if (data.status === 0) {
-              _data$data = data.data, username = _data$data.username, email = _data$data.email, phone = _data$data.phone, billing_address = _data$data.billing_address, shipping_address = _data$data.shipping_address;
-              setProfileData(function (prevState) {
-                return _objectSpread(_objectSpread({}, prevState), {}, {
-                  username: username,
-                  email: email,
-                  phone: phone,
-                  profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
-                  billingAddress: {
-                    firstname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstname) || "",
-                    lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastname) || "",
-                    address: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.address) || "",
-                    city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
-                    postcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postcode) || "",
-                    phone: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.phone) || "",
-                    province_id: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province_id) || ""
-                  },
-                  shippingAddress: {
-                    firstname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstname) || "",
-                    lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastname) || "",
-                    address: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.address) || "",
-                    city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
-                    postcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postcode) || "",
-                    phone: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.phone) || "",
-                    province_id: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province_id) || ""
-                  }
-                });
-              });
-              setBillingAddress(function (prevState) {
-                return _objectSpread(_objectSpread({}, prevState), {}, {
-                  firstname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.firstname) || "",
-                  lastname: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.lastname) || "",
-                  address: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.address) || "",
-                  city: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.city) || "",
-                  postcode: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.postcode) || "",
-                  phone: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.phone) || "",
-                  province_id: (billing_address === null || billing_address === void 0 ? void 0 : billing_address.province_id) || ""
-                });
-              });
-              setShippingAddress(function (prevState) {
-                return _objectSpread(_objectSpread({}, prevState), {}, {
-                  firstname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.firstname) || "",
-                  lastname: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.lastname) || "",
-                  address: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.address) || "",
-                  city: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.city) || "",
-                  postcode: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.postcode) || "",
-                  phone: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.phone) || "",
-                  province_id: (shipping_address === null || shipping_address === void 0 ? void 0 : shipping_address.province_id) || ""
-                });
-              });
-              setContactInfo(function (prevState) {
-                return _objectSpread(_objectSpread({}, prevState), {}, {
-                  email: email,
-                  phone: phone
-                });
-              });
-            } else {
-              alert("Failed to load data: " + data.msg);
-            }
-            _context.next = 15;
-            break;
-          case 11:
-            _context.prev = 11;
-            _context.t0 = _context["catch"](1);
-            console.error("Error loading data:", _context.t0);
-            alert("Error loading data.");
-          case 15:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee, null, [[1, 11]]);
-    }));
-    return function loadData() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    loadData();
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-container container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -1414,8 +1437,10 @@ function CheckoutPage(_ref) {
     giftOption: giftOption
   }));
 }
+
+// Prop Types
 CheckoutPage.propTypes = {
-  profileData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
+  initialProfileData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
     email: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
     phone: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
     billingAddress: prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
@@ -1438,14 +1463,6 @@ CheckoutPage.propTypes = {
     })
   })
 };
-CheckoutPage.defaultProps = {
-  profileData: {
-    email: "",
-    phone: "",
-    billingAddress: {},
-    shippingAddress: {}
-  }
-};
 
 // Address Form Component
 function AddressForm(_ref3) {
@@ -1467,7 +1484,8 @@ function AddressForm(_ref3) {
       type: "text",
       name: field,
       className: "form-control",
-      value: address[field] || "",
+      value: address[field] || "" // Ensure value is not null
+      ,
       onChange: handleAddressChange,
       disabled: useProfileAddresses,
       pattern: field === "postcode" ? postalCodeRegex.source : undefined,
@@ -1478,7 +1496,8 @@ function AddressForm(_ref3) {
     className: "col-md-6 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Province"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "province_id",
-    value: address.province_id || "",
+    value: address.province_id || "" // Ensure value is not null
+    ,
     onChange: handleAddressChange,
     className: "form-control",
     disabled: useProfileAddresses
@@ -1525,55 +1544,136 @@ function PaymentDetails(_ref4) {
     type: "invalid"
   }, "Please enter a valid 16-digit debit card number.")));
 }
-
-// Order Summary Component
 function OrderSummary(_ref5) {
   var giftOption = _ref5.giftOption;
-  // Sample cart items (you can replace with actual cart logic)
-  var cartItems = [{
-    id: 1,
-    name: "Product 1",
-    price: 29.99,
-    quantity: 2
-  }, {
-    id: 2,
-    name: "Product 2",
-    price: 49.99,
-    quantity: 1
-  }];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState20 = _slicedToArray(_useState19, 2),
+    cartItems = _useState20[0],
+    setCartItems = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState22 = _slicedToArray(_useState21, 2),
+    error = _useState22[0],
+    setError = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState24 = _slicedToArray(_useState23, 2),
+    loading = _useState24[0],
+    setLoading = _useState24[1];
+  var fetchCart = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var token, _response$data, response, items;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            token = localStorage.getItem("token");
+            setLoading(true);
+            setError(null);
+            _context2.prev = 3;
+            _context2.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_4__["default"].get("http://localhost:8000/api/cart", {
+              headers: {
+                Authorization: "Bearer ".concat(token),
+                "Content-Type": "application/json"
+              }
+            });
+          case 6:
+            response = _context2.sent;
+            items = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.data) || [];
+            setCartItems(items);
+            _context2.next = 15;
+            break;
+          case 11:
+            _context2.prev = 11;
+            _context2.t0 = _context2["catch"](3);
+            setError("Error fetching cart items. Please try again.");
+            console.error("Error fetching cart items:", _context2.t0);
+          case 15:
+            _context2.prev = 15;
+            setLoading(false);
+            return _context2.finish(15);
+          case 18:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[3, 11, 15, 18]]);
+    }));
+    return function fetchCart() {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchCart();
+  }, []);
   var calculateSubtotal = function calculateSubtotal() {
     return cartItems.reduce(function (total, item) {
       return total + item.price * item.quantity;
     }, 0);
   };
+  var calculateSavings = function calculateSavings() {
+    return 0;
+  };
   var calculateTax = function calculateTax() {
-    return calculateSubtotal() * 0.13;
+    return (calculateSubtotal() - calculateSavings()) * 0.13;
   };
   var calculateTotal = function calculateTotal() {
-    return calculateSubtotal() + calculateTax();
+    return calculateSubtotal() - calculateSavings() + calculateTax();
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "order-summary mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Order Summary"), cartItems.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      key: item.id,
-      className: "d-flex justify-content-between"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item.name, " x ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "$", (item.price * item.quantity).toFixed(2)));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "$", calculateSubtotal().toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Tax (13%)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "$", calculateTax().toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "$", calculateTotal().toFixed(2))), giftOption && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "mt-2 text-muted"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("small", null, "This order includes a gift. Packing slip will not display prices."))));
+  if (loading) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Loading cart...");
+  if (error) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, error);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "order-summary mb-4 shadow-lg rounded"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Body, {
+    className: "summary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, {
+    className: "summary-title mb-4"
+  }, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between align-items-center mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, "Subtotal (", cartItems.length, " item", cartItems.length > 1 ? "s" : "", ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "subtotal-price"
+  }, "$", calculateSubtotal().toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between align-items-center mb-3 savings"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaPercentage, {
+    className: "me-2"
+  }), " Savings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "savings-amount"
+  }, "- $", calculateSavings().toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between align-items-center mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, "Subtotal after savings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "subtotal-after"
+  }, "$", (calculateSubtotal() - calculateSavings()).toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between align-items-center mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTruck, {
+    className: "me-2"
+  }), " PrimeMart Delivery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "delivery-free text-success"
+  }, "FREE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between align-items-center mb-3 tax-details"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "text-muted"
+  }, "13% HST"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "tax"
+  }, "$", calculateTax().toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex justify-content-between align-items-center estimated-total mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Estimated Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", {
+    className: "total-amount"
+  }, "$", calculateTotal().toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "small-note text-muted"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaReceipt, {
+    className: "me-2"
+  }), "All fees and taxes are estimates. Final charges will be itemized on your receipt.")));
 }
 
 // Contact Info Component
-function ContactInfo(_ref6) {
-  var contactInfo = _ref6.contactInfo,
-    handleContactInfoChange = _ref6.handleContactInfoChange;
+function ContactInfo(_ref7) {
+  var contactInfo = _ref7.contactInfo,
+    handleContactInfoChange = _ref7.handleContactInfoChange;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "mb-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", {
@@ -1584,7 +1684,7 @@ function ContactInfo(_ref6) {
     type: "email",
     placeholder: "Enter your email",
     required: true,
-    value: contactInfo.email,
+    value: contactInfo.email || "",
     onChange: handleContactInfoChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
     type: "invalid"
@@ -1595,55 +1695,13 @@ function ContactInfo(_ref6) {
     type: "text",
     placeholder: "Phone Number",
     required: true,
-    value: contactInfo.phone,
+    value: contactInfo.phone || "" // Ensure value is not null
+    ,
     onChange: handleContactInfoChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Control.Feedback, {
     type: "invalid"
   }, "Please provide a valid phone number.")));
 }
-
-// Error Boundary Component
-var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
-  function ErrorBoundary(props) {
-    var _this;
-    _classCallCheck(this, ErrorBoundary);
-    _this = _callSuper(this, ErrorBoundary, [props]);
-    _this.state = {
-      hasError: false
-    };
-    return _this;
-  }
-  _inherits(ErrorBoundary, _React$Component);
-  return _createClass(ErrorBoundary, [{
-    key: "componentDidCatch",
-    value: function componentDidCatch(error, errorInfo) {
-      // Log the error to an error reporting service
-      // logErrorToService(error, errorInfo);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.state.hasError) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Something went wrong. Please try again later.");
-      }
-      return this.props.children;
-    }
-  }], [{
-    key: "getDerivedStateFromError",
-    value: function getDerivedStateFromError(error) {
-      return {
-        hasError: true
-      };
-    }
-  }]);
-}((react__WEBPACK_IMPORTED_MODULE_0___default().Component)); // Usage
-// const CheckoutWrapper = ({ profileData }) => {
-//   return (
-//     <ErrorBoundary>
-//       <CheckoutPage profileData={profileData} />
-//     </ErrorBoundary>
-//   );
-// };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutPage);
 
 /***/ }),
@@ -1971,21 +2029,25 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 // Reusable ProductCard Component
 var ProductCard = function ProductCard(_ref) {
   var product = _ref.product,
-    onAddToCart = _ref.onAddToCart;
+    onAddToCart = _ref.onAddToCart,
+    _onClick = _ref.onClick;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
     md: 3,
     sm: 6,
     xs: 12,
     key: product.id
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    className: "mb-4"
+    className: "mb-4",
+    onClick: function onClick() {
+      return _onClick(product);
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Img, {
     variant: "top",
     src: "http://localhost:8000/storage/".concat(product.image_url),
     alt: product.name,
     onError: function onError(e) {
       e.target.onerror = null;
-      e.target.src = 'https://via.placeholder.com/150?text=Image+Not+Found';
+      e.target.src = "https://via.placeholder.com/150?text=Image+Not+Found";
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Title, null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, "Price: $", product.price), product.onsale_price && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Text, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     style: {
@@ -2048,6 +2110,9 @@ var HomePage = function HomePage() {
     _useState20 = _slicedToArray(_useState19, 2),
     errorSale = _useState20[0],
     setErrorSale = _useState20[1];
+  var handleProductClick = function handleProductClick(product) {
+    navigate("/product/".concat(product.id));
+  };
 
   // Generic Fetch Function
   var fetchProducts = /*#__PURE__*/function () {
@@ -2324,8 +2389,7 @@ var HomePage = function HomePage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Link, {
     className: "category-link ".concat(selectedCategory === null ? "active" : ""),
     onClick: function onClick() {
-      setSelectedCategory(null);
-      navigate("/products");
+      handleProductClick(product);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
     className: "fa fa-th-large me-2",
@@ -2361,7 +2425,8 @@ var HomePage = function HomePage() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProductCard, {
       key: product.id,
       product: product,
-      onAddToCart: handleAddToCart
+      onAddToCart: handleAddToCart,
+      onClick: handleProductClick
     });
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "special-products-section text-center py-5",
@@ -2442,7 +2507,8 @@ var HomePage = function HomePage() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProductCard, {
       key: product.id,
       product: product,
-      onAddToCart: handleAddToCart
+      onAddToCart: handleAddToCart,
+      onClick: handleProductClick
     });
   })))));
 };
@@ -2795,46 +2861,42 @@ var ProductDetailPage = function ProductDetailPage() {
     _useState10 = _slicedToArray(_useState9, 2),
     addingToCart = _useState10[0],
     setAddingToCart = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
     _useState12 = _slicedToArray(_useState11, 2),
-    wishlist = _useState12[0],
-    setWishlist = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    quantity = _useState12[0],
+    setQuantity = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState14 = _slicedToArray(_useState13, 2),
-    quantity = _useState14[0],
-    setQuantity = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    showShareModal = _useState14[0],
+    setShowShareModal = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
     _useState16 = _slicedToArray(_useState15, 2),
-    showShareModal = _useState16[0],
-    setShowShareModal = _useState16[1];
+    currentPage = _useState16[0],
+    setCurrentPage = _useState16[1];
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
     _useState18 = _slicedToArray(_useState17, 2),
-    currentPage = _useState18[0],
-    setCurrentPage = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    totalPages = _useState18[0],
+    setTotalPages = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState20 = _slicedToArray(_useState19, 2),
-    totalPages = _useState20[0],
-    setTotalPages = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    showToast = _useState20[0],
+    setShowToast = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState22 = _slicedToArray(_useState21, 2),
-    showToast = _useState22[0],
-    setShowToast = _useState22[1];
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    toastMessage = _useState22[0],
+    setToastMessage = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("success"),
     _useState24 = _slicedToArray(_useState23, 2),
-    toastMessage = _useState24[0],
-    setToastMessage = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("success"),
-    _useState26 = _slicedToArray(_useState25, 2),
-    toastVariant = _useState26[0],
-    setToastVariant = _useState26[1];
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    toastVariant = _useState24[0],
+    setToastVariant = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       title: "",
       content: "",
       stars: 5
     }),
-    _useState28 = _slicedToArray(_useState27, 2),
-    newReview = _useState28[0],
-    setNewReview = _useState28[1];
+    _useState26 = _slicedToArray(_useState25, 2),
+    newReview = _useState26[0],
+    setNewReview = _useState26[1];
   var token = localStorage.getItem("token");
   var API_URL = ((_window$ENV = window.ENV) === null || _window$ENV === void 0 ? void 0 : _window$ENV.REACT_APP_API_URL) || "http://localhost:8000";
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -3128,16 +3190,6 @@ var ProductDetailPage = function ProductDetailPage() {
     className: "text-muted"
   }, "Brand: ", product.brand)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
     placement: "top",
-    overlay: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_17__["default"], null, "Add to Wishlist")
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-danger",
-    onClick: function onClick() {
-      return setWishlist(!wishlist);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_15__.FaHeart, {
-    color: wishlist ? "red" : "gray"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
-    placement: "top",
     overlay: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_17__["default"], null, "Share Product")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     variant: "outline-secondary",
@@ -3229,7 +3281,9 @@ var ProductDetailPage = function ProductDetailPage() {
     onClick: function onClick() {
       return setCurrentPage(currentPage + 1);
     }
-  }, "Next"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Write a Review"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
+  }, "Next"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    className: "p-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Write a Review"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
     onSubmit: submitReview
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Group, {
     className: "mb-3"
@@ -3241,11 +3295,14 @@ var ProductDetailPage = function ProductDetailPage() {
     required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Label, null, "Your Review"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Control, _defineProperty(_defineProperty(_defineProperty(_defineProperty({
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Label, null, "Your Review"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Control, {
     as: "textarea",
     rows: 3,
-    name: "content"
-  }, "rows", "4"), "value", newReview.content), "onChange", handleReviewChange), "required", true))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Group, {
+    name: "content",
+    value: newReview.content,
+    onChange: handleReviewChange,
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Group, {
     className: "mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_19__["default"].Label, null, "Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex align-items-center"
@@ -3271,7 +3328,7 @@ var ProductDetailPage = function ProductDetailPage() {
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     type: "submit",
     variant: "primary"
-  }, "Submit Review"))), renderShareModal());
+  }, "Submit Review")))), renderShareModal());
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetailPage);
 
@@ -6535,7 +6592,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: ; */
 }
 
 /* Card Title */
@@ -6651,23 +6708,6 @@ body {
   height: 100%;
 }
 
-/* Card Styling */
-.coupon-card {
-  width: 800px;
-  height: fit-content;
-  text-align: center;
-  border-radius: 20px;
-  padding: 2rem;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
-    -5px -5px 15px rgba(255, 255, 255, 0.5);
-  transition: transform 0.3s ease;
-}
-
-.coupon-card:hover {
-  transform: scale(1.03);
-}
-
 .card-title {
   font-size: 2rem;
   font-weight: bold;
@@ -6731,8 +6771,65 @@ body {
   padding: 2px 6px;
   border-radius: 50%;
 }
+.order-summary {
+  border: none;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+.card-body {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.summary-title {
+  font-size: 1.5rem;
+  color: #343a40;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 10px;
+  padding-left: 0;
+  align-items: left;
+}
 
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"AAAA,6BAA6B;AAC7B;;;EAGE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;AAC3B;;AAEA,gBAAgB;AAChB;;;EAGE,uBAAuB;EACvB,aAAa;EACb,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,WAAW;EACX,kBAAkB;EAClB,gCAAgC;AAClC;;AAEA;;;EAGE,mBAAmB;EACnB,8BAA8B;EAC9B,WAAW;AACb;;AAEA,iBAAiB;AACjB;;;EAGE,WAAW;EACX,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;EACf,kCAAkC;AACpC;;AAEA;;;EAGE,qBAAqB;AACvB;;AAEA,YAAY;AACZ;;;EAGE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,gBAAgB;EAChB,sCAAsC;AACxC;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA,UAAU;AACV;;;EAGE,gBAAgB;AAClB;;AAEA;;EAEE,cAAc;EACd,qBAAqB;EACrB,0BAA0B;AAC5B;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,0BAA0B;AAC5B;;AAEA;;;;EAIE,0BAA0B;AAC5B;;AAEA,+BAA+B;AAC/B;EACE,cAAc;EACd,eAAe;EACf,oBAAoB;AACtB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,oBAAoB;AACtB;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,iBAAiB;EACjB,yCAAyC;EACzC,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,YAAY;AACd;;AAEA,kCAAkC;AAClC;EACE;IACE,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,kCAAkC;IAClC,WAAW;IACX,aAAa;IACb,sBAAsB;EACxB;;EAEA;IACE,aAAa;EACf;;EAEA;IACE,cAAc;IACd,eAAe;EACjB;AACF;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,2BAA2B;AAC7B;;AAEA;;EAEE,cAAc;EACd,iBAAiB;AACnB;;AAEA,kBAAkB;AAClB;EACE,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;AACjB;;AAEA,4BAA4B;AAC5B;EACE,iBAAiB;EACjB,cAAc;EACd,aAAa;AACf;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,iBAAiB;EACjB,0CAA0C;EAC1C,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA,gCAAgC;AAChC;EACE,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,kBAAkB;AACpB;;AAEA,0CAA0C;AAC1C;EACE,qBAAqB;EACrB,iBAAiB;EACjB,yBAAyB;EACzB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,sCAAsC;AACxC;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,6DAA6D;AAC7D;EACE,iBAAiB;EACjB,eAAe;EACf,WAAW;AACb;;AAEA,0BAA0B;AAC1B;EACE,cAAc;EACd,qBAAqB;EACrB,gBAAgB;AAClB;;AAEA;EACE,yBAAyB;EACzB,YAAY;AACd;;AAEA,mBAAmB;AACnB;EACE,iBAAiB;EACjB,gBAAgB;EAChB,mBAAmB;EACnB,WAAW;AACb;;AAEA,iBAAiB;AACjB;EACE,gBAAgB;EAChB,eAAe;EACf,WAAW;EACX,kBAAkB;EAClB,cAAc;AAChB;;AAEA,4BAA4B;AAC5B;;EAEE,YAAY;EACZ,eAAe;EACf,uBAAuB;EACvB,yBAAyB;EACzB,eAAe;EACf,gCAAgC;AAClC;;AAEA;;EAEE,qBAAqB;EACrB,4CAA4C;AAC9C;;AAEA,0BAA0B;AAC1B;EACE,iBAAiB;EACjB,kBAAkB;EAClB,kBAAkB;EAClB,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,4DAA4D;EAC5D,yCAAyC;AAC3C;;AAEA;EACE,yBAAyB;EACzB,0CAA0C;AAC5C;;AAEA,mBAAmB;AACnB;EACE,aAAa;EACb,iBAAiB;EACjB,mBAAmB;EACnB,0CAA0C;EAC1C,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,sBAAsB;AACxB;;AAEA;;EAEE,iCAAiC;AACnC;;AAEA,iBAAiB;;AAEjB,yCAAyC;AACzC;EACE,wBAAwB,EAAE,sBAAsB;EAChD,0BAA0B,EAAE,mBAAmB;EAC/C,uBAAuB,EAAE,sBAAsB;EAC/C,mBAAmB;EACnB,oBAAoB;EACpB,mCAAmC;AACrC;;AAEA,kBAAkB;AAClB;EACE,+BAA+B;EAC/B,uBAAuB;AACzB;;AAEA,iBAAiB;AACjB;EACE,eAAe;EACf,gBAAgB;EAChB,gBAAgB;AAClB;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,mBAAmB;AACrB;;AAEA;EACE,kBAAkB;EAClB,eAAe;AACjB;;AAEA,yBAAyB;AACzB;EACE,iCAAiC;EACjC,eAAe;AACjB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,sBAAsB;EACtB,kBAAkB;EAClB,aAAa;EACb,YAAY;AACd;;AAEA,qCAAqC;AACrC;EACE;IACE,eAAe;EACjB;;EAEA;IACE,eAAe;EACjB;;EAEA;IACE,eAAe;EACjB;;EAEA;;;IAGE,cAAc;EAChB;;EAEA;IACE,aAAa;EACf;;EAEA;IACE,YAAY;IACZ,aAAa;EACf;AACF;;AAEA,2BAA2B;AAC3B;EACE,qDAAqD;EACrD,mBAAmB;EACnB,gBAAgB;EAChB,eAAe;EACf,wCAAwC;AAC1C;;AAEA;EACE,2BAA2B;EAC3B,2CAA2C;AAC7C;;AAEA,4BAA4B;AAC5B;EACE,cAAc;EACd,kBAAkB;EAClB,cAAc;EACd,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA,cAAc;AACd;EACE,kBAAkB;EAClB,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA,eAAe;AACf;EACE,iBAAiB;EACjB,iBAAiB;EACjB,mBAAmB;EACnB,WAAW;AACb;;AAEA,eAAe;AACf;EACE,eAAe;EACf,cAAc;EACd,mBAAmB;AACrB;;AAEA,uBAAuB;AACvB;EACE,yBAAyB;EACzB,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,2DAA2D;EAC3D,qBAAqB;AACvB;;AAEA;EACE,yBAAyB;EACzB,2BAA2B;AAC7B;;AAEA,0BAA0B;AAC1B;EACE,aAAa;EACb,sBAAsB;EACtB,eAAe;EACf,YAAY;AACd;;AAEA;;EAEE,eAAe;EACf,yBAAyB;EACzB,sBAAsB;EACtB,kBAAkB;EAClB,0CAA0C;AAC5C;;AAEA;EACE,gBAAgB;AAClB;;AAEA;;EAEE,cAAc;EACd,kBAAkB;EAClB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;;EAEE,WAAW;EACX,gBAAgB;AAClB;;AAEA,8BAA8B;AAC9B;EACE;IACE,mBAAmB;IACnB,SAAS;IACT,iBAAiB;EACnB;;EAEA;IACE,OAAO;IACP,iBAAiB;EACnB;;EAEA;IACE,OAAO;IACP,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;EACf;;EAEA;IACE,mBAAmB;IACnB,8BAA8B;EAChC;;EAEA;;IAEE,WAAW;IACX,aAAa;EACf;AACF;;AAEA,oBAAoB;;AAEpB;EACE,iBAAiB;EACjB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;AACd;;AAEA,iBAAiB;AACjB;EACE,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;EAClB,mBAAmB;EACnB,aAAa;EACb,qDAAqD;EACrD;2CACyC;EACzC,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,eAAe;EACf,iBAAiB;EACjB,cAAc;EACd,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,WAAW;EACX,gBAAgB;AAClB;AACA,yCAAyC;AACzC;EACE,iBAAiB;EACjB,iBAAiB;EACjB,oBAAoB;EACpB,uDAAuD;AACzD;;AAEA;;EAEE,oCAAoC;EACpC,2BAA2B;AAC7B;AACA;EACE,eAAe;AACjB;;AAEA;EACE,kBAAkB;EAClB,qBAAqB;AACvB;;AAEA;EACE,kBAAkB;EAClB,sBAAsB;AACxB;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,yBAAyB;EACzB,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,kBAAkB;AACpB","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n  transition: box-shadow 0.3s ease;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n.register-form input:focus,\r\n.login-form input:focus,\r\n.forgot-password-form input:focus {\r\n  border-color: #00bfa6;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n/* Update navbar for mobile view */\r\n@media (max-width: 768px) {\r\n  .custom-navbar .navbar-nav {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 60px;\r\n    background-color: rgb(2, 115, 159);\r\n    width: 100%;\r\n    display: none;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .custom-navbar.active .navbar-nav {\r\n    display: flex;\r\n  }\r\n\r\n  .navbar-toggle {\r\n    display: block;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  text-align: center;\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  color: white;\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 20px;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: var(--light-bg);\r\n  padding: 30px 0;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  text-align: center;\r\n}\r\n\r\n.testimonials-section .testimonial {\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n}\r\n\r\n/* Media Queries for Responsiveness */\r\n@media (max-width: 768px) {\r\n  .navbar-brand {\r\n    font-size: 28px;\r\n  }\r\n\r\n  .navbar-nav .nav-link {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .register-form,\r\n  .login-form,\r\n  .forgot-password-form {\r\n    max-width: 90%;\r\n  }\r\n\r\n  .testimonials-section .testimonial {\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .profile-img {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n}\r\n\r\n/* Product Card Container */\r\n.card {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card:hover {\r\n  transform: translateY(-8px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Card Image Hover Effect */\r\n.card-img-top {\r\n  display: block;\r\n  padding-left: 30px;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n  height: 400px;\r\n  object-fit: contain;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.card:hover .card-img-top {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Card Body */\r\n.card-body {\r\n  text-align: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n/* Card Title */\r\n.card-title {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  margin-bottom: 10px;\r\n  color: #333;\r\n}\r\n\r\n/* Card Price */\r\n.card-text {\r\n  font-size: 1rem;\r\n  color: #07260e;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Add to Cart Button */\r\n.card-body .btn {\r\n  background-color: #0d4cdf;\r\n  color: white;\r\n  font-size: 1rem;\r\n  padding: 10px 15px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n  display: inline-block;\r\n}\r\n\r\n.card-body .btn:hover {\r\n  background-color: #019f87;\r\n  transform: translateY(-2px);\r\n}\r\n\r\n/* Mobile-first approach */\r\n.checkout-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 100%;\r\n  margin: auto;\r\n}\r\n\r\n.checkout-form,\r\n.order-summary {\r\n  padding: 1.5rem;\r\n  background-color: #f9f9f9;\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.order-summary {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.form-section-title,\r\n.order-summary-title {\r\n  color: #007bff;\r\n  font-size: 1.25rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-actions {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.checkout-button,\r\n.back-button {\r\n  width: 100%;\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* Tablet and larger screens */\r\n@media (min-width: 768px) {\r\n  .checkout-container {\r\n    flex-direction: row;\r\n    gap: 2rem;\r\n    max-width: 1800px;\r\n  }\r\n\r\n  .checkout-form {\r\n    flex: 2;\r\n    max-width: 1200px;\r\n  }\r\n\r\n  .order-summary {\r\n    flex: 1;\r\n    max-width: 600px;\r\n    height: fit-content;\r\n    margin-top: 0;\r\n  }\r\n\r\n  .form-actions {\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n  }\r\n\r\n  .checkout-button,\r\n  .back-button {\r\n    width: auto;\r\n    margin-top: 0;\r\n  }\r\n}\r\n\r\n/* General Styling */\r\n\r\n.enhanced-container {\r\n  margin-top: 180px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n/* Card Styling */\r\n.coupon-card {\r\n  width: 800px;\r\n  height: fit-content;\r\n  text-align: center;\r\n  border-radius: 20px;\r\n  padding: 2rem;\r\n  background: linear-gradient(145deg, #ffffff, #f0f0f0);\r\n  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),\r\n    -5px -5px 15px rgba(255, 255, 255, 0.5);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.coupon-card:hover {\r\n  transform: scale(1.03);\r\n}\r\n\r\n.card-title {\r\n  font-size: 2rem;\r\n  font-weight: bold;\r\n  color: #3a3b3c;\r\n  margin-bottom: 1rem;\r\n}\r\n.card {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.card-body {\r\n  flex: 1 0 auto;\r\n}\r\n\r\n.card-footer {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  padding: 1rem;\r\n}\r\n\r\n.card-footer .btn {\r\n  width: 100%;\r\n  max-width: 200px;\r\n}\r\n/* Increase the size of categories link */\r\n.category-link {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n  padding: 0.5rem 1rem;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n  color: var(--primary-color);\r\n}\r\n.order-info {\r\n  font-size: 14px;\r\n}\r\n\r\n.item-thumbnail {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.item-thumbnail img {\r\n  border-radius: 5px;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n.item-quantity {\r\n  position: absolute;\r\n  top: -5px;\r\n  right: -5px;\r\n  background-color: #007bff;\r\n  color: white;\r\n  font-size: 12px;\r\n  padding: 2px 6px;\r\n  border-radius: 50%;\r\n}\r\n\r\n"],"sourceRoot":""}]);
+.subtotal-price,
+.savings-amount,
+.subtotal-after,
+.delivery-free,
+.total-amount,
+.tax {
+  font-weight: 600;
+  color: #007bff;
+  padding-left: 80px;
+}
+
+.savings {
+  color: #dc3545;
+}
+
+.tax-details {
+  font-size: 0.9rem;
+}
+
+.estimated-total strong {
+  font-size: 1.25rem;
+}
+
+.small-note {
+  font-size: 0.85rem;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.summary {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n  transition: box-shadow 0.3s ease;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n.register-form input:focus,\r\n.login-form input:focus,\r\n.forgot-password-form input:focus {\r\n  border-color: #00bfa6;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n/* Update navbar for mobile view */\r\n@media (max-width: 768px) {\r\n  .custom-navbar .navbar-nav {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 60px;\r\n    background-color: rgb(2, 115, 159);\r\n    width: 100%;\r\n    display: none;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .custom-navbar.active .navbar-nav {\r\n    display: flex;\r\n  }\r\n\r\n  .navbar-toggle {\r\n    display: block;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  text-align: center;\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  color: white;\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 20px;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: var(--light-bg);\r\n  padding: 30px 0;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  text-align: center;\r\n}\r\n\r\n.testimonials-section .testimonial {\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n}\r\n\r\n/* Media Queries for Responsiveness */\r\n@media (max-width: 768px) {\r\n  .navbar-brand {\r\n    font-size: 28px;\r\n  }\r\n\r\n  .navbar-nav .nav-link {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .register-form,\r\n  .login-form,\r\n  .forgot-password-form {\r\n    max-width: 90%;\r\n  }\r\n\r\n  .testimonials-section .testimonial {\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .profile-img {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n}\r\n\r\n/* Product Card Container */\r\n.card {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card:hover {\r\n  transform: translateY(-8px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Card Image Hover Effect */\r\n.card-img-top {\r\n  display: block;\r\n  padding-left: 30px;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n  height: 400px;\r\n  object-fit: contain;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.card:hover .card-img-top {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Card Body */\r\n.card-body {\r\n  text-align: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  /* align-items: ; */\r\n}\r\n\r\n/* Card Title */\r\n.card-title {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  margin-bottom: 10px;\r\n  color: #333;\r\n}\r\n\r\n/* Card Price */\r\n.card-text {\r\n  font-size: 1rem;\r\n  color: #07260e;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Add to Cart Button */\r\n.card-body .btn {\r\n  background-color: #0d4cdf;\r\n  color: white;\r\n  font-size: 1rem;\r\n  padding: 10px 15px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n  display: inline-block;\r\n}\r\n\r\n.card-body .btn:hover {\r\n  background-color: #019f87;\r\n  transform: translateY(-2px);\r\n}\r\n\r\n/* Mobile-first approach */\r\n.checkout-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 100%;\r\n  margin: auto;\r\n}\r\n\r\n.checkout-form,\r\n.order-summary {\r\n  padding: 1.5rem;\r\n  background-color: #f9f9f9;\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.order-summary {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.form-section-title,\r\n.order-summary-title {\r\n  color: #007bff;\r\n  font-size: 1.25rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-actions {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.checkout-button,\r\n.back-button {\r\n  width: 100%;\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* Tablet and larger screens */\r\n@media (min-width: 768px) {\r\n  .checkout-container {\r\n    flex-direction: row;\r\n    gap: 2rem;\r\n    max-width: 1800px;\r\n  }\r\n\r\n  .checkout-form {\r\n    flex: 2;\r\n    max-width: 1200px;\r\n  }\r\n\r\n  .order-summary {\r\n    flex: 1;\r\n    max-width: 600px;\r\n    height: fit-content;\r\n    margin-top: 0;\r\n  }\r\n\r\n  .form-actions {\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n  }\r\n\r\n  .checkout-button,\r\n  .back-button {\r\n    width: auto;\r\n    margin-top: 0;\r\n  }\r\n}\r\n\r\n/* General Styling */\r\n\r\n.enhanced-container {\r\n  margin-top: 180px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n.card-title {\r\n  font-size: 2rem;\r\n  font-weight: bold;\r\n  color: #3a3b3c;\r\n  margin-bottom: 1rem;\r\n}\r\n.card {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.card-body {\r\n  flex: 1 0 auto;\r\n}\r\n\r\n.card-footer {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  padding: 1rem;\r\n}\r\n\r\n.card-footer .btn {\r\n  width: 100%;\r\n  max-width: 200px;\r\n}\r\n/* Increase the size of categories link */\r\n.category-link {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n  padding: 0.5rem 1rem;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n  color: var(--primary-color);\r\n}\r\n.order-info {\r\n  font-size: 14px;\r\n}\r\n\r\n.item-thumbnail {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.item-thumbnail img {\r\n  border-radius: 5px;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n.item-quantity {\r\n  position: absolute;\r\n  top: -5px;\r\n  right: -5px;\r\n  background-color: #007bff;\r\n  color: white;\r\n  font-size: 12px;\r\n  padding: 2px 6px;\r\n  border-radius: 50%;\r\n}\r\n.order-summary {\r\n  border: none;\r\n  background-color: #f8f9fa;\r\n  padding: 20px;\r\n}\r\n.card-body {\r\n  text-align: left;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: left;\r\n  align-items: left;\r\n}\r\n.summary-title {\r\n  font-size: 1.5rem;\r\n  color: #343a40;\r\n  border-bottom: 2px solid #dee2e6;\r\n  padding-bottom: 10px;\r\n  padding-left: 0;\r\n  align-items: left;\r\n}\r\n\r\n.subtotal-price,\r\n.savings-amount,\r\n.subtotal-after,\r\n.delivery-free,\r\n.total-amount,\r\n.tax {\r\n  font-weight: 600;\r\n  color: #007bff;\r\n  padding-left: 80px;\r\n}\r\n\r\n.savings {\r\n  color: #dc3545;\r\n}\r\n\r\n.tax-details {\r\n  font-size: 0.9rem;\r\n}\r\n\r\n.estimated-total strong {\r\n  font-size: 1.25rem;\r\n}\r\n\r\n.small-note {\r\n  font-size: 0.85rem;\r\n  margin-top: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 5px;\r\n}\r\n.summary {\r\n  text-align: left;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: left;\r\n  align-items: left;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

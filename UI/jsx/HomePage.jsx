@@ -13,16 +13,16 @@ import {
 } from "react-bootstrap";
 
 // Reusable ProductCard Component
-const ProductCard = ({ product, onAddToCart }) => (
+const ProductCard = ({ product, onAddToCart, onClick }) => (
   <Col md={3} sm={6} xs={12} key={product.id}>
-    <Card className="mb-4">
+    <Card className="mb-4" onClick={() => onClick(product)}>
       <Card.Img
         variant="top"
         src={`http://localhost:8000/storage/${product.image_url}`}
         alt={product.name}
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = 'https://via.placeholder.com/150?text=Image+Not+Found';
+          e.target.src = "https://via.placeholder.com/150?text=Image+Not+Found";
         }}
       />
       <Card.Body>
@@ -64,6 +64,10 @@ const HomePage = () => {
   const [productsOnSale, setProductsOnSale] = useState([]);
   const [loadingSale, setLoadingSale] = useState(true);
   const [errorSale, setErrorSale] = useState(null);
+
+  const handleProductClick = (product) => {
+    navigate(`/product/${product.id}`);
+  };
 
   // Generic Fetch Function
   const fetchProducts = async (params, setState, setLoading, setError) => {
@@ -244,8 +248,7 @@ const HomePage = () => {
                   selectedCategory === null ? "active" : ""
                 }`}
                 onClick={() => {
-                  setSelectedCategory(null);
-                  navigate("/products");
+                  handleProductClick(product);
                 }}
               >
                 <i className="fa fa-th-large me-2" aria-hidden="true"></i> All
@@ -295,6 +298,7 @@ const HomePage = () => {
                   key={product.id}
                   product={product}
                   onAddToCart={handleAddToCart}
+                  onClick={handleProductClick}
                 />
               ))}
             </Row>
@@ -369,7 +373,9 @@ const HomePage = () => {
                     aria-hidden="true"
                     style={{ fontSize: "2rem", color: "#007bff" }}
                   ></i>
-                  <Card.Text>"Excellent service and product quality!"</Card.Text>
+                  <Card.Text>
+                    "Excellent service and product quality!"
+                  </Card.Text>
                 </Card.Body>
                 <Card.Footer>- Client 3</Card.Footer>
               </Card>
@@ -401,6 +407,7 @@ const HomePage = () => {
                   key={product.id}
                   product={product}
                   onAddToCart={handleAddToCart}
+                  onClick={handleProductClick}
                 />
               ))}
             </Row>

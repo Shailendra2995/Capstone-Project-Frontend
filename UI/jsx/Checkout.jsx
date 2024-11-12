@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
+import axios from "axios";
+import { FaTruck, FaPercentage, FaReceipt } from "react-icons/fa";
+
 
 // Provinces list
 const PROVINCES = [
@@ -19,12 +22,21 @@ const PROVINCES = [
   { id: 13, name: "Yukon" },
 ];
 
-function CheckoutPage({}) {
+function CheckoutPage({
+  initialProfileData = {
+    email: "",
+    phone: "",
+    billingAddress: {},
+    shippingAddress: {},
+  },
+}) {
+  // Add state for profileData
+  const [profileData, setProfileData] = useState(initialProfileData);
+
   const [useBillingAsDelivery, setUseBillingAsDelivery] = useState(false);
   const [useProfileAddresses, setUseProfileAddresses] = useState(false);
   const [validated, setValidated] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [profileData, setProfileData] = useState(profileData);
 
   // Initialize state with profileData
   const [billingAddress, setBillingAddress] = useState({
@@ -57,6 +69,92 @@ function CheckoutPage({}) {
 
   // Canadian Postal Code Regex
   const postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+
+  const loadData = useCallback(async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch("http://localhost:8000/api/user/profile", {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.status === 0) {
+        const { username, email, phone, billing_address, shipping_address } =
+          data.data;
+
+        // Update profileData
+        setProfileData((prevState) => ({
+          ...prevState,
+          username,
+          email,
+          phone,
+          profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
+          billingAddress: {
+            firstname: billing_address?.firstname || "",
+            lastname: billing_address?.lastname || "",
+            address: billing_address?.address || "",
+            city: billing_address?.city || "",
+            postcode: billing_address?.postcode || "",
+            phone: billing_address?.phone || "",
+            province_id: billing_address?.province_id || "",
+          },
+          shippingAddress: {
+            firstname: shipping_address?.firstname || "",
+            lastname: shipping_address?.lastname || "",
+            address: shipping_address?.address || "",
+            city: shipping_address?.city || "",
+            postcode: shipping_address?.postcode || "",
+            phone: shipping_address?.phone || "",
+            province_id: shipping_address?.province_id || "",
+          },
+        }));
+
+        // Update billing address
+        setBillingAddress((prevState) => ({
+          ...prevState,
+          firstname: billing_address?.firstname || "",
+          lastname: billing_address?.lastname || "",
+          address: billing_address?.address || "",
+          city: billing_address?.city || "",
+          postcode: billing_address?.postcode || "",
+          phone: billing_address?.phone || "",
+          province_id: billing_address?.province_id || "",
+        }));
+
+        // Update shipping address
+        setShippingAddress((prevState) => ({
+          ...prevState,
+          firstname: shipping_address?.firstname || "",
+          lastname: shipping_address?.lastname || "",
+          address: shipping_address?.address || "",
+          city: shipping_address?.city || "",
+          postcode: shipping_address?.postcode || "",
+          phone: shipping_address?.phone || "",
+          province_id: shipping_address?.province_id || "",
+        }));
+
+        // Update contact info
+        setContactInfo((prevState) => ({
+          ...prevState,
+          email,
+          phone,
+        }));
+      } else {
+        alert("Failed to load data: " + data.msg);
+      }
+    } catch (error) {
+      console.error("Error loading data:", error);
+      alert("Error loading data.");
+    }
+  }, []);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   // Handle form submit
   const handleSubmit = (event) => {
@@ -111,87 +209,6 @@ function CheckoutPage({}) {
       [id]: value,
     }));
   };
-
-  const loadData = async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const response = await fetch("http://localhost:8000/api/user/profile", {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-
-      const data = await response.json();
-
-      if (data.status === 0) {
-        const { username, email, phone, billing_address, shipping_address } =
-          data.data;
-        setProfileData((prevState) => ({
-          ...prevState,
-          username,
-          email,
-          phone,
-          profileImage: "http://localhost:8000/storage/" + data.data.photoUrl,
-          billingAddress: {
-            firstname: billing_address?.firstname || "",
-            lastname: billing_address?.lastname || "",
-            address: billing_address?.address || "",
-            city: billing_address?.city || "",
-            postcode: billing_address?.postcode || "",
-            phone: billing_address?.phone || "",
-            province_id: billing_address?.province_id || "",
-          },
-          shippingAddress: {
-            firstname: shipping_address?.firstname || "",
-            lastname: shipping_address?.lastname || "",
-            address: shipping_address?.address || "",
-            city: shipping_address?.city || "",
-            postcode: shipping_address?.postcode || "",
-            phone: shipping_address?.phone || "",
-            province_id: shipping_address?.province_id || "",
-          },
-        }));
-
-        setBillingAddress((prevState) => ({
-          ...prevState,
-          firstname: billing_address?.firstname || "",
-          lastname: billing_address?.lastname || "",
-          address: billing_address?.address || "",
-          city: billing_address?.city || "",
-          postcode: billing_address?.postcode || "",
-          phone: billing_address?.phone || "",
-          province_id: billing_address?.province_id || "",
-        }));
-
-        setShippingAddress((prevState) => ({
-          ...prevState,
-          firstname: shipping_address?.firstname || "",
-          lastname: shipping_address?.lastname || "",
-          address: shipping_address?.address || "",
-          city: shipping_address?.city || "",
-          postcode: shipping_address?.postcode || "",
-          phone: shipping_address?.phone || "",
-          province_id: shipping_address?.province_id || "",
-        }));
-
-        setContactInfo((prevState) => ({
-          ...prevState,
-          email,
-          phone,
-        }));
-      } else {
-        alert("Failed to load data: " + data.msg);
-      }
-    } catch (error) {
-      console.error("Error loading data:", error);
-      alert("Error loading data.");
-    }
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   return (
     <div className="checkout-container container">
@@ -285,8 +302,9 @@ function CheckoutPage({}) {
   );
 }
 
+// Prop Types
 CheckoutPage.propTypes = {
-  profileData: PropTypes.shape({
+  initialProfileData: PropTypes.shape({
     email: PropTypes.string,
     phone: PropTypes.string,
     billingAddress: PropTypes.shape({
@@ -310,15 +328,6 @@ CheckoutPage.propTypes = {
   }),
 };
 
-CheckoutPage.defaultProps = {
-  profileData: {
-    email: "",
-    phone: "",
-    billingAddress: {},
-    shippingAddress: {},
-  },
-};
-
 // Address Form Component
 function AddressForm({
   address,
@@ -339,7 +348,7 @@ function AddressForm({
                 type="text"
                 name={field}
                 className="form-control"
-                value={address[field] || ""}
+                value={address[field] || ""} // Ensure value is not null
                 onChange={handleAddressChange}
                 disabled={useProfileAddresses}
                 pattern={
@@ -357,7 +366,7 @@ function AddressForm({
           <label>Province</label>
           <select
             name="province_id"
-            value={address.province_id || ""}
+            value={address.province_id || ""} // Ensure value is not null
             onChange={handleAddressChange}
             className="form-control"
             disabled={useProfileAddresses}
@@ -420,14 +429,37 @@ function PaymentDetails({ paymentMethod }) {
     </div>
   );
 }
-
-// Order Summary Component
 function OrderSummary({ giftOption }) {
-  // Sample cart items (you can replace with actual cart logic)
-  const cartItems = [
-    { id: 1, name: "Product 1", price: 29.99, quantity: 2 },
-    { id: 2, name: "Product 2", price: 49.99, quantity: 1 },
-  ];
+  const [cartItems, setCartItems] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchCart = async () => {
+    const token = localStorage.getItem("token");
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.get("http://localhost:8000/api/cart", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const items = response.data?.data || [];
+      setCartItems(items);
+    } catch (error) {
+      setError("Error fetching cart items. Please try again.");
+      console.error("Error fetching cart items:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   const calculateSubtotal = () => {
     return cartItems.reduce(
@@ -436,46 +468,84 @@ function OrderSummary({ giftOption }) {
     );
   };
 
+  const calculateSavings = () => {
+    return 0;
+  };
+
   const calculateTax = () => {
-    return calculateSubtotal() * 0.13;
+    return (calculateSubtotal() - calculateSavings()) * 0.13;
   };
 
   const calculateTotal = () => {
-    return calculateSubtotal() + calculateTax();
+    return calculateSubtotal() - calculateSavings() + calculateTax();
   };
 
+  if (loading) return <div>Loading cart...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <Card className="order-summary mb-3">
-      <Card.Body>
-        <Card.Title>Order Summary</Card.Title>
-        {cartItems.map((item) => (
-          <div key={item.id} className="d-flex justify-content-between">
-            <span>
-              {item.name} x {item.quantity}
-            </span>
-            <span>${(item.price * item.quantity).toFixed(2)}</span>
-          </div>
-        ))}
+    <Card className="order-summary mb-4 shadow-lg rounded">
+      <Card.Body className="summary">
+        <Card.Title className="summary-title mb-4">Order Summary</Card.Title>
+
+        {/* Subtotal */}
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <span className="text-muted">
+            Subtotal ({cartItems.length} item{cartItems.length > 1 ? "s" : ""})
+          </span>
+          <span className="subtotal-price">
+            ${calculateSubtotal().toFixed(2)}
+          </span>
+        </div>
+
+        {/* Savings */}
+        <div className="d-flex justify-content-between align-items-center mb-3 savings">
+          <span className="text-muted">
+            <FaPercentage className="me-2" /> Savings
+          </span>
+          <span className="savings-amount">
+            - ${calculateSavings().toFixed(2)}
+          </span>
+        </div>
+
+        {/* Subtotal After Savings */}
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <span className="text-muted">Subtotal after savings</span>
+          <span className="subtotal-after">
+            ${(calculateSubtotal() - calculateSavings()).toFixed(2)}
+          </span>
+        </div>
+
+        {/* Delivery */}
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <span className="text-muted">
+            <FaTruck className="me-2" /> PrimeMart Delivery
+          </span>
+          <span className="delivery-free text-success">FREE</span>
+        </div>
+
+        {/* Tax Details */}
+        <div className="d-flex justify-content-between align-items-center mb-3 tax-details">
+          <span className="text-muted">13% HST</span>
+          <span className="tax">${calculateTax().toFixed(2)}</span>
+        </div>
+
         <hr />
-        <div className="d-flex justify-content-between">
-          <span>Subtotal</span>
-          <span>${calculateSubtotal().toFixed(2)}</span>
+
+        {/* Estimated Total */}
+        <div className="d-flex justify-content-between align-items-center estimated-total mb-3">
+          <strong>Estimated Total</strong>
+          <strong className="total-amount">
+            ${calculateTotal().toFixed(2)}
+          </strong>
         </div>
-        <div className="d-flex justify-content-between">
-          <span>Tax (13%)</span>
-          <span>${calculateTax().toFixed(2)}</span>
+
+        {/* Note */}
+        <div className="small-note text-muted">
+          <FaReceipt className="me-2" />
+          All fees and taxes are estimates. Final charges will be itemized on
+          your receipt.
         </div>
-        <div className="d-flex justify-content-between">
-          <strong>Total</strong>
-          <strong>${calculateTotal().toFixed(2)}</strong>
-        </div>
-        {giftOption && (
-          <div className="mt-2 text-muted">
-            <small>
-              This order includes a gift. Packing slip will not display prices.
-            </small>
-          </div>
-        )}
       </Card.Body>
     </Card>
   );
@@ -492,7 +562,7 @@ function ContactInfo({ contactInfo, handleContactInfoChange }) {
           type="email"
           placeholder="Enter your email"
           required
-          value={contactInfo.email}
+          value={contactInfo.email || ""}
           onChange={handleContactInfoChange}
         />
         <Form.Control.Feedback type="invalid">
@@ -505,7 +575,7 @@ function ContactInfo({ contactInfo, handleContactInfoChange }) {
           type="text"
           placeholder="Phone Number"
           required
-          value={contactInfo.phone}
+          value={contactInfo.phone || ""} // Ensure value is not null
           onChange={handleContactInfoChange}
         />
         <Form.Control.Feedback type="invalid">
@@ -515,39 +585,5 @@ function ContactInfo({ contactInfo, handleContactInfoChange }) {
     </section>
   );
 }
-
-// Error Boundary Component
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // Log the error to an error reporting service
-    // logErrorToService(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong. Please try again later.</h1>;
-    }
-
-    return this.props.children;
-  }
-}
-
-// Usage
-// const CheckoutWrapper = ({ profileData }) => {
-//   return (
-//     <ErrorBoundary>
-//       <CheckoutPage profileData={profileData} />
-//     </ErrorBoundary>
-//   );
-// };
 
 export default CheckoutPage;

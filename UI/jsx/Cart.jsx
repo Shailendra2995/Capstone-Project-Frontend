@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useReducer, useCallback } from "react";
 import axios from "axios";
+import { FaTruck, FaPercentage, FaReceipt } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -318,26 +319,31 @@ function Cart() {
 
           {/* Order Summary and Actions Section */}
           <Col xs={12} md={4}>
-            {/* Continue Shopping button above the summary card with backward arrow */}
-            <Button href="/" variant="primary" className="w-100 mb-3">
-              <FaArrowLeft /> Continue Shopping
+            <Button
+              href="/"
+              variant="outline-primary"
+              className="w-100 mb-3 d-flex align-items-center justify-content-center"
+            >
+              <FaArrowLeft className="me-2" /> Continue Shopping
             </Button>
 
-            <Card className="shadow">
+            <Card className="shadow-lg rounded">
               <Card.Body>
-                <h5>Summary</h5>
+                <h5 className="summary-title text-center mb-4">
+                  Order Summary
+                </h5>
                 <hr />
-                <div className="d-flex justify-content-between">
-                  <strong>Subtotal:</strong>
-                  <span>${total.toFixed(2)}</span>
+
+                <div className="d-flex justify-content-between mb-2">
+                  <span className="text-muted">Subtotal:</span>
+                  <span className="subtotal-price">${total.toFixed(2)}</span>
                 </div>
-                <div className="d-flex justify-content-between">
-                  <strong>Tax (13%):</strong>
-                  <span>${tax.toFixed(2)}</span>
+                <div className="d-flex justify-content-between mb-2">
+                  <span className="text-muted">Tax (13%):</span>
+                  <span className="tax">${tax.toFixed(2)}</span>
                 </div>
 
-                {/* Coupon form inside the summary */}
-                <Form onSubmit={applyCoupon}>
+                <Form onSubmit={applyCoupon} className="my-3">
                   <Form.Group className="mb-2">
                     <Form.Control
                       type="text"
@@ -351,29 +357,42 @@ function Cart() {
                       }
                     />
                   </Form.Group>
-                  <Button type="submit" variant="primary" className="w-100">
+                  <Button
+                    type="submit"
+                    variant="outline-primary"
+                    className="w-100"
+                  >
                     Apply Coupon
                   </Button>
                 </Form>
+
                 {discount > 0 && (
-                  <div className="d-flex justify-content-between mt-2">
+                  <div className="d-flex justify-content-between text-success mt-2 savings">
                     <span>Discount:</span>
-                    <span>-${discount}</span>
+                    <span>-${discount.toFixed(2)}</span>
                   </div>
                 )}
                 <hr />
-                <div className="d-flex justify-content-between">
+
+                <div className="d-flex justify-content-between estimated-total">
                   <strong>Total:</strong>
-                  <strong>${finalTotal.toFixed(2)}</strong>
+                  <strong className="total-amount">
+                    ${finalTotal.toFixed(2)}
+                  </strong>
                 </div>
-                {/* Go to Checkout button at the bottom */}
+
                 <Button
                   href="/checkout"
                   variant="success"
-                  className="mt-3 w-100"
+                  className="mt-3 w-100 d-flex align-items-center justify-content-center"
                 >
-                  Go to Checkout <FaArrowRight />
+                  Go to Checkout <FaArrowRight className="ms-2" />
                 </Button>
+
+                <div className="small-note text-muted text-center mt-4">
+                  <FaReceipt className="me-2" /> All fees and taxes are
+                  estimates. Final charges will be itemized on your receipt.
+                </div>
               </Card.Body>
             </Card>
           </Col>

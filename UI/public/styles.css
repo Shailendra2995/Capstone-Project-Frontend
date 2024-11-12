@@ -435,7 +435,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: ; */
 }
 
 /* Card Title */
@@ -551,23 +551,6 @@ body {
   height: 100%;
 }
 
-/* Card Styling */
-.coupon-card {
-  width: 800px;
-  height: fit-content;
-  text-align: center;
-  border-radius: 20px;
-  padding: 2rem;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
-    -5px -5px 15px rgba(255, 255, 255, 0.5);
-  transition: transform 0.3s ease;
-}
-
-.coupon-card:hover {
-  transform: scale(1.03);
-}
-
 .card-title {
   font-size: 2rem;
   font-weight: bold;
@@ -631,4 +614,61 @@ body {
   padding: 2px 6px;
   border-radius: 50%;
 }
+.order-summary {
+  border: none;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+.card-body {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.summary-title {
+  font-size: 1.5rem;
+  color: #343a40;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 10px;
+  padding-left: 0;
+  align-items: left;
+}
 
+.subtotal-price,
+.savings-amount,
+.subtotal-after,
+.delivery-free,
+.total-amount,
+.tax {
+  font-weight: 600;
+  color: #007bff;
+  padding-left: 80px;
+}
+
+.savings {
+  color: #dc3545;
+}
+
+.tax-details {
+  font-size: 0.9rem;
+}
+
+.estimated-total strong {
+  font-size: 1.25rem;
+}
+
+.small-note {
+  font-size: 0.85rem;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.summary {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
