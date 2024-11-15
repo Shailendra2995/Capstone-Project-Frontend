@@ -25,7 +25,6 @@ import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon, Search as Searc
 import { Alert } from '@mui/material';
 
 // Set up axios defaults
-axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:8000'; // Adjust this to your Laravel backend URL
 
 // Add a request interceptor

@@ -37,9 +37,7 @@ const Login = ({ setIsAuthenticated }) => { // Accept a prop to manage auth stat
     if (Object.keys(validationErrors).length === 0) {
       try {
         // Send login request to the backend
-        const response = await axios.post('http://localhost:8000/api/user/login', formData, {
-          withCredentials: true, // Important for session-based auth
-        });
+        const response = await axios.post('http://localhost:8000/api/user/login', formData);
 
         // Check if login was successful
         if (response.data.status === 0) {

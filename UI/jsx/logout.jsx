@@ -1,12 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {useCookies} from "react-cookie";
 
 import axios from "axios"; // Make sure to import axios
 
 const Logout = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
- const [cookie, setCookie, removeCookie] = useCookies();
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
@@ -14,16 +12,11 @@ const Logout = ({ setIsAuthenticated }) => {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        withCredentials: true
       });
 
       // Remove the token and isLoggedIn from localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("isLoggedIn");
-
-      // Remove the cookie
-      removeCookie('primemart_session');
-      removeCookie('XSRF-TOKEN');
 
       // Update authentication state
       setIsAuthenticated(false);
