@@ -403,7 +403,7 @@ function Cart() {
     fetchCart();
   }, []);
   var fetchCart = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var token, _response$data, response, items;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -472,7 +472,7 @@ function Cart() {
     });
   }, [discount]);
   var updateQuantity = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id, quantity) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id, quantity) {
       var token;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -526,7 +526,7 @@ function Cart() {
     });
   };
   var handleRemoveItem = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
       var token;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -826,7 +826,7 @@ var CategoriesPage = function CategoriesPage() {
     fetchCategories();
   }, []);
   var fetchCategories = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var response;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -881,7 +881,7 @@ var CategoriesPage = function CategoriesPage() {
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
   var handleSubmit = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
       var _error$response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -926,7 +926,7 @@ var CategoriesPage = function CategoriesPage() {
     };
   }();
   var handleDelete = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
       var _error$response2;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -1205,7 +1205,7 @@ function CheckoutPage(_ref) {
 
   // Canadian Postal Code Regex
   var postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
-  var loadData = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+  var loadData = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     var token, response, data, _data$data, username, email, phone, billing_address, shipping_address;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -1559,7 +1559,7 @@ function OrderSummary(_ref5) {
     loading = _useState24[0],
     setLoading = _useState24[1];
   var fetchCart = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var token, _response$data, response, items;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -1754,7 +1754,7 @@ var Coupon = function Coupon() {
     }
   }, []);
   var fetchCouponFromBackend = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var today, lastGeneratedDate, response, data, couponCode;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -2116,7 +2116,7 @@ var HomePage = function HomePage() {
 
   // Generic Fetch Function
   var fetchProducts = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(params, setState, setLoading, setError) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(params, setState, setLoading, setError) {
       var queryParams, response, data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -2178,7 +2178,7 @@ var HomePage = function HomePage() {
 
   // Fetch Categories
   var fetchCategories = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var response, data;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -2253,7 +2253,7 @@ var HomePage = function HomePage() {
     fetchProducts(params, setProductsOnSale, setLoadingSale, setErrorSale);
   };
   var handleAddToCart = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(product) {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(product) {
       var token, response, data;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -2580,7 +2580,7 @@ var Login = function Login(_ref) {
     return newErrors;
   };
   var handleSubmit = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
       var validationErrors, response;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -2900,7 +2900,7 @@ var ProductDetailPage = function ProductDetailPage() {
   var API_URL = ((_window$ENV = window.ENV) === null || _window$ENV === void 0 ? void 0 : _window$ENV.REACT_APP_API_URL) || "http://localhost:8000";
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchProductData = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var _yield$Promise$all, _yield$Promise$all2, productResponse, reviewsResponse, _err$response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -2959,7 +2959,7 @@ var ProductDetailPage = function ProductDetailPage() {
     setShowToast(true);
   };
   var addToCart = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -3024,7 +3024,7 @@ var ProductDetailPage = function ProductDetailPage() {
     };
   }();
   var submitReview = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
       var reviewsResponse;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -3470,7 +3470,7 @@ var ProductPage = function ProductPage() {
     fetchProducts(selectedCategory, debouncedSearch);
   }, [selectedCategory, debouncedSearch]);
   var fetchCategories = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var token, response, data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -3530,7 +3530,7 @@ var ProductPage = function ProductPage() {
     };
   }();
   var fetchProducts = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(categoryId, search) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(categoryId, search) {
       var token, params, response, data;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -3611,7 +3611,7 @@ var ProductPage = function ProductPage() {
     setModalProduct(null);
   };
   var addToCart = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(product) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(product) {
       var token, response, data;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -3883,7 +3883,7 @@ var ProductsPage = function ProductsPage() {
     fetchCategories();
   }, []);
   var fetchProducts = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var response;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -3914,7 +3914,7 @@ var ProductsPage = function ProductsPage() {
     };
   }();
   var fetchCategories = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -3968,7 +3968,7 @@ var ProductsPage = function ProductsPage() {
     }
   };
   var handleImageUpload = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(file) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(file) {
       var formData, response;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -4010,7 +4010,7 @@ var ProductsPage = function ProductsPage() {
     };
   }();
   var handleSubmit = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
       var imagePath, productData;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
@@ -4080,7 +4080,7 @@ var ProductsPage = function ProductsPage() {
     openForm();
   };
   var handleDelete = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(id) {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(id) {
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) switch (_context5.prev = _context5.next) {
           case 0:
@@ -4530,7 +4530,7 @@ var Profile = function Profile() {
     });
   };
   var handleProfileImageChange = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
       var file;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -4551,7 +4551,7 @@ var Profile = function Profile() {
     };
   }();
   var handleSaveImage = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var formData, token, response, data, path;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -4601,7 +4601,7 @@ var Profile = function Profile() {
     };
   }();
   var handleSaveChanges = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
       var formData, response, data;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
@@ -4653,7 +4653,7 @@ var Profile = function Profile() {
     };
   }();
   var handleSaveBillingAddress = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
       var formData, billingKeys, response, data;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
@@ -4701,7 +4701,7 @@ var Profile = function Profile() {
     };
   }();
   var handleSaveShippingAddress = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
       var formData, shippingKeys, response, data;
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) switch (_context5.prev = _context5.next) {
@@ -4749,7 +4749,7 @@ var Profile = function Profile() {
     };
   }();
   var handlePasswordChange = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
       var formData, response;
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) switch (_context6.prev = _context6.next) {
@@ -4799,7 +4799,7 @@ var Profile = function Profile() {
     };
   }();
   var loadData = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
       var token, response, data, _data$data, username, email, phone, photoUrl, billing_address, shipping_address;
       return _regeneratorRuntime().wrap(function _callee7$(_context7) {
         while (1) switch (_context7.prev = _context7.next) {
@@ -5580,7 +5580,7 @@ var UsersPage = function UsersPage() {
     fetchUsers();
   }, []);
   var fetchUsers = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var response;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -5644,7 +5644,7 @@ var UsersPage = function UsersPage() {
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
   var handleSubmit = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
       var _error$response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
@@ -5687,7 +5687,7 @@ var UsersPage = function UsersPage() {
     };
   }();
   var handleDelete = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(userId) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(userId) {
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
@@ -5984,7 +5984,7 @@ var App = function App() {
 // Root container element
 var container = document.getElementById("contents");
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null));
+root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null));
 
 /***/ }),
 
@@ -6014,7 +6014,7 @@ var Logout = function Logout(_ref) {
   var setIsAuthenticated = _ref.setIsAuthenticated;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
   var handleLogout = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -6871,7 +6871,7 @@ body {
   justify-content: left;
   align-items: left;
 }
-`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\n.register-container,\n.login-container,\n.forgot-password-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 80vh;\n  background-color: #f0f0f0;\n}\n\n/* Form Styles */\n.register-form,\n.login-form,\n.forgot-password-form {\n  background-color: white;\n  padding: 30px;\n  border-radius: 10px;\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n  max-width: 400px;\n  width: 100%;\n  text-align: center;\n  transition: box-shadow 0.3s ease;\n}\n\n.register-form h2,\n.login-form h2,\n.forgot-password-form h2 {\n  margin-bottom: 20px;\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n\n/* Input Fields */\n.register-form input,\n.login-form input,\n.forgot-password-form input {\n  width: 100%;\n  padding: 10px;\n  margin: 10px 0;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  font-size: 16px;\n  transition: border-color 0.3s ease;\n}\n\n.register-form input:focus,\n.login-form input:focus,\n.forgot-password-form input:focus {\n  border-color: #00bfa6;\n}\n\n/* Buttons */\n.register-form button,\n.login-form button,\n.forgot-password-form button {\n  width: 100%;\n  padding: 10px;\n  background-color: #00bfa6;\n  border: none;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  border-radius: 5px;\n  margin-top: 20px;\n  transition: background-color 0.3s ease;\n}\n\n.register-form button:hover,\n.login-form button:hover,\n.forgot-password-form button:hover {\n  background-color: #019f87;\n}\n\n/* Links */\n.login-link,\n.register-link,\n.reset-link {\n  margin-top: 20px;\n}\n\n.login-link a,\n.register-link a {\n  color: #007bff;\n  text-decoration: none;\n  text-decoration: underline;\n}\n\n.reset-link a {\n  color: #ff0400;\n  text-decoration: none;\n  text-decoration: underline;\n}\n\n.login-link a:hover,\n.register-link a:hover,\n.forgot-password-link a:hover,\n.reset-link a:hover {\n  text-decoration: underline;\n}\n\n/* Error and Success Messages */\n.error {\n  color: #ff3333;\n  font-size: 14px;\n  margin: -10px 0 10px;\n}\n\n.success {\n  color: #28a745;\n  font-size: 14px;\n  margin: -10px 0 10px;\n}\n\n/* Navbar Styles */\n.custom-navbar {\n  background-color: rgb(2, 115, 159);\n  padding: 0 1.5rem;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.logo-img {\n  max-width: 18%;\n  height: auto;\n}\n\n/* Update navbar for mobile view */\n@media (max-width: 768px) {\n  .custom-navbar .navbar-nav {\n    position: absolute;\n    right: 0;\n    top: 60px;\n    background-color: rgb(2, 115, 159);\n    width: 100%;\n    display: none;\n    flex-direction: column;\n  }\n\n  .custom-navbar.active .navbar-nav {\n    display: flex;\n  }\n\n  .navbar-toggle {\n    display: block;\n    cursor: pointer;\n  }\n}\n\n.custom-navbar .navbar-brand {\n  font-size: 36px;\n  color: white;\n  font-weight: bold;\n}\n\n.custom-navbar .navbar-nav .nav-link {\n  color: white;\n  font-size: 24px;\n  transition: color 0.3s ease;\n}\n\n.custom-navbar .navbar-nav .nav-link:hover,\n.custom-navbar .navbar-nav .nav-link.active {\n  color: #31c27a;\n  font-weight: bold;\n}\n\n/* Footer Styles */\n.custom-footer {\n  background-color: rgb(2, 115, 159);\n  color: white;\n  text-align: center;\n  padding: 1.5rem 0;\n  font-size: 18px;\n}\n\n/* Account Settings Layout */\n.container {\n  max-width: 1600px;\n  margin: 0 auto;\n  padding: 20px;\n}\n\n.profile-section {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n}\n\n.profile-img {\n  width: 250px;\n  height: 250px;\n  margin-bottom: 20px;\n  border-radius: 50%;\n  object-fit: cover;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\n  transition: transform 0.3s ease;\n}\n\n.profile-img:hover {\n  transform: scale(1.05);\n}\n\n/* Hide the default file input */\n.custom-file-input {\n  visibility: hidden;\n  width: 0;\n  height: 0;\n  position: absolute;\n}\n\n/* Style the label to look like a button */\n.custom-file-label {\n  display: inline-block;\n  padding: 8px 15px;\n  background-color: #0f8d1e;\n  color: white;\n  cursor: pointer;\n  border-radius: 5px;\n  text-align: center;\n  transition: background-color 0.3s ease;\n}\n\n.custom-file-label:hover {\n  background-color: #0056b3;\n}\n\n/* Style the container where selected file name will appear */\n.file-name {\n  margin-left: 15px;\n  font-size: 1rem;\n  color: #333;\n}\n\n/* Button Outline Styles */\n.btn-outline-success {\n  color: #00bfa6;\n  border-color: #00bfa6;\n  margin-top: 10px;\n}\n\n.btn-outline-success:hover {\n  background-color: #00bfa6;\n  color: white;\n}\n\n/* Section Titles */\n.section-title {\n  font-size: 1.8rem;\n  font-weight: 600;\n  margin-bottom: 20px;\n  color: #333;\n}\n\n/* Label Styles */\nlabel {\n  font-weight: 600;\n  font-size: 1rem;\n  color: #555;\n  margin-bottom: 8px;\n  display: block;\n}\n\n/* Input and Select Styles */\ninput,\nselect {\n  height: 45px;\n  font-size: 1rem;\n  border-radius: 0.375rem;\n  border: 1px solid #ced4da;\n  padding: 0 15px;\n  transition: all 0.2s ease-in-out;\n}\n\ninput:focus,\nselect:focus {\n  border-color: #00bfa6;\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\n}\n\n/* Button General Styles */\nbutton {\n  font-size: 1.2rem;\n  padding: 12px 25px;\n  border-radius: 5px;\n  background-color: #00bfa6;\n  color: white;\n  border: none;\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\n}\n\nbutton:hover {\n  background-color: #019f87;\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\n}\n\n/* Section Styles */\n.section {\n  padding: 30px;\n  background: white;\n  border-radius: 10px;\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n  margin-bottom: 50px;\n}\n\nhr {\n  margin: 50px 0;\n  border: 1px solid #ddd;\n}\n\nbutton:hover,\n.profile-img:hover {\n  animation: pulse 0.3s ease-in-out;\n}\n\n/* HomePage.css */\n\n/* CSS Variables for Consistent Theming */\n:root {\n  --primary-color: #28a745; /* Bootstrap Success */\n  --secondary-color: #17a2b8; /* Bootstrap Info */\n  --accent-color: #ffc107; /* Bootstrap Warning */\n  --light-bg: #f9f9f9;\n  --dark-text: #343a40;\n  --font-family: \"Roboto\", sans-serif;\n}\n\n/* Global Styles */\nbody {\n  font-family: var(--font-family);\n  color: var(--dark-text);\n}\n\n/* Hero Section */\n.hero-section h1 {\n  font-size: 3rem;\n  margin-top: 20px;\n  font-weight: 700;\n}\n\n.hero-section img {\n  max-width: 100%;\n  height: auto;\n  margin-bottom: 20px;\n}\n\n.hero-section .btn {\n  padding: 10px 20px;\n  font-size: 18px;\n}\n\n/* Testimonials Section */\n.testimonials-section {\n  background-color: var(--light-bg);\n  padding: 30px 0;\n}\n\n.testimonials-section h2 {\n  text-align: center;\n}\n\n.testimonials-section .testimonial {\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  padding: 20px;\n  margin: 10px;\n}\n\n/* Media Queries for Responsiveness */\n@media (max-width: 768px) {\n  .navbar-brand {\n    font-size: 28px;\n  }\n\n  .navbar-nav .nav-link {\n    font-size: 20px;\n  }\n\n  .hero-section h1 {\n    font-size: 2rem;\n  }\n\n  .register-form,\n  .login-form,\n  .forgot-password-form {\n    max-width: 90%;\n  }\n\n  .testimonials-section .testimonial {\n    margin: 5px 0;\n  }\n\n  .profile-img {\n    width: 200px;\n    height: 200px;\n  }\n}\n\n/* Product Card Container */\n.card {\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n  border-radius: 10px;\n  overflow: hidden;\n  cursor: pointer;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n}\n\n.card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\n}\n\n/* Card Image Hover Effect */\n.card-img-top {\n  display: block;\n  padding-left: 30px;\n  margin: 0 auto;\n  width: 100%;\n  height: 400px;\n  object-fit: contain;\n  transition: transform 0.3s ease;\n}\n\n.card:hover .card-img-top {\n  transform: scale(1.05);\n}\n\n/* Card Body */\n.card-body {\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  /* align-items: ; */\n}\n\n/* Card Title */\n.card-title {\n  font-size: 1.2rem;\n  font-weight: bold;\n  margin-bottom: 10px;\n  color: #333;\n}\n\n/* Card Price */\n.card-text {\n  font-size: 1rem;\n  color: #07260e;\n  margin-bottom: 15px;\n}\n\n/* Add to Cart Button */\n.card-body .btn {\n  background-color: #0d4cdf;\n  color: white;\n  font-size: 1rem;\n  padding: 10px 15px;\n  border: none;\n  border-radius: 5px;\n  transition: background-color 0.3s ease, transform 0.3s ease;\n  display: inline-block;\n}\n\n.card-body .btn:hover {\n  background-color: #019f87;\n  transform: translateY(-2px);\n}\n\n/* Mobile-first approach */\n.checkout-container {\n  display: flex;\n  flex-direction: column;\n  max-width: 100%;\n  margin: auto;\n}\n\n.checkout-form,\n.order-summary {\n  padding: 1.5rem;\n  background-color: #f9f9f9;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\n}\n\n.order-summary {\n  margin-top: 2rem;\n}\n\n.form-section-title,\n.order-summary-title {\n  color: #007bff;\n  font-size: 1.25rem;\n  margin-bottom: 1rem;\n}\n\n.form-actions {\n  display: flex;\n  flex-direction: column;\n}\n\n.checkout-button,\n.back-button {\n  width: 100%;\n  margin-top: 1rem;\n}\n\n/* Tablet and larger screens */\n@media (min-width: 768px) {\n  .checkout-container {\n    flex-direction: row;\n    gap: 2rem;\n    max-width: 1800px;\n  }\n\n  .checkout-form {\n    flex: 2;\n    max-width: 1200px;\n  }\n\n  .order-summary {\n    flex: 1;\n    max-width: 600px;\n    height: fit-content;\n    margin-top: 0;\n  }\n\n  .form-actions {\n    flex-direction: row;\n    justify-content: space-between;\n  }\n\n  .checkout-button,\n  .back-button {\n    width: auto;\n    margin-top: 0;\n  }\n}\n\n/* General Styling */\n\n.enhanced-container {\n  margin-top: 180px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}\n\n.card-title {\n  font-size: 2rem;\n  font-weight: bold;\n  color: #3a3b3c;\n  margin-bottom: 1rem;\n}\n.card {\n  display: flex;\n  flex-direction: column;\n}\n\n.card-body {\n  flex: 1 0 auto;\n}\n\n.card-footer {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 1rem;\n}\n\n.card-footer .btn {\n  width: 100%;\n  max-width: 200px;\n}\n/* Increase the size of categories link */\n.category-link {\n  font-size: 1.5rem;\n  font-weight: bold;\n  padding: 0.5rem 1rem;\n  transition: color 0.3s ease, background-color 0.3s ease;\n}\n\n.category-link:hover,\n.category-link.active {\n  background-color: rgba(0, 0, 0, 0.1);\n  color: var(--primary-color);\n}\n.order-info {\n  font-size: 14px;\n}\n\n.item-thumbnail {\n  position: relative;\n  display: inline-block;\n}\n\n.item-thumbnail img {\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n\n.item-quantity {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  background-color: #007bff;\n  color: white;\n  font-size: 12px;\n  padding: 2px 6px;\n  border-radius: 50%;\n}\n.order-summary {\n  border: none;\n  background-color: #f8f9fa;\n  padding: 20px;\n}\n.card-body {\n  text-align: left;\n  display: flex;\n  flex-direction: column;\n  justify-content: left;\n  align-items: left;\n}\n.summary-title {\n  font-size: 1.5rem;\n  color: #343a40;\n  border-bottom: 2px solid #dee2e6;\n  padding-bottom: 10px;\n  padding-left: 0;\n  align-items: left;\n}\n\n.subtotal-price,\n.savings-amount,\n.subtotal-after,\n.delivery-free,\n.total-amount,\n.tax {\n  font-weight: 600;\n  color: #007bff;\n  padding-left: 80px;\n}\n\n.savings {\n  color: #dc3545;\n}\n\n.tax-details {\n  font-size: 0.9rem;\n}\n\n.estimated-total strong {\n  font-size: 1.25rem;\n}\n\n.small-note {\n  font-size: 0.85rem;\n  margin-top: 15px;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.summary {\n  text-align: left;\n  display: flex;\n  flex-direction: column;\n  justify-content: left;\n  align-items: left;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./public/styles.css"],"names":[],"mappings":"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","sourcesContent":["/* General Container Styles */\r\n.register-container,\r\n.login-container,\r\n.forgot-password-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-height: 80vh;\r\n  background-color: #f0f0f0;\r\n}\r\n\r\n/* Form Styles */\r\n.register-form,\r\n.login-form,\r\n.forgot-password-form {\r\n  background-color: white;\r\n  padding: 30px;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  max-width: 400px;\r\n  width: 100%;\r\n  text-align: center;\r\n  transition: box-shadow 0.3s ease;\r\n}\r\n\r\n.register-form h2,\r\n.login-form h2,\r\n.forgot-password-form h2 {\r\n  margin-bottom: 20px;\r\n  font-family: Arial, sans-serif;\r\n  color: #333;\r\n}\r\n\r\n/* Input Fields */\r\n.register-form input,\r\n.login-form input,\r\n.forgot-password-form input {\r\n  width: 100%;\r\n  padding: 10px;\r\n  margin: 10px 0;\r\n  border: 1px solid #ccc;\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  transition: border-color 0.3s ease;\r\n}\r\n\r\n.register-form input:focus,\r\n.login-form input:focus,\r\n.forgot-password-form input:focus {\r\n  border-color: #00bfa6;\r\n}\r\n\r\n/* Buttons */\r\n.register-form button,\r\n.login-form button,\r\n.forgot-password-form button {\r\n  width: 100%;\r\n  padding: 10px;\r\n  background-color: #00bfa6;\r\n  border: none;\r\n  color: white;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  margin-top: 20px;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.register-form button:hover,\r\n.login-form button:hover,\r\n.forgot-password-form button:hover {\r\n  background-color: #019f87;\r\n}\r\n\r\n/* Links */\r\n.login-link,\r\n.register-link,\r\n.reset-link {\r\n  margin-top: 20px;\r\n}\r\n\r\n.login-link a,\r\n.register-link a {\r\n  color: #007bff;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.reset-link a {\r\n  color: #ff0400;\r\n  text-decoration: none;\r\n  text-decoration: underline;\r\n}\r\n\r\n.login-link a:hover,\r\n.register-link a:hover,\r\n.forgot-password-link a:hover,\r\n.reset-link a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Error and Success Messages */\r\n.error {\r\n  color: #ff3333;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n.success {\r\n  color: #28a745;\r\n  font-size: 14px;\r\n  margin: -10px 0 10px;\r\n}\r\n\r\n/* Navbar Styles */\r\n.custom-navbar {\r\n  background-color: rgb(2, 115, 159);\r\n  padding: 0 1.5rem;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.logo-img {\r\n  max-width: 18%;\r\n  height: auto;\r\n}\r\n\r\n/* Update navbar for mobile view */\r\n@media (max-width: 768px) {\r\n  .custom-navbar .navbar-nav {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 60px;\r\n    background-color: rgb(2, 115, 159);\r\n    width: 100%;\r\n    display: none;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .custom-navbar.active .navbar-nav {\r\n    display: flex;\r\n  }\r\n\r\n  .navbar-toggle {\r\n    display: block;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.custom-navbar .navbar-brand {\r\n  font-size: 36px;\r\n  color: white;\r\n  font-weight: bold;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link {\r\n  color: white;\r\n  font-size: 24px;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.custom-navbar .navbar-nav .nav-link:hover,\r\n.custom-navbar .navbar-nav .nav-link.active {\r\n  color: #31c27a;\r\n  font-weight: bold;\r\n}\r\n\r\n/* Footer Styles */\r\n.custom-footer {\r\n  background-color: rgb(2, 115, 159);\r\n  color: white;\r\n  text-align: center;\r\n  padding: 1.5rem 0;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Account Settings Layout */\r\n.container {\r\n  max-width: 1600px;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n}\r\n\r\n.profile-section {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  text-align: center;\r\n}\r\n\r\n.profile-img {\r\n  width: 250px;\r\n  height: 250px;\r\n  margin-bottom: 20px;\r\n  border-radius: 50%;\r\n  object-fit: cover;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.profile-img:hover {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Hide the default file input */\r\n.custom-file-input {\r\n  visibility: hidden;\r\n  width: 0;\r\n  height: 0;\r\n  position: absolute;\r\n}\r\n\r\n/* Style the label to look like a button */\r\n.custom-file-label {\r\n  display: inline-block;\r\n  padding: 8px 15px;\r\n  background-color: #0f8d1e;\r\n  color: white;\r\n  cursor: pointer;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.custom-file-label:hover {\r\n  background-color: #0056b3;\r\n}\r\n\r\n/* Style the container where selected file name will appear */\r\n.file-name {\r\n  margin-left: 15px;\r\n  font-size: 1rem;\r\n  color: #333;\r\n}\r\n\r\n/* Button Outline Styles */\r\n.btn-outline-success {\r\n  color: #00bfa6;\r\n  border-color: #00bfa6;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-outline-success:hover {\r\n  background-color: #00bfa6;\r\n  color: white;\r\n}\r\n\r\n/* Section Titles */\r\n.section-title {\r\n  font-size: 1.8rem;\r\n  font-weight: 600;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n/* Label Styles */\r\nlabel {\r\n  font-weight: 600;\r\n  font-size: 1rem;\r\n  color: #555;\r\n  margin-bottom: 8px;\r\n  display: block;\r\n}\r\n\r\n/* Input and Select Styles */\r\ninput,\r\nselect {\r\n  height: 45px;\r\n  font-size: 1rem;\r\n  border-radius: 0.375rem;\r\n  border: 1px solid #ced4da;\r\n  padding: 0 15px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\ninput:focus,\r\nselect:focus {\r\n  border-color: #00bfa6;\r\n  box-shadow: 0 0 0 2px rgba(0, 191, 166, 0.2);\r\n}\r\n\r\n/* Button General Styles */\r\nbutton {\r\n  font-size: 1.2rem;\r\n  padding: 12px 25px;\r\n  border-radius: 5px;\r\n  background-color: #00bfa6;\r\n  color: white;\r\n  border: none;\r\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\r\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #019f87;\r\n  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Section Styles */\r\n.section {\r\n  padding: 30px;\r\n  background: white;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 50px;\r\n}\r\n\r\nhr {\r\n  margin: 50px 0;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\nbutton:hover,\r\n.profile-img:hover {\r\n  animation: pulse 0.3s ease-in-out;\r\n}\r\n\r\n/* HomePage.css */\r\n\r\n/* CSS Variables for Consistent Theming */\r\n:root {\r\n  --primary-color: #28a745; /* Bootstrap Success */\r\n  --secondary-color: #17a2b8; /* Bootstrap Info */\r\n  --accent-color: #ffc107; /* Bootstrap Warning */\r\n  --light-bg: #f9f9f9;\r\n  --dark-text: #343a40;\r\n  --font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n/* Global Styles */\r\nbody {\r\n  font-family: var(--font-family);\r\n  color: var(--dark-text);\r\n}\r\n\r\n/* Hero Section */\r\n.hero-section h1 {\r\n  font-size: 3rem;\r\n  margin-top: 20px;\r\n  font-weight: 700;\r\n}\r\n\r\n.hero-section img {\r\n  max-width: 100%;\r\n  height: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.hero-section .btn {\r\n  padding: 10px 20px;\r\n  font-size: 18px;\r\n}\r\n\r\n/* Testimonials Section */\r\n.testimonials-section {\r\n  background-color: var(--light-bg);\r\n  padding: 30px 0;\r\n}\r\n\r\n.testimonials-section h2 {\r\n  text-align: center;\r\n}\r\n\r\n.testimonials-section .testimonial {\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n}\r\n\r\n/* Media Queries for Responsiveness */\r\n@media (max-width: 768px) {\r\n  .navbar-brand {\r\n    font-size: 28px;\r\n  }\r\n\r\n  .navbar-nav .nav-link {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .hero-section h1 {\r\n    font-size: 2rem;\r\n  }\r\n\r\n  .register-form,\r\n  .login-form,\r\n  .forgot-password-form {\r\n    max-width: 90%;\r\n  }\r\n\r\n  .testimonials-section .testimonial {\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .profile-img {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n}\r\n\r\n/* Product Card Container */\r\n.card {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.card:hover {\r\n  transform: translateY(-8px);\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Card Image Hover Effect */\r\n.card-img-top {\r\n  display: block;\r\n  padding-left: 30px;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n  height: 400px;\r\n  object-fit: contain;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.card:hover .card-img-top {\r\n  transform: scale(1.05);\r\n}\r\n\r\n/* Card Body */\r\n.card-body {\r\n  text-align: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  /* align-items: ; */\r\n}\r\n\r\n/* Card Title */\r\n.card-title {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  margin-bottom: 10px;\r\n  color: #333;\r\n}\r\n\r\n/* Card Price */\r\n.card-text {\r\n  font-size: 1rem;\r\n  color: #07260e;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Add to Cart Button */\r\n.card-body .btn {\r\n  background-color: #0d4cdf;\r\n  color: white;\r\n  font-size: 1rem;\r\n  padding: 10px 15px;\r\n  border: none;\r\n  border-radius: 5px;\r\n  transition: background-color 0.3s ease, transform 0.3s ease;\r\n  display: inline-block;\r\n}\r\n\r\n.card-body .btn:hover {\r\n  background-color: #019f87;\r\n  transform: translateY(-2px);\r\n}\r\n\r\n/* Mobile-first approach */\r\n.checkout-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 100%;\r\n  margin: auto;\r\n}\r\n\r\n.checkout-form,\r\n.order-summary {\r\n  padding: 1.5rem;\r\n  background-color: #f9f9f9;\r\n  border: 1px solid #ddd;\r\n  border-radius: 8px;\r\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.order-summary {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.form-section-title,\r\n.order-summary-title {\r\n  color: #007bff;\r\n  font-size: 1.25rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-actions {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.checkout-button,\r\n.back-button {\r\n  width: 100%;\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* Tablet and larger screens */\r\n@media (min-width: 768px) {\r\n  .checkout-container {\r\n    flex-direction: row;\r\n    gap: 2rem;\r\n    max-width: 1800px;\r\n  }\r\n\r\n  .checkout-form {\r\n    flex: 2;\r\n    max-width: 1200px;\r\n  }\r\n\r\n  .order-summary {\r\n    flex: 1;\r\n    max-width: 600px;\r\n    height: fit-content;\r\n    margin-top: 0;\r\n  }\r\n\r\n  .form-actions {\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n  }\r\n\r\n  .checkout-button,\r\n  .back-button {\r\n    width: auto;\r\n    margin-top: 0;\r\n  }\r\n}\r\n\r\n/* General Styling */\r\n\r\n.enhanced-container {\r\n  margin-top: 180px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n.card-title {\r\n  font-size: 2rem;\r\n  font-weight: bold;\r\n  color: #3a3b3c;\r\n  margin-bottom: 1rem;\r\n}\r\n.card {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.card-body {\r\n  flex: 1 0 auto;\r\n}\r\n\r\n.card-footer {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  padding: 1rem;\r\n}\r\n\r\n.card-footer .btn {\r\n  width: 100%;\r\n  max-width: 200px;\r\n}\r\n/* Increase the size of categories link */\r\n.category-link {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n  padding: 0.5rem 1rem;\r\n  transition: color 0.3s ease, background-color 0.3s ease;\r\n}\r\n\r\n.category-link:hover,\r\n.category-link.active {\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n  color: var(--primary-color);\r\n}\r\n.order-info {\r\n  font-size: 14px;\r\n}\r\n\r\n.item-thumbnail {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.item-thumbnail img {\r\n  border-radius: 5px;\r\n  border: 1px solid #ddd;\r\n}\r\n\r\n.item-quantity {\r\n  position: absolute;\r\n  top: -5px;\r\n  right: -5px;\r\n  background-color: #007bff;\r\n  color: white;\r\n  font-size: 12px;\r\n  padding: 2px 6px;\r\n  border-radius: 50%;\r\n}\r\n.order-summary {\r\n  border: none;\r\n  background-color: #f8f9fa;\r\n  padding: 20px;\r\n}\r\n.card-body {\r\n  text-align: left;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: left;\r\n  align-items: left;\r\n}\r\n.summary-title {\r\n  font-size: 1.5rem;\r\n  color: #343a40;\r\n  border-bottom: 2px solid #dee2e6;\r\n  padding-bottom: 10px;\r\n  padding-left: 0;\r\n  align-items: left;\r\n}\r\n\r\n.subtotal-price,\r\n.savings-amount,\r\n.subtotal-after,\r\n.delivery-free,\r\n.total-amount,\r\n.tax {\r\n  font-weight: 600;\r\n  color: #007bff;\r\n  padding-left: 80px;\r\n}\r\n\r\n.savings {\r\n  color: #dc3545;\r\n}\r\n\r\n.tax-details {\r\n  font-size: 0.9rem;\r\n}\r\n\r\n.estimated-total strong {\r\n  font-size: 1.25rem;\r\n}\r\n\r\n.small-note {\r\n  font-size: 0.85rem;\r\n  margin-top: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 5px;\r\n}\r\n.summary {\r\n  text-align: left;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: left;\r\n  align-items: left;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
