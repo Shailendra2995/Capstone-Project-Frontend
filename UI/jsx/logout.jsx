@@ -17,6 +17,7 @@ const Logout = ({ setIsAuthenticated }) => {
       // Remove the token and isLoggedIn from localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("is_admin");
 
       // Update authentication state
       setIsAuthenticated(false);

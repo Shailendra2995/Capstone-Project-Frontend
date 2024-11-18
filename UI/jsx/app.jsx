@@ -29,11 +29,11 @@ import CouponPage from "./Coupon.jsx";
 // Main application component
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
-
+  const [isAdmin] = useState(localStorage.getItem("is_admin") == "true");
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        <NavPage title="PrimeMart" isAuthenticated={isAuthenticated} />
+        <NavPage title="PrimeMart" isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<HomePage />} />

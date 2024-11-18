@@ -11,9 +11,8 @@ import {
   FaUserTie
 } from "react-icons/fa";
 
-const NavPage = ({ title, isAuthenticated,isAdmin }) => { 
+const NavPage = ({ title, isAuthenticated, isAdmin }) => {
   const location = useLocation();
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
       <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -68,7 +67,7 @@ const NavPage = ({ title, isAuthenticated,isAdmin }) => {
               <FaShoppingCart /> Cart
             </Link>
           </li>
-          {isAdmin && ( 
+          {isAdmin == true &&
             <li className="nav-item">
               <Link
                 className={`nav-link ${location.pathname === "/Admin" ? "active" : ""}`}
@@ -78,8 +77,8 @@ const NavPage = ({ title, isAuthenticated,isAdmin }) => {
                 <FaUserTie /> Admin
               </Link>
             </li>
-          )}
-          
+          }
+
           {/* Conditional rendering based on login status */}
           {!isAuthenticated ? (
             <>

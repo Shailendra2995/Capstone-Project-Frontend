@@ -45,6 +45,7 @@ const Login = ({ setIsAuthenticated }) => { // Accept a prop to manage auth stat
 
           // Save token or user data to localStorage (if needed)
           localStorage.setItem("token", response.data.data.token);
+          localStorage.setItem("is_admin", response.data.data.user.is_admin == 1 ? true : false);
 
           // Set axios default headers for future requests
           axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.data.token}`;
