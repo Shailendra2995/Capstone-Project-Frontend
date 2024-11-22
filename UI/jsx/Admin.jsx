@@ -1,44 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  FaUsers,
-  FaBox,
-  FaChartLine,
-  FaTag,
-  FaShoppingCart,
-  FaClipboardList,
-} from "react-icons/fa";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  ListGroup,
-  Table,
-} from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { FaUsers, FaBox, FaTag, FaShoppingCart, FaClipboardList } from "react-icons/fa";
+import { Container, Row, Col, Card, Table } from "react-bootstrap";
 
 const Admin = () => {
-  // Dummy data
-  const stats = {
-    totalUsers: 1250,
-    totalCategories: 15,
-    totalProducts: 187,
-    totalOrders: 528,
-    recentOrders: [
-      { id: 1, customer_name: "John Doe", total: 125.99, status: "Completed" },
-      { id: 2, customer_name: "Jane Smith", total: 89.50, status: "Processing" },
-      { id: 3, customer_name: "Bob Johnson", total: 210.75, status: "Shipped" },
-      { id: 4, customer_name: "Alice Brown", total: 55.25, status: "Pending" },
-      { id: 5, customer_name: "Charlie Davis", total: 175.00, status: "Completed" },
-    ],
-    recentUsers: [
-      { id: 1, username: "user1", email: "user1@example.com", created_at: "2023-05-01" },
-      { id: 2, username: "user2", email: "user2@example.com", created_at: "2023-05-02" },
-      { id: 3, username: "user3", email: "user3@example.com", created_at: "2023-05-03" },
-      { id: 4, username: "user4", email: "user4@example.com", created_at: "2023-05-04" },
-      { id: 5, username: "user5", email: "user5@example.com", created_at: "2023-05-05" },
-    ],
-  };
+  const [stats, setStats] = useState({
+    totalUsers: 0,
+    totalCategories: 0,
+    totalProducts: 0,
+    totalOrders: 0,
+    recentOrders: [],
+    recentUsers: [],
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/dashboard/summary', {
+          headers: {
+            // Add authorization header if needed
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        const data = response.data.data;
+        setStats((prevStats) => ({
+          ...prevStats,
+          totalUsers: data.users_count,
+          totalCategories: data.categories_count,
+          totalProducts: data.products_count,
+          totalOrders: data.orders_count,
+        }));
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const StatCard = ({ icon, title, value, color }) => (
     <Card className="mb-4 shadow-sm">
@@ -59,8 +57,6 @@ const Admin = () => {
   return (
     <Container fluid>
       <Row>
-        
-
         {/* Main Content */}
         <div className="ms-sm-auto">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
