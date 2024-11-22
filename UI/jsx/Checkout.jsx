@@ -32,7 +32,6 @@ function CheckoutPage({
   const [profileData, setProfileData] = useState(initialProfileData);
   const [useBillingAsDelivery, setUseBillingAsDelivery] = useState(false);
   const [validated, setValidated] = useState(false);
-  //const [paymentMethod, setPaymentMethod] = useState("");
   const [billingAddress, setBillingAddress] = useState({
     firstname: profileData?.billingAddress?.firstname || "",
     lastname: profileData?.billingAddress?.lastname || "",
@@ -57,9 +56,7 @@ function CheckoutPage({
   });
   const [giftOption, setGiftOption] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-  const [cardNumber, setCardNumber] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
-  const [cvv, setCvv] = useState("");
+  const token = localStorage.getItem("token");
   const memoizedProvinces = useMemo(() => PROVINCES, []);
 
   // Correct postal code regex without delimiters
@@ -215,19 +212,6 @@ function CheckoutPage({
       }
     }
 
-    // Payment Method Validations
-    // if (paymentMethod === "credit" || paymentMethod === "debit") {
-    //   if (!/^\d{16}$/.test(cardNumber)) {
-    //     errors.cardNumber = "Please enter a valid 16-digit card number.";
-    //   }
-    //   if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
-    //     errors.expiryDate = "Please enter a valid expiry date (MM/YY).";
-    //   }
-    //   if (!/^\d{3,4}$/.test(cvv)) {
-    //     errors.cvv = "Please enter a valid CVV.";
-    //   }
-    // }
-
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -237,49 +221,39 @@ function CheckoutPage({
     setValidated(true);
 
     if (validateForm()) {
-      const orderData = {
-        ...profileData,
-        billingAddress: {
-          ...billingAddress,
-          postcode: billingAddress.postcode.replace(/[\s-]/g, ""), // Clean postal code
+      const data = new FormData();
+      data.append("email", contactInfo.email);
+      data.append("phone", contactInfo.phone);
+      data.append("include_gift", giftOption);
+
+      Object.keys(billingAddress).forEach((key) => {
+        data.append(`billing_address_${key}`, billingAddress[key]);
+      });
+      Object.keys(shippingAddress).forEach((key) => {
+        data.append(`shipping_address_${key}`, shippingAddress[key]);
+      });
+
+      const requestOptions = {
+        method: "POST",
+        body: data,
+        headers: {
+          Authorization: "Bearer " + token,
         },
-        shippingAddress: useBillingAsDelivery
-          ? {
-              ...billingAddress,
-              postcode: billingAddress.postcode.replace(/[\s-]/g, ""),
-            }
-          : {
-              ...shippingAddress,
-              postcode: shippingAddress.postcode.replace(/[\s-]/g, ""), // Clean postal code
-            },
-        contactInfo,
-        // paymentMethod,
-        // cardDetails: {
-        //   cardNumber,
-        //   expiryDate,
-        //   cvv,
-        // },
       };
 
-      console.log("Order Data to be submitted:", orderData);
-
-      axios
-        .post("http://localhost:8000/api/order/checkout", orderData)
-        .then((response) => {
-          console.log("Order submitted successfully:", response);
-          // Handle successful submission (e.g., show success message, redirect)
+      fetch("http://localhost:8000/api/order/checkout", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 0) {
+            alert("Order Placed successfully");
+            setTimeout(() => navigate("/Thankyou"), 2000); // Redirect after 2 seconds
+          } else {
+            alert(data.message || "Checkout failed");
+          }
         })
         .catch((error) => {
-          console.error(
-            "Error submitting order:",
-            error.response?.data || error.message
-          );
-          // Handle submission error (e.g., show error message)
-          alert(
-            `Order submission failed: ${
-              error.response?.data?.message || "Unknown error"
-            }`
-          );
+          console.error("Error submitting order:", error);
+          alert(`Order submission failed: ${error.message}`);
         });
     }
   };
@@ -354,38 +328,6 @@ function CheckoutPage({
             handleContactInfoChange={handleContactInfoChange}
             formErrors={formErrors}
           />
-
-          {/* Payment Method
-          <h4 className="form-section-title">Payment Method</h4>
-          <Form.Group controlId="paymentMethod">
-            <Form.Control
-              as="select"
-              required
-              value={paymentMethod}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            >
-              <option value="">Choose...</option>
-              <option value="credit">Credit Card</option>
-              <option value="paypal">PayPal</option>
-              <option value="debit">Debit</option>
-            </Form.Control>
-            <Form.Control.Feedback type="invalid">
-              Please select a payment method.
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          {paymentMethod && (
-            <PaymentDetails
-              paymentMethod={paymentMethod}
-              formErrors={formErrors}
-              cardNumber={cardNumber}
-              setCardNumber={setCardNumber}
-              expiryDate={expiryDate}
-              setExpiryDate={setExpiryDate}
-              cvv={cvv}
-              setCvv={setCvv}
-            />
-          )} */}
 
           {/* Action Buttons */}
           <div className="form-actions mt-4">
@@ -520,88 +462,6 @@ function AddressForm({
     </section>
   );
 }
-
-// Payment Details Component
-// function PaymentDetails({
-//   paymentMethod,
-//   formErrors,
-//   cardNumber,
-//   setCardNumber,
-//   expiryDate,
-//   setExpiryDate,
-//   cvv,
-//   setCvv,
-// }) {
-//   return (
-//     <div className="mt-3">
-//       {paymentMethod === "credit" || paymentMethod === "debit" ? (
-//         <>
-//           <Form.Group controlId="cardNumber">
-//             <Form.Label>
-//               {paymentMethod === "credit"
-//                 ? "Credit Card Number"
-//                 : "Debit Card Number"}
-//             </Form.Label>
-//             <Form.Control
-//               type="text"
-//               placeholder="XXXX XXXX XXXX XXXX"
-//               required
-//               pattern="^\d{16}$"
-//               value={cardNumber}
-//               onChange={(e) => setCardNumber(e.target.value)}
-//               className={formErrors.cardNumber ? "is-invalid" : ""}
-//             />
-//             <Form.Control.Feedback type="invalid">
-//               {formErrors.cardNumber ||
-//                 "Please enter a valid 16-digit card number."}
-//             </Form.Control.Feedback>
-//           </Form.Group>
-
-//           <Form.Group controlId="expiryDate">
-//             <Form.Label>Expiry Date (MM/YY)</Form.Label>
-//             <Form.Control
-//               type="text"
-//               placeholder="MM/YY"
-//               required
-//               pattern="^(0[1-9]|1[0-2])/\d{2}$"
-//               value={expiryDate}
-//               onChange={(e) => setExpiryDate(e.target.value)}
-//               className={formErrors.expiryDate ? "is-invalid" : ""}
-//             />
-//             <Form.Control.Feedback type="invalid">
-//               {formErrors.expiryDate ||
-//                 "Please enter a valid expiry date (MM/YY)."}
-//             </Form.Control.Feedback>
-//           </Form.Group>
-
-//           <Form.Group controlId="cvv">
-//             <Form.Label>CVV</Form.Label>
-//             <Form.Control
-//               type="text"
-//               placeholder="XXX"
-//               required
-//               pattern="^\d{3,4}$"
-//               value={cvv}
-//               onChange={(e) => setCvv(e.target.value)}
-//               className={formErrors.cvv ? "is-invalid" : ""}
-//             />
-//             <Form.Control.Feedback type="invalid">
-//               {formErrors.cvv || "Please enter a valid CVV."}
-//             </Form.Control.Feedback>
-//           </Form.Group>
-//         </>
-//       ) : paymentMethod === "paypal" ? (
-//         <Form.Group controlId="paypalEmail">
-//           <Form.Label>PayPal Email</Form.Label>
-//           <Form.Control type="email" placeholder="PayPal Email" required />
-//           <Form.Control.Feedback type="invalid">
-//             Please enter a valid PayPal email.
-//           </Form.Control.Feedback>
-//         </Form.Group>
-//       ) : null}
-//     </div>
-//   );
-// }
 
 // Order Summary Component
 function OrderSummary({ giftOption }) {

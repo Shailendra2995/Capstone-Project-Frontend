@@ -1153,7 +1153,6 @@ function CheckoutPage(_ref) {
     _useState6 = _slicedToArray(_useState5, 2),
     validated = _useState6[0],
     setValidated = _useState6[1];
-  //const [paymentMethod, setPaymentMethod] = useState("");
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       firstname: (profileData === null || profileData === void 0 || (_profileData$billingA = profileData.billingAddress) === null || _profileData$billingA === void 0 ? void 0 : _profileData$billingA.firstname) || "",
       lastname: (profileData === null || profileData === void 0 || (_profileData$billingA2 = profileData.billingAddress) === null || _profileData$billingA2 === void 0 ? void 0 : _profileData$billingA2.lastname) || "",
@@ -1193,18 +1192,7 @@ function CheckoutPage(_ref) {
     _useState16 = _slicedToArray(_useState15, 2),
     formErrors = _useState16[0],
     setFormErrors = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState18 = _slicedToArray(_useState17, 2),
-    cardNumber = _useState18[0],
-    setCardNumber = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState20 = _slicedToArray(_useState19, 2),
-    expiryDate = _useState20[0],
-    setExpiryDate = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState22 = _slicedToArray(_useState21, 2),
-    cvv = _useState22[0],
-    setCvv = _useState22[1];
+  var token = localStorage.getItem("token");
   var memoizedProvinces = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return PROVINCES;
   }, []);
@@ -1366,20 +1354,6 @@ function CheckoutPage(_ref) {
         errors.shippingProvince = "Please select a province.";
       }
     }
-
-    // Payment Method Validations
-    // if (paymentMethod === "credit" || paymentMethod === "debit") {
-    //   if (!/^\d{16}$/.test(cardNumber)) {
-    //     errors.cardNumber = "Please enter a valid 16-digit card number.";
-    //   }
-    //   if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
-    //     errors.expiryDate = "Please enter a valid expiry date (MM/YY).";
-    //   }
-    //   if (!/^\d{3,4}$/.test(cvv)) {
-    //     errors.cvv = "Please enter a valid CVV.";
-    //   }
-    // }
-
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -1387,32 +1361,37 @@ function CheckoutPage(_ref) {
     event.preventDefault();
     setValidated(true);
     if (validateForm()) {
-      var orderData = _objectSpread(_objectSpread({}, profileData), {}, {
-        billingAddress: _objectSpread(_objectSpread({}, billingAddress), {}, {
-          postcode: billingAddress.postcode.replace(/[\s-]/g, "") // Clean postal code
-        }),
-        shippingAddress: useBillingAsDelivery ? _objectSpread(_objectSpread({}, billingAddress), {}, {
-          postcode: billingAddress.postcode.replace(/[\s-]/g, "")
-        }) : _objectSpread(_objectSpread({}, shippingAddress), {}, {
-          postcode: shippingAddress.postcode.replace(/[\s-]/g, "") // Clean postal code
-        }),
-        contactInfo: contactInfo
-        // paymentMethod,
-        // cardDetails: {
-        //   cardNumber,
-        //   expiryDate,
-        //   cvv,
-        // },
+      var data = new FormData();
+      data.append("email", contactInfo.email);
+      data.append("phone", contactInfo.phone);
+      data.append("include_gift", giftOption);
+      Object.keys(billingAddress).forEach(function (key) {
+        data.append("billing_address_".concat(key), billingAddress[key]);
       });
-      console.log("Order Data to be submitted:", orderData);
-      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("http://localhost:8000/api/order/checkout", orderData).then(function (response) {
-        console.log("Order submitted successfully:", response);
-        // Handle successful submission (e.g., show success message, redirect)
+      Object.keys(shippingAddress).forEach(function (key) {
+        data.append("shipping_address_".concat(key), shippingAddress[key]);
+      });
+      var requestOptions = {
+        method: "POST",
+        body: data,
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+      fetch("http://localhost:8000/api/order/checkout", requestOptions).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data.status === 0) {
+          alert("Order Placed successfully");
+          setTimeout(function () {
+            return navigate("/Thankyou");
+          }, 2000); // Redirect after 2 seconds
+        } else {
+          alert(data.message || "Checkout failed");
+        }
       }).catch(function (error) {
-        var _error$response, _error$response2;
-        console.error("Error submitting order:", ((_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || error.message);
-        // Handle submission error (e.g., show error message)
-        alert("Order submission failed: ".concat(((_error$response2 = error.response) === null || _error$response2 === void 0 || (_error$response2 = _error$response2.data) === null || _error$response2 === void 0 ? void 0 : _error$response2.message) || "Unknown error"));
+        console.error("Error submitting order:", error);
+        alert("Order submission failed: ".concat(error.message));
       });
     }
   };
@@ -1576,103 +1555,21 @@ function AddressForm(_ref3) {
   }, formErrors["".concat(addressType, "Province")]))));
 }
 
-// Payment Details Component
-// function PaymentDetails({
-//   paymentMethod,
-//   formErrors,
-//   cardNumber,
-//   setCardNumber,
-//   expiryDate,
-//   setExpiryDate,
-//   cvv,
-//   setCvv,
-// }) {
-//   return (
-//     <div className="mt-3">
-//       {paymentMethod === "credit" || paymentMethod === "debit" ? (
-//         <>
-//           <Form.Group controlId="cardNumber">
-//             <Form.Label>
-//               {paymentMethod === "credit"
-//                 ? "Credit Card Number"
-//                 : "Debit Card Number"}
-//             </Form.Label>
-//             <Form.Control
-//               type="text"
-//               placeholder="XXXX XXXX XXXX XXXX"
-//               required
-//               pattern="^\d{16}$"
-//               value={cardNumber}
-//               onChange={(e) => setCardNumber(e.target.value)}
-//               className={formErrors.cardNumber ? "is-invalid" : ""}
-//             />
-//             <Form.Control.Feedback type="invalid">
-//               {formErrors.cardNumber ||
-//                 "Please enter a valid 16-digit card number."}
-//             </Form.Control.Feedback>
-//           </Form.Group>
-
-//           <Form.Group controlId="expiryDate">
-//             <Form.Label>Expiry Date (MM/YY)</Form.Label>
-//             <Form.Control
-//               type="text"
-//               placeholder="MM/YY"
-//               required
-//               pattern="^(0[1-9]|1[0-2])/\d{2}$"
-//               value={expiryDate}
-//               onChange={(e) => setExpiryDate(e.target.value)}
-//               className={formErrors.expiryDate ? "is-invalid" : ""}
-//             />
-//             <Form.Control.Feedback type="invalid">
-//               {formErrors.expiryDate ||
-//                 "Please enter a valid expiry date (MM/YY)."}
-//             </Form.Control.Feedback>
-//           </Form.Group>
-
-//           <Form.Group controlId="cvv">
-//             <Form.Label>CVV</Form.Label>
-//             <Form.Control
-//               type="text"
-//               placeholder="XXX"
-//               required
-//               pattern="^\d{3,4}$"
-//               value={cvv}
-//               onChange={(e) => setCvv(e.target.value)}
-//               className={formErrors.cvv ? "is-invalid" : ""}
-//             />
-//             <Form.Control.Feedback type="invalid">
-//               {formErrors.cvv || "Please enter a valid CVV."}
-//             </Form.Control.Feedback>
-//           </Form.Group>
-//         </>
-//       ) : paymentMethod === "paypal" ? (
-//         <Form.Group controlId="paypalEmail">
-//           <Form.Label>PayPal Email</Form.Label>
-//           <Form.Control type="email" placeholder="PayPal Email" required />
-//           <Form.Control.Feedback type="invalid">
-//             Please enter a valid PayPal email.
-//           </Form.Control.Feedback>
-//         </Form.Group>
-//       ) : null}
-//     </div>
-//   );
-// }
-
 // Order Summary Component
 function OrderSummary(_ref4) {
   var giftOption = _ref4.giftOption;
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState24 = _slicedToArray(_useState23, 2),
-    cartItems = _useState24[0],
-    setCartItems = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState26 = _slicedToArray(_useState25, 2),
-    error = _useState26[0],
-    setError = _useState26[1];
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState28 = _slicedToArray(_useState27, 2),
-    loading = _useState28[0],
-    setLoading = _useState28[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState18 = _slicedToArray(_useState17, 2),
+    cartItems = _useState18[0],
+    setCartItems = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    error = _useState20[0],
+    setError = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState22 = _slicedToArray(_useState21, 2),
+    loading = _useState22[0],
+    setLoading = _useState22[1];
   var fetchCart = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var token, _response$data, response, items;
