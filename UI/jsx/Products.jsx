@@ -120,7 +120,7 @@ const ProductPage = () => {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ product_id: product.id }),
+        body: JSON.stringify({ product_id: product.id , quantity:1}),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

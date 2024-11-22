@@ -23,27 +23,41 @@ import ProductsPage from "./ProductsPage.jsx";
 import CategoriesPage from "./CategoriesPage.jsx";
 import UsersPage from "./UsersPage.jsx";
 import CheckoutPage from "./Checkout.jsx";
-import PurchaseHistory from "./purchaseHistory.jsx"
-import CouponPage from "./Coupon.jsx";
+import PurchaseHistory from "./purchaseHistory.jsx";
 
 // Main application component
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
-  const [isAdmin] = useState(localStorage.getItem("is_admin") == "true");
+  // State for authentication and admin status
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("token")
+  );
+  const [isAdmin] = useState(localStorage.getItem("is_admin") === "true");
+
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        <NavPage title="PrimeMart" isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
+        <NavPage
+          title="PrimeMart"
+          isAuthenticated={isAuthenticated}
+          isAdmin={isAdmin}
+          setIsAuthenticated={setIsAuthenticated}  
+        />
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+            <Route
+              path="/login"
+              element={<Login setIsAuthenticated={setIsAuthenticated} />}
+            />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/logout" element={<Logout setIsAuthenticated={setIsAuthenticated} />} />
+            <Route
+              path="/logout"
+              element={<Logout setIsAuthenticated={setIsAuthenticated} />}
+            />
             <Route path="/forgot-password" element={<PasswordResetRequest />} />
             <Route path="/reset-password" element={<PasswordResetForm />} />
             <Route path="/checkout" element={<CheckoutPage />} />

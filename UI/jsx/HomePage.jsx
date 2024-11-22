@@ -37,7 +37,13 @@ const ProductCard = ({ product, onAddToCart, onClick }) => (
           </Card.Text>
         )}
         <Card.Text>{product.description}</Card.Text>
-        <Button variant="primary" onClick={() => onAddToCart(product)}>
+        <Button
+          variant="primary"
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent the Card's onClick event from firing
+            onAddToCart(product);
+          }}
+        >
           Add to Cart
         </Button>
       </Card.Body>
@@ -155,7 +161,7 @@ const HomePage = () => {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ product_id: product.id }),
+        body: JSON.stringify({ product_id: product.id, quantity: 1 }),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -269,7 +275,6 @@ const HomePage = () => {
                   </Nav.Link>
                 </Nav.Item>
               ))}
-              <Nav.Item></Nav.Item>
             </Nav>
           )}
         </Container>
@@ -278,7 +283,7 @@ const HomePage = () => {
       {/* Featured Products Section */}
       <section className="products-section py-5">
         <Container>
-          <h2 className="text-center mb-5">Featured Products</h2>
+          <h2 className="text-center mb-4">Featured Products</h2>
           {loadingFeatured ? (
             <div className="d-flex justify-content-center">
               <Spinner animation="border" variant="primary" />
@@ -306,88 +311,10 @@ const HomePage = () => {
         </Container>
       </section>
 
-      {/* Special Products Section */}
-      <section
-        className="special-products-section text-center py-5"
-        style={{ backgroundColor: "#F9F9F9" }}
-      >
-        <Container>
-          <h2 className="mb-4">Our Special Products</h2>
-          <Row>
-            <Col>
-              <p className="mt-3">
-                Delicious and fresh organic food just for you!
-              </p>
-              <Button
-                variant="success"
-                onClick={() => navigate("/products")}
-                className="mt-3"
-              >
-                Shop Now
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="testimonials-section py-5">
-        <Container>
-          <h2 className="text-center mb-5">What Our Clients Say</h2>
-          <Row className="text-center">
-            <Col md={4} sm={12} className="mb-4">
-              <Card className="h-100">
-                <Card.Body>
-                  <i
-                    className="fa fa-star mb-3"
-                    aria-hidden="true"
-                    style={{ fontSize: "2rem", color: "#007bff" }}
-                  ></i>
-                  <Card.Text>
-                    "Best quality organic products I have ever purchased!"
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>- Client 1</Card.Footer>
-              </Card>
-            </Col>
-            <Col md={4} sm={12} className="mb-4">
-              <Card className="h-100">
-                <Card.Body>
-                  <i
-                    className="fa fa-thumbs-up mb-3"
-                    aria-hidden="true"
-                    style={{ fontSize: "2rem", color: "#007bff" }}
-                  ></i>
-                  <Card.Text>
-                    "Fast delivery and fresh products every time!"
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>- Client 2</Card.Footer>
-              </Card>
-            </Col>
-            <Col md={4} sm={12} className="mb-4">
-              <Card className="h-100">
-                <Card.Body>
-                  <i
-                    className="fa fa-smile mb-3"
-                    aria-hidden="true"
-                    style={{ fontSize: "2rem", color: "#007bff" }}
-                  ></i>
-                  <Card.Text>
-                    "Excellent service and product quality!"
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>- Client 3</Card.Footer>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
       {/* Products on Sale Section */}
-      <section className="products-section py-5">
+      <section className="products-sale-section py-5">
         <Container>
-          <h2 className="text-center mb-5">Products on Sale</h2>
+          <h2 className="text-center mb-4">Products on Sale</h2>
           {loadingSale ? (
             <div className="d-flex justify-content-center">
               <Spinner animation="border" variant="primary" />

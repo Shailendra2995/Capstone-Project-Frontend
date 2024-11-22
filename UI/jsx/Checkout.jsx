@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { FaTruck, FaPercentage, FaReceipt } from "react-icons/fa";
 
-
 // Provinces list
 const PROVINCES = [
   { id: 1, name: "Alberta" },
@@ -12,8 +11,8 @@ const PROVINCES = [
   { id: 3, name: "Manitoba" },
   { id: 4, name: "New Brunswick" },
   { id: 5, name: "Newfoundland and Labrador" },
-  { id: 7, name: "Nova Scotia" },
-  { id: 6, name: "Northwest Territories" },
+  { id: 6, name: "Nova Scotia" },
+  { id: 7, name: "Northwest Territories" },
   { id: 8, name: "Nunavut" },
   { id: 9, name: "Ontario" },
   { id: 10, name: "Prince Edward Island" },
@@ -30,15 +29,10 @@ function CheckoutPage({
     shippingAddress: {},
   },
 }) {
-  // Add state for profileData
   const [profileData, setProfileData] = useState(initialProfileData);
-
   const [useBillingAsDelivery, setUseBillingAsDelivery] = useState(false);
-  const [useProfileAddresses, setUseProfileAddresses] = useState(false);
   const [validated, setValidated] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState("");
-
-  // Initialize state with profileData
+  //const [paymentMethod, setPaymentMethod] = useState("");
   const [billingAddress, setBillingAddress] = useState({
     firstname: profileData?.billingAddress?.firstname || "",
     lastname: profileData?.billingAddress?.lastname || "",
@@ -48,7 +42,6 @@ function CheckoutPage({
     phone: profileData?.billingAddress?.phone || "",
     province_id: profileData?.billingAddress?.province_id || "",
   });
-
   const [shippingAddress, setShippingAddress] = useState({
     firstname: profileData?.shippingAddress?.firstname || "",
     lastname: profileData?.shippingAddress?.lastname || "",
@@ -58,35 +51,38 @@ function CheckoutPage({
     phone: profileData?.shippingAddress?.phone || "",
     province_id: profileData?.shippingAddress?.province_id || "",
   });
-
   const [contactInfo, setContactInfo] = useState({
     email: profileData?.email || "",
     phone: profileData?.phone || "",
   });
-
   const [giftOption, setGiftOption] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
   const memoizedProvinces = useMemo(() => PROVINCES, []);
 
-  // Canadian Postal Code Regex
+  // Correct postal code regex without delimiters
   const postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
 
   const loadData = useCallback(async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://localhost:8000/api/user/profile", {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      const response = await axios.get(
+        "http://localhost:8000/api/user/profile",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
 
-      const data = await response.json();
+      const data = response.data;
 
       if (data.status === 0) {
         const { username, email, phone, billing_address, shipping_address } =
           data.data;
 
-        // Update profileData
         setProfileData((prevState) => ({
           ...prevState,
           username,
@@ -113,7 +109,6 @@ function CheckoutPage({
           },
         }));
 
-        // Update billing address
         setBillingAddress((prevState) => ({
           ...prevState,
           firstname: billing_address?.firstname || "",
@@ -125,7 +120,6 @@ function CheckoutPage({
           province_id: billing_address?.province_id || "",
         }));
 
-        // Update shipping address
         setShippingAddress((prevState) => ({
           ...prevState,
           firstname: shipping_address?.firstname || "",
@@ -137,7 +131,6 @@ function CheckoutPage({
           province_id: shipping_address?.province_id || "",
         }));
 
-        // Update contact info
         setContactInfo((prevState) => ({
           ...prevState,
           email,
@@ -156,39 +149,139 @@ function CheckoutPage({
     loadData();
   }, [loadData]);
 
-  // Handle form submit
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    let isValid = true;
-
-    // Additional custom validations
-    if (
-      !validatePhoneNumber(contactInfo.phone) ||
-      !validateEmail(contactInfo.email)
-    ) {
-      isValid = false;
-    }
-
-    if (form.checkValidity() === false || !isValid) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
-      // Proceed with form submission
-      // You might want to add an API call here to process the order
-    }
-
-    setValidated(true);
+  const validatePostalCode = (postcode) => {
+    const cleanedPostcode = postcode.replace(/[\s-]/g, "");
+    return postalCodeRegex.test(cleanedPostcode);
   };
 
-  const validatePhoneNumber = (phone) => {
-    const phoneRegex =
-      /^(\+\d{1,2}\s?)?($$\d{3}$$|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
-    return phoneRegex.test(phone);
-  };
-
-  const validateEmail = (email) => {
+  const validateForm = () => {
+    const errors = {};
+    const phoneRegex = /^(\+\d{1,2}\s?)?(\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+
+    // Contact Info Validations
+    if (!emailRegex.test(contactInfo.email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+    if (!phoneRegex.test(contactInfo.phone)) {
+      errors.phone = "Please enter a valid phone number.";
+    }
+
+    // Billing Address Validations
+    if (!billingAddress.firstname) {
+      errors.billingFirstname = "First name is required.";
+    }
+    if (!billingAddress.lastname) {
+      errors.billingLastname = "Last name is required.";
+    }
+    if (!billingAddress.address) {
+      errors.billingAddress = "Address is required.";
+    }
+    if (!billingAddress.city) {
+      errors.billingCity = "City is required.";
+    }
+    if (!validatePostalCode(billingAddress.postcode)) {
+      errors.billingPostcode = "Please enter a valid postal code (A1A 1A1).";
+    }
+    if (!billingAddress.phone) {
+      errors.billingPhone = "Phone number is required.";
+    }
+    if (!billingAddress.province_id) {
+      errors.billingProvince = "Please select a province.";
+    }
+
+    // Shipping Address Validations
+    if (!useBillingAsDelivery) {
+      if (!shippingAddress.firstname) {
+        errors.shippingFirstname = "First name is required.";
+      }
+      if (!shippingAddress.lastname) {
+        errors.shippingLastname = "Last name is required.";
+      }
+      if (!shippingAddress.address) {
+        errors.shippingAddress = "Address is required.";
+      }
+      if (!shippingAddress.city) {
+        errors.shippingCity = "City is required.";
+      }
+      if (!validatePostalCode(shippingAddress.postcode)) {
+        errors.shippingPostcode = "Please enter a valid postal code (A1A 1A1).";
+      }
+      if (!shippingAddress.phone) {
+        errors.shippingPhone = "Phone number is required.";
+      }
+      if (!shippingAddress.province_id) {
+        errors.shippingProvince = "Please select a province.";
+      }
+    }
+
+    // Payment Method Validations
+    // if (paymentMethod === "credit" || paymentMethod === "debit") {
+    //   if (!/^\d{16}$/.test(cardNumber)) {
+    //     errors.cardNumber = "Please enter a valid 16-digit card number.";
+    //   }
+    //   if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+    //     errors.expiryDate = "Please enter a valid expiry date (MM/YY).";
+    //   }
+    //   if (!/^\d{3,4}$/.test(cvv)) {
+    //     errors.cvv = "Please enter a valid CVV.";
+    //   }
+    // }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setValidated(true);
+
+    if (validateForm()) {
+      const orderData = {
+        ...profileData,
+        billingAddress: {
+          ...billingAddress,
+          postcode: billingAddress.postcode.replace(/[\s-]/g, ""), // Clean postal code
+        },
+        shippingAddress: useBillingAsDelivery
+          ? {
+              ...billingAddress,
+              postcode: billingAddress.postcode.replace(/[\s-]/g, ""),
+            }
+          : {
+              ...shippingAddress,
+              postcode: shippingAddress.postcode.replace(/[\s-]/g, ""), // Clean postal code
+            },
+        contactInfo,
+        // paymentMethod,
+        // cardDetails: {
+        //   cardNumber,
+        //   expiryDate,
+        //   cvv,
+        // },
+      };
+
+      console.log("Order Data to be submitted:", orderData);
+
+      axios
+        .post("http://localhost:8000/api/order/checkout", orderData)
+        .then((response) => {
+          console.log("Order submitted successfully:", response);
+          // Handle successful submission (e.g., show success message, redirect)
+        })
+        .catch((error) => {
+          console.error(
+            "Error submitting order:",
+            error.response?.data || error.message
+          );
+          // Handle submission error (e.g., show error message)
+          alert(
+            `Order submission failed: ${
+              error.response?.data?.message || "Unknown error"
+            }`
+          );
+        });
+    }
   };
 
   const handleAddressChange = useCallback((e, addressType) => {
@@ -229,11 +322,11 @@ function CheckoutPage({
           <h4 className="form-section-title">Billing Address</h4>
           <AddressForm
             address={billingAddress}
-            postalCodeRegex={postalCodeRegex}
-            useProfileAddresses={useProfileAddresses}
+            useProfileAddresses={false}
             handleAddressChange={(e) => handleAddressChange(e, "billing")}
             provinces={memoizedProvinces}
             addressType="billing"
+            formErrors={formErrors}
           />
 
           {/* Delivery Address */}
@@ -245,25 +338,24 @@ function CheckoutPage({
             onChange={(e) => setUseBillingAsDelivery(e.target.checked)}
           />
           {!useBillingAsDelivery && (
-            <>
-              <AddressForm
-                address={shippingAddress}
-                postalCodeRegex={postalCodeRegex}
-                useProfileAddresses={useProfileAddresses}
-                handleAddressChange={(e) => handleAddressChange(e, "shipping")}
-                provinces={memoizedProvinces}
-                addressType="shipping"
-              />
-            </>
+            <AddressForm
+              address={shippingAddress}
+              useProfileAddresses={false}
+              handleAddressChange={(e) => handleAddressChange(e, "shipping")}
+              provinces={memoizedProvinces}
+              addressType="shipping"
+              formErrors={formErrors}
+            />
           )}
 
           {/* Contact Info */}
           <ContactInfo
             contactInfo={contactInfo}
             handleContactInfoChange={handleContactInfoChange}
+            formErrors={formErrors}
           />
 
-          {/* Payment Method */}
+          {/* Payment Method
           <h4 className="form-section-title">Payment Method</h4>
           <Form.Group controlId="paymentMethod">
             <Form.Control
@@ -282,7 +374,18 @@ function CheckoutPage({
             </Form.Control.Feedback>
           </Form.Group>
 
-          {paymentMethod && <PaymentDetails paymentMethod={paymentMethod} />}
+          {paymentMethod && (
+            <PaymentDetails
+              paymentMethod={paymentMethod}
+              formErrors={formErrors}
+              cardNumber={cardNumber}
+              setCardNumber={setCardNumber}
+              expiryDate={expiryDate}
+              setExpiryDate={setExpiryDate}
+              cvv={cvv}
+              setCvv={setCvv}
+            />
+          )} */}
 
           {/* Action Buttons */}
           <div className="form-actions mt-4">
@@ -331,11 +434,11 @@ CheckoutPage.propTypes = {
 // Address Form Component
 function AddressForm({
   address,
-  postalCodeRegex,
   useProfileAddresses,
   handleAddressChange,
   provinces,
   addressType,
+  formErrors,
 }) {
   return (
     <section className="mb-5 section">
@@ -347,18 +450,44 @@ function AddressForm({
               <input
                 type="text"
                 name={field}
-                className="form-control"
-                value={address[field] || ""} // Ensure value is not null
+                className={`form-control ${
+                  formErrors[
+                    `${addressType}${
+                      field.charAt(0).toUpperCase() + field.slice(1)
+                    }`
+                  ]
+                    ? "is-invalid"
+                    : ""
+                }`}
+                value={address[field] || ""}
                 onChange={handleAddressChange}
                 disabled={useProfileAddresses}
+                // Apply pattern for postal code validation
                 pattern={
-                  field === "postcode" ? postalCodeRegex.source : undefined
+                  field === "postcode"
+                    ? "^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$"
+                    : undefined
                 }
                 aria-label={`${
                   field.charAt(0).toUpperCase() + field.slice(1)
                 } input`}
                 aria-required="true"
               />
+              {formErrors[
+                `${addressType}${
+                  field.charAt(0).toUpperCase() + field.slice(1)
+                }`
+              ] && (
+                <div className="invalid-feedback">
+                  {
+                    formErrors[
+                      `${addressType}${
+                        field.charAt(0).toUpperCase() + field.slice(1)
+                      }`
+                    ]
+                  }
+                </div>
+              )}
             </div>
           )
         )}
@@ -366,9 +495,11 @@ function AddressForm({
           <label>Province</label>
           <select
             name="province_id"
-            value={address.province_id || ""} // Ensure value is not null
+            value={address.province_id || ""}
             onChange={handleAddressChange}
-            className="form-control"
+            className={`form-control ${
+              formErrors[`${addressType}Province`] ? "is-invalid" : ""
+            }`}
             disabled={useProfileAddresses}
           >
             <option value="">Select Province</option>
@@ -379,6 +510,11 @@ function AddressForm({
                 </option>
               ))}
           </select>
+          {formErrors[`${addressType}Province`] && (
+            <div className="invalid-feedback">
+              {formErrors[`${addressType}Province`]}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -386,49 +522,88 @@ function AddressForm({
 }
 
 // Payment Details Component
-function PaymentDetails({ paymentMethod }) {
-  return (
-    <div className="mt-3">
-      {paymentMethod === "credit" && (
-        <Form.Group controlId="creditCardNumber">
-          <Form.Label>Credit Card Number</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="XXXX XXXX XXXX XXXX"
-            required
-            pattern="^\d{16}$"
-          />
-          <Form.Control.Feedback type="invalid">
-            Please enter a valid 16-digit credit card number.
-          </Form.Control.Feedback>
-        </Form.Group>
-      )}
-      {paymentMethod === "paypal" && (
-        <Form.Group controlId="paypalEmail">
-          <Form.Label>PayPal Email</Form.Label>
-          <Form.Control type="email" placeholder="PayPal Email" required />
-          <Form.Control.Feedback type="invalid">
-            Please enter a valid PayPal email.
-          </Form.Control.Feedback>
-        </Form.Group>
-      )}
-      {paymentMethod === "debit" && (
-        <Form.Group controlId="debitCardNumber">
-          <Form.Label>Debit Card Number</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Debit Card Number"
-            required
-            pattern="^\d{16}$"
-          />
-          <Form.Control.Feedback type="invalid">
-            Please enter a valid 16-digit debit card number.
-          </Form.Control.Feedback>
-        </Form.Group>
-      )}
-    </div>
-  );
-}
+// function PaymentDetails({
+//   paymentMethod,
+//   formErrors,
+//   cardNumber,
+//   setCardNumber,
+//   expiryDate,
+//   setExpiryDate,
+//   cvv,
+//   setCvv,
+// }) {
+//   return (
+//     <div className="mt-3">
+//       {paymentMethod === "credit" || paymentMethod === "debit" ? (
+//         <>
+//           <Form.Group controlId="cardNumber">
+//             <Form.Label>
+//               {paymentMethod === "credit"
+//                 ? "Credit Card Number"
+//                 : "Debit Card Number"}
+//             </Form.Label>
+//             <Form.Control
+//               type="text"
+//               placeholder="XXXX XXXX XXXX XXXX"
+//               required
+//               pattern="^\d{16}$"
+//               value={cardNumber}
+//               onChange={(e) => setCardNumber(e.target.value)}
+//               className={formErrors.cardNumber ? "is-invalid" : ""}
+//             />
+//             <Form.Control.Feedback type="invalid">
+//               {formErrors.cardNumber ||
+//                 "Please enter a valid 16-digit card number."}
+//             </Form.Control.Feedback>
+//           </Form.Group>
+
+//           <Form.Group controlId="expiryDate">
+//             <Form.Label>Expiry Date (MM/YY)</Form.Label>
+//             <Form.Control
+//               type="text"
+//               placeholder="MM/YY"
+//               required
+//               pattern="^(0[1-9]|1[0-2])/\d{2}$"
+//               value={expiryDate}
+//               onChange={(e) => setExpiryDate(e.target.value)}
+//               className={formErrors.expiryDate ? "is-invalid" : ""}
+//             />
+//             <Form.Control.Feedback type="invalid">
+//               {formErrors.expiryDate ||
+//                 "Please enter a valid expiry date (MM/YY)."}
+//             </Form.Control.Feedback>
+//           </Form.Group>
+
+//           <Form.Group controlId="cvv">
+//             <Form.Label>CVV</Form.Label>
+//             <Form.Control
+//               type="text"
+//               placeholder="XXX"
+//               required
+//               pattern="^\d{3,4}$"
+//               value={cvv}
+//               onChange={(e) => setCvv(e.target.value)}
+//               className={formErrors.cvv ? "is-invalid" : ""}
+//             />
+//             <Form.Control.Feedback type="invalid">
+//               {formErrors.cvv || "Please enter a valid CVV."}
+//             </Form.Control.Feedback>
+//           </Form.Group>
+//         </>
+//       ) : paymentMethod === "paypal" ? (
+//         <Form.Group controlId="paypalEmail">
+//           <Form.Label>PayPal Email</Form.Label>
+//           <Form.Control type="email" placeholder="PayPal Email" required />
+//           <Form.Control.Feedback type="invalid">
+//             Please enter a valid PayPal email.
+//           </Form.Control.Feedback>
+//         </Form.Group>
+//       ) : null}
+//     </div>
+//   );
+// }
+
+// Order Summary Component
 function OrderSummary({ giftOption }) {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
@@ -469,7 +644,7 @@ function OrderSummary({ giftOption }) {
   };
 
   const calculateSavings = () => {
-    return 0;
+    return 0; // Implement savings logic if needed
   };
 
   const calculateTax = () => {
@@ -552,7 +727,7 @@ function OrderSummary({ giftOption }) {
 }
 
 // Contact Info Component
-function ContactInfo({ contactInfo, handleContactInfoChange }) {
+function ContactInfo({ contactInfo, handleContactInfoChange, formErrors }) {
   return (
     <section className="mb-5">
       <h4 className="form-section-title">Contact Information</h4>
@@ -564,9 +739,10 @@ function ContactInfo({ contactInfo, handleContactInfoChange }) {
           required
           value={contactInfo.email || ""}
           onChange={handleContactInfoChange}
+          className={formErrors.email ? "is-invalid" : ""}
         />
         <Form.Control.Feedback type="invalid">
-          Please provide a valid email.
+          {formErrors.email || "Please provide a valid email."}
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="phone" className="mt-3">
@@ -575,11 +751,12 @@ function ContactInfo({ contactInfo, handleContactInfoChange }) {
           type="text"
           placeholder="Phone Number"
           required
-          value={contactInfo.phone || ""} // Ensure value is not null
+          value={contactInfo.phone || ""}
           onChange={handleContactInfoChange}
+          className={formErrors.phone ? "is-invalid" : ""}
         />
         <Form.Control.Feedback type="invalid">
-          Please provide a valid phone number.
+          {formErrors.phone || "Please provide a valid phone number."}
         </Form.Control.Feedback>
       </Form.Group>
     </section>
