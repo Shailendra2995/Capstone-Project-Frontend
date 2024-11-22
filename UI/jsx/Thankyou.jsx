@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+
 const Thankyou = () => {
   const [status, setStatus] = useState(null);
   const [customerEmail, setCustomerEmail] = useState("");
@@ -6,19 +8,21 @@ const Thankyou = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
+    const token = localStorage.getItem("token");
 
     fetch("http://localhost:8000/api/order/checkout/status", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       method: "POST",
       body: JSON.stringify({ session_id: sessionId }),
     })
       .then((res) => res.json())
       .then((data) => {
-        setStatus(data.status);
-        setCustomerEmail(data.customer_email);
+        setStatus(data.data.status);
+        setCustomerEmail(data.data.customer_email);
       });
   }, []);
 
@@ -28,11 +32,11 @@ const Thankyou = () => {
 
   if (status === "complete") {
     return (
-      <section id="success">
+      <section id="success" class="text-center">
         <p>
           We appreciate your business! A confirmation email will be sent to{" "}
           {customerEmail}. If you have any questions, please email{" "}
-          <a href="mailto:orders@example.com">orders@example.com</a>.
+          <a href="mailto:orders@example.com">orders@PrimeMart.com</a>.
         </p>
       </section>
     );

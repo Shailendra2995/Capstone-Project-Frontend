@@ -15,6 +15,8 @@ import Profile from "./Profile.jsx";
 import "../public/styles.css";
 import HomePage from "./HomePage.jsx";
 import Logout from "./logout.jsx";
+import Payment from "./Payment.jsx";
+import Thankyou from "./Thankyou.jsx";
 import PasswordResetForm from "./Reset.jsx";
 import PasswordResetRequest from "./ForgotPassword.jsx";
 import Admin from "./Admin.jsx";
@@ -40,7 +42,7 @@ const App = () => {
           title="PrimeMart"
           isAuthenticated={isAuthenticated}
           isAdmin={isAdmin}
-          setIsAuthenticated={setIsAuthenticated}  
+          setIsAuthenticated={setIsAuthenticated}
         />
         <main className="flex-grow-1">
           <Routes>
@@ -61,6 +63,8 @@ const App = () => {
             <Route path="/forgot-password" element={<PasswordResetRequest />} />
             <Route path="/reset-password" element={<PasswordResetForm />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/thankyou" element={<Thankyou />} />
             <Route path="/history" element={<PurchaseHistory />} />
 
             {/* Admin routes using AdminLayout */}
