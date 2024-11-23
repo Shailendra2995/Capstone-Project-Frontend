@@ -6,6 +6,22 @@ import styled from '@emotion/styled';
 const StyledCard = styled(Card)`
   margin: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ProductInfo = styled('div')`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const ProductImage = styled('img')`
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
 `;
 
 const ProductsPage = () => {
@@ -268,20 +284,7 @@ const ProductsPage = () => {
                   Upload Image
                 </Button>
               </label>
-              {imagePreview && (
-                <img 
-                  src={imagePreview}
-                  alt="Preview" 
-                  style={{ marginLeft: '10px', maxWidth: '100px', maxHeight: '100px', verticalAlign: 'middle' }} 
-                />
-              )}
-              {formData.image_url && !imagePreview && (
-                <img 
-                  src={`${API_URL}/storage/${formData.image_url}`}
-                  alt="Current Image" 
-                  style={{ marginLeft: '10px', maxWidth: '100px', maxHeight: '100px', verticalAlign: 'middle' }} 
-                />
-              )}
+              {imagePreview && <img src={imagePreview} alt="Preview" style={{ marginTop: '10px', maxWidth: '200px', borderRadius: '4px' }} />}
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -292,49 +295,60 @@ const ProductsPage = () => {
                     name="is_featured"
                   />
                 }
-                label="Featured"
+                label="Featured Product"
               />
             </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained" color="primary" type="submit">
+                {isEditing ? 'Update Product' : 'Add Product'}
+              </Button>
+              <Button variant="text" onClick={closeForm} style={{ marginLeft: '10px' }}>
+                Cancel
+              </Button>
+            </Grid>
           </Grid>
-          <Button variant="contained" color="primary" type="submit" style={{ marginTop: '20px' }}>
-            {isEditing ? 'Update Product' : 'Add Product'}
-          </Button>
-          <Button variant="outlined" color="secondary" onClick={closeForm} style={{ marginLeft: '10px', marginTop: '20px' }}>
-            Cancel
-          </Button>
         </form>
       )}
-      <Typography variant="h5" gutterBottom style={{ marginTop: '20px' }}>
-        Product List
-      </Typography>
-      {products.length > 0 ? (
-        products.map(product => (
+      <div style={{ marginTop: '20px' }}>
+        {products.map((product) => (
           <StyledCard key={product.id}>
-            <CardContent>
-              <Typography variant="h6">{product.name}</Typography>
-              <Typography color="textSecondary">{product.brand}</Typography>
-              <Typography variant="body2">{product.description}</Typography>
-              <Typography variant="body2">Price: ${product.price}</Typography>
-              <Typography variant="body2">Stock: {product.stock}</Typography>
-              <Typography variant="body2">Featured: {product.is_featured ? 'Yes' : 'No'}</Typography>
+            <ProductInfo>
               {product.image_url && (
-                <img 
+                <ProductImage
                   src={`${API_URL}/storage/${product.image_url}`}
                   alt={product.name}
-                  style={{ maxWidth: '100px', maxHeight: '100px', marginTop: '10px' }}
                 />
               )}
-            </CardContent>
-            <CardActions>
-              <Button size="small" color="primary" onClick={() => handleEdit(product)}>Edit</Button>
-              <Button size="small" color="secondary" onClick={() => handleDelete(product.id)}>Delete</Button>
-            </CardActions>
+              <div>
+                <Typography variant="h6">{product.name}</Typography>
+                <Typography color="textSecondary">{product.brand}</Typography>
+              </div>
+            </ProductInfo>
+            <div>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => handleEdit(product)}
+                sx={{ marginRight: 1 }}
+              >
+                Edit
+              </Button>
+              <Button
+                size="small"
+                color="secondary"
+                onClick={() => handleDelete(product.id)}
+              >
+                Delete
+              </Button>
+            </div>
           </StyledCard>
-        ))
-      ) : (
-        <Typography>No products available.</Typography>
-      )}
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+        ))}
+      </div>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
         <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
           {snackbarMessage}
         </Alert>
