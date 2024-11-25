@@ -5459,7 +5459,7 @@ var Thankyou = function Thankyou() {
       className: "text-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We appreciate your business! A confirmation email will be sent to", " ", customerEmail, ". If you have any questions, please email", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       href: "mailto:orders@example.com"
-    }, "orders@example.com"), "."));
+    }, "orders@primemart.com"), "."));
   }
   return null;
 };
