@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CheckoutPage from "./Checkout.jsx";
+import { useNavigate } from "react-router-dom";
 
 //Static object to store profile data that can be accessed from other components
 const ProfileData = {
@@ -49,6 +49,7 @@ const provinces = [
 ];
 
 const Profile = () => {
+  const navigate = useNavigate(); // Initialize useHistory
   const [profileData, setProfileData] = useState({
     username: "",
     email: "",
@@ -625,6 +626,14 @@ const Profile = () => {
           Change Password
         </button>
       </section>
+
+      {/* Show Purchase History Button */}
+      <button
+        className="btn btn-outline-primary mt-4"
+        onClick={() => navigate("/history")} // Navigate to Purchase History
+      >
+        Show Purchase History
+      </button>
     </div>
   );
 };

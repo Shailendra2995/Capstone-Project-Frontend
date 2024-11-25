@@ -3,7 +3,7 @@ import { Form, Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { FaTruck, FaPercentage, FaReceipt } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // Provinces list
 const PROVINCES = [
@@ -248,7 +248,14 @@ function CheckoutPage({
         .then((data) => {
           if (data.status === 0) {
             alert("Order Placed successfully");
-            setTimeout(() => navigate("/payment", { replace: true, state: { clientSecret: data.data.clientSecret } }), 2000); // Redirect after 2 seconds
+            setTimeout(
+              () =>
+                navigate("/payment", {
+                  replace: true,
+                  state: { clientSecret: data.data.clientSecret },
+                }),
+              1000
+            ); // Redirect after 2 seconds
           } else {
             alert(data.message || "Checkout failed");
           }
@@ -394,13 +401,15 @@ function AddressForm({
               <input
                 type="text"
                 name={field}
-                className={`form-control ${formErrors[
-                  `${addressType}${field.charAt(0).toUpperCase() + field.slice(1)
-                  }`
-                ]
-                  ? "is-invalid"
-                  : ""
-                  }`}
+                className={`form-control ${
+                  formErrors[
+                    `${addressType}${
+                      field.charAt(0).toUpperCase() + field.slice(1)
+                    }`
+                  ]
+                    ? "is-invalid"
+                    : ""
+                }`}
                 value={address[field] || ""}
                 onChange={handleAddressChange}
                 disabled={useProfileAddresses}
@@ -410,23 +419,26 @@ function AddressForm({
                     ? "^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$"
                     : undefined
                 }
-                aria-label={`${field.charAt(0).toUpperCase() + field.slice(1)
-                  } input`}
+                aria-label={`${
+                  field.charAt(0).toUpperCase() + field.slice(1)
+                } input`}
                 aria-required="true"
               />
               {formErrors[
-                `${addressType}${field.charAt(0).toUpperCase() + field.slice(1)
+                `${addressType}${
+                  field.charAt(0).toUpperCase() + field.slice(1)
                 }`
               ] && (
-                  <div className="invalid-feedback">
-                    {
-                      formErrors[
-                      `${addressType}${field.charAt(0).toUpperCase() + field.slice(1)
+                <div className="invalid-feedback">
+                  {
+                    formErrors[
+                      `${addressType}${
+                        field.charAt(0).toUpperCase() + field.slice(1)
                       }`
-                      ]
-                    }
-                  </div>
-                )}
+                    ]
+                  }
+                </div>
+              )}
             </div>
           )
         )}
@@ -436,8 +448,9 @@ function AddressForm({
             name="province_id"
             value={address.province_id || ""}
             onChange={handleAddressChange}
-            className={`form-control ${formErrors[`${addressType}Province`] ? "is-invalid" : ""
-              }`}
+            className={`form-control ${
+              formErrors[`${addressType}Province`] ? "is-invalid" : ""
+            }`}
             disabled={useProfileAddresses}
           >
             <option value="">Select Province</option>

@@ -1,100 +1,119 @@
-import React from "react";
-import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const purchaseHistory = [
-  {
-    date: "Oct 28, 2024",
-    orderId: "8682484001254",
-    total: 113.92,
-    status: "Delivered",
-    deliveryDate: "Mon, Oct 28",
-    items: [
-      { src: "path/to/image1.png", quantity: 1 },
-      { src: "path/to/image2.png", quantity: 2 },
-      // Add more items here
-    ],
-  },
-  {
-    date: "Oct 09, 2024",
-    orderId: "8492474000718",
-    total: 258.63,
-    status: "Delivered",
-    deliveryDate: "Wed, Oct 09",
-    items: [
-      { src: "path/to/image3.png", quantity: 4 },
-      // Add more items here
-    ],
-  },
-  {
-    date: "Aug 07, 2024",
-    orderId: "4192438001386",
-    total: 0.0,
-    status: "Cancelled",
-    deliveryDate: null,
-    items: [{ src: "path/to/image4.png", quantity: 1 }],
-  },
-];
+const PurchaseHistory = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-function PurchaseHistory() {
+  const fetchOrders = async () => {
+    const token = localStorage.getItem("token");
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.get("http://localhost:8000/api/order", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const fetchedOrders = response.data.data || [];
+      setOrders(fetchedOrders);
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+      setError("Failed to fetch order history. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container text-center mt-5">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container text-center mt-5 text-danger">{error}</div>
+    );
+  }
+
   return (
-    <Container className="my-5">
-      {/* Search Bar */}
-      <Row className="mb-4">
-        <Col>
-          <h3>Purchase history</h3>
-          <Form.Control
-            type="text"
-            placeholder="Search your purchases"
-            className="mt-2"
-          />
-        </Col>
-      </Row>
-
-      {/* Purchase History Cards */}
-      {purchaseHistory.map((order, index) => (
-        <Card className="my-3 p-3 shadow-sm" key={index}>
-          <Row>
-            <Col md={8}>
-              <div className="order-info">
-                <p className="text-muted mb-1">
-                  {order.date} | Order # {order.orderId} | Total $
-                  {order.total.toFixed(2)}
-                </p>
-                <h5 className="mb-1">
-                  {order.status === "Cancelled"
-                    ? "Cancelled"
-                    : `Delivered on ${order.deliveryDate}`}
-                </h5>
-                <div className="d-flex">
-                  {order.items.map((item, i) => (
-                    <div className="item-thumbnail me-2" key={i}>
-                      <img
-                        src={item.src}
-                        alt={`item-${i}`}
-                        style={{ width: "40px", height: "40px" }}
-                      />
-                      <span className="item-quantity">{item.quantity}</span>
-                    </div>
-                  ))}
-                </div>
-                {order.status === "Cancelled" && (
-                  <p className="text-muted mt-2">
-                    You will not be charged for cancelled items, and any payment
-                    authorizations will be removed by the issuing bank.
-                  </p>
+    <div className="order-history-container container mt-5">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="card"
+      >
+        <div className="card-header bg-primary text-white text-center">
+          <h2>Order History</h2>
+        </div>
+        <div className="card-body">
+          {orders.length === 0 ? (
+            <p className="text-center">No orders found.</p>
+          ) : (
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map(
+                  (
+                    order,
+                    index // Corrected 'order' usage
+                  ) => (
+                    <tr key={order.id}>
+                      <td>{index + 1}</td>
+                      <td>{order.id}</td>
+                      <td>{new Date(order.created_at).toLocaleDateString()}</td>
+                      <td>
+                        $
+                        {typeof order.total_amount === "number" &&
+                        !isNaN(order.total_amount)
+                          ? order.total_amount.toFixed(2)
+                          : "0.00"}
+                      </td>
+                      <td>
+                        <span
+                          className={`badge ${
+                            order.status === "complete"
+                              ? "bg-success"
+                              : "bg-warning text-dark"
+                          }`}
+                        >
+                          {order.status}
+                        </span>
+                      </td>
+                    </tr>
+                  )
                 )}
-              </div>
-            </Col>
-            <Col md={4} className="text-end">
-              <Button variant="outline-primary" className="mt-2">
-                View details
-              </Button>
-            </Col>
-          </Row>
-        </Card>
-      ))}
-    </Container>
+              </tbody>
+            </table>
+          )}
+        </div>
+      </motion.div>
+    </div>
   );
-}
+};
 
 export default PurchaseHistory;
