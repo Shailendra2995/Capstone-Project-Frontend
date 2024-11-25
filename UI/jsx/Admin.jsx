@@ -16,7 +16,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/dashboard/summary', {
+        const response = await axios.get('/api/dashboard/summary', {
           headers: {
             // Add authorization header if needed
             'Authorization': `Bearer ${localStorage.getItem('token')}`,

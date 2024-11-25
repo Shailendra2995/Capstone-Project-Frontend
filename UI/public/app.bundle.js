@@ -61,7 +61,7 @@ var Admin = function Admin() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('/dashboard/summary', {
+              return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('/api/dashboard/summary', {
                 headers: {
                   // Add authorization header if needed
                   'Authorization': "Bearer ".concat(localStorage.getItem('token'))
