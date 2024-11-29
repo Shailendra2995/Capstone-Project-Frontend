@@ -29,6 +29,8 @@ import OrdersPage from "./OrdersPage.jsx";
 import CouponsPage from "./CouponsPage.jsx";
 import PurchaseHistory from "./purchaseHistory.jsx";
 
+
+
 // Main application component
 const App = () => {
   // State for authentication and admin status

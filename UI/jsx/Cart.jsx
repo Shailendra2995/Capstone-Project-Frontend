@@ -21,6 +21,8 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
+
+
 // Initial state for the cart
 const initialState = {
   cartItems: [],
