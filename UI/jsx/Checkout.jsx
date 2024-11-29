@@ -631,5 +631,5 @@ function ContactInfo({ contactInfo, handleContactInfoChange, formErrors }) {
     </section>
   );
 }
-
+//checkout
 export default CheckoutPage;
