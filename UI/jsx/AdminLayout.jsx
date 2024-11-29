@@ -33,6 +33,9 @@ const AdminLayout = () => {
               <ListGroup.Item as={Link} to="/admin/orders" action>
                 <FaShoppingCart className="me-2" /> Orders
               </ListGroup.Item>
+              <ListGroup.Item as={Link} to="/admin/coupons" action>
+                <FaTag className="me-2" /> Coupons
+              </ListGroup.Item>
             </ListGroup>
           </div>
         </Col>

@@ -25,6 +25,8 @@ import ProductsPage from "./ProductsPage.jsx";
 import CategoriesPage from "./CategoriesPage.jsx";
 import UsersPage from "./UsersPage.jsx";
 import CheckoutPage from "./Checkout.jsx";
+import OrdersPage from "./OrdersPage.jsx";
+import CouponsPage from "./CouponsPage.jsx";
 import PurchaseHistory from "./purchaseHistory.jsx";
 
 // Main application component
@@ -73,6 +75,8 @@ const App = () => {
               <Route path="products" element={<ProductsPage />} />
               <Route path="categories" element={<CategoriesPage />} />
               <Route path="users" element={<UsersPage />} />
+              <Route path="orders" element={<OrdersPage />} />
+              <Route path="coupons" element={<CouponsPage />} />
             </Route>
           </Routes>
         </main>
