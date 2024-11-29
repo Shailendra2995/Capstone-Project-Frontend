@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, InputGroup, Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { FaTruck, FaPercentage, FaReceipt } from "react-icons/fa";
@@ -477,7 +477,12 @@ function OrderSummary({ giftOption }) {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [couponError, setCouponError] = useState(null);
+  const [couponApplied, setCouponApplied] = useState(false);
 
+  // Fetch Cart Items
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
     setLoading(true);
@@ -505,6 +510,7 @@ function OrderSummary({ giftOption }) {
     fetchCart();
   }, []);
 
+  // Calculate Subtotal
   const calculateSubtotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
@@ -512,18 +518,50 @@ function OrderSummary({ giftOption }) {
     );
   };
 
+  // Calculate Savings (Coupon Discount)
   const calculateSavings = () => {
-    return 0; // Implement savings logic if needed
+    return discount;
   };
 
+  // Calculate Tax (13% HST)
   const calculateTax = () => {
     return (calculateSubtotal() - calculateSavings()) * 0.13;
   };
 
+  // Calculate Total
   const calculateTotal = () => {
     return calculateSubtotal() - calculateSavings() + calculateTax();
   };
 
+  // Validate Coupon
+  const validateCoupon = async () => {
+    setCouponError(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/coupon/validate",
+        { code: couponCode },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.success) {
+        setDiscount(response.data.discount);
+        setCouponApplied(true);
+      } else {
+        setCouponError("Invalid or expired coupon.");
+      }
+    } catch (error) {
+      setCouponError("Error applying coupon. Please try again.");
+      console.error("Error applying coupon:", error);
+    }
+  };
+
+  // Render Loading/Error
   if (loading) return <div>Loading cart...</div>;
   if (error) return <div>{error}</div>;
 
@@ -575,6 +613,30 @@ function OrderSummary({ giftOption }) {
         </div>
 
         <hr />
+        {/* Coupon Input */}
+        <div className="coupon-section mb-4">
+          <InputGroup>
+            <Form.Control
+              type="text"
+              placeholder="Enter coupon code"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+              disabled={couponApplied}
+            />
+            <Button
+              variant="primary"
+              onClick={validateCoupon}
+              disabled={couponApplied || !couponCode.trim()}
+            >
+              {couponApplied ? "Applied" : "Apply"}
+            </Button>
+          </InputGroup>
+          {couponError && <small className="text-danger">{couponError}</small>}
+          {couponApplied && (
+            <small className="text-success">Coupon applied successfully!</small>
+          )}
+        </div>
+        <hr />
 
         {/* Estimated Total */}
         <div className="d-flex justify-content-between align-items-center estimated-total mb-3">
@@ -594,7 +656,6 @@ function OrderSummary({ giftOption }) {
     </Card>
   );
 }
-
 // Contact Info Component
 function ContactInfo({ contactInfo, handleContactInfoChange, formErrors }) {
   return (

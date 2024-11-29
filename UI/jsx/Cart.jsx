@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer, useCallback } from "react";
 import axios from "axios";
-import { FaTruck, FaPercentage, FaReceipt } from "react-icons/fa";
+import { FaTruck, FaReceipt } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -19,7 +19,7 @@ import {
   FaPlus,
   FaArrowLeft,
   FaArrowRight,
-} from "react-icons/fa"; // Use FaArrowLeft for backward arrow
+} from "react-icons/fa";
 
 // Initial state for the cart
 const initialState = {
@@ -29,8 +29,6 @@ const initialState = {
   finalTotal: 0,
   loading: true,
   error: null,
-  coupon: "",
-  discount: 0,
   showModal: false,
   itemToRemove: null,
 };
@@ -70,16 +68,6 @@ function cartReducer(state, action) {
         ...state,
         finalTotal: action.payload,
       };
-    case "SET_COUPON":
-      return {
-        ...state,
-        coupon: action.payload,
-      };
-    case "SET_DISCOUNT":
-      return {
-        ...state,
-        discount: action.payload,
-      };
     case "SHOW_MODAL":
       return {
         ...state,
@@ -111,8 +99,6 @@ function Cart() {
     finalTotal,
     loading,
     error,
-    coupon,
-    discount,
     showModal,
     itemToRemove,
   } = state;
@@ -146,22 +132,19 @@ function Cart() {
     }
   };
 
-  const calculateTotal = useCallback(
-    (items) => {
-      const subtotal = items.reduce(
-        (acc, item) => acc + (Number(item.price) * item.quantity || 0),
-        0
-      );
-      dispatch({ type: "SET_TOTAL", payload: subtotal });
-      const taxAmount = subtotal * TAX_RATE;
-      dispatch({ type: "SET_TAX", payload: taxAmount });
-      dispatch({
-        type: "SET_FINAL_TOTAL",
-        payload: subtotal + taxAmount - discount,
-      });
-    },
-    [discount]
-  );
+  const calculateTotal = useCallback((items) => {
+    const subtotal = items.reduce(
+      (acc, item) => acc + (Number(item.price) * item.quantity || 0),
+      0
+    );
+    dispatch({ type: "SET_TOTAL", payload: subtotal });
+    const taxAmount = subtotal * TAX_RATE;
+    dispatch({ type: "SET_TAX", payload: taxAmount });
+    dispatch({
+      type: "SET_FINAL_TOTAL",
+      payload: subtotal + taxAmount,
+    });
+  }, []);
 
   const updateQuantity = async (id, quantity) => {
     const token = localStorage.getItem("token");
@@ -180,17 +163,6 @@ function Cart() {
     } catch (error) {
       console.error("Error updating quantity:", error);
     }
-  };
-
-  const applyCoupon = (e) => {
-    e.preventDefault();
-    if (coupon === "SAVE10") {
-      dispatch({ type: "SET_DISCOUNT", payload: 10 });
-    } else {
-      alert("Invalid coupon code");
-      dispatch({ type: "SET_DISCOUNT", payload: 0 });
-    }
-    dispatch({ type: "SET_COUPON", payload: "" });
   };
 
   const handleRemoveItem = async () => {
@@ -343,35 +315,6 @@ function Cart() {
                   <span className="tax">${tax.toFixed(2)}</span>
                 </div>
 
-                <Form onSubmit={applyCoupon} className="my-3">
-                  <Form.Group className="mb-2">
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter coupon code"
-                      value={coupon}
-                      onChange={(e) =>
-                        dispatch({
-                          type: "SET_COUPON",
-                          payload: e.target.value,
-                        })
-                      }
-                    />
-                  </Form.Group>
-                  <Button
-                    type="submit"
-                    variant="outline-primary"
-                    className="w-100"
-                  >
-                    Apply Coupon
-                  </Button>
-                </Form>
-
-                {discount > 0 && (
-                  <div className="d-flex justify-content-between text-success mt-2 savings">
-                    <span>Discount:</span>
-                    <span>-${discount.toFixed(2)}</span>
-                  </div>
-                )}
                 <hr />
 
                 <div className="d-flex justify-content-between estimated-total">
@@ -389,23 +332,30 @@ function Cart() {
                   Go to Checkout <FaArrowRight className="ms-2" />
                 </Button>
 
-                <div className="small-note text-muted text-center mt-4">
-                  <FaReceipt className="me-2" /> All fees and taxes are
-                  estimates. Final charges will be itemized on your receipt.
-                </div>
+                <Button
+                  variant="outline-danger"
+                  className="mt-3 w-100 d-flex align-items-center justify-content-center"
+                >
+                  <FaTruck className="me-2" />
+                  Choose Delivery Option
+                </Button>
               </Card.Body>
             </Card>
           </Col>
         </Row>
       )}
 
-      {/* Modal for confirmation */}
-      <Modal show={showModal} onHide={() => dispatch({ type: "HIDE_MODAL" })}>
+      {/* Modal for removing item */}
+      <Modal
+        show={showModal}
+        onHide={() => dispatch({ type: "HIDE_MODAL" })}
+        centered
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Confirm Removal</Modal.Title>
+          <Modal.Title>Remove Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to remove this item from your cart?
+          <p>Are you sure you want to remove this item from your cart?</p>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -415,7 +365,7 @@ function Cart() {
             Cancel
           </Button>
           <Button variant="danger" onClick={handleRemoveItem}>
-            Remove Item
+            Remove
           </Button>
         </Modal.Footer>
       </Modal>
