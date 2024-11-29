@@ -21,6 +21,8 @@ import {
   FaArrowRight,
 } from "react-icons/fa"; // Use FaArrowLeft for backward arrow
 
+
+
 // Initial state for the cart
 const initialState = {
   cartItems: [],

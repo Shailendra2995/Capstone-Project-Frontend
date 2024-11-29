@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 
+
+
 const NavPage = ({ title, isAuthenticated, isAdmin, setIsAuthenticated }) => {
   const location = useLocation();
   const navigate = useNavigate();
