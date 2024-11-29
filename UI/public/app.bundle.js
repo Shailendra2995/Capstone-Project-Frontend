@@ -1736,7 +1736,6 @@ function ContactInfo(_ref6) {
     type: "invalid"
   }, formErrors.phone || "Please provide a valid phone number.")));
 }
-//checkout
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutPage);
 
 /***/ }),
