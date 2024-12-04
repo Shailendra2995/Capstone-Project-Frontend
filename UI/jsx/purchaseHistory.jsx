@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const PurchaseHistory = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const fetchOrders = async () => {
     const token = localStorage.getItem("token");
@@ -25,7 +27,10 @@ const PurchaseHistory = () => {
       setOrders(fetchedOrders);
     } catch (error) {
       console.error("Error fetching orders:", error);
-      setError("Failed to fetch order history. Please try again.");
+      const message =
+        error.response?.data?.message ||
+        "Failed to fetch order history. Please try again.";
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -39,7 +44,7 @@ const PurchaseHistory = () => {
     return (
       <div className="container text-center mt-5">
         <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     );
@@ -66,43 +71,64 @@ const PurchaseHistory = () => {
           {orders.length === 0 ? (
             <p className="text-center">No orders found.</p>
           ) : (
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Order ID</th>
-                  <th>Date</th>
-                  <th>Total Amount</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map((order, index) => (
-                  <tr key={order.id}>
-                    <td>{index + 1}</td>
-                    <td>{order.id}</td>
-                    <td>{new Date(order.created_at).toLocaleDateString()}</td>
-                    <td>
-                      $
-                      {typeof order.items_total_amount === "string"
-                        ? parseFloat(order.items_total_amount).toFixed(2)
-                        : "0.00"}
-                    </td>
-                    <td>
-                      <span
-                        className={`badge ${
-                          order.status === "complete"
-                            ? "bg-success"
-                            : "bg-warning text-dark"
-                        }`}
-                      >
-                        {order.status}
-                      </span>
-                    </td>
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {orders.map((order, index) => (
+                    <tr key={order.id}>
+                      <td>{index + 1}</td>
+                      <td>{order.id}</td>
+                      <td>{new Date(order.created_at).toLocaleDateString()}</td>
+                      <td>
+                        $
+                        {typeof order.items_total_amount === "number" &&
+                        !isNaN(order.items_total_amount)
+                          ? order.items_total_amount.toFixed(2)
+                          : "0.00"}
+                      </td>
+                      <td>
+                        <div className="d-flex align-items-center justify-content-between">
+                          <span
+                            className={`badge ${
+                              order.status === "complete"
+                                ? "bg-success"
+                                : "bg-warning text-dark"
+                            }`}
+                          >
+                            {order.status}
+                          </span>
+                          {order.status !== "complete" &&
+                            order.stripe_session_id && (
+                              <button
+                                className="btn btn-link p-1 text-decoration-none"
+                                onClick={() => {
+                                  navigate("/payment", {
+                                    replace: true,
+                                    state: {
+                                      clientSecret: order.stripe_session_id,
+                                    },
+                                  });
+                                }}
+                              >
+                                Pay Now
+                              </button>
+                            )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </motion.div>

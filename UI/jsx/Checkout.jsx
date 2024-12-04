@@ -235,7 +235,9 @@ function CheckoutPage({
       Object.keys(shippingAddress).forEach((key) => {
         data.append(`shipping_address_${key}`, shippingAddress[key]);
       });
-      data.append("coupon_id", couponId);
+      if (couponId) {
+        data.append("coupon_id", couponId);
+      }
 
       const requestOptions = {
         method: "POST",
@@ -249,7 +251,7 @@ function CheckoutPage({
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 0) {
-            alert("Order Placed successfully");
+            alert("Order Created successfully");
             setTimeout(
               () =>
                 navigate("/payment", {
