@@ -6645,6 +6645,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+ // Import useNavigate
 
 var PurchaseHistory = function PurchaseHistory() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
@@ -6659,10 +6660,11 @@ var PurchaseHistory = function PurchaseHistory() {
     _useState6 = _slicedToArray(_useState5, 2),
     error = _useState6[0],
     setError = _useState6[1];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); // Initialize navigate
+
   var fetchOrders = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var token, response, fetchedOrders, _error$response, message;
+      var token, response, fetchedOrders;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -6681,23 +6683,22 @@ var PurchaseHistory = function PurchaseHistory() {
             response = _context.sent;
             fetchedOrders = response.data.data || [];
             setOrders(fetchedOrders);
-            _context.next = 16;
+            _context.next = 15;
             break;
           case 11:
             _context.prev = 11;
             _context.t0 = _context["catch"](3);
             console.error("Error fetching orders:", _context.t0);
-            message = ((_error$response = _context.t0.response) === null || _error$response === void 0 || (_error$response = _error$response.data) === null || _error$response === void 0 ? void 0 : _error$response.message) || "Failed to fetch order history. Please try again.";
-            setError(message);
-          case 16:
-            _context.prev = 16;
+            setError("Failed to fetch order history. Please try again.");
+          case 15:
+            _context.prev = 15;
             setLoading(false);
-            return _context.finish(16);
-          case 19:
+            return _context.finish(15);
+          case 18:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[3, 11, 16, 19]]);
+      }, _callee, null, [[3, 11, 15, 18]]);
     }));
     return function fetchOrders() {
       return _ref.apply(this, arguments);
@@ -6713,7 +6714,7 @@ var PurchaseHistory = function PurchaseHistory() {
       className: "spinner-border",
       role: "status"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "visually-hidden"
+      className: "sr-only"
     }, "Loading...")));
   }
   if (error) {
@@ -6742,29 +6743,28 @@ var PurchaseHistory = function PurchaseHistory() {
     className: "card-body"
   }, orders.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "text-center"
-  }, "No orders found.") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "table-responsive"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", {
+  }, "No orders found.") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", {
     className: "table table-hover"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Order ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Total Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Status"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, orders.map(function (order, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
       key: order.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, order.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, new Date(order.created_at).toLocaleDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "$", typeof order.items_total_amount === "number" && !isNaN(order.items_total_amount) ? order.items_total_amount.toFixed(2) : "0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, order.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, new Date(order.created_at).toLocaleDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "$", typeof order.items_total_amount === "string" ? parseFloat(order.items_total_amount).toFixed(2) : "0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "d-flex align-items-center justify-content-between"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       className: "badge ".concat(order.status === "complete" ? "bg-success" : "bg-warning text-dark")
-    }, order.status), order.status !== "complete" && order.stripe_session_id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      className: "btn btn-link p-1 text-decoration-none",
+    }, order.status), order.status !== "complete" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "btn btn-link p-0 text-decoration-none",
       onClick: function onClick() {
+        console.log(order.stripe_client_secret);
         navigate("/payment", {
           replace: true,
           state: {
-            clientSecret: order.stripe_session_id
+            clientSecret: order.stripe_client_secret
           }
         });
       }
     }, "Pay Now"))));
-  })))))));
+  }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PurchaseHistory);
 
