@@ -14,7 +14,7 @@ const PurchaseHistory = () => {
     setError(null);
 
     try {
-      const response = await axios.get("http://localhost:8000/api/order", {
+      const response = await axios.get("http://localhost:8000/api/user/order", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -77,36 +77,30 @@ const PurchaseHistory = () => {
                 </tr>
               </thead>
               <tbody>
-                {orders.map(
-                  (
-                    order,
-                    index // Corrected 'order' usage
-                  ) => (
-                    <tr key={order.id}>
-                      <td>{index + 1}</td>
-                      <td>{order.id}</td>
-                      <td>{new Date(order.created_at).toLocaleDateString()}</td>
-                      <td>
-                        $
-                        {typeof order.total_amount === "number" &&
-                        !isNaN(order.total_amount)
-                          ? order.total_amount.toFixed(2)
-                          : "0.00"}
-                      </td>
-                      <td>
-                        <span
-                          className={`badge ${
-                            order.status === "complete"
-                              ? "bg-success"
-                              : "bg-warning text-dark"
-                          }`}
-                        >
-                          {order.status}
-                        </span>
-                      </td>
-                    </tr>
-                  )
-                )}
+                {orders.map((order, index) => (
+                  <tr key={order.id}>
+                    <td>{index + 1}</td>
+                    <td>{order.id}</td>
+                    <td>{new Date(order.created_at).toLocaleDateString()}</td>
+                    <td>
+                      $
+                      {typeof order.items_total_amount === "string"
+                        ? parseFloat(order.items_total_amount).toFixed(2)
+                        : "0.00"}
+                    </td>
+                    <td>
+                      <span
+                        className={`badge ${
+                          order.status === "complete"
+                            ? "bg-success"
+                            : "bg-warning text-dark"
+                        }`}
+                      >
+                        {order.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           )}

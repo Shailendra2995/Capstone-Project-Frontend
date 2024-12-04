@@ -593,7 +593,7 @@ function Cart() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "d-flex align-items-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      src: "http://localhost:8000/storage/products/".concat(item.product.image_url),
+      src: "http://localhost:8000/storage/".concat(item.product.image_url),
       alt: item.product.name,
       className: "me-3",
       style: {
@@ -1166,6 +1166,10 @@ function CheckoutPage(_ref) {
   var memoizedProvinces = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return PROVINCES;
   }, []);
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState18 = _slicedToArray(_useState17, 2),
+    couponId = _useState18[0],
+    setCouponId = _useState18[1];
 
   // Correct postal code regex without delimiters
   var postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
@@ -1342,6 +1346,7 @@ function CheckoutPage(_ref) {
       Object.keys(shippingAddress).forEach(function (key) {
         data.append("shipping_address_".concat(key), shippingAddress[key]);
       });
+      data.append("coupon_id", couponId);
       var requestOptions = {
         method: "POST",
         body: data,
@@ -1450,7 +1455,8 @@ function CheckoutPage(_ref) {
     variant: "secondary",
     className: "back-button"
   }, "Back")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(OrderSummary, {
-    giftOption: giftOption
+    giftOption: giftOption,
+    setCouponId: setCouponId
   }));
 }
 
@@ -1533,35 +1539,36 @@ function AddressForm(_ref3) {
 
 // Order Summary Component
 function OrderSummary(_ref4) {
-  var giftOption = _ref4.giftOption;
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState18 = _slicedToArray(_useState17, 2),
-    cartItems = _useState18[0],
-    setCartItems = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var giftOption = _ref4.giftOption,
+    setCouponId = _ref4.setCouponId;
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState20 = _slicedToArray(_useState19, 2),
-    error = _useState20[0],
-    setError = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    cartItems = _useState20[0],
+    setCartItems = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState22 = _slicedToArray(_useState21, 2),
-    loading = _useState22[0],
-    setLoading = _useState22[1];
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    error = _useState22[0],
+    setError = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState24 = _slicedToArray(_useState23, 2),
-    couponCode = _useState24[0],
-    setCouponCode = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    loading = _useState24[0],
+    setLoading = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState26 = _slicedToArray(_useState25, 2),
-    discount = _useState26[0],
-    setDiscount = _useState26[1];
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    couponCode = _useState26[0],
+    setCouponCode = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState28 = _slicedToArray(_useState27, 2),
-    couponError = _useState28[0],
-    setCouponError = _useState28[1];
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    discount = _useState28[0],
+    setDiscount = _useState28[1];
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState30 = _slicedToArray(_useState29, 2),
-    couponApplied = _useState30[0],
-    setCouponApplied = _useState30[1];
+    couponError = _useState30[0],
+    setCouponError = _useState30[1];
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState32 = _slicedToArray(_useState31, 2),
+    couponApplied = _useState32[0],
+    setCouponApplied = _useState32[1];
 
   // Fetch Cart Items
   var fetchCart = /*#__PURE__*/function () {
@@ -1635,13 +1642,14 @@ function OrderSummary(_ref4) {
   // Validate Coupon
   var validateCoupon = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var response;
+      var response, data;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             setCouponError(null);
-            _context3.prev = 1;
-            _context3.next = 4;
+            setLoading(true);
+            _context3.prev = 2;
+            _context3.next = 5;
             return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post("http://localhost:8000/api/coupon/validate", {
               code: couponCode
             }, {
@@ -1650,32 +1658,54 @@ function OrderSummary(_ref4) {
                 "Content-Type": "application/json"
               }
             });
-          case 4:
+          case 5:
             response = _context3.sent;
-            if (response.data.success) {
-              setDiscount(response.data.discount);
-              setCouponApplied(true);
-            } else {
-              setCouponError("Invalid or expired coupon.");
+            data = response.data;
+            console.log(data);
+            if (!(data.status === 0)) {
+              _context3.next = 20;
+              break;
             }
-            _context3.next = 12;
+            if (!(calculateSubtotal() >= data.data.min_amount)) {
+              _context3.next = 16;
+              break;
+            }
+            setCouponId(data.data.id);
+            setDiscount(data.data.discount);
+            setCouponApplied(true);
+            return _context3.abrupt("return", true);
+          case 16:
+            setCouponError("Minimum amount of $".concat(data.data.min_amount, " required to use this coupon."));
+            return _context3.abrupt("return", false);
+          case 18:
+            _context3.next = 22;
             break;
-          case 8:
-            _context3.prev = 8;
-            _context3.t0 = _context3["catch"](1);
+          case 20:
+            setCouponError(data.msg || "Invalid or expired coupon.");
+            return _context3.abrupt("return", false);
+          case 22:
+            _context3.next = 29;
+            break;
+          case 24:
+            _context3.prev = 24;
+            _context3.t0 = _context3["catch"](2);
             setCouponError("Error applying coupon. Please try again.");
-            console.error("Error applying coupon:", _context3.t0);
-          case 12:
+            console.error("Coupon validation error:", _context3.t0);
+            return _context3.abrupt("return", false);
+          case 29:
+            _context3.prev = 29;
+            setLoading(false);
+            return _context3.finish(29);
+          case 32:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[1, 8]]);
+      }, _callee3, null, [[2, 24, 29, 32]]);
     }));
     return function validateCoupon() {
       return _ref6.apply(this, arguments);
     };
   }();
-
   // Render Loading/Error
   if (loading) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Loading cart...");
   if (error) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, error);
@@ -6636,7 +6666,7 @@ var PurchaseHistory = function PurchaseHistory() {
             setError(null);
             _context.prev = 3;
             _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://localhost:8000/api/order", {
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://localhost:8000/api/user/order", {
               headers: {
                 Authorization: "Bearer ".concat(token),
                 "Content-Type": "application/json"
@@ -6708,11 +6738,10 @@ var PurchaseHistory = function PurchaseHistory() {
     className: "text-center"
   }, "No orders found.") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", {
     className: "table table-hover"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Order ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Total Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Status"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, orders.map(function (order, index // Corrected 'order' usage
-  ) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Order ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Total Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Status"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, orders.map(function (order, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
       key: order.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, order.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, new Date(order.created_at).toLocaleDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "$", typeof order.total_amount === "number" && !isNaN(order.total_amount) ? order.total_amount.toFixed(2) : "0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, order.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, new Date(order.created_at).toLocaleDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "$", typeof order.items_total_amount === "string" ? parseFloat(order.items_total_amount).toFixed(2) : "0.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       className: "badge ".concat(order.status === "complete" ? "bg-success" : "bg-warning text-dark")
     }, order.status)));
   }))))));

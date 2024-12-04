@@ -231,7 +231,7 @@ function Cart() {
                   <tr key={item.id}>
                     <td className="d-flex align-items-center">
                       <img
-                        src={`http://localhost:8000/storage/products/${item.product.image_url}`}
+                        src={`http://localhost:8000/storage/${item.product.image_url}`}
                         alt={item.product.name}
                         className="me-3"
                         style={{

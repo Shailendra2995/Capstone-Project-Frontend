@@ -59,6 +59,7 @@ function CheckoutPage({
   const [formErrors, setFormErrors] = useState({});
   const token = localStorage.getItem("token");
   const memoizedProvinces = useMemo(() => PROVINCES, []);
+  const [couponId, setCouponId] = useState(false);
 
   // Correct postal code regex without delimiters
   const postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
@@ -234,6 +235,7 @@ function CheckoutPage({
       Object.keys(shippingAddress).forEach((key) => {
         data.append(`shipping_address_${key}`, shippingAddress[key]);
       });
+      data.append("coupon_id", couponId);
 
       const requestOptions = {
         method: "POST",
@@ -351,7 +353,7 @@ function CheckoutPage({
       </div>
 
       {/* Order Summary */}
-      <OrderSummary giftOption={giftOption} />
+      <OrderSummary giftOption={giftOption} setCouponId={setCouponId} />
     </div>
   );
 }
@@ -473,7 +475,7 @@ function AddressForm({
 }
 
 // Order Summary Component
-function OrderSummary({ giftOption }) {
+function OrderSummary({ giftOption, setCouponId }) {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -536,6 +538,7 @@ function OrderSummary({ giftOption }) {
   // Validate Coupon
   const validateCoupon = async () => {
     setCouponError(null);
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -548,19 +551,32 @@ function OrderSummary({ giftOption }) {
           },
         }
       );
-
-      if (response.data.success) {
-        setDiscount(response.data.discount);
-        setCouponApplied(true);
+      const data = response.data;
+      console.log(data);
+      if (data.status === 0) {
+        if (calculateSubtotal() >= data.data.min_amount) {
+          setCouponId(data.data.id);
+          setDiscount(data.data.discount);
+          setCouponApplied(true);
+          return true;
+        } else {
+          setCouponError(
+            `Minimum amount of $${data.data.min_amount} required to use this coupon.`
+          );
+          return false;
+        }
       } else {
-        setCouponError("Invalid or expired coupon.");
+        setCouponError(data.msg || "Invalid or expired coupon.");
+        return false;
       }
     } catch (error) {
       setCouponError("Error applying coupon. Please try again.");
-      console.error("Error applying coupon:", error);
+      console.error("Coupon validation error:", error);
+      return false;
+    } finally {
+      setLoading(false);
     }
   };
-
   // Render Loading/Error
   if (loading) return <div>Loading cart...</div>;
   if (error) return <div>{error}</div>;
